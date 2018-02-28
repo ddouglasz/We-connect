@@ -4,7 +4,7 @@ body {
     height: 100%;
     overflow-x: hidden;
     /* overflow-y: hidden; */
- }
+}
 
 .navbar-brand-brand {
     font-size: 150px;
@@ -61,7 +61,7 @@ input[type=btn]:hover {
 #welcomeText a {
     text-align: center;
     font-weight: 200;
-     color: #001f3f;
+    color: #001f3f;
     /* font-family: "Museo Slab", sans-serif; */
     font-family: "lobster";
     margin-top: 5rem;
@@ -75,7 +75,6 @@ input[type=btn]:hover {
 
 #email,
 #searchField,
- 
 #password,
 #password:hover,
 input[type=btn]:hover {
@@ -113,10 +112,10 @@ input[type=btn]:hover {
     background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../images/irokotv2.jpg");
     background-size: cover;
     height: 500px;
-    width:100%;
+    width: 100%;
     color: white;
     text-align: center;
-  }
+}
 
 .jumbotron-cover {
     background: rgba(98, 116, 124, 0.5);
@@ -131,16 +130,17 @@ input[type=btn]:hover {
     background: #001f3f !important;
     margin: 30px;
     padding: 30px;
-    height:450px;
+    height: 450px;
+}
 
- }
-
- #loginForm, #email , #password{
+#loginForm,
+#email,
+#password {
     line-height: 1.5;
     font-family: "Museo Slab", sans-serif;
     font-weight: 100;
     font-size: 14px;
- }
+}
 
 #catalogForm {
     background: #001f3f !important;
@@ -182,8 +182,6 @@ input[type=btn]:hover {
     border-bottom-left-radius: 0;
     border: 1px solid #001f3f;
 }
-
- 
 
 .form-signin button {
     background: #fff;
@@ -240,12 +238,13 @@ input[type=btn]:hover {
 #facebook {
     color: #1976D2;
 }
-#twitter{
+
+#twitter {
     color: #03A9F4;
 }
 
-#linkedin{
-    color:#03A9F4
+#linkedin {
+    color: #03A9F4
 }
 
 .navbar-toggler-icon {
