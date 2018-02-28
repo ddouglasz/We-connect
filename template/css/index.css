@@ -114,6 +114,32 @@ input[type=btn]:hover {
     /* width: 95%; */
 }
 
+.navbar-brand-brand {
+    font-size: 150px;
+    color: white;
+}
+
+.navbar a {
+    color: white !important;
+}
+
+nav.navbar {
+    border: 0;
+    overflow: hidden;
+    background-color: #001f3f;
+    top: 0;
+    width: 100%;
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #001f3f;
+    z-index: 100;
+    color: white;
+}
 
 
 
