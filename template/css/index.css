@@ -132,6 +132,35 @@ input[type=btn]:hover {
 }
 
 
+#catalogForm{
+    background: #001f3f !important;
+    margin: 20px;
+    padding: 30px;
+}
+
+.btn {
+    background-color: #145291;
+    color: white;
+    cursor: pointer;
+}
+
+.img {
+    width: 537.50px;
+    height: 60% !important;
+}
+
+.col-md-4 img {
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    position: relative;
+}
+
+.row {
+    margin: 0;
+}
+
+
 
 .footer {
     position: fixed;
