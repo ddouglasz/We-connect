@@ -245,7 +245,36 @@ input[type=btn]:hover {
     background-color: #03A9F4;
 }
 
+@media (max-width: 575px) {
+    .display-3 {
+        font-size: 30px;
+    }
+}
 
+.pagination-card {
+    width: 200px;
+    padding: 15px;
+    margin-bottom: 35px;
+    z-index: inherit;
+}
+
+.img-zoom {
+    position: relative;
+    overflow: hidden;
+}
+
+.img-zoom:hover img {
+    cursor: pointer;
+    transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+}
+
+.img-zoom img {
+    transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
 
 .footer {
     position: fixed;
