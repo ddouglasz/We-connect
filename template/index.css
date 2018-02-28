@@ -1,0 +1,18 @@
+html,
+body {
+    max-width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    /* overflow-y: hidden; */
+    font-family: "Museo Slab", sans-serif;
+}
+
+#welcomeText{
+    text-align: center;
+    font-weight: 200;
+    /* opacity: 0.5; */
+    color: #BBDEFB;
+    /* font-family: "Museo Slab", sans-serif; */
+    font-family: "Museo Slab";
+    margin-top: 5rem;
+}
