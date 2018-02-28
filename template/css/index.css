@@ -81,7 +81,7 @@ input[type=btn]:hover {
 
  
 .jumbotron {
-    background: url("../template/images/businessIdeas.jpg")center center no-repeat fixed;
+    background: url("../images/businessIdeas.jpg")center center no-repeat fixed;
     background-size: cover;
     height: 700px;
     width: 100%;
@@ -91,7 +91,7 @@ input[type=btn]:hover {
 }
 
 .jumbotron2 {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/template/images/businessCatalog1.jpg");
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../images/businessCatalog1.jpg");
     background-size: cover;
     height: 550px;
     width:100%;
