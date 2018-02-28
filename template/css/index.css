@@ -214,7 +214,36 @@ input[type=btn]:hover {
     text-align: center;
 }
 
+.form1 {
+    color: #F0EFF3;
+}
 
+.fa {
+    color: #03A9F4;
+}
+
+.navbar-toggler-icon {
+    color: white !important;
+}
+
+
+#h1 display {
+    text-align: center;
+    font-family: "Museo Slab", sans-serif;
+}
+
+.display-3 {
+    color: white;
+    font-family: "Museo Slab", sans-serif;
+}
+
+.spacing {
+    padding-top: 20px;
+}
+
+.btn-primary {
+    background-color: #03A9F4;
+}
 
 
 
