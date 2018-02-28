@@ -307,6 +307,6 @@ input[type=btn]:hover {
     height: 60px;
     line-height: 60px;
     background-color: #001f3f;
-    z-index: 100;
+    z-index: 2;
     color: white;
 }
