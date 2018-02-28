@@ -160,6 +160,62 @@ input[type=btn]:hover {
     margin: 0;
 }
 
+.form-signin {
+    max-width: 350px;
+    padding: 15px;
+    margin: 25px auto;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border: 1px solid #001f3f;
+}
+
+.form-signin input[type="password"] {
+    border-top-left-radius: 0;
+}
+
+.form-signin button {
+    background: #fff;
+    border: 1px solid #001f3f;
+    color: white;
+}
+
+.form-signin button:hover {
+    background: #ccc;
+    border: none;
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-signin-heading {
+    margin-bottom: 5px;
+}
+
+.form {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    margin-left: -1rem;
+}
+
+.form-actions {
+    margin: 0;
+    background-color: transparent;
+    text-align: center;
+}
+.form-action {
+    margin: 10px;
+    background-color: transparent;
+    text-align: center;
+}
+
+
+
 
 
 .footer {
