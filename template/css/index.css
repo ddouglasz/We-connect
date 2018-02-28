@@ -90,7 +90,7 @@ input[type=btn]:hover {
     background: #001f3f;
 }
 
-.jumbotron {
+.home-wrapper-index {
     background: url("../images/businessIdeas.jpg")center center no-repeat fixed;
     background-size: cover;
     height: 700px;
@@ -100,7 +100,7 @@ input[type=btn]:hover {
     position: relative;
 }
 
-.jumbotron2 {
+.home-wrapper-catalog {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../images/businessCatalog1.jpg");
     background-size: cover;
     height: 550px;
@@ -108,6 +108,15 @@ input[type=btn]:hover {
     color: white;
     text-align: center;
 }
+
+.home-wrapper-profile {
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../images/irokotv2.jpg");
+    background-size: cover;
+    height: 500px;
+    width:100%;
+    color: white;
+    text-align: center;
+  }
 
 .jumbotron-cover {
     background: rgba(98, 116, 124, 0.5);
