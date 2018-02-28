@@ -126,11 +126,11 @@ input[type=btn]:hover {
 
  }
 
- #loginForm, #email {
+ #loginForm, #email , #password{
     line-height: 1.5;
     font-family: "Museo Slab", sans-serif;
     font-weight: 100;
-    font-size: 20px;
+    font-size: 14px;
  }
 
 #catalogForm {
@@ -185,7 +185,7 @@ input[type=btn]:hover {
 }
 
 .form-signin button:hover {
-    background: #ccc;
+    background: #001f3f;
     border: none;
     color: white;
 }
