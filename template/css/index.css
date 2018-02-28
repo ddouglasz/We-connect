@@ -183,14 +183,7 @@ input[type=btn]:hover {
     border: 1px solid #001f3f;
 }
 
-/* .form-signin input[type="password"] a{
-    border-top-left-radius: 0;
-    line-height: 1.5;
-    font-family: "Museo Slab", sans-serif;
-    font-weight: 100;
-    font-size: 14px;
-    background: #001f3f;
-} */
+ 
 
 .form-signin button {
     background: #fff;
@@ -228,6 +221,12 @@ input[type=btn]:hover {
     margin: 10px;
     background-color: transparent;
     text-align: center;
+}
+
+#profile-image {
+    height: 200px;
+    width: 200px;
+    margin-top: 50px;
 }
 
 .form1 {
