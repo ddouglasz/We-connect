@@ -238,6 +238,17 @@ input[type=btn]:hover {
     color: #03A9F4;
 }
 
+#facebook {
+    color: #1976D2;
+}
+#twitter{
+    color: #03A9F4;
+}
+
+#linkedin{
+    color:#03A9F4
+}
+
 .navbar-toggler-icon {
     color: white !important;
 }
