@@ -311,3 +311,6 @@ input[type=btn]:hover {
     z-index: 2;
     color: white;
 }
+.detail-text{
+    color:white;
+}
