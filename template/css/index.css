@@ -322,3 +322,7 @@ input[type=btn]:hover {
     z-index: 2;
     color: white;
 }
+
+.auth {
+     clear: both;
+}
