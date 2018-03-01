@@ -109,6 +109,13 @@ input[type=btn]:hover {
     text-align: center;
 }
 
+.detail-text {
+    color: white;
+}
+.cat-form{
+    overflow:hidden
+}
+
 .home-wrapper-profile {
     background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../images/irokotv2.jpg");
     background-size: cover;
@@ -315,9 +322,5 @@ input[type=btn]:hover {
     line-height: 60px;
     background-color: #001f3f;
     z-index: 2;
-    color: white;
-}
-
-.detail-text {
     color: white;
 }
