@@ -328,3 +328,8 @@ input[type=btn]:hover {
     z-index: 2;
     color: white;
 }
+.nav-close {
+    margin-top: .5rem!important;
+    margin-bottom: .5rem!important;
+    margin-left: -1rem!important;
+  }
