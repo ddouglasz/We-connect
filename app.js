@@ -16,5 +16,5 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get('*', (req, res) => res.status(200).send({
   message: 'We-connect you on port 8000',
 }));
-console.log("we are watching you 🤓")
 module.exports = app;
+
