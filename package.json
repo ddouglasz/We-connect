@@ -1,0 +1,20 @@
+{
+  "name": "We-connect",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ddouglasz/We-connect.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ddouglasz/We-connect/issues"
+  },
+  "homepage": "https://github.com/ddouglasz/We-connect#readme"
+}
