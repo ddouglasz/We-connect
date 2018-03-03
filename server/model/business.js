@@ -27,7 +27,7 @@ const businesses = [{
   quarters: 'kaduna',
   email: 'farmcrowdy@farmcrowdy.com',
   reviews: [],
-},
+}
 ];
 
 export default businesses;
