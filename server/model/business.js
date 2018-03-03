@@ -1,4 +1,4 @@
-const business = [{
+const businesses = [{
   id: 1,
   name: 'andela',
   description: 'a software development company changing the face of africa',
@@ -27,4 +27,4 @@ const business = [{
 },
 ];
 
-export default business;
+export default businesses;
