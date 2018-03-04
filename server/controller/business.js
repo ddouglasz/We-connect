@@ -71,7 +71,7 @@ class Businesses {
     });
   }
   /**
-   * @returns {Object} updateRecipes
+   * @returns {Object} updateBusiness
    * @param {*} req
    * @param {*} res
    */
