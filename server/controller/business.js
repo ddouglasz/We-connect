@@ -24,16 +24,6 @@ class Businesses {
       message: 'business successfully added'
     });
   }
-  /**
-   * @returns {Object} recipes
-   * @param {*} req
-   * @param {*} res
-   */
-  static getBusinesses(req, res) {
-    return res.json({
-      businesses
-    });
-  }
 }
-export default Businesses;
 
+export default Businesses;
