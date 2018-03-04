@@ -7,4 +7,5 @@ export default (app) => {
   app.post('/api/v1/businesses', Businesses.createBusinesses);
   app.get('/api/v1/businesses', Businesses.getBusinesses);
   app.delete('/api/v1/businesses/:businessId', Businesses.removeBusiness);
+  app.get('/api/v1/businesses/:businessId', Businesses.retrieveBusiness);
 };
