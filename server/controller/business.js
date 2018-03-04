@@ -45,7 +45,6 @@ class Businesses {
         businesses.splice(i, 1);
         return res.json({
           message: 'business removed successfully',
-          error: false
         });
       }
     }
