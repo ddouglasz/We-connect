@@ -4,7 +4,7 @@ import businesses from '../model/business';
  */
 class Businesses {
   /**
-   * @returns {Object} recipes
+   * @returns {Object} getBusinesses
    * @param {*} req
    * @param {*} res
    */
@@ -14,7 +14,7 @@ class Businesses {
     });
   }
   /**
-     * @returns {Objects} businesses
+     * @returns {Objects} createBusinesses
      * @param {*} req
      * @param {*} res
      */
@@ -35,7 +35,7 @@ class Businesses {
     });
   }
   /**
-   * @returns {object} removeEcipes
+   * @returns {object} removeBusinesses
    * @param {*} req
    * @param {*} res
    */
