@@ -4,6 +4,16 @@ import businesses from '../model/business';
  */
 class Businesses {
   /**
+   * @returns {Object} recipes
+   * @param {*} req
+   * @param {*} res
+   */
+  static getBusinesses(req, res) {
+    return res.json({
+      businesses
+    });
+  }
+  /**
      * @returns {Objects} businesses
      * @param {*} req
      * @param {*} res
