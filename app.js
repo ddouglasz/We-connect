@@ -6,14 +6,6 @@ import routes from './server/routes/index';
 const app = express();
 app.use(logger('dev'));
 app.use(bodyParser.json());
-
-app.use(bodyParser.urlencoded({ extended: false}));
-routes(app);
-app.get('/', (req, res) => res.status(200).send({
-  message: 'We-connect you on port 8000',
-}));
-module.exports = app;
-
 app.use(bodyParser.urlencoded({ extended: false }));
 routes(app);
 
@@ -22,5 +14,4 @@ app.get('/', (req, res) => res.status(200).send({
 }));
 
 export default app;
-
 
