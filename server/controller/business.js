@@ -4,7 +4,7 @@ import businesses from '../model/business';
  */
 class Businesses {
   /**
-   * @returns {Object} recipes
+   * @returns {Object} getBusinesses
    * @param {*} req
    * @param {*} res
    */
@@ -14,7 +14,7 @@ class Businesses {
     });
   }
   /**
-     * @returns {Objects} businesses
+     * @returns {Objects} createBusinesses
      * @param {*} req
      * @param {*} res
      */
@@ -35,7 +35,7 @@ class Businesses {
     });
   }
   /**
-   * @returns {object} removeEcipes
+   * @returns {object} removeBusinesses
    * @param {*} req
    * @param {*} res
    */
@@ -49,7 +49,25 @@ class Businesses {
       }
     }
     return res.status(404).json({
-      message: 'recipe not found',
+      message: ' business not found',
+    });
+  }
+  /**
+   * @returns {obj} retrieveBusiness
+   * @param {*} req
+   * @param {*} res
+   */
+  static retrieveBusiness(req, res) {
+    for (let i = 0; i < businesses.length; i += 1) {
+      if (businesses[i].id === parseInt(req.params.businessId, 10)) {
+        return res.json({
+          businesses: businesses[i],
+          message: 'success',
+        });
+      }
+    }
+    return res.status(404).json({
+      message: 'business not found',
     });
   }
 }
