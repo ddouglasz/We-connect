@@ -7,4 +7,6 @@ export default (app) => {
   app.post('/api/v1/businesses', Businesses.createBusinesses);
   app.get('/api/v1/businesses', Businesses.getBusinesses);
 };
+ 
+ 
 
