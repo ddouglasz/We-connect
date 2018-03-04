@@ -34,6 +34,25 @@ class Businesses {
       message: 'business successfully added'
     });
   }
+  /**
+   * @returns {object} removeEcipes
+   * @param {*} req
+   * @param {*} res
+   */
+  static removeBusiness(req, res) {
+    for (let i = 0; i < businesses.length; i += 1) {
+      if (businesses[i].id === parseInt(req.params.businessId, 10)) {
+        businesses.splice(i, 1);
+        return res.json({
+          message: 'business removed successfully',
+          error: false
+        });
+      }
+    }
+    return res.status(404).json({
+      message: 'recipe not found',
+    });
+  }
 }
 
 export default Businesses;
