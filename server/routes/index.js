@@ -6,7 +6,5 @@ import businesses from '../model/business'; // eslint-disable-line no-unused-var
 export default (app) => {
   app.post('/api/v1/businesses', Businesses.createBusinesses);
   app.get('/api/v1/businesses', Businesses.getBusinesses);
+  app.delete('/api/v1/businesses/:businessId', Businesses.removeBusinesses);
 };
- 
- 
-
