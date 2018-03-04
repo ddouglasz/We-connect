@@ -1,5 +1,5 @@
 import Businesses from '../controller/business';
-import Users from '../controller/user';
+import Users from '../controller/user';// eslint-disable-line no-unused-vars
 import Reviews from '../controller/reviews'; // eslint-disable-line no-unused-vars
 import businesses from '../model/business'; // eslint-disable-line no-unused-vars
 
