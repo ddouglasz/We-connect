@@ -29,6 +29,24 @@ class Reviews {
       message: 'business not found',
     });
   }
+  /**
+   * @returns {Object} getReviews
+   * @param {*} req
+   * @param {*} res
+   */
+  static getReviews(req, res) {
+    for (let i = 0; i < businesses.length; i += 1) {
+      if (businesses[i].id === parseInt(req.params.businessId, 10)) {
+        return res.json({
+          businesses: businesses[i],
+          reviews
+        });
+      }
+    }
+    return res.status(404).json({
+      message: 'business not found',
+    });
+  }
 }
 
 export default Reviews;
