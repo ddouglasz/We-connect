@@ -6,7 +6,6 @@ const businesses = [{
   category: 'ICT',
   quarters: 'lagos',
   email: 'andela@andela.com',
-  reviews: [],
 },
 {
   id: 2,
@@ -16,7 +15,6 @@ const businesses = [{
   category: 'entertainment',
   quarters: 'portharcourt',
   email: 'iroko@iroko.com',
-  reviews: [],
 },
 {
   id: 3,
@@ -26,7 +24,6 @@ const businesses = [{
   category: 'farming',
   quarters: 'kaduna',
   email: 'farmcrowdy@farmcrowdy.com',
-  reviews: [],
 }
 ];
 

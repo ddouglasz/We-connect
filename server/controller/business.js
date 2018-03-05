@@ -27,7 +27,6 @@ class Businesses {
       category: req.body.category,
       quarters: req.body.quarters,
       email: req.body.email,
-      reviews: req.body.reviews
     });
     return res.json({
       businesses,
