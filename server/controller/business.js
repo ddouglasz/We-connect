@@ -70,6 +70,30 @@ class Businesses {
       message: 'business not found',
     });
   }
+  /**
+   * @returns {Object} updateBusiness
+   * @param {*} req
+   * @param {*} res
+   */
+  static updateBusiness(req, res) {
+    for (let i = 0; i < businesses.length; i += 1) {
+      if (businesses[i].id === parseInt(req.params.businessId, 10)) {
+        businesses[i].name = req.body.name;
+        businesses[i].description = req.body.description;
+        businesses[i].image = req.body.image;
+        businesses[i].category = req.body.category;
+        businesses[i].quarters = req.body.quarters;
+        businesses[i].email = req.body.email;
+        return res.json({
+          businesses,
+          message: 'business updated successfully',
+        });
+      }
+    }
+    return res.status(404).json({
+      message: 'sorry,business not found',
+    });
+  }
 }
 
 export default Businesses;
