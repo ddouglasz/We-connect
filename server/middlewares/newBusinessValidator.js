@@ -10,11 +10,6 @@ const validateInput = (req, res, next) => {
       message: 'business cannot be empty',
     });
   }
-  if (!req.body.review) {
-    return res.status(400).send({
-      message: 'review cannot be empty',
-    });
-  }
   if (!req.body.reviewedBy) {
     return res.status(400).send({
       message: 'reviewer cannot be empty',
@@ -35,7 +30,11 @@ const validateInput = (req, res, next) => {
       message: 'category cannot be empty',
     });
   }
+  if (!req.body.location) {
+    return res.status(400).send({
+      message: 'location cannot be empty',
+    });
+  }
   next();
 };
-
 export default validateInput;
