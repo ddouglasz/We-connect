@@ -107,11 +107,11 @@ class Businesses {
         if (category.toLowerCase() === businesses[i].category.toLowerCase()) {
           categorize.push(businesses[i]);
         }
+        return res.json(categorize);
       }
-      return res.json(categorize);
-    }
-    if (!category) {
-      next();
+      if (!category) {
+        next();
+      }
     }
   }
   /**
