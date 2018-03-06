@@ -25,7 +25,7 @@ class Businesses {
       image: req.body.image,
       description: req.body.description,
       category: req.body.category,
-      quarters: req.body.quarters,
+      location: req.body.location,
       email: req.body.email,
     });
     return res.json({
@@ -81,7 +81,7 @@ class Businesses {
         businesses[i].description = req.body.description;
         businesses[i].image = req.body.image;
         businesses[i].category = req.body.category;
-        businesses[i].quarters = req.body.quarters;
+        businesses[i].location = req.body.location;
         businesses[i].email = req.body.email;
         return res.json({
           businesses,
@@ -92,6 +92,27 @@ class Businesses {
     return res.status(404).json({
       message: 'sorry,business not found',
     });
+  }
+  /**
+   * @returns {Object} searchByLocation
+   * @param {*} req
+   * @param {*} res
+   * @param {*} next
+   */
+  static searchByCategory(req, res, next) {
+     const { category } = req.query;
+     const cat = [];
+    if (category) {
+      for (let i = 0; i < businesses.length; i += 1) {
+        if (category.toLowerCase() === businesses[i].category.toLowerCase()) {
+          cat.push(businesses[i]);
+        }
+      }
+      return res.json(cat);
+    }
+    if (!category) {
+      next();
+    }
   }
 }
 

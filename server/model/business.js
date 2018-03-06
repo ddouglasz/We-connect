@@ -4,7 +4,7 @@ const businesses = [{
   image: 'andela.jpg',
   description: 'a software development company changing the face of africa',
   category: 'ICT',
-  quarters: 'lagos',
+  location: 'lagos',
   email: 'andela@andela.com',
 },
 {
@@ -13,7 +13,7 @@ const businesses = [{
   image: 'oroko.jpg',
   description: 'online and offline entertainment business',
   category: 'entertainment',
-  quarters: 'portharcourt',
+  location: 'portharcourt',
   email: 'iroko@iroko.com',
 },
 {
@@ -22,7 +22,7 @@ const businesses = [{
   image: 'farmcrowdy.jpg',
   description: 'connects farm owners with investors on farm produce to share profits',
   category: 'farming',
-  quarters: 'kaduna',
+  location: 'kaduna',
   email: 'farmcrowdy@farmcrowdy.com',
 }
 ];
