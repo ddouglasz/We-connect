@@ -107,7 +107,7 @@ input[type=btn]:hover {
 .home-wrapper-catalog {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../images/businessCatalog1.jpg");
     background-size: cover;
-    height: 550px;
+    height: 350px;
     width: 100%;
     color: white;
     text-align: center;
