@@ -15,6 +15,11 @@ const validateInput = (req, res, next) => {
       message: 'review cannot be empty',
     });
   }
+  if (!req.body.reviewedBy) {
+    return res.status(400).send({
+      message: 'business cannot be empty',
+    });
+  }
   next();
 };
 
