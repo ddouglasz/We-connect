@@ -30,6 +30,11 @@ const validateInput = (req, res, next) => {
       message: 'description cannot be empty',
     });
   }
+  if (!req.body.category) {
+    return res.status(400).send({
+      message: 'category cannot be empty',
+    });
+  }
   next();
 };
 
