@@ -35,6 +35,11 @@ const validateInput = (req, res, next) => {
       message: 'location cannot be empty',
     });
   }
+  if (!req.body.email) {
+    return res.status(400).send({
+      message: 'email cannot be empty',
+    });
+  }
   next();
 };
 export default validateInput;
