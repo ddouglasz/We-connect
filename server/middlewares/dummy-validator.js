@@ -10,6 +10,11 @@ const validateInput = (req, res, next) => {
       message: 'business cannot be empty',
     });
   }
+  if (!req.body.review) {
+    return res.status(400).send({
+      message: 'review cannot be empty',
+    });
+  }
   next();
 };
 
