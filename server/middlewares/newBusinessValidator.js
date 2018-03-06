@@ -40,6 +40,11 @@ const validateInput = (req, res, next) => {
       message: 'email cannot be empty',
     });
   }
+  if (!req.body.image) {
+    return res.status(400).send({
+      message: 'image cannot be empty',
+    });
+  }
   next();
 };
 export default validateInput;
