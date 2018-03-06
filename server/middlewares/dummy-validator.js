@@ -25,6 +25,11 @@ const validateInput = (req, res, next) => {
       message: 'id cannot be empty',
     });
   }
+  if (!req.body.description) {
+    return res.status(400).send({
+      message: 'description cannot be empty',
+    });
+  }
   next();
 };
 
