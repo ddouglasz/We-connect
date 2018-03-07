@@ -93,48 +93,6 @@ class Businesses {
       message: 'sorry,business not found',
     });
   }
-  /**
-   * @returns {Object} searchByCategory
-   * @param {*} req
-   * @param {*} res
-   * @param {*} next
-   */
-  static searchByCategory(req, res, next) {
-    const { category } = req.query;
-    const categorize = [];
-    if (category) {
-      for (let i = 0; i < businesses.length; i += 1) {
-        if (category.toLowerCase() === businesses[i].category.toLowerCase()) {
-          categorize.push(businesses[i]);
-        }
-        return res.json(categorize);
-      }
-      if (!category) {
-        next();
-      }
-    }
-  }
-  /**
-   * @returns {Object} searchByLocation
-   * @param {*} req
-   * @param {*} res
-   * @param {*} next
-   */
-  static searchByLocation(req, res, next) {
-    const { location } = req.query;
-    const locate = [];
-    if (location) {
-      for (let i = 0; i < businesses.length; i += 1) {
-        if (location.toLowerCase() === businesses[i].location.toLowerCase()) {
-          locate.push(businesses[i]);
-        }
-      }
-      return res.json(locate);
-    }
-    if (!location) {
-      next();
-    }
-  }
 }
 
 export default Businesses;
