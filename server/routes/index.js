@@ -2,7 +2,7 @@ import Businesses from '../controller/business';
 import Users from '../controller/user';// eslint-disable-line no-unused-vars
 import Reviews from '../controller/review'; // eslint-disable-line no-unused-vars
 import businesses from '../model/business'; // eslint-disable-line no-unused-vars
-import Validator from '../middlewares/createBusinessValidator';
+import Validator from '../middlewares/postBusinessValidator';
 // import validateGetBusiness from '../middlewares/getBusinessValidator';
 import FilterBusinessSearch from '../middlewares/filterSearch';
 import ReviewsValidator from '../middlewares/postReviewValidator';
