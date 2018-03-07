@@ -2,7 +2,7 @@ import Businesses from '../controller/business';
 import Users from '../controller/user';// eslint-disable-line no-unused-vars
 import Reviews from '../controller/review'; // eslint-disable-line no-unused-vars
 import businesses from '../model/business'; // eslint-disable-line no-unused-vars
-import validateNewBusiness from '../middlewares/createBusinessValidator';
+import Validator from '../middlewares/createBusinessValidator';
 // import validateGetBusiness from '../middlewares/getBusinessValidator';
 import FilterBusinessSearch from '../middlewares/filterSearch';
 import validatePostreview from '../middlewares/postReviewValidator';
@@ -10,7 +10,7 @@ import validatePostreview from '../middlewares/postReviewValidator';
 
 
 export default (app) => {
-  app.post('/api/v1/businesses', validateNewBusiness, Businesses.createBusinesses);
+  app.post('/api/v1/businesses', Validator.addBusinessValidator, Businesses.createBusinesses);
   app.get('/api/v1/businesses', FilterBusinessSearch.filterBusinessSearch, Businesses.getBusinesses);
   app.delete('/api/v1/businesses/:businessId', Businesses.removeBusiness);
   app.get('/api/v1/businesses/:businessId', Businesses.retrieveBusiness);
