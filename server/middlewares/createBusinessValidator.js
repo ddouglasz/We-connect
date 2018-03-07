@@ -1,18 +1,13 @@
 /**
-   * @returns {Object} validate Input
-   * @param {*} req
-   * @param {*} res
-   * @param {*} next
-   */
+ * @returns {Object} validate Input
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ */
 const validateInput = (req, res, next) => {
   if (!req.body.name) {
     return res.status(400).send({
-      message: 'business cannot be empty',
-    });
-  }
-  if (!req.body.reviewedBy) {
-    return res.status(400).send({
-      message: 'reviewer cannot be empty',
+      message: 'business name cannot be empty',
     });
   }
   if (!req.body.id) {
@@ -43,6 +38,11 @@ const validateInput = (req, res, next) => {
   if (!req.body.image) {
     return res.status(400).send({
       message: 'image cannot be empty',
+    });
+  }
+  if (!(req.body.description.join('').match('/^.{8,}$/'))) {
+    return res.status(400).send({
+      message: 'description should be greater than 8 characters Request',
     });
   }
   next();
