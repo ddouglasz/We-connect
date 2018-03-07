@@ -10,6 +10,11 @@ const validateInput = (req, res, next) => {
       message: 'id cannot be empty',
     });
   }
+  if (!req.body.reviewedBy) {
+    return res.status(400).send({
+      message: 'reviewer cannot be empty',
+    });
+  }
    
   next();
 };
