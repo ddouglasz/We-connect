@@ -15,7 +15,11 @@ const validateInput = (req, res, next) => {
       message: 'reviewer cannot be empty',
     });
   }
-   
+  if (!req.body.reviews) {
+    return res.status(400).send({
+      message: 'reviews cannot be empty',
+    });
+  }
   next();
 };
 export default validateInput;
