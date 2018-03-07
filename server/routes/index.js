@@ -5,7 +5,7 @@ import businesses from '../model/business'; // eslint-disable-line no-unused-var
 import Validator from '../middlewares/createBusinessValidator';
 // import validateGetBusiness from '../middlewares/getBusinessValidator';
 import FilterBusinessSearch from '../middlewares/filterSearch';
-import validatePostreview from '../middlewares/postReviewValidator';
+import ReviewsValidator from '../middlewares/postReviewValidator';
 // import validateGetReviews from '../middlewares/filterSearch';
 
 
@@ -15,7 +15,7 @@ export default (app) => {
   app.delete('/api/v1/businesses/:businessId', Businesses.removeBusiness);
   app.get('/api/v1/businesses/:businessId', Businesses.retrieveBusiness);
   app.put('/api/v1/business/:businessId', Businesses.updateBusiness);
-  app.post('/api/v1/business/:businessId/reviews', validatePostreview, Reviews.postReview);
+  app.post('/api/v1/business/:businessId/reviews', ReviewsValidator.postReviewValidator, Reviews.postReview);
   app.get('/api/v1/business/:businessId/reviews', Reviews.getReviews);
 };
 
