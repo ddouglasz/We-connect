@@ -149,4 +149,27 @@ describe('Test for POST review', () => {
       });
   });
 });
+// Test for getting reviews
+describe('GET Reviews', () => {
+  it('Should return 200 for getting reviews', (done) => {
+    chai.request(app)
+      .get('/api/v1/business/1/reviews')
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
+});
+// Test for getting reviews
+describe('GET Reviews', () => {
+  it('Should return 404 for reviews that does not exist', (done) => {
+    chai.request(app)
+      .get('/api/v1/business/34/reviews')
+      .end((err, res) => {
+        expect(res.status).to.equal(404);
+        done();
+      });
+  });
+});
+
  
