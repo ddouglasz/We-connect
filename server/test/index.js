@@ -172,4 +172,16 @@ describe('GET Reviews', () => {
   });
 });
 
+// Test searching for  allbusiness
+describe('API to get all business', () => {
+  it('Should return 200 if successful', (done) => {
+    chai.request(app)
+      .get('/api/v1/businesses')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+});
+
  
