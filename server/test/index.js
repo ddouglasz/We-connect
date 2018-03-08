@@ -232,4 +232,31 @@ describe('Create new user', () => {
   });
 });
 
+// Test Signing in a user
+describe('Login user', () => {
+  it('Should return 401 for wrong inputs', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send({
+        username: 'slime',
+        password: 'slime'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(401);
+        done();
+      });
+  });
+  it('Should return 200 for success in logging in', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send({
+        username: 'steve',
+        password: 'stevesteve'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+});
  
