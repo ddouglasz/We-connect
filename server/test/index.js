@@ -16,7 +16,7 @@ describe('Test API', () => {
         done();
       });
   });
-  // Test for getting undefind rouotes
+  // Test for getting undefind routes
   it('Should return 404 for routes not specified', (done) => {
     chai.request(app)
       .get('/blah/blah/businesses')
@@ -25,3 +25,16 @@ describe('Test API', () => {
         done();
       });
   });
+  // Test for posting to undefind routes
+  it('Undefined Routes Should Return 404', (done) => {
+    chai.request(app)
+      .post('/another/blahblah/business')
+      .send({ random: 'random' })
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        done();
+      });
+  });
+});
+
+ 
