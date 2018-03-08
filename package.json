@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "lint": "eslint --fix server/",
     "start": "nodemon --watch server --exec babel-node -- server/bin/www",
     "build": "babel server -d server/dist --copy-files --ignore server/dist",
     "test": "nyc --reporter=html --reporter=text mocha ./server/test/ --compilers js:babel-register",
