@@ -16,11 +16,11 @@ class Validator {
      */
   static addBusinessValidator(req, res, next) {
     const {
-      name, description, category, location
+      name, description, category, location, image, email
     } = req.body;
     const errors = {};
     if (name === undefined || description === undefined || category === undefined
-            || location === undefined) {
+            || location === undefined || image === undefined || email === undefined) {
       res.status(400)
         .json({
           message: 'All or some of the field is/are undefined',
@@ -53,6 +53,15 @@ class Validator {
       if (validator.isEmpty(location)) {
         errors.location = 'location can not be empty';
       }
+      // check for image
+      if (validator.isEmpty(image)) {
+        errors.location = 'image can not be empty';
+      }
+      // check for email
+      if (validator.isEmpty(email)) {
+        errors.location = 'email can not be empty';
+      }
+
 
       if (Object.keys(errors).length !== 0) {
         return res.status(400)
