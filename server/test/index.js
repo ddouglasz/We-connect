@@ -78,6 +78,26 @@ describe('POST business', () => {
       });
   });
 });
- 
+// Test for updating a business
+describe('UPDATE/PUT business', () => {
+  it('Should return 200 if successful', (done) => {
+    chai.request(app)
+      .put('/api/v1/business/1')
+      .send({
+        id: 2,
+        name: 'irokotv',
+        image: 'iroko.jpg',
+        description: 'great company with acute vision and a focus for distributed yada yada yada blah blah blah🤡',
+        category: 'ICT',
+        location: 'Lagos',
+        email: 'iroko@irokotv.com'
+      })
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
+});
+
 
  
