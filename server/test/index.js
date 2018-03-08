@@ -204,6 +204,32 @@ describe('API to search a business', () => {
   });
 });
 
- 
+// Test Signing up a user
+describe('Create new user', () => {
+  it('Should return 400 for missing fields', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+        username: '',
+        password: 'password'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        done();
+      });
+  });
+  it('Should return 200 for success', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/signup')
+      .send({
+        username: 'steve',
+        password: 'stevesteve'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+});
 
  
