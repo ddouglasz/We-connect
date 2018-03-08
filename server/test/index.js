@@ -100,4 +100,25 @@ describe('UPDATE/PUT business', () => {
 });
 
 
+// Test to delete a business Profile
+describe('API delete Profile', () => {
+  it('Should return 200 for succesful delete request ', (done) => {
+    chai.request(app)
+      .delete('/api/v1/businesses/3')
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        done();
+      });
+  });
+  it('Should return 404 if parameter is not found', (done) => {
+    chai.request(app)
+      .delete('/api/v1/businesses/50')
+      .end((err, res) => {
+        expect(res).to.have.status(404);
+        done();
+      });
+  });
+});
+
+ 
  
