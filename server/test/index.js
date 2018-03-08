@@ -172,7 +172,7 @@ describe('GET Reviews', () => {
   });
 });
 
-// Test searching for  allbusiness
+// Test searching for  all business
 describe('API to get all business', () => {
   it('Should return 200 if successful', (done) => {
     chai.request(app)
