@@ -259,4 +259,22 @@ describe('Login user', () => {
       });
   });
 });
- 
+// Test for Sorting user search
+describe('GET Reviews', () => {
+  it('Should return 200 for a successful searching by location', (done) => {
+    chai.request(app)
+      .get('/api/v1/businesses?location=lagos')
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
+  it('Should return 200 for a successful searching by category', (done) => {
+    chai.request(app)
+      .get('/api/v1/businesses?category=ict')
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
+});
