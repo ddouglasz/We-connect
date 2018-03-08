@@ -58,6 +58,26 @@ describe('POST business', () => {
   });
 });
 
+// Test for posting a business with any field missing
+describe('POST business', () => {
+  it('Should return 400 for posting a business with any missing field', (done) => {
+    chai.request(app)
+      .post('/api/v1/businesses')
+      .send({
+        id: 4,
+        name: ' ',
+        image: 'irokotv.jpg',
+        description: 'great company with acute vision and a focus for distributed yada yada yada blah blah blah🤡',
+        category: 'ICT',
+        location: 'Lagos',
+        email: 'iroko@irokotv.com'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        done();
+      });
+  });
+});
  
 
  
