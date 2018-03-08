@@ -16,4 +16,12 @@ describe('Test API', () => {
         done();
       });
   });
-});
+  // Test for getting undefind rouotes
+  it('Should return 404 for routes not specified', (done) => {
+    chai.request(app)
+      .get('/blah/blah/businesses')
+      .end((err, res) => {
+        expect(res.status).to.equal(404);
+        done();
+      });
+  });
