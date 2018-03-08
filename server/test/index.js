@@ -120,5 +120,33 @@ describe('API delete Profile', () => {
   });
 });
 
- 
+// Test for posting reviews
+describe('Test for POST review', () => {
+  it('Should return 201 if successful', (done) => {
+    chai.request(app)
+      .post('/api/v1/business/2/reviews')
+      .send({
+        id: '2',
+        reviewedBy: 'steve',
+        review: 'yap yop yup yaaaas!'
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(201);
+        done();
+      });
+  });
+  it('Should return 400 if any parameters is empty', (done) => {
+    chai.request(app)
+      .post('/api/v1/business/:businessId/reviews')
+      .send({
+        id: '2',
+        reviewedBy: 'steve',
+        review: ''
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(400);
+        done();
+      });
+  });
+});
  
