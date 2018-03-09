@@ -1,6 +1,8 @@
+import bcrypt from 'bcrypt';
+
 import users from '../model/user';
 
-import bcrypt from 'bcrypt';
+const saltRounds = 10;
 /**
  * class Users
  */
@@ -16,7 +18,7 @@ class Users {
       fullname: req.body.fullname,
       username: req.body.username,
       email: req.body.email,
-      password: req.body.password,
+      hashPassword: bcrypt.hashSync(req.body.password, saltRounds)
     });
     return res.status(200).json({
       message: 'user succesfully created'
