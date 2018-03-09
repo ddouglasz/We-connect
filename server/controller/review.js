@@ -13,12 +13,13 @@ class Reviews {
   static postReview(req, res) {
     for (let i = 0; i < businesses.length; i += 1) {
       if (businesses[i].id === parseInt(req.params.businessId, 10)) {
+        console.log(businesses[i]);
         reviews.push({
           id: reviews.length + 1,
           reviewedBy: req.body.reviewedBy,
           review: req.body.review,
         });
-        return res.json({
+        return res.status(201).json({
           businesses: businesses[i],
           reviews,
           message: 'review successfully added'
@@ -37,7 +38,7 @@ class Reviews {
   static getReviews(req, res) {
     for (let i = 0; i < businesses.length; i += 1) {
       if (businesses[i].id === parseInt(req.params.businessId, 10)) {
-        return res.json({
+        return res.status(200).json({
           businesses: businesses[i],
           reviews
         });

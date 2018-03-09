@@ -9,7 +9,7 @@ class Businesses {
    * @param {*} res
    */
   static getBusinesses(req, res) {
-    return res.json({
+    return res.status(200).json({
       businesses
     });
   }
@@ -25,10 +25,10 @@ class Businesses {
       image: req.body.image,
       description: req.body.description,
       category: req.body.category,
-      quarters: req.body.quarters,
+      location: req.body.location,
       email: req.body.email,
     });
-    return res.json({
+    return res.status(200).json({
       businesses,
       message: 'business successfully added'
     });
@@ -42,7 +42,7 @@ class Businesses {
     for (let i = 0; i < businesses.length; i += 1) {
       if (businesses[i].id === parseInt(req.params.businessId, 10)) {
         businesses.splice(i, 1);
-        return res.json({
+        return res.status(200).json({
           message: 'business removed successfully',
         });
       }
@@ -59,7 +59,7 @@ class Businesses {
   static retrieveBusiness(req, res) {
     for (let i = 0; i < businesses.length; i += 1) {
       if (businesses[i].id === parseInt(req.params.businessId, 10)) {
-        return res.json({
+        return res.status(200).json({
           businesses: businesses[i],
           message: 'success',
         });
@@ -81,9 +81,9 @@ class Businesses {
         businesses[i].description = req.body.description;
         businesses[i].image = req.body.image;
         businesses[i].category = req.body.category;
-        businesses[i].quarters = req.body.quarters;
+        businesses[i].location = req.body.location;
         businesses[i].email = req.body.email;
-        return res.json({
+        return res.status(200).json({
           businesses,
           message: 'business updated successfully',
         });

@@ -1,14 +1,21 @@
 import Businesses from '../controller/business';
-import Users from '../controller/user';// eslint-disable-line no-unused-vars
-import Reviews from '../controller/review'; // eslint-disable-line no-unused-vars
-import businesses from '../model/business'; // eslint-disable-line no-unused-vars
+import Users from '../controller/user';
+import Reviews from '../controller/review';
+import Validator from '../middlewares/postBusinessValidator';
+import FilterBusinessSearch from '../middlewares/filterSearch';
+import ReviewsValidator from '../middlewares/postReviewValidator';
+import validateUserSignUp from '../middlewares/signUpValidator';
+import validateUserSignIn from '../middlewares/signInValidator';
+
 
 export default (app) => {
-  app.post('/api/v1/businesses', Businesses.createBusinesses);
-  app.get('/api/v1/businesses', Businesses.getBusinesses);
+  app.post('/api/v1/auth/signup', validateUserSignUp, Users.signUp);
+  app.post('/api/v1/auth/login', validateUserSignIn, Users.signIn);
+  app.post('/api/v1/businesses', Validator.addBusinessValidator, Businesses.createBusinesses);
+  app.get('/api/v1/businesses', FilterBusinessSearch.filterBusinessSearch, Businesses.getBusinesses);
   app.delete('/api/v1/businesses/:businessId', Businesses.removeBusiness);
   app.get('/api/v1/businesses/:businessId', Businesses.retrieveBusiness);
   app.put('/api/v1/business/:businessId', Businesses.updateBusiness);
-  app.post('/api/v1/business/:businessId/reviews', Reviews.postReview);
+  app.post('/api/v1/business/:businessId/reviews', ReviewsValidator.postReviewValidator, Reviews.postReview);
   app.get('/api/v1/business/:businessId/reviews', Reviews.getReviews);
 };
