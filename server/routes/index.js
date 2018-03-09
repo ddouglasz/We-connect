@@ -4,11 +4,11 @@ import Reviews from '../controller/review';
 import Validator from '../middlewares/postBusinessValidator';
 import FilterBusinessSearch from '../middlewares/filterSearch';
 import ReviewsValidator from '../middlewares/postReviewValidator';
+import validateUserSignUp from '../middlewares/signUpValidator';
 
 
 export default (app) => {
-  app.post('/api/v1/auth/signup', Users.signUp);
-  // app.post('/api/v1/auth/login', Users.signIn);
+  app.post('/api/v1/auth/signup', validateUserSignUp, Users.signUp);
   app.post('/api/v1/businesses', Validator.addBusinessValidator, Businesses.createBusinesses);
   app.get('/api/v1/businesses', FilterBusinessSearch.filterBusinessSearch, Businesses.getBusinesses);
   app.delete('/api/v1/businesses/:businessId', Businesses.removeBusiness);
