@@ -210,7 +210,10 @@ describe('Create new user', () => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
+        userId: '1',
         username: '',
+        fullname: 'stevesteve',
+        email: 'steve@steve.com',
         password: 'password'
       })
       .end((err, res) => {
@@ -222,8 +225,11 @@ describe('Create new user', () => {
     chai.request(app)
       .post('/api/v1/auth/signup')
       .send({
+        userId: '1',
         username: 'steve',
-        password: 'stevesteve'
+        fullname: 'stevesteve',
+        email: 'steve@steve.com',
+        password: 'password'
       })
       .end((err, res) => {
         expect(res).to.have.status(200);
