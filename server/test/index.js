@@ -244,8 +244,8 @@ describe('Login user', () => {
     chai.request(app)
       .post('/api/v1/auth/login')
       .send({
-        username: 'slime',
-        password: 'slime'
+        username: 'steve',
+        password: 'longman'
       })
       .end((err, res) => {
         expect(res).to.have.status(401);
@@ -256,8 +256,8 @@ describe('Login user', () => {
     chai.request(app)
       .post('/api/v1/auth/login')
       .send({
-        username: 'steve',
-        password: 'stevesteve'
+        username: 'longe',
+        password: 'longman'
       })
       .end((err, res) => {
         expect(res).to.have.status(200);
