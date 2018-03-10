@@ -8,9 +8,9 @@ Find the link to the templates here: <a href="https://ddouglasz.github.io/We-con
 ### App Status
 Just a mock template stage. Not ready for release yet, still in development mode. 
 <h2>Built with</h2>
- +Bootstrap4
+ + Bootstrap4
 
-##Template Features
+<h2>Template Features<h2>
 + Users can view businesses
 + Users can post a business
 + Users can review a business
@@ -19,7 +19,7 @@ Just a mock template stage. Not ready for release yet, still in development mode
 + Users can search for a business by category
 + Users can search for a business by location
 
-##Author:
+## Author:
 Douglas Egiemeh.
 
 
