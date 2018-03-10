@@ -31,7 +31,7 @@ class ReviewsValidator {
     }
 
     // check for reviews
-    if (!validator.isEmpty(review)) {
+    if (validator.isEmpty(review)) {
       errors.description = 'reviews can not be empty';
     } else if (!validator.isLength(review, { min: 20, max: 300 })) {
       errors.description = 'reviews of a business must be between 20 to 300 characters';
