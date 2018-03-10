@@ -53,28 +53,28 @@
       <h1 class="display-3">Business Catalog</h1>
     </div>
     <div class="row ">
-      <div class="col-md-4 cat-image">
+      <div class="col-sm-3 cat-image">
       </div>
-      <div class="col-md-4 cat-image">
+      <div class="col-sm-4 cat-image">
         <form>
-          <div class="input-group">
-              <span class="input-group-dropdown">
+          <div class="input-group input-search-field" id="searchbar">
+              <span class="input-group-dropdown" id="searchField">
                   <div class="dropdown">
-                    <button class="btn  btn-decor btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    <button class="btn  btn-decor text-white btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
                       aria-haspopup="true" aria-expanded="false">
-                      search by location
+                      <a id="text-white">Search by:</a>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">Lagos</a>
-                      <a class="dropdown-item" href="#">Abuja</a>
-                      <a class="dropdown-item" href="#">Port-Harcourt</a>
-                    </div>
+                      <a class="dropdown-item" href="#">Location</a>
+                      <hr>  
+                      <a class="dropdown-item" href="#">Category</a>
+                     </div>
                   </div>
                 </span>
-            <input type="text" class="form-control" id="input-search" placeholder="Direct search" id=aria-label="">
+            <input type="text" class="form-control SearchBar" id="input-search" placeholder="Direct search" id=aria-label="">
             <span class="input-group-btn">
               <button class="btn  btn-decor btn-search" type="button" id="searchField">
-                <strong>Search</strong>
+                <strong class="searchbtntext"><a id="text-white">Search</a></strong>
               </button>
             </span>
           </div>
