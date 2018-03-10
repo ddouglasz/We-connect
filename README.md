@@ -11,13 +11,13 @@ Just a mock template stage. Not ready for release yet, still in development mode
  + Bootstrap4
 
 <h2>Template Features</h2>
-+ Users can view businesses
-+ Users can post a business
-+ Users can review a business
-+ Users can delete a business
-+ Users can search for a business
-+ Users can search for a business by category
-+ Users can search for a business by location
+ +  Users can view businesses
+ +  Users can post a business
+ +  Users can review a business
+ +  sers can delete a business
+ +  Users can search for a business
+ +  Users can search for a business by category
+ +  Users can search for a business by location
 
 ## Author:
 Douglas Egiemeh.
