@@ -126,7 +126,7 @@ describe('Test for POST review', () => {
     chai.request(app)
       .post('/api/v1/business/2/reviews')
       .send({
-        id: '2',
+        id: '6',
         reviewedBy: 'steve',
         review: 'yap yop yup yaaaas!'
       })
