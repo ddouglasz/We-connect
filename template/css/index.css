@@ -11,7 +11,7 @@ body {
 }
 
 .navbar a {
-    color: white;
+    color: white !important;
 }
 
 #btn-nav {
@@ -50,30 +50,32 @@ nav.navbar {
     margin-top: 5rem;
 }
 
+.text-white a{
+    color: white;
+}
+
 #name,
 #email,
 #searchField,
 #password,
 #password:hover,
 input[type=btn]:hover {
-    border: 1px solid #ccc;
+    border: 1px solid white;
     -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
     -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
     outline: none;
 }
 
-.input-group{
-    width: 500px;
-    text-align: center!important;
-}
+.input-search-field{
+    width: 700px!important;
+ }
 
 #welcomeText a {
     text-align: center;
     font-weight: 200;
     color: #001f3f;
-    /* font-family: "Museo Slab", sans-serif; */
-    font-family: "lobster";
+     font-family: "lobster";
     margin-top: 5rem;
 }
 
@@ -84,8 +86,16 @@ input[type=btn]:hover {
 }
 
 #searchField {
-    opacity: 0.5;
+     background: #001f3f;
+}
+
+   #input-search{
+    border: 1px solid white;
+}
+
+#dropdownMenuButton{
     background: #001f3f;
+    width: 10%px;
 }
 
 .home-wrapper-index {
@@ -151,8 +161,10 @@ input[type=btn]:hover {
 
 #catalogForm {
     background: #001f3f;
+    /* opacity: 0.7; */
+    /* background:  #145291; */
     margin: 20px;
-    padding: 30px;
+    padding: 10px;
 }
 
 .btn-decor {
