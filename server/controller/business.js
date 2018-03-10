@@ -1,6 +1,6 @@
 import businesses from '../model/business';
 /**
- * @class business
+ * @class Business
  */
 class Businesses {
   /**
