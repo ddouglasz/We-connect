@@ -10,7 +10,7 @@ Just a mock template stage. Not ready for release yet, still in development mode
 <h2>Built with</h2>
  + Bootstrap4
 
-<h2>Template Features<h2>
+<h2>Template Features</h2>
 + Users can view businesses
 + Users can post a business
 + Users can review a business
