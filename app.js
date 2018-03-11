@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 routes(app);
 
 app.get('/', (req, res) => res.status(200).send({
-  message: 'We-connect you on port 8000'
+  message: 'We-connect you on port 8000',
 }));
 
 export default app;
