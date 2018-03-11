@@ -1,4 +1,3 @@
-
 /**
    * @returns {Object} validate Input
    * @param {*} req
