@@ -5,7 +5,7 @@ import Validator from '../middlewares/postBusinessValidator';
 import FilterBusinessSearch from '../middlewares/filterSearch';
 import ReviewsValidator from '../middlewares/postReviewValidator';
 import validateUserSignUp from '../middlewares/signUpValidator';
-import validateUserSignIn from '../middlewares/signInValidator';
+import validateUserSignIn from '../middlewares/signinValidator';
 
 
 export default (app) => {
