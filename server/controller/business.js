@@ -10,7 +10,7 @@ class Businesses {
    */
   static getBusinesses(req, res) {
     return res.status(200).json({
-      businesses
+      businesses,
     });
   }
   /**
@@ -30,7 +30,7 @@ class Businesses {
     });
     return res.status(200).json({
       businesses,
-      message: 'business successfully added'
+      message: 'business successfully added',
     });
   }
   /**
