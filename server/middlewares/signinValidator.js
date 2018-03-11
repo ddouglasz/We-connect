@@ -13,12 +13,12 @@ const validateUserSignIn = (req, res, next) => {
   }
   if (!req.body.username) {
     return res.status(400).send({
-      message: 'username is required',
+      message: 'username is can not be empty',
     });
   }
   if (!req.body.password) {
     return res.status(400).send({
-      message: 'Password is required',
+      message: 'Password is can not be empty',
     });
   }
   next();
