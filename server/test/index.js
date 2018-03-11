@@ -2,7 +2,9 @@ import chaiHttp from 'chai-http';
 import chai from 'chai';
 import app from '../../app';
 
-const { expect } = chai;
+const {
+  expect,
+} = chai;
 
 chai.use(chaiHttp);
 
@@ -29,7 +31,9 @@ describe('Test API', () => {
   it('Undefined Routes Should Return 404', (done) => {
     chai.request(app)
       .post('/another/blahblah/business')
-      .send({ random: 'random' })
+      .send({
+        random: 'random',
+      })
       .end((err, res) => {
         expect(res).to.have.status(404);
         done();
@@ -49,7 +53,7 @@ describe('POST business', () => {
         description: 'great company with acute vision and a focus for distributed yada yada yada blah blah blah🤡',
         category: 'ICT',
         location: 'Lagos',
-        email: 'steve@steve.com'
+        email: 'steve@steve.com',
       })
       .end((err, res) => {
         expect(res).to.have.status(200);
@@ -70,7 +74,7 @@ describe('POST business', () => {
         description: 'great company with acute vision and a focus for distributed yada yada yada blah blah blah🤡',
         category: 'ICT',
         location: 'Lagos',
-        email: 'iroko@irokotv.com'
+        email: 'iroko@irokotv.com',
       })
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -90,7 +94,7 @@ describe('UPDATE/PUT business', () => {
         description: 'great company with acute vision and a focus for distributed yada yada yada blah blah blah🤡',
         category: 'ICT',
         location: 'Lagos',
-        email: 'iroko@irokotv.com'
+        email: 'iroko@irokotv.com',
       })
       .end((err, res) => {
         expect(res.status).to.equal(200);
@@ -128,7 +132,7 @@ describe('Test for POST review', () => {
       .send({
         id: '5',
         reviewedBy: 'steve',
-        review: 'yap yop yup yaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaas!'
+        review: 'yap yop yup yaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaas!',
       })
       .end((err, res) => {
         expect(res).to.have.status(201);
@@ -141,7 +145,7 @@ describe('Test for POST review', () => {
       .send({
         id: '2',
         reviewedBy: 'steve',
-        review: ''
+        review: '',
       })
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -214,7 +218,7 @@ describe('Create new user', () => {
         username: '',
         fullname: 'stevesteve',
         email: 'steve@steve.com',
-        password: 'password'
+        password: 'password',
       })
       .end((err, res) => {
         expect(res).to.have.status(400);
@@ -229,7 +233,7 @@ describe('Create new user', () => {
         username: 'steve',
         fullname: 'stevesteve',
         email: 'steve@steve.com',
-        password: 'password'
+        password: 'password',
       })
       .end((err, res) => {
         expect(res).to.have.status(200);
@@ -245,7 +249,7 @@ describe('Login user', () => {
       .post('/api/v1/auth/login')
       .send({
         username: 'steve',
-        password: 'longman'
+        password: 'longman',
       })
       .end((err, res) => {
         expect(res).to.have.status(401);
@@ -257,7 +261,7 @@ describe('Login user', () => {
       .post('/api/v1/auth/login')
       .send({
         username: 'longe',
-        password: 'longman'
+        password: 'longman',
       })
       .end((err, res) => {
         expect(res).to.have.status(200);
