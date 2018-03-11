@@ -126,9 +126,9 @@ describe('Test for POST review', () => {
     chai.request(app)
       .post('/api/v1/business/2/reviews')
       .send({
-        id: '6',
+        id: '5',
         reviewedBy: 'steve',
-        review: 'yap yop yup yaaaas!'
+        review: 'yap yop yup yaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaas!'
       })
       .end((err, res) => {
         expect(res).to.have.status(201);
