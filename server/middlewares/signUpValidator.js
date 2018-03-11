@@ -9,7 +9,6 @@ const validateUserSignUp = (req, res, next) => {
   const {
     password, fullname, email, userId, username,
   } = req.body;
-//   const errors = {};
   if (password === undefined || fullname === undefined
             || email === undefined || username === undefined || userId === undefined) {
     return res.status(400)
