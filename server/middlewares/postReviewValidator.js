@@ -7,43 +7,53 @@ import validator from 'validator';
  */
 class ReviewsValidator {
   /**
-     *
-     *
-     * @param {any} req
-     * @param {any} res
-     * @param {any} next
-     * @returns {json} validate business registeration
-     */
+   *
+   * @param {any} req
+   * @param {any} res
+   * @param {any} next
+   * @returns {json} validate business registeration
+   */
   static postReviewValidator(req, res, next) {
-    const { id, reviewedBy, review } = req.body;
-    const errors = {};
-    if (id === undefined || reviewedBy === undefined || review === undefined
-    ) {
-      return res.status(400).json({
-        message: 'All or some of the field is/are undefined',
-      });
+    if (req.body.reviewedBy === undefined || req.body.review === undefined || req.body.id === undefined) {
+      return res.status(400)
+        .json({
+          message: 'All or some of the field is/are undefined',
+        });
     }
     // check for reviwedBy
-    if (validator.isEmpty(reviewedBy)) {
-      errors.reviewedBy = 'Name of of reviewer is required';
-    } else if (!validator.isLength(reviewedBy, { min: 3, max: 30 })) {
-      errors.reviewedBy = 'reviewers name should be between 3 to 50 characters';
+    if (validator.isEmpty(req.body.reviewedBy)) {
+      return res.status(400).json({
+        message: 'Name of of reviewer is required'
+      });
+    } else if (!validator.isLength(req.body.reviewedBy, {
+      min: 3,
+      max: 30
+    })) {
+      return res.status(400).json({
+        message: 'Name of reviewer should be between 3 to 30 characters '
+      });
     }
 
     // check for reviews
-    if (validator.isEmpty(review)) {
-      errors.description = 'reviews can not be empty';
-    } else if (!validator.isLength(review, { min: 20, max: 300 })) {
-      errors.description = 'reviews of a business must be between 20 to 300 characters';
+    if (validator.isEmpty(req.body.review)) {
+      return res.status(400).json({
+        message: 'review can not be empty'
+      });
+    } else if (!validator.isLength(req.body.review, {
+      min: 20,
+      max: 300
+    })) {
+      return res.status(400).json({
+        message: 'review has to be between 20 to 300 characters'
+      });
     }
     // check for id
-    if (validator.isEmpty(id)) {
-      errors.id = 'id can not be empty';
+    if (validator.isEmpty(req.body.id)) {
+      return res.status(400).json({
+        message: 'id can not be empty'
+      });
     }
-    if (Object.keys(errors).length !== 0) {
-      return res.status(400)
-        .json(errors);
-    } next();
+    next();
   }
 }
 
