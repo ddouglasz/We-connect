@@ -4,15 +4,14 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "lint": "eslint --fix server/",
     "start": "nodemon --watch server --exec babel-node -- server/bin/www",
-    "build": "babel server -d server/dist --copy-files --ignore server/dist",
-    "test": "nyc --reporter=html --reporter=text mocha ./server/test/**/*.js --exit --compilers js:babel-register",
-    "postinstall": "npm run build",
+    "lint": "eslint --fix server/ test/",
+    "test": "nyc --reporter=html --reporter=text _mocha ./server/test/**/*.js --exit --compilers js:babel-register",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
-    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test"
-  },
+    "check-coverage": "nyc check-coverage --lines 70 --per-file",
+    "coveralls": "nyc npm test && nyc report --reporter=text-lcov --reporter=html | coveralls"
+    },
   "author": "douglas",
   "license": "ISC",
   "dependencies": {
@@ -25,7 +24,6 @@
     "eslint": "^4.9.0",
     "express": "^4.16.2",
     "express-validator": "^5.0.3",
-    "mocha-lcov-reporter": "^1.3.0",
     "morgan": "^1.9.0",
     "nyc": "^11.4.1",
     "validator": "^9.4.1"
@@ -41,14 +39,14 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
     "mocha": "^3.5.3",
+    "mocha-lcov-reporter": "^1.3.0",
     "nodemon": "^1.17.1"
   },
-  "repository":{  
-    "type":"git",
-    "url":"git+https://github.com/ddouglasz/WeConnect.git"
- },
- "bugs":{  
-    "url":"https://github.com/ddouglasz/WeConnect/issues"
- }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ddouglasz/WeConnect.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ddouglasz/WeConnect/issues"
+  }
 }
-
