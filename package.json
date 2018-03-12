@@ -11,7 +11,7 @@
     "postinstall": "npm run build",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
-    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test"
+    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test | coveralls"
   },
   "author": "douglas",
   "license": "ISC",
