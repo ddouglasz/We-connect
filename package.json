@@ -9,8 +9,8 @@
     "build": "babel server -d server/dist --copy-files --ignore server/dist",
     "test": "nyc --reporter=html --reporter=text mocha ./server/test/**/*.js --exit --compilers js:babel-register",
     "postinstall": "npm run build",
-    "coverage": "nyc report --reporter=text-lcov  ",
-    "report-coverage": "cat ./coverage/lcov.info  ",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test"
   },
   "author": "douglas",

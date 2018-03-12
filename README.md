@@ -37,5 +37,5 @@ npm run test
 
  
 [![Build Status](https://travis-ci.org/ddouglasz/We-connect.svg?branch=serverside)](https://travis-ci.org/ddouglasz/We-connect)
-[![Coverage Status](https://coveralls.io/repos/github/ddouglasz/We-connect/badge.svg?branch=ft-dummydata-tests-155738981)](https://coveralls.io/github/ddouglasz/We-connect?branch=ft-dummydata-tests-155738981)
+[![Coverage Status](https://coveralls.io/repos/github/ddouglasz/We-connect/badge.svg?branch=serverside)](https://coveralls.io/github/ddouglasz/We-connect?branch=serverside)
 [![Maintainability](https://api.codeclimate.com/v1/badges/3353fa511defef2f1372/maintainability)](https://codeclimate.com/github/ddouglasz/We-connect/maintainability)
