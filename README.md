@@ -16,13 +16,13 @@ Installation is done using the npm install command:
 npm install 
 ```
 ## Features
-+ Users can view businesses
-+ Users can post a business
-+ Users can review a business
-+ Users can delete a business
-+ Users can search for a business
-+ Users can search for a business by category
-+ Users can search for a business by location
+* Users can view businesses
+* Users can post a business
+* Users can review a business
+* Users can delete a business
+* Users can search for a business
+* Users can search for a business by          category
+* Users can search for a business by          location
 
 ## Run App(dummy-data)
 ```bash

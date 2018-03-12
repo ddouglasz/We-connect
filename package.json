@@ -9,9 +9,9 @@
     "build": "babel server -d server/dist --copy-files --ignore server/dist",
     "test": "nyc --reporter=html --reporter=text mocha ./server/test/**/*.js --exit --compilers js:babel-register",
     "postinstall": "npm run build",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "report-coverage": "cat ./coverage/lcov.info | coveralls",
-    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test | coveralls"
+    "coverage": "nyc report --reporter=text-lcov  ",
+    "report-coverage": "cat ./coverage/lcov.info  ",
+    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test"
   },
   "author": "douglas",
   "license": "ISC",
@@ -32,7 +32,6 @@
     "validator": "^9.4.1"
   },
   "devDependencies": {
-    "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
