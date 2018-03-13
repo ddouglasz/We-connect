@@ -13,5 +13,11 @@ app.get('/', (req, res) => res.status(200).send({
   message: 'We-connect you on port 8000'
 }));
 
+const port = process.env.PORT || 8000;
+app.listen(port, () => {
+  console.log(`connected on ${port}`);
+});
+
+
 export default app;
 
