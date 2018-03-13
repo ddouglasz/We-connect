@@ -1,17 +1,13 @@
 language: node_js
+cache: bundler
 node_js:
- - "9.5.0"
-notifications:
- email: false
-cache:
- directories:
-   - node_modules
-before_script:
- - npm install
+  - 9.5.0
+services:
+  - postgresql
 script:
- - npm run test
- - npm run check-coverage
- after_success:
- - npm run coverage
- - npm run report-coverage
- - npm run coveralls
+  - nnpm run test
+after_success:
+  - npm run coverage
+
+env:
+  global:
