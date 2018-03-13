@@ -4,9 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start:dev": "nodemon --watch server --exec babel-node app.js",
-    "start": "babel-node app.js",
-     "lint": "eslint ./ || true",
+      "start": "babel-node app.js",
+      "start:dev": "nodemon --watch server --exec babel-node app.js",
+      "lint": "eslint ./ || true",
       "test": "nyc mocha ./server/test --exit --compilers js:babel-register",
       "coverage": "nyc report --reporter=text-lcov | coveralls"
      },
