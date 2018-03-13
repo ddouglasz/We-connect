@@ -1,6 +1,6 @@
 # We-connect# 
  
-WeConnect provides a platform that brings businesses and individuals together. This platform creates awareness for businesses and gives the users the ability to write reviews about the businesses they have interacted with.  
+WeConnect provides a platform that brings businesses and individuals together. This platform creates awareness for businesses and gives the users the ability to write reviews about the businesses they have interacted with and even new ones.  
 
 ## WEConnect App UI Template
 The gh-pages branch contains the template UI for the WEConnect app
@@ -32,6 +32,8 @@ npm run start
 ## Run Test
 ```bash
 npm run test
+
+
 ```
 
 
