@@ -9,8 +9,7 @@
       "test": "nyc mocha ./server/test --exit --compilers js:babel-register",
       "coverage": "nyc report --reporter=text-lcov | coveralls ",
       "report-coverage": "cat ./coverage/lcov.info | coveralls",
-      "check-coverage": "nyc check-coverage --lines 70 --per-file",
-      "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test"  },
+       "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test"  },
   "author": "douglas",
   "license": "ISC",
   "dependencies": {
