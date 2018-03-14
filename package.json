@@ -4,12 +4,12 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-      "start": "babel-node app.js",
-      "start:dev": "nodemon --watch server --exec babel-node app.js",
-      "lint": "eslint ./ || true",
-      "test": "nyc mocha ./server/test --exit --compilers js:babel-register",
-      "coverage": "nyc report --reporter=text-lcov | coveralls"
-     },
+    "start": "babel-node app.js",
+    "start:dev": "nodemon --watch server --exec babel-node app.js",
+    "lint": "eslint ./ || true",
+    "test": "nyc mocha ./server/test --exit --compilers js:babel-register",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
+  },
   "author": "douglas",
   "license": "ISC",
   "dependencies": {
@@ -24,6 +24,9 @@
     "express-validator": "^5.0.3",
     "morgan": "^1.9.0",
     "nyc": "^11.4.1",
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.36.1",
     "validator": "^9.4.1"
   },
   "devDependencies": {
