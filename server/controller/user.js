@@ -1,5 +1,4 @@
 import bcrypt from 'bcrypt';
-
 import users from '../model/user';
 
 const saltRounds = 10;
