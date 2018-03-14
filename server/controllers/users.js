@@ -77,7 +77,6 @@ class Users {
     })
       .catch(error => res.status(401).send(error));
   }
-
 }
 export default Users;
 
