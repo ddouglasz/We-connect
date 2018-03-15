@@ -7,10 +7,10 @@ import isEmail from 'validator/lib/isEmail';
    */
 const validateUserSignUp = (req, res, next) => {
   const {
-    password, fullname, email, userId, username,
+    password, firstName, email, lastName,
   } = req.body;
-  if (password === undefined || fullname === undefined
-            || email === undefined || username === undefined || userId === undefined) {
+  if (password === undefined || firstName === undefined || lastName === undefined
+            || email === undefined ) {
     return res.status(400)
       .json({
         message: 'All or some of the field is/are undefined',
@@ -31,24 +31,24 @@ const validateUserSignUp = (req, res, next) => {
       message: 'Password is required',
     });
   }
-  if (!req.body.email) {
+  if (!req.body.firstName) {
     return res.status(400).send({
-      message: 'email is required',
+      message: 'firstName is required',
     });
   }
-  if (!req.body.username) {
+  if (!req.body.lastName) {
     return res.status(400).send({
-      message: 'username is required',
+      message: 'lastName is required',
     });
   }
-  if (!req.body.fullname) {
+  if (!req.body.firstName.match('[a-zA-Z]+$')) {
     return res.status(400).send({
-      message: 'fullname is required',
+      message: 'Only alphabets allowed in first name',
     });
   }
-  if (!req.body.userId) {
+  if (!req.body.lastName.match('[a-zA-Z]+$')) {
     return res.status(400).send({
-      message: 'userId is required',
+      message: 'Only alphabets allowed in last name',
     });
   }
   next();
