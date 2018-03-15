@@ -56,7 +56,7 @@ class Users {
       }
       password = bcrypt.compareSync(req.body.password, user.hashPassword);
       if (password) {
-        res.status(200).json({
+        res.status(201).json({
           message: 'signed in successfully',
           jwt: jwt.sign(
             {
