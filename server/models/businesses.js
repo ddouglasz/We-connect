@@ -13,5 +13,11 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
     });
   };
+  Business.associate = (models) => {
+    Business.hasMany(models.reviews, {
+      foreignKey: 'businessId',
+      onDelete: 'CASCADE',
+    });
+  };
   return Business;
 };
