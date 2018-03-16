@@ -9,7 +9,7 @@ const secret = jwtSecret.JWT_SECRET;
    * @param {*} res
    * @param {*} next
    */
-const verifyToken = (req, res, next) => {
+const confirmToken = (req, res, next) => {
   const token = req.headers.auth || req.headers['x-access-token'] || req.body.token;
   if (token) {
     jwt.verify(token, secret, (err, decoded) => {
@@ -24,4 +24,4 @@ const verifyToken = (req, res, next) => {
   }
 };
 
-export default verifyToken;
+export default confirmToken;
