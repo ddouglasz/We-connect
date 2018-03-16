@@ -9,6 +9,16 @@ const BusinessModel = models.businesses;
  */
 class Businesses {
 /**
+   * @returns {Object} recipes
+   * @param {req} req
+   * @param {res} res
+   */
+  static getBusinesses(req, res) {
+    return BusinessModel.all()
+      .then(business => res.status(200).send(business))
+      .catch(error => res.status(400).send(error));
+  }
+/**
    * @returns {Object} createBusiness
    * @param {req} req
    * @param {res} res
