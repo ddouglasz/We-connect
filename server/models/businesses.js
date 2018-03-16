@@ -2,10 +2,10 @@ module.exports = (sequelize, DataTypes) => {
   const Business = sequelize.define('businesses', {
     title: DataTypes.STRING,
     description: DataTypes.TEXT,
-    category: DataTypes.TEXT,
-    location: DataTypes.TEXT,
-    email: DataTypes.TEXT,
-    image: DataTypes.TEXT,
+    category: DataTypes.STRING,
+    location: DataTypes.STRING,
+    email: DataTypes.STRING,
+    image: DataTypes.STRING,
   });
   Business.associate = (models) => {
     Business.belongsTo(models.users, {
