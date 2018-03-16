@@ -13,18 +13,22 @@ module.exports = {
       type: Sequelize.TEXT
     },
     category: {
-      type: Sequelize.TEXT
+      type: Sequelize.STRING
     },
     location: {
-      type: Sequelize.TEXT
+      type: Sequelize.STRING
     },
     email: {
-      type: Sequelize.TEXT
+      type: Sequelize.STRING
     },
     image: {
-      type: Sequelize.TEXT
+      type: Sequelize.STRING
     },
     createdAt: {
+      allowNull: false,
+      type: Sequelize.DATE
+    },
+    updatedAt: {
       allowNull: false,
       type: Sequelize.DATE
     },
