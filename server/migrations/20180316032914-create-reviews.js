@@ -16,7 +16,25 @@ module.exports = {
     updatedAt: {
       allowNull: false,
       type: Sequelize.DATE
-    }
+    },
+    userId: {
+      type: Sequelize.INTEGER,
+      onDelete: 'CASCADE',
+      references: {
+        model: 'users',
+        key: 'id',
+        as: 'userId'
+      },
+    },
+    recipeId: {
+      type: Sequelize.INTEGER,
+      onDelete: 'CASCADE',
+      references: {
+        model: 'businesses',
+        key: 'id',
+        as: 'buainessId'
+      },
+    },
   }),
   down: queryInterface => queryInterface.dropTable('reviews')
 };
