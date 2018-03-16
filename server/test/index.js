@@ -48,7 +48,7 @@ describe('POST business', () => {
       .post('/api/v1/businesses')
       .send({
         id: 5,
-        name: 'Andela Nigeria',
+        title: 'Andela Nigeria',
         image: 'steve.jpg',
         description: 'great company with acute vision and a focus for distributed yada yada yada blah blah blah🤡',
         category: 'ICT',
@@ -69,7 +69,7 @@ describe('POST business', () => {
       .post('/api/v1/businesses')
       .send({
         id: 4,
-        name: ' ',
+        title: ' ',
         image: 'irokotv.jpg',
         description: 'great company with acute vision and a focus for distributed yada yada yada blah blah blah🤡',
         category: 'ICT',
@@ -89,7 +89,7 @@ describe('UPDATE/PUT business', () => {
       .put('/api/v1/business/1')
       .send({
         id: 2,
-        name: 'irokotv',
+        title: 'irokotv',
         image: 'iroko.jpg',
         description: 'great company with acute vision and a focus for distributed yada yada yada blah blah blah🤡',
         category: 'ICT',
@@ -215,8 +215,8 @@ describe('Create new user', () => {
       .post('/api/v1/auth/signup')
       .send({
         userId: '1',
-        username: '',
-        fullname: 'stevesteve',
+        usertitle: '',
+        fulltitle: 'stevesteve',
         email: 'steve@steve.com',
         password: 'password',
       })
@@ -230,8 +230,8 @@ describe('Create new user', () => {
       .post('/api/v1/auth/signup')
       .send({
         userId: 1,
-        fullname: 'longe bee',
-        username: 'long',
+        fulltitle: 'longe bee',
+        usertitle: 'long',
         password: 'longerman',
         email: 'longer@man.com'
       })
@@ -248,7 +248,7 @@ describe('Login user', () => {
     chai.request(app)
       .post('/api/v1/auth/login')
       .send({
-        username: 'steve',
+        usertitle: 'steve',
         password: 'longman',
       })
       .end((err, res) => {
@@ -260,7 +260,7 @@ describe('Login user', () => {
     chai.request(app)
       .post('/api/v1/auth/login')
       .send({
-        username: 'longe',
+        usertitle: 'longe',
         password: 'longman',
       })
       .end((err, res) => {
