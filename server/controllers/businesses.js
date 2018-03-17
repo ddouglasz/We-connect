@@ -1,7 +1,7 @@
 import models from '../models/index';
 
 const BusinessModel = models.businesses;
-// const ReviewsModel = models.reviews;
+const ReviewsModel = models.reviews;
 
 
 /**
@@ -43,7 +43,7 @@ class Businesses {
         image: req.body.image,
         userId: req.decoded.id,
       })
-        .then(recipe => res.status(201).send(recipe))
+        .then(busines => res.status(201).send(busines))
         .catch(error => res.status(400).send(error));
     });
   }
@@ -66,6 +66,25 @@ class Businesses {
       return res.status(200).send(business);
     })
       .catch(error => res.status(404).send(error));
+  }
+  /**
+   * @returns {Object} postReview
+   * @param {req} req
+   * @param {res} res
+   */
+  static postReview(req, res) {
+    ReviewsModel.create({
+      review: req.body.review,
+      businessId: req.params.businessId,
+    })
+      .then(() => {
+        res.status(201).send({
+          message: 'Review added successfully'
+        });
+      })
+      .catch(() => res.status(400).send({
+        message: 'sorry, the business you are trying to review does not exist'
+      }));
   }
 }
 
