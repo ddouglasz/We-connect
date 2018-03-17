@@ -1,6 +1,10 @@
 import validator from 'validator';
 
-/**
+import models from '../models/index';
+
+const BusinessModel = models.businesses;
+
+ /**
  *
  *
  * @class Validator
@@ -14,44 +18,31 @@ class ReviewsValidator {
    * @returns {json} validate business registeration
    */
   static postReviewValidator(req, res, next) {
-    if (req.body.reviewedBy === undefined ||
-       req.body.review === undefined || req.body.id === undefined) {
+    if (req.body.review === undefined ||
+       req.body.title === undefined) {
       return res.status(400)
         .json({
           message: 'All or some of the field is/are undefined',
         });
     }
+    // check for a business that does not exist
+    for (let i = 0; i < BusinessModel.length; i += 1) {
+      if (req.param.businessId === BusinessModel[i].businessId) {
+        return res.status(400).json({
+          message: 'business not found',
+        });
+      }
+    }
     // check for reviwedBy
-    if (validator.isEmpty(req.body.reviewedBy)) {
+    if (validator.isEmpty(req.body.review)) {
       return res.status(400).json({
         message: 'Name of of reviewer is required',
       });
-    } else if (!validator.isLength(req.body.reviewedBy, {
-      min: 3,
-      max: 30,
-    })) {
-      return res.status(400).json({
-        message: 'Name of reviewer should be between 3 to 30 characters ',
-      });
     }
-
     // check for reviews
-    if (validator.isEmpty(req.body.review)) {
+    if (validator.isEmpty(req.body.title)) {
       return res.status(400).json({
         message: 'review can not be empty',
-      });
-    } else if (!validator.isLength(req.body.review, {
-      min: 20,
-      max: 300,
-    })) {
-      return res.status(400).json({
-        message: 'review has to be between 20 to 300 characters',
-      });
-    }
-    // check for id
-    if (validator.isEmpty(req.body.id)) {
-      return res.status(400).json({
-        message: 'id can not be empty',
       });
     }
     next();
