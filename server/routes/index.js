@@ -18,5 +18,5 @@ export default (app) => {
   app.get('/api/v1/businesses/:businessId', Businesses.retrieveBusiness);
   // app.put('/api/v1/business/:businessId', auth, Businesses.updateBusiness);
   app.post('/api/v1/business/:businessId/reviews', auth, ReviewsValidator.postReviewValidator, Businesses.postReview);
-  // app.get('/api/v1/business/:businessId/reviews', Reviews.getReviews);
+  app.get('/api/v1/business/:businessId/reviews', Businesses.getReviews);
 };
