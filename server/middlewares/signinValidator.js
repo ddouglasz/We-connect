@@ -1,3 +1,4 @@
+import isEmail from 'validator/lib/isEmail';
 /**
    * @returns {Object} validate Input
    * @param {*} req
@@ -19,6 +20,11 @@ const validateUserSignIn = (req, res, next) => {
   if (!req.body.password) {
     return res.status(400).send({
       message: 'please enter a password ',
+    });
+  }
+  if (!isEmail(req.body.email)) {
+    return res.status(400).send({
+      message: 'Email Invalid',
     });
   }
   next();
