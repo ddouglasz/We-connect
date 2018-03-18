@@ -64,7 +64,8 @@ class Users {
               firstName: user.firstName,
               lastName: user.lastName,
               email: user.email
-            }, config.JWT_SECRET,
+            }
+            , config.JWT_SECRET,
             { expiresIn: 60 * 60 }
           ),
           email: user.email,
