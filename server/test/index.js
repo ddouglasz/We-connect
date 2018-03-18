@@ -47,7 +47,6 @@ describe('POST business', () => {
     chai.request(app)
       .post('/api/v1/businesses')
       .send({
-        id: 5,
         title: 'Andela Nigeria',
         image: 'steve.jpg',
         description: 'great company with acute vision and a focus for distributed yada yada yada blah blah blah🤡',
@@ -215,8 +214,8 @@ describe('Create new user', () => {
       .post('/api/v1/auth/signup')
       .send({
         userId: '1',
-        usertitle: '',
-        fulltitle: 'stevesteve',
+        firstName: 'longe bee',
+        lastName: '',
         email: 'steve@steve.com',
         password: 'password',
       })
@@ -230,7 +229,8 @@ describe('Create new user', () => {
       .post('/api/v1/auth/signup')
       .send({
         userId: 1,
-        fulltitle: 'longe bee',
+        firstName: 'longe bee',
+        lastName: 'steven',
         usertitle: 'long',
         password: 'longerman',
         email: 'longer@man.com'

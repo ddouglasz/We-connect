@@ -5,7 +5,7 @@ const ReviewsModel = models.reviews;
 
 
 /**
- * @class Recipe
+ * @class business
  */
 class Businesses {
 /**
@@ -40,7 +40,6 @@ class Businesses {
         category: req.body.category,
         location: req.body.location,
         email: req.body.email,
-        image: req.body.image,
         userId: req.decoded.id,
       })
         .then(() => res.status(201).send({
