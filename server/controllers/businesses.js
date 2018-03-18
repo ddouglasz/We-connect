@@ -70,6 +70,41 @@ class Businesses {
       .catch(error => res.status(404).send(error));
   }
   /**
+   * @returns {Object} updateBusiness
+   * @param {req} req
+   * @param {res} res
+   */
+  static updateBusiness(req, res) {
+    BusinessModel.findOne({
+      where: {
+        id: req.params.businessId
+      }
+    }).then((business) => {
+      if (!business) {
+        return res.status(404).send({
+          message: 'business Not Found',
+        });
+      }
+      if (req.decoded.id !== business.userId) {
+        return res.status(403).send({
+          message: 'You are not authorised to edit this business',
+        });
+      }
+      business.update({
+        title: req.body.title || business.title,
+        descriprion: req.body.descriprion || business.descriprion,
+        category: req.body.category || business.category,
+        location: req.body.location || business.location,
+        image: req.body.image || business.image,
+        email: req.body.email || business.email,
+      })
+        .then(() => res.status(200).send(business))
+        .catch(error => res.status(400).send(error));
+    })
+      .catch(error => res.status(400).send(error));
+  }
+
+  /**
    * @returns {Object} postReview
    * @param {req} req
    * @param {res} res
