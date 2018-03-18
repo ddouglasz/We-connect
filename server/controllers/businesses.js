@@ -104,6 +104,39 @@ class Businesses {
       .catch(error => res.status(400).send(error));
   }
   /**
+ * @returns {Object} deleteBusinesss
+ * @param {req} req
+ * @param {res} res
+ */
+  static deleteBusiness(req, res) {
+    BusinessModel.findOne({
+      where: {
+        id: req.params.businessId
+      }
+    }).then((business) => {
+      if (!business) {
+        return res.status(404).send({
+          message: 'business Not Found',
+        });
+      }
+      if (req.decoded.id !== business.userId) {
+        return res.status(403).send({
+          message: 'You are not authorised to delete this business',
+        });
+      }
+      BusinessModel.destroy({
+        where: {
+          id: req.params.businessId
+        }
+      }).then(() => res.status(200).send({
+        message: 'business deleted successfully',
+      }))
+        .catch(error => res.status(400).send(error));
+    })
+      .catch(error => res.status(400).send(error));
+  }
+
+  /**
    * @returns {Object} postReview
    * @param {req} req
    * @param {res} res
