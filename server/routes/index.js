@@ -1,6 +1,5 @@
 import Businesses from '../controllers/businesses';
 import Users from '../controllers/users';
-import Reviews from '../controller/review';
 import addBusinessValidator from '../middlewares/postBusinessValidator';
 import FilterBusinessSearch from '../middlewares/filterSearch';
 import ReviewsValidator from '../middlewares/postReviewValidator';
