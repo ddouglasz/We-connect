@@ -103,7 +103,6 @@ class Businesses {
     })
       .catch(error => res.status(400).send(error));
   }
-
   /**
    * @returns {Object} postReview
    * @param {req} req
