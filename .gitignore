@@ -1,5 +1,8 @@
-dist/
-.vscode
-coverage
-.nyc_output
 node_modules/
+.env
+.nyc_output
+coverage
+package-lock.json
+.DS_Store
+.vscode
+dist/
