@@ -6,7 +6,7 @@ import isEmail from 'validator/lib/isEmail';
    * @param {*} next
    */
 const validateUserSignIn = (req, res, next) => {
-  if (req.body.password === undefined || req.body.email === undefined) {
+  if (!req.body.password || !req.body.email) {
     return res.status(400)
       .json({
         message: 'All or some of the field is/are undefined',
