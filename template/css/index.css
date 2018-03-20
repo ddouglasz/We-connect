@@ -121,7 +121,7 @@ input[type=btn]:hover {
     color: white;
 }
 
-.cat-form {
+.cat-form a{
     overflow: hidden !important;
 }
 
@@ -360,8 +360,4 @@ margin-left: 12px;
 }
 .res{
    margin-top: 3px;
-}
-
-.icons a{
-    max-width: 30%;
 }

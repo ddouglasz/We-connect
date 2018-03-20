@@ -46,7 +46,9 @@ class Businesses {
           message: 'business added successfully',
           Business: business
         }))
-        .catch(error => res.status(400).send(error));
+        .catch(() => res.status(400).send({
+          message: 'bad request, server can not process this request'
+        }));
     });
   }
   /**
@@ -99,9 +101,13 @@ class Businesses {
         email: req.body.email || business.email,
       })
         .then(() => res.status(200).send(business))
-        .catch(error => res.status(400).send(error));
+        .catch(() => res.status(400).send({
+          message: 'bad request: sorry, server can not process your request'
+        }));
     })
-      .catch(error => res.status(400).send(error));
+      .catch(() => res.status(400).send({
+        message: 'bad request: sorry, server can not process your request'
+      }));
   }
   /**
  * @returns {Object} deleteBusinesss
@@ -131,9 +137,13 @@ class Businesses {
       }).then(() => res.status(200).send({
         message: 'business deleted successfully',
       }))
-        .catch(error => res.status(400).send(error));
+        .catch(() => res.status(400).send({
+          message: 'bad request: sorry, server can not process your request'
+        }));
     })
-      .catch(error => res.status(400).send(error));
+      .catch(() => res.status(400).send({
+        message: 'bad request: sorry, server can not process your request'
+      }));
   }
 
   /**
@@ -152,7 +162,7 @@ class Businesses {
           message: 'Review added successfully'
         });
       })
-      .catch(() => res.status(400).send({
+      .catch(() => res.status(404).send({
         message: 'sorry, the business you are trying to review does not exist'
       }));
   }
