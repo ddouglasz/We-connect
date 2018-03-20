@@ -9,12 +9,12 @@ import validator from 'validator';
    */
 const validateInput = (req, res, next) => {
   if (
-    req.body.title === undefined ||
-    req.body.description === undefined ||
-    req.body.category === undefined ||
-    req.body.location === undefined ||
-    req.body.image === undefined ||
-    req.body.email === undefined
+    !req.body.title ||
+    !req.body.description ||
+    !req.body.category ||
+    !req.body.location ||
+    !req.body.image ||
+    !req.body.email 
   ) {
     res.status(400)
       .json({
