@@ -122,7 +122,7 @@ input[type=btn]:hover {
 }
 
 .cat-form {
-    overflow: hidden
+    overflow: hidden !important;
 }
 
 .home-wrapper-profile {
@@ -355,13 +355,13 @@ input[type=btn]:hover {
     clear: both;
 }
 
-/* .big-icon {
-   font-size: 30px;
-} */
-
 #description{
 margin-left: 12px;
 }
 .res{
    margin-top: 3px;
+}
+
+.icons a{
+    max-width: 30%;
 }
