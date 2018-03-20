@@ -36,7 +36,7 @@ npm run test
 
 ```
 
-[![Build Status](https://travis-ci.org/ddouglasz/We-connect.svg?branch=bugfix-badges)](https://travis-ci.org/ddouglasz/We-connect)
+[![Build Status](https://travis-ci.org/ddouglasz/We-connect.svg)](https://travis-ci.org/ddouglasz/We-connect)
  [![Test Coverage](https://api.codeclimate.com/v1/badges/3353fa511defef2f1372/test_coverage)](https://codeclimate.com/github/ddouglasz/We-connect/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/3353fa511defef2f1372/maintainability)](https://codeclimate.com/github/ddouglasz/We-connect/maintainability)
-[![Coverage Status](https://coveralls.io/repos/github/ddouglasz/We-connect/badge.svg?branch=bugfix-badges)](https://coveralls.io/github/ddouglasz/We-connect?branch=bugfix-badges)
+[![Coverage Status](https://coveralls.io/repos/github/ddouglasz/We-connect/badge.svg)](https://coveralls.io/github/ddouglasz/We-connect?branch=bugfix-badges)
