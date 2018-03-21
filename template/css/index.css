@@ -93,6 +93,13 @@ input[type=btn]:hover {
     border: 1px solid white;
 }
 
+#input-search {
+    border-left: 1px solid white;
+}
+.btn-search{
+    border-left: none!important;
+}
+
 #dropdownMenuButton {
     background: #001f3f;
     border: none;
