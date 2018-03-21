@@ -1,4 +1,8 @@
-import businesses from '../model/business';
+import models from '../models/index';
+
+const businessModel = models.businesses;
+
+
 /**
  * @class Sort
  */
@@ -11,28 +15,39 @@ class FilterBusinessSearch {
    */
   static filterBusinessSearch(req, res, next) {
     const { category, location } = req.query;
-    const categorize = [];
-    const locate = [];
-    if (category) {
-      for (let i = 0; i < businesses.length; i += 1) {
-        if (category.toLowerCase() === businesses[i].category.toLowerCase()) {
-          categorize.push(businesses[i]);
+
+    if (location || category) {
+      businessModel.findAll({
+        where: {
+          $or: [
+            {
+              location: {
+                ilike: `%${location}`
+              }
+            },
+            {
+              category: {
+                ilike: `%${category}`
+              }
+            }
+          ]
         }
-      }
-      return res.status(200).json(categorize);
+      })
+
+        .then((business) => {
+          if (business.length < 1) {
+            return res.status(404).json({
+              message: 'Business not found',
+              error: true
+            });
+          }
+          return res.status(200).json({
+            business,
+            error: false
+          });
+        });
     }
-    if (location) {
-      for (let i = 0; i < businesses.length; i += 1) {
-        if (location.toLowerCase() === businesses[i].location.toLowerCase()) {
-          locate.push(businesses[i]);
-        }
-      }
-      return res.status(200).json(locate);
-    } else if (!location || !category) {
-      next();
-    }
+    next();
   }
 }
-
 export default FilterBusinessSearch;
-
