@@ -14,41 +14,41 @@ const validateUserSignUp = (req, res, next) => {
     lastName,
   } = req.body;
   if (
-    !password ||
-    !firstName ||
-    !lastName || email
+    !password.trim() ||
+    !firstName.trim() ||
+    !lastName.trim() || email
   ) {
     return res.status(400)
       .json({
         message: 'All or some of the field is/are undefined',
       });
   }
-  if (!req.body.email) {
+  if (!req.body.email.trim()) {
     return res.status(400).send({
       message: 'Email is required',
     });
   }
-  if (!req.body.password) {
+  if (!req.body.password.trim()) {
     return res.status(400).send({
       message: 'Password is required',
     });
   }
-  if (!req.body.firstName) {
+  if (!req.body.firstName.trim()) {
     return res.status(400).send({
       message: 'firstName is required',
     });
   }
-  if (!req.body.lastName) {
+  if (!req.body.lastName.trim()) {
     return res.status(400).send({
       message: 'lastName is required',
     });
   }
-  if (!req.body.firstName.match('[a-zA-Z]+$')) {
+  if (!req.body.firstName.trim().match('[a-zA-Z]+$')) {
     return res.status(400).send({
       message: 'Only alphabets allowed in first name',
     });
   }
-  if (!req.body.lastName.match('[a-zA-Z]+$')) {
+  if (!req.body.lastName.trim().match('[a-zA-Z]+$')) {
     return res.status(400).send({
       message: 'Only alphabets allowed in last name',
     });
@@ -57,3 +57,4 @@ const validateUserSignUp = (req, res, next) => {
 };
 
 export default validateUserSignUp;
+
