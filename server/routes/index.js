@@ -19,3 +19,4 @@ export default (app) => {
   app.post('/api/v1/business/:businessId/reviews', auth, ReviewsValidator.postReviewValidator, businesses.postReview);
   app.get('/api/v1/business/:businessId/reviews', businesses.getReviews);
 };
+// /businesses?category=<category>
