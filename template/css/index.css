@@ -1,7 +1,7 @@
 .body-cover {
     max-width: 100%;
     height: 100%;
-    overflow-x: hidden;
+    overflow-x: hidden!important;
 }
 
 .navbar-brand-brand {
@@ -93,6 +93,13 @@ input[type=btn]:hover {
     border: 1px solid white;
 }
 
+#input-search {
+    border-left: 1px solid white;
+}
+.btn-search{
+    border-left: none!important;
+}
+
 #dropdownMenuButton {
     background: #001f3f;
     border: none;
@@ -173,11 +180,14 @@ input[type=btn]:hover {
     background: #001f3f;
      margin: 20px;
     padding: 10px;
+    overflow: hidden;
 }
+
 .card-space{
    background: #001f3f;
    margin: 20px;
   padding: 10px; 
+  min-height: 570px;
 }
 
 .btn-decor {
