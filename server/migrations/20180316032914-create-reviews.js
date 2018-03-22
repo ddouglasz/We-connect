@@ -23,7 +23,7 @@ module.exports = {
       references: {
         model: 'businesses',
         key: 'id',
-        as: 'buainessId'
+        as: 'businessId'
       },
     },
   }),
