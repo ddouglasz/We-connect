@@ -185,6 +185,7 @@ input[type=btn]:hover {
    background: #001f3f;
    margin: 20px;
   padding: 10px; 
+  min-height: 570px;
 }
 
 .btn-decor {
