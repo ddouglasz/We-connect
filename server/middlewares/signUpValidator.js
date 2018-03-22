@@ -16,7 +16,7 @@ const validateUserSignUp = (req, res, next) => {
   if (
     !password ||
     !firstName ||
-    !lastName || email
+    !lastName || !email
   ) {
     return res.status(400)
       .json({
