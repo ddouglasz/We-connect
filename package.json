@@ -12,7 +12,9 @@
     "test": "nyc mocha ./server/test --exit --compilers js:babel-register",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "test-migrate": "sequelize db:migrate:undo:all --env test && sequelize db:migrate --env test",
-    "postinstall": "npm run build"
+    "postinstall": "npm run build",
+    "heroku-postbuild": "npm run db-migrate"
+
   },
   "author": "douglas",
   "license": "ISC",
