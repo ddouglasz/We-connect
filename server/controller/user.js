@@ -13,6 +13,13 @@ class Users {
    * @param {*} res
    */
   static signUp(req, res) {
+    for (let i = 0; i < users.length; i += 1) {
+      if (req.body.email === users[i].email) {
+        return res.status(400).json({
+          message: 'user already exists'
+        });
+      }
+    }
     users.push({
       userId: users.length + 1,
       fullname: req.body.fullname,
@@ -21,7 +28,8 @@ class Users {
       hashPassword: bcrypt.hashSync(req.body.password, saltRounds)
     });
     return res.status(200).json({
-      message: 'user succesfully created'
+      message: 'user succesfully created',
+      users
     });
   }
   /**
@@ -31,7 +39,7 @@ class Users {
    */
   static signIn(req, res) {
     for (let i = 0; i < users.length; i += 1) {
-      if (users[i].username === req.body.username && users[i].password === req.body.password) {
+      if (users[i].email === req.body.email && users[i].password === req.body.password) {
         return res.status(200).json({
           message: 'user succesfully signed in'
         });
