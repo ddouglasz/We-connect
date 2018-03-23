@@ -14,8 +14,10 @@ class ReviewsValidator {
    * @returns {json} validate business registeration
    */
   static postReviewValidator(req, res, next) {
-    if (req.body.reviewedBy === undefined ||
-       req.body.review === undefined || req.body.id === undefined) {
+    if (
+      !req.body.reviewedBy ||
+      !req.body.review ||
+      !req.body.id) {
       return res.status(400)
         .json({
           message: 'All or some of the field is/are undefined',
