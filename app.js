@@ -17,6 +17,7 @@ app.get('/', (req, res) => res.status(200).send({
 }));
 
 const port = process.env.PORT || 8001;
+app.set('port', port);
 app.listen(port, () => console.log(`connected on ${port}`));
 export default app;
 
