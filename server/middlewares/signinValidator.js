@@ -5,13 +5,13 @@
    * @param {*} next
    */
 const validateUserSignIn = (req, res, next) => {
-  if (req.body.password === undefined || req.body.username === undefined) {
+  if (req.body.password === undefined || req.body.email === undefined) {
     return res.status(400)
       .json({
         message: 'All or some of the field is/are undefined',
       });
   }
-  if (!req.body.username) {
+  if (!req.body.email) {
     return res.status(400).send({
       message: 'username is can not be empty',
     });
