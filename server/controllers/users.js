@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 import models from '../models/index';
 import config from '../../config';
 
-const saltRounds = 10;
+// const saltRounds = 10;
 const usersModel = models.users;
 let password = '';
 /**
@@ -30,7 +30,7 @@ class Users {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
-        hashPassword: bcrypt.hashSync(req.body.password, saltRounds),
+        hashPassword: bcrypt.hashSync(req.body.password, 10)
       })
         .then(res.status(201).send({
           message: 'Registration Successful',
