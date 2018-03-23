@@ -31,7 +31,7 @@ class Businesses {
     }).then((business) => {
       if (business) {
         return res.status(404).send({
-          message: 'business Already Exists',
+          message: 'Business Already Exists',
         });
       }
       BusinessModel.create({
@@ -43,11 +43,11 @@ class Businesses {
         userId: req.decoded.id,
       })
         .then(() => res.status(201).send({
-          message: 'business added successfully',
+          message: 'Business added successfully.',
           Business: business
         }))
         .catch(() => res.status(400).send({
-          message: 'bad request, server can not process this request'
+          message: 'Bad request, server can not process this request'
         }));
     });
   }
