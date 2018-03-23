@@ -253,7 +253,7 @@ input[type=btn]:hover {
 }
 
 .btn1-spacing{
-    margin: 10px;
+    margin-bottom: 10px;
 }
 
 .form-signin-heading {
