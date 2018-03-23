@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "build": "babel server -d server/dist",
-    "db-migrate": "sequelize db:migrate",
+    "db-migrate": "node ./node_modules/sequelize-cli/lib/sequelize db:migrate",
     "start": "cross-env NODE_ENV=production sequelize db:migrate --env production && babel-node server/dist/app.js",
     "start:dev": "nodemon --watch server --exec babel-node app.js",
     "lint": "eslint ./ || true",
@@ -14,7 +14,6 @@
     "test-migrate": "sequelize db:migrate:undo:all --env test && sequelize db:migrate --env test",
     "postinstall": "npm run build",
     "heroku-postbuild": "npm run db-migrate"
-
   },
   "author": "douglas",
   "license": "ISC",
@@ -38,6 +37,7 @@
     "promise": "^8.0.1",
     "promises": "^0.2.5",
     "sequelize": "^4.36.1",
+    "sequelize-cli": "^4.0.0",
     "supertest": "^3.0.0",
     "validator": "^9.4.1"
   },

@@ -1,6 +1,4 @@
-require("dotenv").config();
-
-module.exports = {
+{
   "development": {
     "username": "postgres",
     "password": "PASSWORD",
@@ -18,4 +16,4 @@ module.exports = {
   "production": {
      "use_env_variable": "DATABASE_URL"
   }
-};
+}
