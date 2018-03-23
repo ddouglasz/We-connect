@@ -39,16 +39,20 @@ class Businesses {
    * @param {*} res
    */
   static removeBusiness(req, res) {
-    for (let i = 0; i < businesses.length; i += 1) {
-      if (businesses[i].id === parseInt(req.params.businessId, 10)) {
+    const { businessId } = req.params;
+
+    businesses.forEach((bus, i) => {
+      if (bus.id === parseInt(businessId, 10)) {
         businesses.splice(i, 1);
         return res.status(200).json({
           message: 'business removed successfully',
+          error: false,
         });
       }
-    }
+    });
     return res.status(404).json({
-      message: ' business not found',
+      message: 'Business not found',
+      error: 'true',
     });
   }
   /**
@@ -57,14 +61,15 @@ class Businesses {
    * @param {*} res
    */
   static retrieveBusiness(req, res) {
-    for (let i = 0; i < businesses.length; i += 1) {
-      if (businesses[i].id === parseInt(req.params.businessId, 10)) {
+    const { businessId } = req.params;
+    businesses.forEach((business, i) => {
+      if (business.id === parseInt(businessId, 10)) {
         return res.status(200).json({
           businesses: businesses[i],
           message: 'success',
         });
       }
-    }
+    });
     return res.status(404).json({
       message: 'business not found',
     });
@@ -75,20 +80,33 @@ class Businesses {
    * @param {*} res
    */
   static updateBusiness(req, res) {
-    for (let i = 0; i < businesses.length; i += 1) {
-      if (businesses[i].id === parseInt(req.params.businessId, 10)) {
-        businesses[i].name = req.body.name;
-        businesses[i].description = req.body.description;
-        businesses[i].image = req.body.image;
-        businesses[i].category = req.body.category;
-        businesses[i].location = req.body.location;
-        businesses[i].email = req.body.email;
+    const {
+      name,
+      description,
+      image,
+      category,
+      location,
+      email
+    } = req.body;
+
+    const {
+      businessId
+    } = req.params;
+
+    businesses.forEach((business) => {
+      if (business.id === parseInt(businessId, 10)) {
+        business.name = name;
+        business.description = description;
+        business.image = image;
+        business.category = category;
+        business.location = location;
+        business.email = email;
         return res.status(200).json({
-          businesses,
+          business,
           message: 'business updated successfully',
         });
       }
-    }
+    });
     return res.status(404).json({
       message: 'sorry,business not found',
     });
