@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel server -d server/dist",
     "db-migrate": "node ./node_modules/sequelize-cli/lib/sequelize db:migrate",
-    "start": "cross-env NODE_ENV=production sequelize db:migrate --env production && babel-node server/dist/app.js",
+    "start": "babel-node app.js",
     "start:dev": "nodemon --watch server --exec babel-node app.js",
     "lint": "eslint ./ || true",
     "test": "nyc mocha ./server/test --exit --compilers js:babel-register",
