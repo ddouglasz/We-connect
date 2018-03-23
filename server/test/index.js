@@ -248,7 +248,7 @@ describe('Login user', () => {
     chai.request(app)
       .post('/api/v1/auth/login')
       .send({
-        username: 'steve',
+        email: 'steve',
         password: 'longman',
       })
       .end((err, res) => {
@@ -260,7 +260,7 @@ describe('Login user', () => {
     chai.request(app)
       .post('/api/v1/auth/login')
       .send({
-        username: 'longe',
+        email: 'long@man.com',
         password: 'longman',
       })
       .end((err, res) => {
