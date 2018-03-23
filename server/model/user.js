@@ -7,21 +7,21 @@ const users = [{
   email: 'clint@fidel.com'
 },
 {
-  userId: 1,
+  userId: 2,
   fullname: 'seun seun',
   username: 'seun',
   password: 'seunzone',
   email: 'seun@zone.com'
 },
 {
-  userId: 1,
+  userId: 3,
   fullname: 'pascal pascal',
   username: 'pascal11',
   password: 'passpass',
   email: 'pas@cal.com'
 },
 {
-  userId: 1,
+  userId: 4,
   fullname: 'longe longe',
   username: 'longe',
   password: 'longman',
