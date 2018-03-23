@@ -11,8 +11,9 @@ class Reviews {
      * @param {*} res
      */
   static postReview(req, res) {
-    for (let i = 0; i < businesses.length; i += 1) {
-      if (businesses[i].id === parseInt(req.params.businessId, 10)) {
+    const { businessId } = req.params;
+    businesses.forEach((business, i) => {
+      if (business.id === parseInt(businessId, 10)) {
         reviews.push({
           id: reviews.length + 1,
           reviewedBy: req.body.reviewedBy,
@@ -24,7 +25,7 @@ class Reviews {
           message: 'review successfully added'
         });
       }
-    }
+    });
     return res.status(404).json({
       message: 'business not found',
     });
