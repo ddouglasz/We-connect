@@ -115,6 +115,12 @@ input[type=btn]:hover {
     position: relative;
 }
 
+.signup-page-background{
+    background: url("../images/businessIdeas.jpg")center center no-repeat fixed;
+    height: 800px;
+    /* border-top: 0; */
+}
+
 .home-wrapper-catalog {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../images/businessCatalog1.jpg");
     background-size: cover;
@@ -194,6 +200,13 @@ input[type=btn]:hover {
     background-color: #145291;
     color: white;
     cursor: pointer;
+    margin-top:30px;
+}
+
+.searchbar-decors {
+    background-color: #145291;
+    color: white;
+    cursor: pointer;
 }
 
 .image {
@@ -205,35 +218,42 @@ input[type=btn]:hover {
     margin: 0;
 }
 
-.form-signin {
-    opacity: 0.99;
-    max-width: 350px;
-    padding: 40px 10px 70px 10px;
-     margin: 50px auto;
+.form-signup {
+    opacity: 0.7;
+    min-width: 100px!important;
+    /* width: 00px; */
+    max-width: 500px;
+    padding: 60px 50px 90px 50px;
+    margin: 30px auto;
     background: #001f3f;
+    border-radius: 5px;
 }
 
-.form-signin input[type="email"] {
+.form-signup input[type="email"] {
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
     border: 1px solid #001f3f;
 }
 
-.form-signin button {
+.form-signup button {
     background: #fff;
     border: 1px solid #001f3f;
     color: white;
 }
 
-.form-signin button:hover {
-    background: #29639c;
+.form-signup button:hover {
+    background: #3e5f80;;
     border: none;
     color: white;
 }
 
 .form-spacing {
     margin-bottom: 10px;
+}
+
+.btn1-spacing{
+    margin: 10px;
 }
 
 .form-signin-heading {
@@ -252,10 +272,20 @@ input[type=btn]:hover {
     text-align: center;
 }
 
+.form-actions2 {
+    margin: 30px;
+    background-color: transparent;
+    text-align: center;
+}
+
 .form-action {
     margin: 10px;
     background-color: transparent;
     text-align: center;
+}
+
+.form-signup-heading{
+    margin-bottom: 60px;
 }
 
 #profile-image {
