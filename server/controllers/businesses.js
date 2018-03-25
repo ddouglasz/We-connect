@@ -15,8 +15,8 @@ class Businesses {
    */
   static getBusinesses(req, res) {
     return BusinessModel.all()
-      .then(business => res.status(200).send(business))
-      .catch(error => res.status(400).send(error));
+      .then(business => res.status(200).send(business));
+      // .catch(error => res.status(400).send(error));
   }
   /**
    * @returns {Object} createBusiness
