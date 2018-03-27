@@ -71,13 +71,9 @@ class Users {
           email: user.email,
           id: user.id,
         });
-      } else {
-        res.status(401).send({
-          message: 'Invalid email and/or password',
-        });
       }
     })
-      .catch(error => res.status(401).send(error));
+      .catch(error => res.status(404).send(error));
   }
 }
 export default Users;
