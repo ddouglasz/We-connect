@@ -9,7 +9,7 @@
     "start": "babel-node app.js",
     "start:dev": "nodemon --watch server --exec babel-node app.js",
     "lint": "eslint ./ || true",
-    "test": "set NODE_ENV=test&& npm run migrate&& nyc mocha ./server/test/**/*.js --compilers js:babel-core/register --exit",
+    "test": "nyc mocha ./server/test --exit --compilers js:babel-register",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "test-migrate": "sequelize db:migrate:undo:all --env test && sequelize db:migrate --env test",
     "postinstall": "npm run build",

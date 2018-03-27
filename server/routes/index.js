@@ -11,7 +11,6 @@ export default (app) => {
   app.post('/api/v1/auth/signup', validateUserSignUp, Users.signUp);
   app.post('/api/v1/auth/login', validateUserSignIn, Users.signIn);
   app.post('/api/v1/businesses', auth, addBusinessValidator, Businesses.createBusinesses);
-  // app.get('/api/v1/businesses', Businesses.getBusinesses);
   app.get('/api/v1/businesses', FilterBusinessSearch.filterBusinessSearch, Businesses.getBusinesses);
   app.delete('/api/v1/businesses/:businessId', auth, Businesses.deleteBusiness);
   app.get('/api/v1/businesses/:businessId', Businesses.retrieveBusiness);
