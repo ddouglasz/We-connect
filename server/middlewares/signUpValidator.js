@@ -15,8 +15,9 @@ const validateUserSignUp = (req, res, next) => {
   } = req.body;
   if (
     !password ||
-    !firstName.trim() ||
-    !lastName.trim() || !email.trim()
+    !firstName ||
+    !lastName ||
+    !email
   ) {
     return res.status(401)
       .json({
@@ -24,36 +25,36 @@ const validateUserSignUp = (req, res, next) => {
       });
   }
   if (!req.body.email.trim()) {
-    return res.status(401).send({
+    return res.status(401).json({
       message: 'Email is required',
     });
   }
   if (!req.body.password.trim()) {
-    return res.status(401).send({
+    return res.status(401).json({
       message: 'Password is required',
     });
   }
   if (!req.body.firstName.trim()) {
-    return res.status(401).send({
+    return res.status(401).json({
       message: 'firstName is required',
     });
   }
   if (!req.body.lastName.trim()) {
-    return res.status(401).send({
+    return res.status(401).json({
       message: 'lastName is required',
     });
   }
   if (!req.body.firstName.match('[a-zA-Z]+$')) {
-    return res.status(401).send({
+    return res.status(401).json({
       message: 'Only alphabets allowed in first name',
     });
   }
   if (!req.body.lastName.match('[a-zA-Z]+$')) {
-    return res.status(401).send({
+    return res.status(401).json({
       message: 'Only alphabets allowed in last name',
     });
   }
-  next();
+  return next();
 };
 
 export default validateUserSignUp;
