@@ -33,9 +33,8 @@ class FilterBusinessSearch {
           ]
         }
       })
-
         .then((business) => {
-          if (business.length < 1) {
+          if (!business.length) {
             return res.status(404).json({
               message: 'Business not found',
               error: true
@@ -46,8 +45,10 @@ class FilterBusinessSearch {
             error: false
           });
         });
+    } else if (!location || !category) {
+      return next();
     }
-    next();
+    // return next();
   }
 }
 export default FilterBusinessSearch;

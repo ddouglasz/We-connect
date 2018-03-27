@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 routes(app);
 
 app.get('/', (req, res) => res.status(200).send({
-  message: 'We-connect you on port 8000'
+  message: 'We-connect you on port 8001'
 }));
 
 const port = process.env.PORT || 8001;
@@ -18,3 +18,4 @@ app.listen(port, () => console.log(`connected on ${port}`));
 
 export default app;
 
+// "test": "nyc mocha ./server/test --exit --compilers js:babel-register",
