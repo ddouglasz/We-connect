@@ -9,16 +9,17 @@ chai.use(chaiHttp);
 
 describe('TEST for app.js', () => {
   describe('When user sends a GET request to /api/v1/', () => {
-    it('should return a status 200 and a response message', () => {
+    it('should return a status 200 and a response message', (done) => {
       chai.request(app)
-        .get('api/v1/')
+        .get('/')
         .end((err, res) => {
           res.should.have.status(200);
           expect(res.body).to.be.a('object');
           assert.equal(
             res.body.message,
-            'We-connect you on port 8001'
+            'We-connect you on port 8003'
           );
+          done();
         });
     });
   });
