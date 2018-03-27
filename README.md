@@ -2,7 +2,8 @@
  
 WeConnect provides a platform that brings businesses and individuals together. This platform creates awareness for businesses and gives the users the ability to write reviews about the businesses they have interacted with and even new ones.  
 
-##Find documentation to the API here:
+## Documentation
+Find API documentation here:
 <a href="https://ddouglasz.github.io/slate/">WE-connect documentation</a>
 
 ## WEConnect App UI Template
