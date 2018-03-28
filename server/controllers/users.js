@@ -22,7 +22,7 @@ class Users {
       }
     }).then((user) => {
       if (user) {
-        return res.status(404).send({
+        return res.status(409).send({
           message: 'Email Already Exists',
         });
       }
@@ -46,7 +46,7 @@ class Users {
   static signIn(req, res) {
     usersModel.findOne({
       where: {
-        email: req.body.email
+        email: req.body.email.trim()
       }
     }).then((user) => {
       if (!user) {
@@ -56,7 +56,7 @@ class Users {
       }
       password = bcrypt.compareSync(req.body.password, user.hashPassword);
       if (password) {
-        res.status(201).json({
+        res.status(200).json({
           message: 'signed in successfully',
           jwt: jwt.sign(
             {
@@ -71,13 +71,10 @@ class Users {
           email: user.email,
           id: user.id,
         });
-      } else {
-        res.status(401).send({
-          message: 'Invalid Password',
-        });
       }
     })
-      .catch(error => res.status(401).send(error));
+      .catch(error => res.status(404).json(error));
   }
 }
 export default Users;
+

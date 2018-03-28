@@ -13,47 +13,59 @@ const validateUserSignUp = (req, res, next) => {
     email,
     lastName,
   } = req.body;
+  
   if (
     !password ||
     !firstName ||
-    !lastName || !email
+    !lastName ||
+    !email
   ) {
-    return res.status(400)
+    return res.status(401)
       .json({
         message: 'All or some of the field is/are undefined',
       });
   }
-  if (!req.body.email) {
-    return res.status(400).send({
+  if (!req.body.email.trim()) {
+    return res.status(401).json({
       message: 'Email is required',
     });
   }
-  if (!req.body.password) {
-    return res.status(400).send({
+  if (!req.body.password.trim()) {
+    return res.status(401).json({
       message: 'Password is required',
     });
   }
-  if (!req.body.firstName) {
-    return res.status(400).send({
+  if (!req.body.firstName.trim()) {
+    return res.status(401).json({
       message: 'firstName is required',
     });
   }
-  if (!req.body.lastName) {
-    return res.status(400).send({
+  if (!req.body.lastName.trim()) {
+    return res.status(401).json({
       message: 'lastName is required',
     });
   }
   if (!req.body.firstName.match('[a-zA-Z]+$')) {
-    return res.status(400).send({
+    return res.status(401).json({
       message: 'Only alphabets allowed in first name',
     });
   }
   if (!req.body.lastName.match('[a-zA-Z]+$')) {
-    return res.status(400).send({
+    return res.status(401).json({
       message: 'Only alphabets allowed in last name',
     });
   }
-  next();
+  if ((req.body.lastName).length > 20) {
+    return res.status(400).json({
+      message: 'please enter a lastName that is less than 20 characters'
+    });
+  }
+  if ((req.body.firstName).length > 20) {
+    return res.status(400).json({
+      message: 'please enter a firstName that is less than 20 characters'
+    });
+  }
+  return next();
 };
 
 export default validateUserSignUp;
