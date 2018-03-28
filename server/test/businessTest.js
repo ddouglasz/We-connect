@@ -35,7 +35,7 @@ describe('TEST for businesses', () => {
           password: 'password'
         })
         .end((err, res) => {
-          auth1 = res.body.jwt;
+          auth1 = res.body.token;
           done();
         });
     });
@@ -104,12 +104,38 @@ describe('TEST for businesses', () => {
           email: ' ',
         })
         .end((err, res) => {
+          console.log(res);
           res.should.have.status(401);
           res.body.should.be.a('object');
           expect(res.body).to.be.a('object');
           assert.equal(
             res.body.message,
             'email is required'
+          );
+          done();
+        });
+    });
+
+    it('should return a status 406 and a response message for a business title out of 3 to 30 characters', (done) => {
+      chai.request(app)
+        .post('/api/v1/businesses')
+        .set('auth', auth1)
+        .type('form')
+        .send({
+          title: 'a',
+          image: 'andela.jpg',
+          description: 'a software development company changing the face of africa',
+          category: 'ICT',
+          location: 'lagos',
+          email: 'andela@andela.com',
+        })
+        .end((err, res) => {
+          res.should.have.status(406);
+          res.body.should.be.a('object');
+          expect(res.body).to.be.a('object');
+          assert.equal(
+            res.body.message,
+            'Business title should be 3 to 30 characters'
           );
           done();
         });

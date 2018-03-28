@@ -10,6 +10,7 @@ const secret = jwtSecret.JWT_SECRET;
    * @param {*} next
    */
 const confirmToken = (req, res, next) => {
+  console.log('here')
   const token = req.headers.auth || req.headers['x-access-token'] || req.body.token;
   if (token) {
     jwt.verify(token, secret, (err, decoded) => {
@@ -17,7 +18,8 @@ const confirmToken = (req, res, next) => {
         return res.status(401).send({ error: 'Token expired. kindly start a new session' });
       }
       req.decoded = decoded;
-      next();
+      
+      return next();
     });
   } else {
     return res.status(401).send({ error: 'Access Denied! kindly login' });

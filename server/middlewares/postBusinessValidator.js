@@ -21,37 +21,37 @@ const validateInput = (req, res, next) => {
         message: 'All or some of the field is/are undefined',
       });
   }
-  if (!req.body.title.trim()) {
+  if (req.body.title.trim().length === 0) {
     return res.status(400).send({
       message: 'Title is required',
     });
   }
-  if (!req.body.description.trim()) {
+  if (req.body.description.trim().length === 0) {
     return res.status(400).send({
       message: 'description is required',
     });
   }
-  if (!req.body.category.trim()) {
+  if (req.body.category.trim().length === 0) {
     return res.status(400).send({
       message: 'category is required',
     });
   }
-  if (!req.body.location.trim()) {
+  if (req.body.location.trim().length === 0) {
     return res.status(400).send({
       message: 'location is required',
     });
   }
-  if (!req.body.category.trim()) {
+  if (req.body.category.trim().length === 0) {
     return res.status(400).send({
       message: 'category is required',
     });
   }
-  if (!req.body.email.trim()) {
+  if (req.body.email.trim().length === 0) {
     return res.status(401).send({
       message: 'email is required',
     });
   }
-  if (!req.body.image.trim()) {
+  if (req.body.image.trim().length === 0) {
     return res.status(400).send({
       message: 'image is required',
     });

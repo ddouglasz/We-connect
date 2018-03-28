@@ -133,7 +133,7 @@ describe('TEST for user routes', () => {
             'signed in successfully'
           );
           assert.isString(
-            res.body.jwt,
+            res.body.token,
             'jwt should be a string'
           );
           done();
@@ -153,6 +153,24 @@ describe('TEST for user routes', () => {
           assert.equal(
             res.body.message,
             'All or some of the field is/are undefined'
+          );
+          done();
+        });
+    });
+
+    it('should return a status 404 if email is not in database', (done) => {
+      chai.request(app)
+        .post('/api/v1/auth/login')
+        .send({
+          email: 'steve@thomas.com',
+          password: 'password'
+        })
+        .end((err, res) => {
+          res.should.have.status(404);
+          expect(res.body).to.be.a('object');
+          assert.equal(
+            res.body.message,
+            'User Not Found'
           );
           done();
         });
