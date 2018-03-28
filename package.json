@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test-loc": "nyc mocha ./server/test/ --compilers js:babel-core/register --exit",
+    "tests": "nyc mocha ./server/test/ --compilers js:babel-core/register --exit",
     "build": "babel server -d server/dist",
     "db-migrate": "node ./node_modules/sequelize-cli/lib/sequelize db:migrate",
     "start": "babel-node app.js",

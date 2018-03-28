@@ -28,8 +28,8 @@
 //         .post('api/v1/auth/login')
 //         .type('form')
 //         .send({
-//             email: usersDb[1].email,
-//             password: usersDb[1].password
+//             email: 'steve@thomas.com',
+//             password: 'password'
 //         })
 //         .end((err,res) => {
 //             token = res.body.token;
