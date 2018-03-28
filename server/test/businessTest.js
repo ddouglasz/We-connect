@@ -47,7 +47,7 @@ describe('TEST for businesses', () => {
         .send({
           title: 'andela',
           image: 'andela.jpg',
-          description: 'a software development company changing the face of africa',
+          description: 'a software development company.',
           category: 'ICT',
           location: 'lagos',
           email: 'andela@andela.com',
@@ -104,7 +104,6 @@ describe('TEST for businesses', () => {
           email: ' ',
         })
         .end((err, res) => {
-          console.log(res);
           res.should.have.status(401);
           res.body.should.be.a('object');
           expect(res.body).to.be.a('object');
@@ -141,7 +140,7 @@ describe('TEST for businesses', () => {
         });
     });
 
-    it('should return a status 406 and a response message for a business title out of 3 to 30 characters', (done) => {
+    it('should return a status 406 and a response message for a business description out of 3 to 50 characters', (done) => {
       chai.request(app)
         .post('/api/v1/businesses')
         .set('auth', auth1)
@@ -149,7 +148,7 @@ describe('TEST for businesses', () => {
         .send({
           title: 'a',
           image: 'andela.jpg',
-          description: 'a software development company changing the face of africa',
+          description: 'a software development company changing the face of africa. we are happppppppppy to havvvvvvve a verrrrrrrry wellllllllllll performing company pan out of africa for some tiime nowwwwwwww.',
           category: 'ICT',
           location: 'lagos',
           email: 'andela@andela.com',
