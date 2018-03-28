@@ -35,7 +35,7 @@ npm install
 
 ## Run App(dummy-data)
 ```bash
-npm run start
+npm run start:dev
 ```
 
 ## Run Test
