@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt';
 import models from '../models/index';
 import config from '../../config';
 
+
 // const saltRounds = 10;
 const usersModel = models.users;
 let password = '';
