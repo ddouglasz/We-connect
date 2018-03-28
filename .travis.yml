@@ -12,4 +12,6 @@ after_success:
   - npm run coverage
 
 env:
+ more-tests
    global:
+

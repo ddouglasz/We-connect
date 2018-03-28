@@ -114,32 +114,5 @@ describe('TEST for businesses', () => {
           done();
         });
     });
-
-    it('should return a status 201 and a response message for a new business', (done) => {
-      chai.request(app)
-        .post('/api/v1/businesses')
-        .set('auth', auth1)
-        .type('form')
-        .send({
-          title: 'andela',
-          image: 'andela.jpg',
-          description: 'a software development company changing the face of africa',
-          category: 'ICT',
-          location: 'lagos',
-          email: 'andela@andela.com',
-        })
-        .end((err, res) => {
-          res.should.have.status(201);
-          res.body.should.be.a('object');
-          res.body.business.should.be.a('object');
-          expect(res.body).to.be.a('object');
-          assert.equal(
-            res.body.message,
-            'Business added successfully.'
-          );
-          businessId1 = res.body.business.id;
-          done();
-        });
-    });
   });
 });
