@@ -75,6 +75,46 @@ describe('TEST for user routes', () => {
           done();
         });
     });
+
+    it('should return a status 401 if firstname is carrying a number', (done) => {
+      chai.request(app)
+        .post('/api/v1/auth/signup')
+        .send({
+          firstName: 'steve1',
+          lastName: 'dougs',
+          email: 'steve@dougs.com',
+          password: 'password'
+        })
+        .end((err, res) => {
+          res.should.have.status(401);
+          expect(res.body).to.be.a('object');
+          assert.equal(
+            res.body.message,
+            'Only alphabets allowed in first name'
+          );
+          done();
+        });
+    });
+
+    it('should return a status 401 if lastname is carrying a number', (done) => {
+      chai.request(app)
+        .post('/api/v1/auth/signup')
+        .send({
+          firstName: 'steve',
+          lastName: '466e64634',
+          email: 'steve@dougs.com',
+          password: 'password'
+        })
+        .end((err, res) => {
+          res.should.have.status(401);
+          expect(res.body).to.be.a('object');
+          assert.equal(
+            res.body.message,
+            'Only alphabets allowed in last name'
+          );
+          done();
+        });
+    });
   });
 
   describe('When user sends a POST request to /api/v1/auth/login', () => {

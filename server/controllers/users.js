@@ -73,7 +73,7 @@ class Users {
         });
       }
     })
-      .catch(error => res.status(404).send(error));
+      .catch(error => res.status(404).json(error));
   }
 }
 export default Users;

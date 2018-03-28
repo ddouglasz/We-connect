@@ -1,4 +1,4 @@
-const reviews = [{
+const reviewsDb = [{
   id: 1,
   reviewedBy: 'clinton',
   review: 'so much verve and gusto!',
@@ -20,5 +20,5 @@ const reviews = [{
 },
 ];
 
-export default reviews;
+export default reviewsDb;
 
