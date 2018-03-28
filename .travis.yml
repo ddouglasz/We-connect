@@ -2,12 +2,18 @@ language: node_js
 cache: bundler
 node_js:
   - 9.5.0
+sudo: false
+dist: trusty
 services:
   - postgresql
+# before_script:
+#   - "psql -c 'create database weconnect_test;' -U postgres"
+#   - npm run test-migrate
 script:
   - npm run test
 after_success:
   - npm run coverage
 
 env:
+  # secret: steve dougs
   global:
