@@ -15,8 +15,10 @@ class Businesses {
    */
   static getBusinesses(req, res) {
     return BusinessModel.all()
-      .then(business => res.status(200).send(business))
-      .catch(error => res.status(400).send(error));
+      .then(business => res.status(200).json(business))
+      .catch(() => res.status(400).json({
+        message: 'Bad request. Please enter correct parameters'
+      }));
   }
   /**
    * @returns {Object} createBusiness
@@ -24,30 +26,31 @@ class Businesses {
    * @param {res} res
    */
   static createBusinesses(req, res) {
-    BusinessModel.findOne({
+    return BusinessModel.findOne({
       where: {
         title: req.body.title
       }
     }).then((business) => {
       if (business) {
-        return res.status(404).send({
-          message: 'business Already Exists',
+        return res.status(404).json({
+          message: 'Business Already Exists',
         });
       }
-      BusinessModel.create({
+      return BusinessModel.create({
         title: req.body.title,
         description: req.body.description,
         category: req.body.category,
         location: req.body.location,
         email: req.body.email,
+        image: req.body.image,
         userId: req.decoded.id,
       })
-        .then(() => res.status(201).send({
-          message: 'business added successfully',
-          Business: business
+        .then(theBusiness => res.status(201).json({
+          message: 'Business added successfully.',
+          business: theBusiness
         }))
-        .catch(() => res.status(400).send({
-          message: 'bad request, server can not process this request'
+        .catch(() => res.status(401).json({
+          message: 'Unauthorized, please kindly login'
         }));
     });
   }
@@ -57,19 +60,19 @@ class Businesses {
    * @param {res} res
    */
   static retrieveBusiness(req, res) {
-    BusinessModel.findOne({
+    return BusinessModel.findOne({
       where: {
         id: req.params.businessId
       }
     }).then((business) => {
       if (!business) {
-        return res.status(404).send({
+        return res.status(404).json({
           message: 'Business Not Found',
         });
       }
-      return res.status(200).send(business);
+      return res.status(200).json(business);
     })
-      .catch(error => res.status(404).send(error));
+      .catch(error => res.status(404).json(error));
   }
   /**
    * @returns {Object} updateBusiness
@@ -77,22 +80,22 @@ class Businesses {
    * @param {res} res
    */
   static updateBusiness(req, res) {
-    BusinessModel.findOne({
+    return BusinessModel.findOne({
       where: {
         id: req.params.businessId
       }
     }).then((business) => {
       if (!business) {
-        return res.status(404).send({
+        return res.status(404).json({
           message: 'business Not Found',
         });
       }
       if (req.decoded.id !== business.userId) {
-        return res.status(403).send({
+        return res.status(403).json({
           message: 'You are not authorised to edit this business',
         });
       }
-      business.update({
+      return business.update({
         title: req.body.title || business.title,
         descriprion: req.body.descriprion || business.descriprion,
         category: req.body.category || business.category,
@@ -100,13 +103,13 @@ class Businesses {
         image: req.body.image || business.image,
         email: req.body.email || business.email,
       })
-        .then(() => res.status(200).send(business))
-        .catch(() => res.status(400).send({
-          message: 'bad request: sorry, server can not process your request'
+        .then(() => res.status(200).json(business))
+        .catch(() => res.status(500).json({
+          message: 'internal server error'
         }));
     })
-      .catch(() => res.status(400).send({
-        message: 'bad request: sorry, server can not process your request'
+      .catch(() => res.status(500).json({
+        message: 'internal server error'
       }));
   }
   /**
@@ -121,12 +124,12 @@ class Businesses {
       }
     }).then((business) => {
       if (!business) {
-        return res.status(404).send({
+        return res.status(404).json({
           message: 'business Not Found',
         });
       }
       if (req.decoded.id !== business.userId) {
-        return res.status(403).send({
+        return res.status(403).json({
           message: 'You are not authorised to delete this business',
         });
       }
@@ -134,14 +137,14 @@ class Businesses {
         where: {
           id: req.params.businessId
         }
-      }).then(() => res.status(200).send({
+      }).then(() => res.status(200).json({
         message: 'business deleted successfully',
       }))
-        .catch(() => res.status(400).send({
+        .catch(() => res.status(400).json({
           message: 'bad request: sorry, server can not process your request'
         }));
     })
-      .catch(() => res.status(400).send({
+      .catch(() => res.status(400).json({
         message: 'bad request: sorry, server can not process your request'
       }));
   }
@@ -158,11 +161,11 @@ class Businesses {
       userId: req.decoded.id
     })
       .then(() => {
-        res.status(201).send({
+        res.status(201).json({
           message: 'Review added successfully'
         });
       })
-      .catch(() => res.status(404).send({
+      .catch(() => res.status(404).json({
         message: 'sorry, the business you are trying to review does not exist'
       }));
   }
@@ -192,7 +195,7 @@ class Businesses {
                   message: 'this business does not have any reviews yet,'
                 });
               }
-              return res.status(200).send({
+              return res.status(200).json({
                 status: 'success',
                 businessdata: {
                   id: business.id,
