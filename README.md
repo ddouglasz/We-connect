@@ -2,7 +2,6 @@
  [![Test Coverage](https://api.codeclimate.com/v1/badges/3353fa511defef2f1372/test_coverage)](https://codeclimate.com/github/ddouglasz/We-connect/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/3353fa511defef2f1372/maintainability)](https://codeclimate.com/github/ddouglasz/We-connect/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/ddouglasz/We-connect/badge.svg?branch=develop)](https://coveralls.io/github/ddouglasz/We-connect?branch=develop)
-
 # We-connect# 
  
 WeConnect provides a platform that brings businesses and individuals together. This platform creates awareness for businesses and gives the users the ability to write reviews about the businesses they have interacted with and even new ones.  
