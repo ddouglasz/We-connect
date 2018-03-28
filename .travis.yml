@@ -2,6 +2,8 @@ language: node_js
 cache: bundler
 node_js:
   - 9.5.0
+sudo: false
+dist: trusty
 services:
   - postgresql
 script:
@@ -10,4 +12,4 @@ after_success:
   - npm run coverage
 
 env:
-  global:
+   global:
