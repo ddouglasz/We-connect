@@ -58,7 +58,7 @@ class Users {
       if (password) {
         res.status(200).json({
           message: 'signed in successfully',
-          jwt: jwt.sign(
+          token: jwt.sign(
             {
               id: user.id,
               firstName: user.firstName,
