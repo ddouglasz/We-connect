@@ -17,5 +17,3 @@ const port = process.env.PORT || 8003;
 app.listen(port, () => console.log(`connected on ${port}`));
 
 export default app;
-
-// "test": "nyc mocha ./server/test --exit --compilers js:babel-register",

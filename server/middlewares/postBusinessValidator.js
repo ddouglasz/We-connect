@@ -9,12 +9,12 @@ import validator from 'validator';
    */
 const validateInput = (req, res, next) => {
   if (
-    !req.body.title.trim() ||
-    !req.body.description.trim() ||
-    !req.body.category.trim() ||
-    !req.body.location.trim() ||
-    !req.body.image.trim() ||
-    !req.body.email.trim()
+    !req.body.title ||
+    !req.body.description ||
+    !req.body.category ||
+    !req.body.location ||
+    !req.body.image ||
+    !req.body.email
   ) {
     res.status(400)
       .json({
@@ -47,7 +47,7 @@ const validateInput = (req, res, next) => {
     });
   }
   if (!req.body.email.trim()) {
-    return res.status(400).send({
+    return res.status(401).send({
       message: 'email is required',
     });
   }

@@ -48,7 +48,6 @@ class FilterBusinessSearch {
     } else if (!location || !category) {
       return next();
     }
-    // return next();
   }
 }
 export default FilterBusinessSearch;

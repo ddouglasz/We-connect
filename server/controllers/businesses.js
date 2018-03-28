@@ -45,9 +45,9 @@ class Businesses {
         image: req.body.image,
         userId: req.decoded.id,
       })
-        .then(() => res.status(201).json({
+        .then(theBusiness => res.status(201).json({
           message: 'Business added successfully.',
-          Business: business
+          business: theBusiness
         }))
         .catch(() => res.status(401).json({
           message: 'Unauthorized, please kindly login'
