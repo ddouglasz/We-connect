@@ -66,7 +66,7 @@ class Users {
               lastName: user.lastName,
               email: user.email
             }
-            , config.JWT_SECRET,
+            , process.env.secretKey,
             { expiresIn: 60 * 60 }
           ),
           email: user.email,
