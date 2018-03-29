@@ -38,7 +38,7 @@ npm run start:dev
 
 ## Run Test
 ```bash
-npm run test
+npm run tests
 
 
 ```
