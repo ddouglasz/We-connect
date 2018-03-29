@@ -8,10 +8,11 @@ import validator from 'validator';
    * @param {*} next
    */
 const checkString = (req, res, next) => {
-    
-   if (typeOf(req.body) !== string()){
-
+    for(let i =1; i< ; i++){
+   if (typeOf(req.body[i]) !== string()){
+return 'data is not in string format'
    }
+}
   next();
 };
 export default checkString;

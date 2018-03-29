@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/ddouglasz/We-connect.svg?branch=develop)](https://travis-ci.org/ddouglasz/We-connect)
-[![Maintainability](https://api.codeclimate.com/v1/badges/3353fa511defef2f1372/maintainability)](https://codeclimate.com/github/ddouglasz/We-connect/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/ddouglasz/We-connect/badge.svg?branch=develop)](https://coveralls.io/github/ddouglasz/We-connect?branch=develop)
 # We-connect# 
  
