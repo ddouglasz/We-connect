@@ -166,22 +166,6 @@ describe('TEST for businesses', () => {
     });
   });
 });
-
-// describe('GET business:When user sends a GET request to /api/v1/businesses/', () => {
-//   before((done) => {
-//     chai.request(app)
-//       .post('/api/v1/auth/login')
-//       .type('form')
-//       .send({
-//         email: 'steve@dougs.com',
-//         password: 'password'
-//       })
-//       .end((err, res) => {
-//         auth1 = res.body.token;
-//         done();
-//       });
-//   });
-
 describe(' GET request for /api/v1/businesses/:businessId', () => {
   it('should return 200 status code and retrieve business with the provided businessId', (done) => {
     chai.request(app)
@@ -238,7 +222,7 @@ describe(' GET request for /api/v1/businesses/:businessId', () => {
       });
   });
 
-   it('should return 404 status code and  an error message for a business with wrong params', (done) => {
+  it('should return 404 status code and  an error message for a business with wrong params', (done) => {
     chai.request(app)
       .get('/api/v1/businesses/40a')
       .end((err, res) => {
@@ -264,3 +248,4 @@ describe(' GET request for /api/v1/businesses/:businessId', () => {
       });
   });
 });
+
