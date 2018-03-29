@@ -75,7 +75,9 @@ class Businesses {
         business
       });
     })
-      .catch(error => res.status(404).json(error));
+      .catch(() => res.status(500).json({
+        message: 'internal server error.',
+      }));
   }
   /**
    * @returns {Object} updateBusiness
