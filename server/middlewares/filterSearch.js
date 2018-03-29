@@ -41,6 +41,7 @@ class FilterBusinessSearch {
             });
           }
           return res.status(200).json({
+            message: 'We found some businesses with the category or location you entered',
             business,
             error: false
           });

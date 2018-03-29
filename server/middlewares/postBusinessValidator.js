@@ -64,7 +64,7 @@ const validateInput = (req, res, next) => {
       });
   }
   if (!validator.isLength(req.body.description.trim(), { min: 2, max: 50 })) {
-    res.status(406)
+    return res.status(406)
       .send({
         status: 'Fail',
         message: 'description should be between 2 to 50 characters',
