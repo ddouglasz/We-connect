@@ -16,8 +16,8 @@ class Businesses {
   static getBusinesses(req, res) {
     return BusinessModel.all()
       .then(business => res.status(200).json(business))
-      .catch(() => res.status(400).json({
-        message: 'Bad request. Please enter correct parameters'
+      .catch(() => res.status(404).json({
+        message: 'business not found'
       }));
   }
   /**
@@ -70,7 +70,10 @@ class Businesses {
           message: 'Business Not Found',
         });
       }
-      return res.status(200).json(business);
+      return res.status(200).json({
+        message: 'success',
+        business
+      });
     })
       .catch(error => res.status(404).json(error));
   }

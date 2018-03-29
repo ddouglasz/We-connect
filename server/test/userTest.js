@@ -193,5 +193,41 @@ describe('TEST for user routes', () => {
           done();
         });
     });
+
+    it('should return a status 404 if email is not in database', (done) => {
+      chai.request(app)
+        .post('/api/v1/auth/login')
+        .send({
+          email: 'steve@thomas.com',
+          password: 'password'
+        })
+        .end((err, res) => {
+          res.should.have.status(404);
+          expect(res.body).to.be.a('object');
+          assert.equal(
+            res.body.message,
+            'User Not Found'
+          );
+          done();
+        });
+    });
+
+    it('should return a status 401 for invalid email', (done) => {
+      chai.request(app)
+        .post('/api/v1/auth/login')
+        .send({
+          email: 'stevejhdjksk',
+          password: 'password'
+        })
+        .end((err, res) => {
+          res.should.have.status(401);
+          expect(res.body).to.be.a('object');
+          assert.equal(
+            res.body.message,
+            'Email Invalid'
+          );
+          done();
+        });
+    });
   });
 });

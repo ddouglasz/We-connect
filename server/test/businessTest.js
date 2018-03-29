@@ -148,7 +148,7 @@ describe('TEST for businesses', () => {
         .send({
           title: 'a',
           image: 'andela.jpg',
-          description: 'a software development company changing the face of africa. we are happppppppppy to havvvvvvve a verrrrrrrry wellllllllllll performing company pan out of africa for some tiime nowwwwwwww.',
+          description: 'a software development company.',
           category: 'ICT',
           location: 'lagos',
           email: 'andela@andela.com',
@@ -163,6 +163,81 @@ describe('TEST for businesses', () => {
           );
           done();
         });
+    });
+
+    it('should return a status 406 and a response message for a business description out of 3 to 50 characters', (done) => {
+      chai.request(app)
+        .post('/api/v1/businesses')
+        .set('auth', auth1)
+        .type('form')
+        .send({
+          title: 'andela',
+          image: 'andela.jpg',
+          description: 'a software development company.To take this a step further, I can display this information in a browser to confirm the app can read it.',
+          category: 'ICT',
+          location: 'lagos',
+          email: 'andela@andela.com',
+        })
+        .end((err, res) => {
+          res.should.have.status(406);
+          res.body.should.be.a('object');
+          expect(res.body).to.be.a('object');
+          assert.equal(
+            res.body.message,
+            'description should be between 2 to 50 characters'
+          );
+          done();
+        });
+    });
+  });
+});
+
+describe('GET business:When user sends a GET request to /api/v1/businesses/', () => {
+  before((done) => {
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .type('form')
+      .send({
+        email: 'steve@dougs.com',
+        password: 'password'
+      })
+      .end((err, res) => {
+        auth1 = res.body.token;
+        done();
+      });
+  });
+
+  describe(' GET request for /api/v1/businesses/:businessId', () => {
+    it('should return 200 status code and retrieve business with the provided businessId', (done) => {
+      chai.request(app)
+        .get('/api/v1/businesses/1')
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a('object');
+          res.body.business.should.be.a('object');
+          assert.isString(
+            res.body.message,
+            'succes'
+          );
+          done();
+        });
+
+
+      it('should return 404 status code and  an error message', (done) => {
+        chai.request(app)
+          .get('/api/v1/businesses/4jkjk0')
+          .end((err, res) => {
+            console.log(res.body);
+            res.should.have.status(404);
+            res.body.should.be.a('object');
+            // res.body.business.should.be.a('object');
+            assert.equal(
+              res.body.message,
+              'Business Not Found'
+            );
+            done();
+          });
+      });
     });
   });
 });
