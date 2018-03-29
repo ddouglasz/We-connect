@@ -42,3 +42,16 @@ npm run tests
 
 
 ```
+Type of request | route(endpoint)       | Description
+----------------| ----------| --------------------
+POST   |api/v1/auth/signup|create a new user
+POST   |api/v1/auth/login|login existing user
+POST   |/api/v1/businesses|create a new business
+GET    |/api/v1/businesses|get all businesses
+DELETE | /api/v1/businesses/:businessId |delete a particular business
+GET    |/api/v1/businesses/:businessId| to retrieve a particular business using its businessId
+PUT    |/api/v1/business/:businessId  | to update a particular business using its businessId
+POST   |/api/v1/business/:businessId/reviews| to post a review for a given business using its businessId
+GET    |/api/v1/business/:businessId/reviews| to get reviews of a particular business using its businessId
+GET    |/api/v1/businesses?location=keyword| get businesses based on key word (serach query)
+GET    |/api/v1/businesses?category=keyword| get businesses based on key word (serach query).
