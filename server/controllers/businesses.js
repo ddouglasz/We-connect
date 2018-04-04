@@ -109,12 +109,12 @@ class Businesses {
         email: req.body.email || business.email,
       })
         .then(() => res.status(200).json(business))
-        .catch(() => res.status(500).json({
-          message: 'internal server error'
+        .catch(err => res.status(500).json({
+          message: `internal server error: ${err.message} `
         }));
     })
-      .catch(() => res.status(500).json({
-        message: 'internal server error'
+      .catch(err => res.status(500).json({
+        message: `internal server error: ${err.message} `
       }));
   }
   /**
@@ -144,13 +144,10 @@ class Businesses {
         }
       }).then(() => res.status(200).json({
         message: 'business deleted successfully',
-      }))
-        .catch(() => res.status(400).json({
-          message: 'bad request: sorry, server can not process your request'
-        }));
+      }));
     })
-      .catch(() => res.status(400).json({
-        message: 'bad request: sorry, server can not process your request'
+      .catch(err => res.status(400).json({
+        message: `bad request: ${err.message}`
       }));
   }
 
