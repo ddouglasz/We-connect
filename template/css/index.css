@@ -376,7 +376,7 @@ input[type=btn]:hover {
     width: 200px;
     padding: 15px;
     margin-bottom: 35px;
-    z-index: inherit;
+    z-index: 1;
     color: #001f3f
 }
 
