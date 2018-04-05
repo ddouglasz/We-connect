@@ -157,19 +157,29 @@ class Businesses {
    * @param {res} res
    */
   static postReview(req, res) {
-    ReviewsModel.create({
-      review: req.body.review,
-      businessId: req.params.businessId,
-      userId: req.decoded.id
-    })
-      .then(() => {
-        res.status(201).json({
-          message: 'Review added successfully'
+    return ReviewsModel.findOne({
+      where: {
+        id: req.params.businessId
+      }
+    }).then((business) => {
+      if (!business) {
+        return res.status(404).json({
+          message: 'business not found'
         });
+      }
+      return ReviewsModel.create({
+        review: req.body.review,
+        businessId: req.params.businessId,
+        userId: req.decoded.id
       })
-      .catch(() => res.status(404).json({
-        message: 'sorry, the business you are trying to review does not exist'
-      }));
+        .then(displayReview => res.status(201).json({
+          message: 'Review added successfully',
+          review: displayReview
+        }))
+        .catch(err => res.status(500).json({
+          message: `internal server error: ${err.message}`
+        }));
+    });
   }
   /**
    * @returns {Object} getReviews
