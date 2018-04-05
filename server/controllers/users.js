@@ -34,7 +34,7 @@ class Users {
         hashPassword: bcrypt.hashSync(req.body.password, 10)
       })
         .then(res.status(201).send({
-          message: 'Registration Successful',
+          message: `welcome ${req.body.firstName}, your Registration was Successful`,
         }))
         .catch(error => res.status(400).send(error));
     });

@@ -24,7 +24,7 @@ const validateUserSignIn = (req, res, next) => {
   }
   if (!isEmail(req.body.email.trim())) {
     return res.status(401).json({
-      message: 'Email Invalid',
+      message: 'invalid email format',
     });
   }
   next();

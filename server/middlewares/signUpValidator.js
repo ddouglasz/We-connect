@@ -1,4 +1,4 @@
-// import isEmail from 'validator/lib/isEmail';
+import isEmail from 'validator/lib/isEmail';
 // import validator from 'validator';
 /**
  * @returns {Object} validate Input
@@ -13,7 +13,6 @@ const validateUserSignUp = (req, res, next) => {
     email,
     lastName,
   } = req.body;
-  
   if (
     !password ||
     !firstName ||
@@ -63,6 +62,11 @@ const validateUserSignUp = (req, res, next) => {
   if ((req.body.firstName).length > 20) {
     return res.status(400).json({
       message: 'please enter a firstName that is less than 20 characters'
+    });
+  }
+  if (!isEmail(req.body.email.trim())) {
+    return res.status(401).json({
+      message: 'invalid email format',
     });
   }
   return next();
