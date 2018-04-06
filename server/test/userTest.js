@@ -224,7 +224,7 @@ describe('TEST for user routes', () => {
           expect(res.body).to.be.a('object');
           assert.equal(
             res.body.message,
-            'Email Invalid'
+            'invalid email format'
           );
           done();
         });
