@@ -1,13 +1,13 @@
+// import 'botstrap';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { render } from 'react-dom';
-  
+import { BrowserRouter } from 'react-router-dom';
+import App from './components/App';  
+
 ReactDOM.render(
-    
-  <h1>Hello steve steve</h1>,
-
-  document.getElementById('app')
-
-);
-
-
+  (<BrowserRouter>
+    <App />
+  </BrowserRouter>),
+   document.getElementById('app')
+ );
