@@ -64,9 +64,9 @@ const RegisterBusiness = () => {
                             </div>
                             <div className="form-group btn1-spacing">
                                 <label className="col-md-3 control-label"></label>
-                                <div className="col-md-8">
+                                <div className="col-md-8 edit-spacing">
                                     <a className="btn btn-primary" href="businessProfile.html" role="button"> save changes</a>
-                                    <input type="reset" className="btn btn-danger" value="Cancel" href="businessProfile.html" />
+                                    <input type="reset" className="btn btn-danger" value="Cancel" id= "cancel-reg" href="businessProfile.html" />
                                 </div>
                             </div>
                         </form>
