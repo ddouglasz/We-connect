@@ -124,7 +124,7 @@ const BusinessProfile = () => {
               </div>
               <ul className="list-unstyled">
                 <li className="media">
-                  <img className="d-flex mr-3" id="reviews-image" src="images/bean.jpg" alt="Generic placeholder image" />
+                  <img className="d-flex mr-3" id="reviews-image" src="resources/images/bean.jpg" alt="Generic placeholder image" />
                   <div className="media-body">
                     <h5 className="mt-0 mb-1">List-based media object</h5>
                     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in
@@ -133,7 +133,7 @@ const BusinessProfile = () => {
                   </div>
                 </li>
                 <li className="media my-4">
-                    <img className="d-flex mr-3" id="reviews-image" src="images/profileGlyph.jpg" alt="Generic placeholder image" />
+                    <img className="d-flex mr-3" id="reviews-image" src="resources/images/profileGlyph.jpg" alt="Generic placeholder image" />
                   <div className="media-body">
                     <h5 className="mt-0 mb-1">List-based media object</h5>
                     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in
@@ -142,7 +142,7 @@ const BusinessProfile = () => {
                   </div>
                  </li>
                 <li className="media">
-                  <img className="d-flex mr-3" id="reviews-image" src="images/beardedsmiley.jpg" alt="Generic placeholder image" />
+                  <img className="d-flex mr-3" id="reviews-image" src="resources/images/beardedsmiley.jpg" alt="Generic placeholder image" />
                   <div className="media-body">
                     <h5 className="mt-0 mb-1">List-based media object</h5>
                     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in
