@@ -7,7 +7,7 @@ import Footer from '../components/home/Footer.jsx';
 
 
 const App = () => (
-  <div className="container">
+  <div>
     <NavBar />
     <Routes />
     <Footer />
