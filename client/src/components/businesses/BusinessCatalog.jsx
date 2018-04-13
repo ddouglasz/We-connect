@@ -205,6 +205,7 @@ const BusinessCatalog = () => (
           </div>
         </div>
       </div>
+      
       <div className="col-lg-1"></div>
       <div className="pagination-card btn1-spacing">
         <nav aria-label="pages">
