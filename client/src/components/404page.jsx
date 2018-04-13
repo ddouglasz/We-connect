@@ -1,10 +1,10 @@
 import React from 'react';
-import {link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
-const Logout = () => {
+const NotFound = () => {
     return(
-<div>not found</div>
+<div><h1>Not Found</h1></div>
     );
 }
 
-export default Logout;
+export default NotFound;
