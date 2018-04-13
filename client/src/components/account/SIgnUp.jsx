@@ -95,7 +95,7 @@ const SignUp = () => {
         </div>
         </div>
         <button type="submit" className="btn  btn-decor btn-success btn-block">
-          <i className="fa font-a fa-user-plus" />
+          <i className="fa font-b fa-user-plus" />
         </button>
       </form>
     </div>
