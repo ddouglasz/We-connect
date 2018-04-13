@@ -11,6 +11,7 @@ module.exports = {
   output: {
     path: DIST_DIR,
     filename: 'bundle.js',
+    publicPath: '/'
   },
   devServer: {
     contentBase: SRC_DIR
@@ -36,19 +37,21 @@ module.exports = {
       {
         test: /\.s?css/,
         use: [{
-          loader:
-                'style-loader'
+          loader: 'style-loader'
         },
         {
-          loader:
-               ' css-loader'
+          loader: 'css-loader'
         },
         {
-          loader:
-                'scss-loader'
+          loader: 'sass-loader'
         }
         ]
-      }
+      },
+      {
+        test: /\.svg|.png|.jpg$/,
+        loader: 'url-loader',
+        exclude: /node_modules/
+      },
     ]
   },
 };

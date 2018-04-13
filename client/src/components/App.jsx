@@ -1,10 +1,15 @@
-// import 'bootstrap';
 import React from 'react';
 import Routes from '../Routes';
-
+import { Route, Switch } from 'react-router';
+import NavBar from '../components/home/NavBar.jsx';
+import Footer from '../components/home/Footer.jsx';
 
 const App = () => (
-<Routes />
+  <div>
+    <NavBar />
+    <Routes />
+    <Footer />
+  </div>
 );
 
 export default App;

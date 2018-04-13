@@ -1,13 +1,16 @@
-// import 'botstrap';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import App from './components/App';  
+import App from './components/App';
+// import './resources/main.scss';
 
 ReactDOM.render(
-  (<BrowserRouter>
-    <App />
-  </BrowserRouter>),
-   document.getElementById('app')
- );
+  <div>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </div>,
+  document.getElementById("app")
+);
+
