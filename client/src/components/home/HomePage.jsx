@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const HomePage = (
+const HomePage = () => {
     return (
 <div className="jumbotron jumbotron-fluid  home-wrapper-index">
         <div className="jumbotron-cover">
@@ -66,7 +66,6 @@ const HomePage = (
           </div>
         </div>
       </div>
-
     );
 }
 
