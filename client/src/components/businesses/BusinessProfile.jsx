@@ -103,7 +103,7 @@ const BusinessProfile = () => {
                 <label className="col-sm-3 control-label"></label>
                 <div className="col-sm-8">
                   <a className="btn btn-primary blue-button" href="manageBusiness.html" role="button">Edit Business</a>
-                  <input type="reset" className="btn btn-danger" value="Delete Business" />
+                  <input type="reset" className="btn btn-danger" id="btn-delete" value="Delete Business" />
                 </div>
               </div>
               <div className="form-group form-spacing row">
@@ -122,6 +122,7 @@ const BusinessProfile = () => {
               <div className="form-reviews" id="description">
                 <h3>Reviews</h3>
               </div>
+<div className="edit-spacing" id="chat-cards-buttom-spacing">
               <ul className="list-unstyled">
                 <li className="media">
                   <img className="d-flex mr-3" id="reviews-image" src="resources/images/bean.jpg" alt="Generic placeholder image" />
@@ -151,6 +152,7 @@ const BusinessProfile = () => {
                   </div>
                 </li>
               </ul>
+              </div>
               </form>
           </div>
         </div>
