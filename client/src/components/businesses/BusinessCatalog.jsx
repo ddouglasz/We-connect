@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const BusinessCatalog = () => (
-
+<div className="catalog-cover">
     <div className="jumbotron2 jumbotron-fluid home-wrapper-catalog">
     <div className="container-overlay">
       <h1 className="display-3">Business Catalog</h1>
@@ -37,7 +37,7 @@ const BusinessCatalog = () => (
     </form>
   </div>
   </div>
-  {/* </div> */}
+  </div>
 
   <div className="form-action">
     <h3 className="center-align">Popular Businesses</h3>
@@ -232,7 +232,6 @@ const BusinessCatalog = () => (
       </div>
       </div>
       </div>
-
 );
 
 export default BusinessCatalog;
