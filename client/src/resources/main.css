@@ -1,7 +1,7 @@
 .body-cover {
     max-width: 100%;
     height: 100%;
-    overflow-x: hidden!important;
+    overflow-x: hidden !important;
 }
 
 .navbar-brand-brand {
@@ -18,8 +18,8 @@
 }
 
 .nav-close {
-    margin-top: .5rem;
-    margin-bottom: .5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     margin-left: -1rem;
 }
 
@@ -34,7 +34,7 @@ nav.navbar {
 #welcomeText {
     text-align: center;
     font-weight: 200;
-    color: #1565C0;
+    color: #1565c0;
     font-family: "Museo Slab";
     margin-top: 5rem;
 }
@@ -56,7 +56,7 @@ nav.navbar {
 #searchField,
 #password,
 #password:hover,
-input[type=btn]:hover {
+input[type="btn"]:hover {
     border: 1px solid #69798a;
     -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
     -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -94,17 +94,18 @@ input[type=btn]:hover {
 #input-search {
     border-left: 1px solid white;
 }
-.btn-search{
-    border-left: none!important;
+
+.btn-search {
+    border-left: none !important;
 }
 
 #dropdownMenuButton {
     background: #001f3f;
     border: none;
- }
+}
 
 .home-wrapper-index {
-    background: url("../resources/images/businessIdeas.jpg")center center no-repeat fixed;
+    background: url("../resources/images/businessIdeas.jpg") center center no-repeat fixed;
     background-size: cover;
     height: 700px;
     width: 100%;
@@ -113,8 +114,8 @@ input[type=btn]:hover {
     position: relative;
 }
 
-.signup-page-background{
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url("../resources/images/businessIdeas.jpg")center center no-repeat fixed;
+.signup-page-background {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../resources/images/businessIdeas.jpg") center center no-repeat fixed;
     height: 700px;
     border-top: 0;
     overflow: hidden;
@@ -133,7 +134,7 @@ input[type=btn]:hover {
     color: white;
 }
 
-.cat-form a{
+.cat-form a {
     overflow: hidden !important;
 }
 
@@ -160,24 +161,24 @@ input[type=btn]:hover {
     margin: 70px 10px 40px 10px;
     padding: 50px 10px 40px 10px;
     height: 450px;
-    /* width: 100%; */
 }
+
 #signupForm {
-   background: #001f3f !important;
-   margin: 70px 10px 40px 10px;
-   padding: 50px 10px 40px 10px;
-   height: 450px;
-   width: 400px;
-   text-align: center;
+    background: #001f3f !important;
+    margin: 70px 10px 40px 10px;
+    padding: 50px 10px 40px 10px;
+    height: 450px;
+    width: 400px;
+    text-align: center;
 }
 
 #signup-lastName,
 #signup-firstName,
 #signup-email,
-#signup-password{ 
+#signup-password {
     background-color: #001f3f;
-    color:white;
-    border:1px solid;
+    color: white;
+    border: 1px solid;
     line-height: 2.5;
     font-family: "Museo Slab", sans-serif;
     font-weight: 100;
@@ -197,23 +198,23 @@ input[type=btn]:hover {
 
 #catalogForm {
     background: #001f3f;
-     margin: 20px;
+    margin: 20px;
     padding: 10px;
     overflow: hidden;
 }
 
-.card-space{
-   background: #001f3f;
-   margin: 20px;
-  padding: 10px; 
-  min-height: 570px;
+.card-space {
+    background: #001f3f;
+    margin: 20px;
+    padding: 10px;
+    min-height: 570px;
 }
 
 .btn-decor {
     background-color: #145291;
     color: white;
     cursor: pointer;
-    margin-top:30px;
+    margin-top: 30px;
 }
 
 .searchbar-decors {
@@ -223,7 +224,7 @@ input[type=btn]:hover {
 }
 
 .image {
-    width: 537.50px;
+    width: 537.5px;
     height: 60% !important;
 }
 
@@ -233,7 +234,7 @@ input[type=btn]:hover {
 
 .form-signup {
     opacity: 0.7;
-    min-width: 40px!important;
+    min-width: 40px !important;
     max-width: 500px;
     padding: 60px 50px 90px 50px;
     margin: 30px auto;
@@ -249,13 +250,13 @@ input[type=btn]:hover {
 }
 
 .form-signup button {
-    background: #fff;
+    background: #0275d8;
     border: 1px solid #001f3f;
     color: white;
 }
 
 .form-signup button:hover {
-    background: #3e5f80;;
+    background: #3e5f80;
     border: none;
     color: white;
 }
@@ -264,7 +265,7 @@ input[type=btn]:hover {
     margin-bottom: 10px;
 }
 
-.btn1-spacing{
+.btn1-spacing {
     margin-bottom: 10px;
 }
 
@@ -273,8 +274,8 @@ input[type=btn]:hover {
 }
 
 .form-index {
-    margin-top: .5rem;
-    margin-bottom: .5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     margin-left: -1rem;
 }
 
@@ -296,7 +297,7 @@ input[type=btn]:hover {
     text-align: center;
 }
 
-.form-signup-heading{
+.form-signup-heading {
     margin-bottom: 60px;
 }
 
@@ -312,25 +313,29 @@ input[type=btn]:hover {
 }
 
 .form1 {
-    color: #F0EFF3;
+    color: #f0eff3;
 }
 
 .font-a {
-    color: #03A9F4;
+    color: #03a9f4;
+}
+
+.font-b {
+    color: white;
 }
 
 #facebook {
-    color: #1976D2;
+    color: #1976d2;
     font: 34px;
 }
 
 #twitter {
-    color: #03A9F4;
+    color: #03a9f4;
     font: 34px;
 }
 
 #linkedin {
-    color: #03A9F4;
+    color: #03a9f4;
     font: 34px;
 }
 
@@ -353,7 +358,7 @@ input[type=btn]:hover {
 }
 
 .blue-button {
-    background-color: #03A9F4;
+    background-color: #03a9f4;
 }
 
 #updated-text {
@@ -389,7 +394,7 @@ input[type=btn]:hover {
     padding: 15px;
     margin-bottom: 35px;
     z-index: 1;
-    color: #001f3f
+    color: #001f3f;
 }
 
 .footer {
@@ -407,14 +412,19 @@ input[type=btn]:hover {
     clear: both;
 }
 
-#description{
-margin-left: 12px;
-}
-.res{
-   margin-top: 3px;
+#description {
+    margin-left: 12px;
 }
 
-.edit-spacing{
+.res {
+    margin-top: 3px;
+}
+
+.edit-spacing {
     margin-bottom: 100px;
 }
 
+#cancel-reg,
+#btn-delete {
+    margin-left: 30px;
+}
