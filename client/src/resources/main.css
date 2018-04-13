@@ -1,0 +1,430 @@
+.body-cover {
+    max-width: 100%;
+    height: 100%;
+    overflow-x: hidden !important;
+}
+
+.navbar-brand-brand {
+    font-size: 150px;
+    color: white;
+}
+
+.navbar a {
+    color: white !important;
+}
+
+#btn-nav {
+    background-color: white;
+}
+
+.nav-close {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-left: -1rem;
+}
+
+nav.navbar {
+    border: 0;
+    overflow: hidden;
+    background-color: #001f3f;
+    top: 0;
+    width: 100%;
+}
+
+#welcomeText {
+    text-align: center;
+    font-weight: 200;
+    color: #1565c0;
+    font-family: "Museo Slab";
+    margin-top: 5rem;
+}
+
+#welcomeText a {
+    text-align: center;
+    font-weight: 200;
+    color: #001f3f;
+    font-family: "Museo Slab", sans-serif;
+    margin-top: 5rem;
+}
+
+.text-white a {
+    color: white;
+}
+
+#name,
+#email,
+#searchField,
+#password,
+#password:hover,
+input[type="btn"]:hover {
+    border: 1px solid #69798a;
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+.input-search-field {
+    width: 100% !important;
+}
+
+#welcomeText a {
+    text-align: center;
+    font-weight: 200;
+    color: #001f3f;
+    font-family: "lobster";
+    margin-top: 5rem;
+}
+
+#email,
+#password {
+    background: transparent;
+    -webkit-text-fill-color: white;
+}
+
+#searchField {
+    background: #001f3f;
+    border: 1px solid white;
+}
+
+#input-search {
+    border: 1px solid white;
+}
+
+#input-search {
+    border-left: 1px solid white;
+}
+
+.btn-search {
+    border-left: none !important;
+}
+
+#dropdownMenuButton {
+    background: #001f3f;
+    border: none;
+}
+
+.home-wrapper-index {
+    background: url("../resources/images/businessIdeas.jpg") center center no-repeat fixed;
+    background-size: cover;
+    height: 700px;
+    width: 100%;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.signup-page-background {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../resources/images/businessIdeas.jpg") center center no-repeat fixed;
+    height: 700px;
+    border-top: 0;
+    overflow: hidden;
+}
+
+.home-wrapper-catalog {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../resources/images/businessCatalog1.jpg");
+    background-size: cover;
+    height: 270px;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+.detail-text {
+    color: white;
+}
+
+.cat-form a {
+    overflow: hidden !important;
+}
+
+.home-wrapper-profile {
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../images/irokotv2.jpg");
+    background-size: cover;
+    height: 500px;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+.jumbotron-cover {
+    background: rgba(98, 116, 124, 0.5);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+#loginForm {
+    opacity: 0.7;
+    background: #001f3f !important;
+    margin: 70px 10px 40px 10px;
+    padding: 50px 10px 40px 10px;
+    height: 450px;
+}
+
+#signupForm {
+    background: #001f3f !important;
+    margin: 70px 10px 40px 10px;
+    padding: 50px 10px 40px 10px;
+    height: 450px;
+    width: 400px;
+    text-align: center;
+}
+
+#signup-lastName,
+#signup-firstName,
+#signup-email,
+#signup-password {
+    background-color: #001f3f;
+    color: white;
+    border: 1px solid;
+    line-height: 2.5;
+    font-family: "Museo Slab", sans-serif;
+    font-weight: 100;
+    font-size: 14px;
+    background: transparent;
+    -webkit-text-fill-color: white;
+}
+
+#loginForm,
+#email,
+#password {
+    line-height: 2.5;
+    font-family: "Museo Slab", sans-serif;
+    font-weight: 100;
+    font-size: 14px;
+}
+
+#catalogForm {
+    background: #001f3f;
+    margin: 20px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.card-space {
+    background: #001f3f;
+    margin: 20px;
+    padding: 10px;
+    min-height: 570px;
+}
+
+.btn-decor {
+    background-color: #145291;
+    color: white;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.searchbar-decors {
+    background-color: #145291;
+    color: white;
+    cursor: pointer;
+}
+
+.image {
+    width: 537.5px;
+    height: 60% !important;
+}
+
+.row {
+    margin: 0;
+}
+
+.form-signup {
+    opacity: 0.7;
+    min-width: 40px !important;
+    max-width: 500px;
+    padding: 60px 50px 90px 50px;
+    margin: 30px auto;
+    background: #001f3f;
+    border-radius: 5px;
+}
+
+.form-signup input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border: 1px solid #001f3f;
+}
+
+.form-signup button {
+    background: #0275d8;
+    border: 1px solid #001f3f;
+    color: white;
+}
+
+.form-signup button:hover {
+    background: #3e5f80;
+    border: none;
+    color: white;
+}
+
+.form-spacing {
+    margin-bottom: 10px;
+}
+
+.btn1-spacing {
+    margin-bottom: 10px;
+}
+
+.form-signin-heading {
+    margin-bottom: 5px;
+}
+
+.form-index {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-left: -1rem;
+}
+
+.form-actions {
+    margin: 0;
+    background-color: transparent;
+    text-align: center;
+}
+
+.form-actions2 {
+    margin: 30px;
+    background-color: transparent;
+    text-align: center;
+}
+
+.form-action {
+    margin: 10px;
+    background-color: transparent;
+    text-align: center;
+}
+
+.form-signup-heading {
+    margin-bottom: 60px;
+}
+
+#profile-image {
+    height: 100%;
+    width: 100%;
+    margin-top: 50px;
+}
+
+#reviews-image {
+    width: 110px;
+    height: 100px;
+}
+
+.form1 {
+    color: #f0eff3;
+}
+
+.font-a {
+    color: #03a9f4;
+}
+
+.font-b {
+    color: white;
+}
+
+#facebook {
+    color: #1976d2;
+    font: 34px;
+}
+
+#twitter {
+    color: #03a9f4;
+    font: 34px;
+}
+
+#linkedin {
+    color: #03a9f4;
+    font: 34px;
+}
+
+.navbar-toggler-icon {
+    color: white !important;
+}
+
+#h1 display {
+    text-align: center;
+    font-family: "Museo Slab", sans-serif;
+}
+
+.display-3 {
+    color: white;
+    font-family: "Museo Slab", sans-serif;
+}
+
+.spacing {
+    padding-top: 20px;
+}
+
+.blue-button {
+    background-color: #03a9f4;
+}
+
+#updated-text {
+    color: #fff;
+}
+
+@media (max-width: 575px) {
+    .display-3 {
+        font-size: 30px;
+    }
+}
+
+.img-zoom {
+    position: relative;
+    overflow: hidden;
+}
+
+.img-zoom:hover img {
+    cursor: pointer;
+    transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+}
+
+.img-zoom img {
+    transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+.pagination-card {
+    width: 200px;
+    padding: 15px;
+    margin-bottom: 35px;
+    z-index: 1;
+    color: #001f3f;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #001f3f;
+    z-index: 2;
+    color: white;
+}
+
+.auth {
+    clear: both;
+}
+
+#description {
+    margin-left: 12px;
+}
+
+.res {
+    margin-top: 3px;
+}
+
+.edit-spacing {
+    margin-bottom: 100px;
+}
+
+#cancel-reg,
+#btn-delete {
+    margin-left: 30px;
+}
