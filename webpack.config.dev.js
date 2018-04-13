@@ -11,6 +11,7 @@ module.exports = {
   output: {
     path: DIST_DIR,
     filename: 'bundle.js',
+    publicPath: '/'
   },
   devServer: {
     contentBase: SRC_DIR
@@ -48,7 +49,12 @@ module.exports = {
                 'scss-loader'
         }
         ]
-      }
+      },
+      {
+        test: /\.svg|.png|.jpg$/,
+        loader: 'url-loader',
+        exclude: /node_modules/
+      },
     ]
   },
 };
