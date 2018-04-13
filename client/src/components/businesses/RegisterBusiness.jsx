@@ -26,13 +26,13 @@ const RegisterBusiness = () => {
                             <div className="form-group form-spacing">
                                 <label className="col-sm-3 control-label"><strong>Business Name:</strong></label>
                                 <div className="col-sm-8">
-                                    <input className="form-control" type="text" value="" placeholder="company or firm" />
+                                    <input className="form-control" type="text"   placeholder="company or firm" />
                                 </div>
                             </div>
                             <div className="form-group form-spacing">
                                 <label className="col-sm-3 control-label"><strong>Business category:</strong></label>
                                 <div className="col-sm-8">
-                                    <input className="form-control" type="text" value="" placeholder="type of business" />
+                                    <input className="form-control" type="text"  placeholder="type of business" />
                                 </div>
                             </div>
                             <div className="form-group form-spacing">
@@ -47,26 +47,28 @@ const RegisterBusiness = () => {
                             <div className="form-group form-spacing">
                                 <label className="col-sm-3 control-label"><strong>Business location:</strong></label>
                                 <div className="col-sm-8">
-                                    <input className="form-control" type="text" value="" placeholder="location" />
+                                    <input className="form-control" type="text"  placeholder="location" />
                                 </div>
                             </div>
                             <div className="form-group form-spacing">
                                 <label className="col-md-3 control-label"><strong>Email:</strong></label>
                                 <div className="col-sm-8">
-                                    <input className="form-control" type="text" value="" placeholder="@email.com" />
+                                    <input className="form-control" type="text"   placeholder="@email.com" />
                                 </div>
                             </div>
                             <div className="form-group btn1-spacing">
                                 <label className="col-md-3 control-label"><strong>Add social network:</strong></label>
                                 <div className="col-md-8">
-                                    <input className="form-control" type="text" value="" placeholder="@social" />
+                                    <input className="form-control" type="text"  placeholder="@social" />
                                 </div>
                             </div>
                             <div className="form-group btn1-spacing">
                                 <label className="col-md-3 control-label"></label>
                                 <div className="col-md-8 edit-spacing">
+                                   <div ClassName="btn-toolbar ">
                                     <a className="btn btn-primary" href="businessProfile.html" role="button"> save changes</a>
                                     <input type="reset" className="btn btn-danger" value="Cancel" id= "cancel-reg" href="businessProfile.html" />
+                               </div>
                                 </div>
                             </div>
                         </form>
