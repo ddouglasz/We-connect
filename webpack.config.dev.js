@@ -7,6 +7,7 @@ const SRC_DIR = path.resolve(__dirname, 'client/src');
 
 
 module.exports = {
+  mode: 'development',
   entry: './client/src/index.jsx',
   output: {
     path: DIST_DIR,
@@ -17,7 +18,7 @@ module.exports = {
     contentBase: SRC_DIR
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
   ],
   resolve: {
     extensions: ['*', '.js', '.jsx']
@@ -35,21 +36,16 @@ module.exports = {
 
       },
       {
-        test: /\.s?css/,
-        use: [{
-          loader: 'style-loader'
-        },
-        {
-          loader: 'css-loader'
-        },
-        {
-          loader: 'sass-loader'
-        }
-        ]
+        test: /\.css$/,
+        use: [{ loader: 'style-loader' }, { loader: 'scss-loader' }, { loader: 'sass-loader' }]
       },
       {
-        test: /\.svg|.png|.jpg$/,
-        loader: 'url-loader',
+        test: /\.scss$/,
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }, { loader: 'sass-loader' }]
+      },
+      {
+        test: /\.png|jpg$/,
+        use: [{ loader: 'url-loader' }],
         exclude: /node_modules/
       },
     ]

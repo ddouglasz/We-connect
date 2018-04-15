@@ -13,7 +13,7 @@ const SignUp = () => {
             </div>
           </div>
         </div>
-<div class="signup-input-style">
+<div className="signup-input-style">
         <div className="row">
           <div className="col-md-12">
             <div className="form-group form-spacing">
@@ -52,7 +52,7 @@ const SignUp = () => {
               </div>
             </div>
           </div>
-
+            
           <div className="col-md-12">
             <div className="form-group  form-spacing">
               <div className="input-group mb-2 mr-sm-2 mb-sm-0">

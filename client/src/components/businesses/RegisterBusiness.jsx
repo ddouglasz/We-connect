@@ -3,8 +3,6 @@ import {link} from 'react-router-dom';
 
 const RegisterBusiness = () => {
     return(
-
-
         <div className="container">
                 <div className="form-actions2">
                     <h1>Edit or Add a new Business</h1>
@@ -13,7 +11,7 @@ const RegisterBusiness = () => {
                 <div className="row">
                     <div className="col-md-3">
                         <div className="text-center">
-                            <img src="resources/images/irokotv.jpg" className="img-rounded" id="profile-image" alt="chefchef" />
+                            <img src={require('../../public/images/irokotv.jpg')} className="img-rounded" id="profile-image" alt="chefchef" width="250" />
                             <h6>Upload a different photo...</h6>
                             <input type="file" className="form-control btn-primary" />
                         </div>
@@ -65,7 +63,7 @@ const RegisterBusiness = () => {
                             <div className="form-group btn1-spacing">
                                 <label className="col-md-3 control-label"></label>
                                 <div className="col-md-8 edit-spacing">
-                                   <div ClassName="btn-toolbar ">
+                                   <div className="btn-toolbar ">
                                     <a className="btn btn-primary" href="businessProfile.html" role="button"> save changes</a>
                                     <input type="reset" className="btn btn-danger" value="Cancel" id= "cancel-reg" href="businessProfile.html" />
                                </div>

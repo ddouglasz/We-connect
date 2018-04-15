@@ -1,9 +1,8 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './components/App';
-// import './resources/main.scss';
+import styles from '../src/public/styles/main.scss'
 
 ReactDOM.render(
   <div>
@@ -11,6 +10,5 @@ ReactDOM.render(
       <App />
     </BrowserRouter>
   </div>,
-  document.getElementById("app")
+  document.getElementById('app')
 );
-

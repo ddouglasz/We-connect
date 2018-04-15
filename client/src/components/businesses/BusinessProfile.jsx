@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import images from '../../public/images/irokotv.jpg'
 
 const BusinessProfile = () => {
     return (
@@ -10,15 +11,15 @@ const BusinessProfile = () => {
             <br />
             <div className="text-center">
               <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
-                <div className="carousel-inner" role="listbox">
+                <div className="carousel-inner profile-images" role="listbox">
                   <div className="carousel-item active">
-                    <img className="d-block img-fluid" src="resources/images/irokoko2.jpg" alt="First slide" id="profile-image" />
+                    <img className="d-block img-fluid" src={require('../../public/images/irokotv2.jpg')} alt="First slide" id="profile-image1" />
                   </div>
                   <div className="carousel-item">
-                    <img className="d-block img-fluid" src="resources/images/iroko960.jpg" alt="Second slide" id="profile-image" />
+                    <img className="d-block img-fluid" src={require('../../public/images/iroko960.jpg')} alt="Second slide" id="profile-image2" />
                   </div>
                   <div className="carousel-item">
-                    <img className="d-block img-fluid" src="resources/images/irokotv1.jpg" alt="Third slide" id="profile-image" />
+                    <img className="d-block img-fluid" src={require('../../public/images/irokotv1.jpg')} alt="Third slide" id="profile-image3" />
                   </div>
                 </div>
                 <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -99,7 +100,7 @@ const BusinessProfile = () => {
               <div className="form-group form-spacing">
                 <label className="col-sm-3 control-label" />
                 <div className="col-sm-8">
-                  <a className="btn btn-primary blue-button" href="manageBusiness.html" role="button">
+                  <a className="btn btn-primary" href="manageBusiness.html" role="button">
                     Edit Business
                   </a>
                   <input type="reset" className="btn btn-danger" id="btn-delete" value="Delete Business" />
@@ -114,33 +115,33 @@ const BusinessProfile = () => {
               <div className="form-group form-spacing">
                 <label className="col-sm-3 control-label" />
                 <div className="col-sm-8">
-                  <a className="btn   btn-decor btn-primary blue-button" href="businessProfile.html" role="button">
+                  <a className="btn btn-primary" href="businessProfile.html" role="button">
                     Post Review
                   </a>
                 </div>
               </div>
               <br />
-              <div className="form-reviews" id="description">
+              <div className="form-reviews" id="description-header">
                 <h3>Reviews</h3>
               </div>
               <div className="edit-spacing" id="chat-cards-buttom-spacing">
                 <ul className="list-unstyled">
                   <li className="media">
-                    <img className="d-flex mr-3" id="reviews-image" src="resources/images/bean.jpg" alt="Generic placeholder image" />
+                    <img className="d-flex mr-3" id="reviews-image" src={require('../../public/images/bean.jpg')} alt="Generic placeholder image" />
                     <div className="media-body">
                       <h5 className="mt-0 mb-1">List-based media object</h5>
                       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
                     </div>
                   </li>
                   <li className="media my-4">
-                    <img className="d-flex mr-3" id="reviews-image" src="resources/images/profileGlyph.jpg" alt="Generic placeholder image" />
+                    <img className="d-flex mr-3" id="reviews-image" src={require('../../public/images/profileGlyph.jpg')} alt="Generic placeholder image" />
                     <div className="media-body">
                       <h5 className="mt-0 mb-1">List-based media object</h5>
                       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
                     </div>
                   </li>
                   <li className="media">
-                    <img className="d-flex mr-3" id="reviews-image" src="resources/images/beardedsmiley.jpg" alt="Generic placeholder image" />
+                    <img className="d-flex mr-3" id="reviews-image" src={require('../../public/images/beardedsmiley.jpg')} alt="Generic placeholder image" />
                     <div className="media-body">
                       <h5 className="mt-0 mb-1">List-based media object</h5>
                       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// import images from '../../public/images/index'
+// import images from '../../public/images/airbnb.jpg'
 
 const BusinessCatalog = () => (
 <div className="catalog-cover">
@@ -47,13 +49,12 @@ const BusinessCatalog = () => (
       <div className="col-md-4 col-sm-6 col-xs-12">
         <div className=" img-zoom card-space">
           <Link to="/businessProfile" className="nav-link text">
-          <img className="img img-fluid" src="resources/images/farmcrowdy.jpg" alt="Card image cap" width="537.5" />
+          <img className="img img-fluid" src={require('../../public/images/farmcrowdy.jpg')} alt="Card image cap" width="537.5" />
          </Link>
           <div className="card-block">
             <h4 className="card-title detail-text">farm crowdy</h4>
             <p className="card-text detail-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            <p className="card-text">
-              <div className="icons ">
+               <div className="icons ">
                 <a href="businessProfile.html">
                   <i className="fa fa-info-circle fa-lg fa-fw" aria-hidden="true"></i>
                   <strong>Find out more</strong>
@@ -65,7 +66,6 @@ const BusinessCatalog = () => (
                   <strong> 156 reviews</strong>
                 </a>
               </div>
-            </p>
             <small className="updated" id="updated-text">Last updated 4 mins ago</small>
           </div>
         </div>
@@ -74,12 +74,11 @@ const BusinessCatalog = () => (
       <div className="col-md-4 col-sm-6 col-xs-12">
         <div className=" img-zoom card-space">
         <Link to="/businessProfile" className="nav-link text">
-            <img className="img img-fluid" src="resources/images/irokotv.jpg" alt="Card image cap" width="537.5" />
+            <img className="img img-fluid" src={require('../../public/images/irokotv.jpg')} alt="Card image cap" width="537.5" />
           </Link>
           <div className="card-block">
             <h4 className="card-title detail-text">iroko tv</h4>
             <p className="card-text detail-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            <p className="card-text">
               <div className="icons ">
                 <a href="businessProfile.html">
                   <i className="fa fa-info-circle fa-lg fa-fw" aria-hidden="true"></i>
@@ -92,7 +91,6 @@ const BusinessCatalog = () => (
                   <strong> 156 reviews</strong>
                 </a>
               </div>
-            </p>
             <small className="updated" id="updated-text">Last updated 4 mins ago</small>
           </div>
         </div>
@@ -101,12 +99,11 @@ const BusinessCatalog = () => (
       <div className="col-md-4 col-sm-6 col-xs-12">
         <div className=" img-zoom card-space">
         <Link to="/businessProfile" className="nav-link text">
-            <img className="img img-fluid" src="resources/images/airbnb.jpg" alt="Card image cap" width="537.5" />
+            <img className="img img-fluid" src={require('../../public/images/airbnb.jpg')} alt="Card image cap" width="537.5" />
           </Link>
           <div className="card-block">
             <h4 className="card-title detail-text">airbnb</h4>
             <p className="card-text detail-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            <p className="card-text">
               <div className="icons ">
                 <a href="businessProfile.html">
                   <i className="fa fa-info-circle fa-lg fa-fw" aria-hidden="true"></i>
@@ -119,7 +116,6 @@ const BusinessCatalog = () => (
                   <strong> 156 reviews</strong>
                 </a>
               </div>
-            </p>
             <small className="updated" id="updated-text">Last updated 4 mins ago</small>
           </div>
         </div>
@@ -128,12 +124,11 @@ const BusinessCatalog = () => (
       <div className="col-md-4 col-sm-6 col-xs-12">
         <div className=" img-zoom card-space">
           <Link to="/businessProfile" className="nav-link text">
-          <img className="img img-fluid" src="resources/images/hotels.jpg" alt="Card image cap" width="537.5" /> 
+          <img className="img img-fluid" src={require('../../public/images/hotels.jpg')} alt="Card image cap" width="537.5" url="airbnb" /> 
         </Link>
           <div className="card-block">
             <h4 className="card-title detail-text">Hotels.ng</h4>
             <p className="card-text detail-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            <p className="card-text">
               <div className="icons ">
                 <a href="businessProfile.html">
                   <i className="fa fa-info-circle fa-lg fa-fw" aria-hidden="true"></i>
@@ -146,7 +141,6 @@ const BusinessCatalog = () => (
                   <strong> 156 reviews</strong>
                 </a>
               </div>
-            </p>
             <small className="updated" id="updated-text">Last updated 4 mins ago</small>
           </div>
         </div>
@@ -155,12 +149,11 @@ const BusinessCatalog = () => (
       <div className="col-md-4 col-sm-6 col-xs-12">
         <div className=" img-zoom card-space">
         <Link to="/businessProfile" className="nav-link text">
-            <img className="img img-fluid" src="resources/images/Andeladevs.jpg" alt="Card image cap" width="537.5" />
+            <img className="img img-fluid" src={require('../../public/images/Andeladevs.jpg')} alt="Card image cap" width="537.5" />
           </Link>
           <div className="card-block">
             <h4 className="card-title detail-text">Andela</h4>
             <p className="card-text detail-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            <p className="card-text">
               <div className="icons ">
                 <a href="businessProfile.html">
                   <i className="fa fa-info-circle fa-lg fa-fw" aria-hidden="true"></i>
@@ -173,7 +166,6 @@ const BusinessCatalog = () => (
                   <strong> 156 reviews</strong>
                 </a>
               </div>
-            </p>
             <small className="updated" id="updated-text">Last updated 4 mins ago</small>
           </div>
         </div>
@@ -182,12 +174,11 @@ const BusinessCatalog = () => (
       <div className="col-md-4 col-sm-6 col-xs-12">
         <div className=" img-zoom card-space">
           <a className="cat-form" href="businessProfile.html">
-            <img className="img img-fluid" src="resources/images/printivomug.jpg" alt="Card image cap" width="537.5" />
+            <img className="img img-fluid" src={require('../../public/images/printivomug.jpg')} alt="Card image cap" width="537.5" />
           </a>
           <div className="card-block">
             <h4 className="card-title detail-text">Printivo</h4>
             <p className="card-text detail-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            <p className="card-text">
               <div className="icons ">
                 <a href="businessProfile.html">
                   <i className="fa fa-info-circle fa-lg fa-fw" aria-hidden="true"></i>
@@ -200,7 +191,6 @@ const BusinessCatalog = () => (
                   <strong> 156 reviews</strong>
                 </a>
               </div>
-            </p>
             <small className="updated" id="updated-text">Last updated 4 mins ago</small>
           </div>
         </div>
@@ -211,7 +201,7 @@ const BusinessCatalog = () => (
         <nav aria-label="pages">
           <ul className="pagination">
             <li className="page-item disabled">
-              <a className="page-link" href="#" tabindex="-1">Previous</a>
+              <a className="page-link" href="#" tabIndex="-1">Previous</a>
             </li>
             <li className="page-item">
               <a className="page-link" href="#">1</a>

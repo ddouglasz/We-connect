@@ -9,6 +9,8 @@ import RegisterBusiness from './components/businesses/RegisterBusiness';
 import UserProfile from './components/user/UserProfile';
 import NotFound from './components/404Page';
 import Footer from './components/home/Footer';
+import styles from '../src/public/styles/main.scss'
+
 
 const Routes = () => (
   <Switch>

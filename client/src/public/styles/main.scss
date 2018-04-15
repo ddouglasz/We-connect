@@ -105,9 +105,9 @@ input[type="btn"]:hover {
 }
 
 .home-wrapper-index {
-    background: url("../resources/images/businessIdeas.jpg") center center no-repeat fixed;
+    background: url("../images/businessIdeas.jpg") center center no-repeat fixed;
     background-size: cover;
-    height: 700px;
+    height: 800px;
     width: 100%;
     color: white;
     text-align: center;
@@ -115,14 +115,14 @@ input[type="btn"]:hover {
 }
 
 .signup-page-background {
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../resources/images/businessIdeas.jpg") center center no-repeat fixed;
-    height: 700px;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../images/businessIdeas.jpg") center center no-repeat fixed;
+    height: 710px;
     border-top: 0;
     overflow: hidden;
 }
 
 .home-wrapper-catalog {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../resources/images/businessCatalog1.jpg");
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../images/businessCatalog1.jpg");
     background-size: cover;
     height: 270px;
     width: 100%;
@@ -139,7 +139,7 @@ input[type="btn"]:hover {
 }
 
 .home-wrapper-profile {
-    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../resources/images/irokoko2.jpg");
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../images/irokotv2.jpg");
     background-size: cover;
     height: 500px;
     width: 100%;
@@ -160,7 +160,7 @@ input[type="btn"]:hover {
     background: #001f3f !important;
     margin: 70px 10px 40px 10px;
     padding: 50px 10px 40px 10px;
-    height: 450px;
+    height: 480px;
 }
 
 #signupForm {
@@ -301,7 +301,7 @@ input[type="btn"]:hover {
     margin-bottom: 60px;
 }
 
-#profile-image {
+.profile-images img{
     height: 100%;
     width: 100%;
     margin-top: 50px;
@@ -412,8 +412,14 @@ input[type="btn"]:hover {
     clear: both;
 }
 
-#description {
-    margin-left: 12px;
+#description,
+#description-header {
+    margin-left: 0px;
+ }
+
+#exampleTextarea{
+    line-height: 3.0;
+    width: 100%;
 }
 
 .res {
