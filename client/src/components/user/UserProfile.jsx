@@ -12,7 +12,7 @@ const UserProfile = () => {
         <div className="row">
           <div className="col-md-2">
             <div className="text-center">
-              <img src="resources/images/profileGlyph.jpg" className="img-rounded" id="profile-image" alt="chefchef" />
+              <img src={require('../../public/images/profileGlyph.jpg')} className="img-rounded" id="profile-image" alt="chefchef" />
               <h6>Upload a different photo...</h6>
               <input type="file" className="form-control btn-primary" />
             </div>
@@ -31,10 +31,11 @@ const UserProfile = () => {
             <form className="form-horizontal" role="form">
               <div className="body-cover">
                 <div className="row">
+                
                   <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div className=" img-zoom card-space">
                       <a className="cat-form" href="businessProfile.html">
-                        <img className="img img-fluid" src="resources/images/farmcrowdy.jpg" alt="Card image cap" width="537.5" />
+                        <img className="img img-fluid" src={require('../../public/images/farmcrowdy.jpg')} alt="Card image cap" width="537.5" />
                       </a>
                       <div className="card-block">
                         <h4 className="card-title detail-text">
@@ -56,7 +57,7 @@ const UserProfile = () => {
                               <strong> 156 reviews</strong>
                             </a>
                           </div>
-]                        <small className="updated" id="updated-text">
+                        <small className="updated" id="updated-text">
                           Last updated 4 mins ago
                         </small>
                       </div>
@@ -66,7 +67,7 @@ const UserProfile = () => {
                   <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div className=" img-zoom card-space">
                       <a className="cat-form" href="businessProfile.html">
-                        <img className="img img-fluid" src="resources/images/irokotv.jpg" alt="Card image cap" width="537.5" />
+                        <img className="img img-fluid" src={require('../../public/images/irokotv.jpg')} alt="Card image cap" width="537.5" />
                       </a>
                       <div className="card-block">
                         <h4 className="card-title detail-text">iroko tv</h4>
@@ -96,7 +97,7 @@ const UserProfile = () => {
                   <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div className=" img-zoom card-space">
                       <a className="cat-form" href="businessProfile.html">
-                        <img className="img img-fluid" src="resources/images/airbnb.jpg" alt="Card image cap" width="537.5" />
+                        <img className="img img-fluid" src={require('../../public/images/airbnb.jpg')} alt="Card image cap" width="537.5" />
                       </a>
                       <div className="card-block">
                         <h4 className="card-title detail-text">airbnb</h4>
@@ -126,7 +127,7 @@ const UserProfile = () => {
                   <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div className=" img-zoom card-space">
                       <a className="cat-form" href="businessProfile.html">
-                        <img className="img img-fluid" src="resources/images/hotels.jpg" alt="Card image cap" width="537.5" />
+                        <img className="img img-fluid" src={require('../../public/images/hotels.jpg')} alt="Card image cap" width="537.5" />
                       </a>
                       <div className="card-block">
                         <h4 className="card-title detail-text">hotels.ng</h4>
@@ -153,66 +154,7 @@ const UserProfile = () => {
                     </div>
                   </div>
 
-                  <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div className=" img-zoom card-space">
-                      <a className="cat-form" href="businessProfile.html">
-                        <img className="img img-fluid" src="resources/images/Andeladevs.jpg" alt="Card image cap" width="537.5" />
-                      </a>
-                      <div className="card-block">
-                        <h4 className="card-title detail-text">Andela</h4>
-                        <p className="card-text detail-text">
-                          This card has supporting text below as a natural
-                          lead-in to additional content.
-                        </p>
-                          <div className="icons ">
-                            <a href="businessProfile.html">
-                              <i className="fa fa-info-circle fa-lg fa-fw" aria-hidden="true" />
-                              <strong>find out more</strong>
-                            </a>
-                          </div>
-                          <div className="icons ">
-                            <a href="businessCatalog.html">
-                              <i className="fa fa-commenting-o" aria-hidden="true" />
-                              <strong> 156 reviews</strong>
-                            </a>
-                          </div>
-                        <small className="updated" id="updated-text">
-                          Last updated 4 mins ago
-                        </small>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div className=" img-zoom card-space">
-                      <a className="cat-form" href="businessProfile.html">
-                        <img className="img img-fluid" src="resources/images/printivomug.jpg" alt="Card image cap" width="537.5" />
-                      </a>
-                      <div className="card-block">
-                        <h4 className="card-title detail-text">printivo</h4>
-                        <p className="card-text detail-text">
-                          This card has supporting text below as a natural
-                          lead-in to additional content.
-                        </p>
-                          <div className="icons ">
-                            <a href="businessProfile.html">
-                              <i className="fa fa-info-circle fa-lg fa-fw" aria-hidden="true" />
-                              <strong>find out more</strong>
-                            </a>
-                          </div>
-                          <div className="icons  ">
-                            <a href="businessCatalog.html">
-                              <i className="fa fa-commenting-o" aria-hidden="true" />
-                              <strong> 156 reviews</strong>
-                            </a>
-                          </div>
-                        <small className="updated" id="updated-text">
-                          Last updated 4 mins ago
-                        </small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                 </div>
               </div>
             </form>
             <div className="pagination-card btn1-spacing">
