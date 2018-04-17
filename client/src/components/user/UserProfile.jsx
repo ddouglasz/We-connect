@@ -31,7 +31,7 @@ const UserProfile = () => {
             <form className="form-horizontal" role="form">
               <div className="body-cover">
                 <div className="row">
-                
+
                   <div className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div className=" img-zoom card-space">
                       <a className="cat-form" href="businessProfile.html">
