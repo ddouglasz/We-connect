@@ -21,8 +21,8 @@ class Users {
       where: {
         email: req.body.email
       }
-    }).then((user) => {
-      if (user) {
+    }).then((useremail) => {
+      if (useremail) {
         return res.status(409).send({
           message: 'Email Already Exists',
         });
@@ -32,10 +32,23 @@ class Users {
         lastName: req.body.lastName,
         email: req.body.email,
         hashPassword: bcrypt.hashSync(req.body.password, 10)
-      })
-        .then(res.status(201).send({
+      }).then((user) => {
+        const accessToken = jwt.sign(
+          {
+            userId: user.id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email
+          },
+          process.env.secretKey,
+          { expiresIn: 60 * 60 },
+        );
+        return (res.status(201).send({
           message: 'Registration Successful',
-        }))
+          token: accessToken,
+        }));
+      })
+
         .catch(error => res.status(400).send(error));
     });
   }
