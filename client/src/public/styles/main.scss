@@ -434,3 +434,7 @@ input[type="btn"]:hover {
 #btn-delete {
     margin-left: 30px;
 }
+.btn-success:disabled {
+     background-color: #0a0e0a;
+    border-color: #aa1616;
+}

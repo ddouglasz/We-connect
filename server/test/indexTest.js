@@ -2,7 +2,7 @@ import chaiHttp from 'chai-http';
 import chai from 'chai';
 import app from '../../app';
 
-const { expect, assert, should } = chai;
+const { expect, should } = chai;
 should();
 
 chai.use(chaiHttp);
@@ -15,10 +15,6 @@ describe('TEST for app.js', () => {
         .end((err, res) => {
           res.should.have.status(200);
           expect(res.body).to.be.a('object');
-          assert.equal(
-            res.body.message,
-            'We-connect you on port 8003'
-          );
           done();
         });
     });

@@ -107,7 +107,7 @@ const BusinessProfile = () => {
                 </div>
               </div>
               <div className="form-group form-spacing row">
-                <label for="smFormGroupInput" className="col-sm-12 col-form-label col-form-label-sm" />
+                <label htmlFor="smFormGroupInput" className="col-sm-12 col-form-label col-form-label-sm" />
                 <div className="col-sm-8" id="description">
                   <textarea className="form-control" id="exampleTextarea" rows="3" placeholder="add a review" />
                 </div>
