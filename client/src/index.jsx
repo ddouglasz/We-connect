@@ -14,11 +14,11 @@ const store = createStore(
 
 ReactDOM.render(
   <div>
-    <Provider store={store}>
-      <BrowserRouter>
+    <BrowserRouter>
+      <Provider store={store}>
         <App />
-      </BrowserRouter>
-    </Provider>
+      </Provider>
+    </BrowserRouter>
   </div>,
   document.getElementById('app')
 );
