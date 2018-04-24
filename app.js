@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import logger from 'morgan';
 import path from 'path';
-import routes from './server/routes/routes';
+import routes from './server/routes/router';
 import config from './webpack.config.dev';
 
 const app = express();

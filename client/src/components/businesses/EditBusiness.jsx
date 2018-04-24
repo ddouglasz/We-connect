@@ -36,7 +36,7 @@ const EditBusiness = () => {
                             <div className="form-group form-spacing">
                                 <label className="col-sm-3 control-label" ><strong>Business description:</strong></label>
                                 <div className="form-group form-spacing row">
-                                        <label for="smFormGroupInput" className="col-sm-12 col-form-label col-form-label-sm"></label>
+                                        <label htmlFor="smFormGroupInput" className="col-sm-12 col-form-label col-form-label-sm"></label>
                                         <div className="col-sm-8" id="description">
                                           <textarea className="form-control" id="exampleTextarea" rows="4" placeholder="add brief summary of business content here..."></textarea>
                                         </div>

@@ -2,8 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types'; 
 import { Link } from 'react-router-dom';
 import { signupAction } from "../../actions/signupActions";
-// import InputField from '../common/InputField';
-// import SignUp from     './SignUp';
+import classnames from 'classnames';
 
 class SignUpForm extends React.Component {
   constructor(props){
@@ -12,16 +11,15 @@ class SignUpForm extends React.Component {
       firstName: '',
       lastName: '',
       email: '',
-      password: ''
+      password: '',
+      errors: [],
+      isLoading: false
     }
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-  }
-   // handleChange(event) {
-  //   const entries = this.state.data;
-  //   entries[event.target.id] = event.target.value;
-  //   this.setState({ data: entries });
-  // }
+  };
+  
+
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -29,27 +27,23 @@ class SignUpForm extends React.Component {
 
 onSubmit(e) {
 e.preventDefault();
-this.props.signupAction(this.state);
+this.setState({ errors : [] , isLoading: true });
+  this.props.signupAction(this.state).then(
+    () => {
+      // this.props.addFlashMessage({
+      //          type: 'sucess',
+      //          text: 'You have successfully signup, welcome'
+      //      })
+      this.context.router.history.push('/businessCatalog');
+    },
+    ({ response }) => this.setState({ errors: response.data.message, isLoading: false })
+  );
 }
 
+
   render() {
-
-
-    //   const propTypes = {
-    //   onChange: PropTypes.func,
-    //   onClickSave: PropTypes.func,
-    //   firstName: PropTypes.string,
-    //   lastName: PropTypes.string,
-    //   email: PropTypes.string,
-    //   password: PropTypes.string,
-    // }
-
-
-    // function SignUpForm ({
-    //   firstName, onChange, lastName, email, password, onClickSave
-    // } ) {
+    const { errors } = this.state;
     return (
-      // <form onSubmit={this.onSubmit}>
       <div className="gen background" onSubmit={this.onSubmit}>
         <div className="signup-page-background">
           <form className="form-signup form-spacing" >
@@ -63,6 +57,8 @@ this.props.signupAction(this.state);
             <div className="signup-input-style">
               <div className="row">
                 <div className="col-md-12">
+                {errors && <span className="help-block text-danger">{errors}</span>  }
+
                   <div className="form-group form-spacing">
                     <div className="input-group mb-2 mr-sm-2 mb-sm-0">
                       <div className="input-group-addon" style={{ width: 2.6 + 'rem' }} >
@@ -76,10 +72,11 @@ this.props.signupAction(this.state);
                         placeholder="First Name"
                         value={this.state.firstName}
                         onChange={this.onChange}
-                        dataerror="First Name is required"
+                        required
+                        autoFocus
                       />
+                     </div>
                     </div>
-                  </div>
                 </div>
                 <div className="col-md-12">
                   <div className="form-group form-spacing">
@@ -116,7 +113,7 @@ this.props.signupAction(this.state);
                         placeholder="E-Mail Address"
                         value={this.state.email}
                         onChange={this.onChange}
-                        // required
+                        required
                         autoFocus
                       />
                     </div>
@@ -139,20 +136,19 @@ this.props.signupAction(this.state);
                         placeholder="Password*"
                         value={this.state.password}
                         onChange={this.onChange}
-                        // required
+                        required
                       />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <button type="submit" className="btn  btn-decor btn-success btn-block" >
+            <button disabled={this.state.isLoading} className="btn  btn-decor btn-success btn-block" >
               <i className="fa font-b fa-user-plus" />
             </button>
           </form>
         </div>
       </div>
-      // </form>
 
     );
   }
@@ -160,5 +156,9 @@ this.props.signupAction(this.state);
 SignUpForm.propTypes = {
   signupAction: PropTypes.func.isRequired
 }
+SignUpForm.contextTypes = {
+  router: PropTypes.object.isRequired
+}
+
 
 export default SignUpForm;
