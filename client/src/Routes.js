@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router';
 import NavBar from './components/home/NavBar';
 import HomePage from './components/home/HomePage';
 import SignUp from './components/account/SignUp';
+import Login from './components/account/Login';
 import BusinessCatalog from './components/businesses/BusinessCatalog';
 import BusinessProfile from './components/businesses/BusinessProfile';
 import RegisterBusiness from './components/businesses/RegisterBusiness';
@@ -15,7 +16,7 @@ import styles from '../src/public/styles/main.scss'
 const Routes = () => (
   <Switch>
     <Route path="/" exact component={HomePage} />
-    <Route path="/Login" exact component={HomePage} />
+    <Route path="/Login" exact component={Login} />
     <Route path="/Signup" exact component={SignUp} />
     <Route path="/businessCatalog"  exact component={BusinessCatalog} />
     <Route path="/businessProfile"  exact component={BusinessProfile} />

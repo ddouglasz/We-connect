@@ -3,23 +3,23 @@ import { PropTypes } from 'prop-types';
 import toastr from 'toastr';
 import SignUpForm from './SIgnUpForm';
 import { connect } from 'react-redux';
-import { signupAction } from '../../actions/signupActions';
+import { SignUpAction } from '../../actions/SignUpAction';
 
 /**
  * Class component for signing up page
 */
 class SignUp extends React.Component {
   render() {
-    const { signupAction } = this.props;
+    const { SignUpAction } = this.props;
     return (
-      <SignUpForm signupAction={signupAction} />
+      <SignUpForm SignUpAction={SignUpAction} />
     );
   }
 }
 
 SignUp.propTypes = {
-  signupAction: PropTypes.func.isRequired
+  SignUpAction: PropTypes.func.isRequired
 }
 
-export default connect((state) => { return {} }, { signupAction })(SignUp);
+export default connect((state) =>  null, { SignUpAction })(SignUp);
 

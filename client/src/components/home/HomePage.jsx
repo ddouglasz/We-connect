@@ -1,9 +1,43 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { LoginAction } from "../../actions/LoginAction";
+import { PropTypes } from 'prop-types';
+import classnames from 'classnames';
 
-const HomePage = () => {
+// const HomePage = () => {
+class HomePage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+      errors: [],
+      isLoading: false
+    }
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  };
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    this.setState({ errors: [], isLoading: true });
+    this.props.LoginAction(this.state).then(
+      () => {
+        this.context.router.history.push('/UserProfile')
+      },
+      ({ response }) => this.setState({ errors: response.data.message, isLoading: false })
+    )
+  }
+
+
+  render() {
+    const { errors } = this.state;
     return (
-<div className="jumbotron jumbotron-fluid  home-wrapper-index">
+      <div className="jumbotron jumbotron-fluid  home-wrapper-index" onSubmit={this.onSubmit}>
         <div className="jumbotron-cover">
           <div className="row">
             <div className="col-md-5">
@@ -22,7 +56,7 @@ const HomePage = () => {
                   </h4>
                   <a>To network with other businesses, sign in here </a>
 
-                  <form className="form-signin">
+                  <form className="form-signin" >
                     <div className="row" />
                     <div className="row">
                       <div className="col-md-12">
@@ -31,7 +65,17 @@ const HomePage = () => {
                             <div className="input-group-addon" style={{ width: 2.6 + "rem" }}>
                               <i className="fa  font-a fa-at" />
                             </div>
-                            <input type="text" name="email" className="form-control" id="email" placeholder="E-Mail Address*" required autoFocus />
+                            <input
+                              type="text"
+                              name="email"
+                              className="form-control"
+                              id="email"
+                              placeholder="E-Mail Address*"
+                              value={this.state.email}
+                              onChange={this.onChange}
+                              required
+                              autoFocus
+                            />
                           </div>
                         </div>
                       </div>
@@ -44,12 +88,23 @@ const HomePage = () => {
                             <div className="input-group-addon" style={{ width: 2.6 + "rem" }}>
                               <i className="fa font-a  fa-key" />
                             </div>
-                            <input type="password" name="password" className="form-control text-white" id="password" placeholder="Password*" required />
+                            <input
+                              type="password"
+                              name="password"
+                              className="form-control text-white"
+                              id="password"
+                              placeholder="Password*"
+                              value={this.state.password}
+                              onChange={this.onChange}
+                              required
+                              autoFocus
+                            />
                           </div>
                         </div>
+                      {errors && <span className="help-block text-danger">{errors}</span>}                        
                       </div>
                     </div>
-                    <button className="btn btn-lg btn-primary   btn-decor btn-block" type="submit">
+                    <button disabled={this.state.isLoading} className="btn btn-lg btn-primary   btn-decor btn-block" >
                       Sign in
                     </button>
                   </form>
@@ -67,6 +122,13 @@ const HomePage = () => {
         </div>
       </div>
     );
+  }
+}
+HomePage.propTypes ={
+  LoginAction: PropTypes.func.isRequired
+}
+HomePage.contextTypes = {
+  router: PropTypes.object.isRequired
 }
 
 export default HomePage;

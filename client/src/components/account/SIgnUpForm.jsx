@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types'; 
 import { Link } from 'react-router-dom';
-import { signupAction } from "../../actions/signupActions";
+import { SignUpAction } from "../../actions/SignUpAction";
 import classnames from 'classnames';
 
 class SignUpForm extends React.Component {
@@ -28,13 +28,13 @@ class SignUpForm extends React.Component {
 onSubmit(e) {
 e.preventDefault();
 this.setState({ errors : [] , isLoading: true });
-  this.props.signupAction(this.state).then(
+  this.props.SignUpAction(this.state).then(
     () => {
       // this.props.addFlashMessage({
       //          type: 'sucess',
       //          text: 'You have successfully signup, welcome'
       //      })
-      this.context.router.history.push('/businessCatalog');
+      this.context.router.history.push('/UserProfile');
     },
     ({ response }) => this.setState({ errors: response.data.message, isLoading: false })
   );
@@ -57,9 +57,7 @@ this.setState({ errors : [] , isLoading: true });
             <div className="signup-input-style">
               <div className="row">
                 <div className="col-md-12">
-                {errors && <span className="help-block text-danger">{errors}</span>  }
-
-                  <div className="form-group form-spacing">
+                   <div className="form-group form-spacing">
                     <div className="input-group mb-2 mr-sm-2 mb-sm-0">
                       <div className="input-group-addon" style={{ width: 2.6 + 'rem' }} >
                         <i className="fa font-a fa-user" />
@@ -96,7 +94,7 @@ this.setState({ errors : [] , isLoading: true });
                         autoFocus
                       />
                     </div>
-                  </div>
+                  </div>                  
                 </div>
 
                 <div className="col-md-12">
@@ -140,6 +138,7 @@ this.setState({ errors : [] , isLoading: true });
                       />
                     </div>
                   </div>
+                {errors && <span className="help-block text-danger"><div className="form-action">{errors}</div></span>  }                                  
                 </div>
               </div>
             </div>
@@ -154,7 +153,7 @@ this.setState({ errors : [] , isLoading: true });
   }
 }
 SignUpForm.propTypes = {
-  signupAction: PropTypes.func.isRequired
+  SignUpAction: PropTypes.func.isRequired
 }
 SignUpForm.contextTypes = {
   router: PropTypes.object.isRequired

@@ -10,12 +10,12 @@ export const currentUser = user => ({
 });
 
 /**
- * Sign up
+ * Login
  * @param {Object} userProfile
  * @returns {object} action to be dispatched
  */
-export const signupAction = userProfile => dispatch =>
-  axios.post('api/v1/auth/signup', userProfile)
+export const LoginAction = userProfile => dispatch =>
+  axios.post('api/v1/auth/login', userProfile)
     .then((response) => {
       const { token } = response.data;
       setAuth(token);
