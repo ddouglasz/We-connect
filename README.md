@@ -6,10 +6,12 @@ WeConnect provides a platform that brings businesses and individuals together. T
 
 ## Documentation
 Find API documentation here:
-<a href="https://ddouglasz.github.io/slate/">WE-connect documentation</a>
+<a href="https://ddouglasz.github.io/slate/">WE-connect 
+documentation</a>
 
 ## WEConnect App UI Template
-The gh-pages branch contains the template UI for the WEConnect app
+- The gh-pages branch contains the template UI for the WEConnect app
+- <a   href="https://ddouglasz.github.io/We-connect/template/index.html">click here for UI demo</a>
 
 ### App Status
 Not ready for release yet, still in development mode
