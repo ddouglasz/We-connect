@@ -30,10 +30,10 @@ e.preventDefault();
 this.setState({ errors : [] , isLoading: true });
   this.props.SignUpAction(this.state).then(
     () => {
-      // this.props.addFlashMessage({
-      //          type: 'sucess',
-      //          text: 'You have successfully signup, welcome'
-      //      })
+      this.props.addFlashMessage({
+        type: 'successs',
+        text: 'signed up successfully!'
+      })
       this.context.router.history.push('/UserProfile');
     },
     ({ response }) => this.setState({ errors: response.data.message, isLoading: false })
@@ -153,7 +153,8 @@ this.setState({ errors : [] , isLoading: true });
   }
 }
 SignUpForm.propTypes = {
-  SignUpAction: PropTypes.func.isRequired
+  SignUpAction: PropTypes.func.isRequired,
+  addFlashMessage: PropTypes.func.isRequired
 }
 SignUpForm.contextTypes = {
   router: PropTypes.object.isRequired

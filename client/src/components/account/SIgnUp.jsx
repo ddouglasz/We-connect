@@ -4,22 +4,25 @@ import toastr from 'toastr';
 import SignUpForm from './SIgnUpForm';
 import { connect } from 'react-redux';
 import { SignUpAction } from '../../actions/SignUpAction';
+import addFlashMessage from '../../actions/flashMessages';
 
 /**
  * Class component for signing up page
 */
 class SignUp extends React.Component {
   render() {
-    const { SignUpAction } = this.props;
+    const { SignUpAction, addFlashMessage } = this.props;
     return (
-      <SignUpForm SignUpAction={SignUpAction} />
+      <SignUpForm SignUpAction={SignUpAction} addFlashMessage={ addFlashMessage }/>
     );
   }
 }
 
 SignUp.propTypes = {
-  SignUpAction: PropTypes.func.isRequired
+  SignUpAction: PropTypes.func.isRequired,
+  addFlashMessage: PropTypes.func.isRequired
+  
 }
 
-export default connect((state) =>  null, { SignUpAction })(SignUp);
+export default connect((state) =>  { return {}}, { SignUpAction, addFlashMessage })(SignUp);
 
