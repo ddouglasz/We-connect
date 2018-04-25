@@ -57,7 +57,6 @@ this.setState({ errors : [] , isLoading: true });
             <div className="signup-input-style">
               <div className="row">
                 <div className="col-md-12">
-                {errors && <span className="help-block text-danger">{errors}</span>  }
                    <div className="form-group form-spacing">
                     <div className="input-group mb-2 mr-sm-2 mb-sm-0">
                       <div className="input-group-addon" style={{ width: 2.6 + 'rem' }} >
@@ -95,7 +94,7 @@ this.setState({ errors : [] , isLoading: true });
                         autoFocus
                       />
                     </div>
-                  </div>
+                  </div>                  
                 </div>
 
                 <div className="col-md-12">
@@ -139,6 +138,7 @@ this.setState({ errors : [] , isLoading: true });
                       />
                     </div>
                   </div>
+                {errors && <span className="help-block text-danger"><div className="form-action">{errors}</div></span>  }                                  
                 </div>
               </div>
             </div>

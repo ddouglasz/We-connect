@@ -82,7 +82,6 @@ class HomePage extends React.Component {
                     </div>
 
                     <div className="row">
-                      {errors && <span className="help-block text-danger">{errors}</span>}
                       <div className="col-md-12">
                         <div className="form-group  form-spacing">
                           <div className="input-group mb-2 mr-sm-2 mb-sm-0">
@@ -102,6 +101,7 @@ class HomePage extends React.Component {
                             />
                           </div>
                         </div>
+                      {errors && <span className="help-block text-danger">{errors}</span>}                        
                       </div>
                     </div>
                     <button disabled={this.state.isLoading} className="btn btn-lg btn-primary   btn-decor btn-block" >
