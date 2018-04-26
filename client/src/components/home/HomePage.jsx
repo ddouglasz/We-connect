@@ -4,7 +4,6 @@ import { LoginAction } from "../../actions/LoginAction";
 import { PropTypes } from 'prop-types';
 import classnames from 'classnames';
 
-// const HomePage = () => {
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
@@ -27,6 +26,10 @@ class HomePage extends React.Component {
     this.setState({ errors: [], isLoading: true });
     this.props.LoginAction(this.state).then(
       () => {
+        this.props.addFlashMessage({
+          type: 'success',
+          text: 'Login up successful!'
+        })
         this.context.router.history.push('/UserProfile')
       },
       ({ response }) => this.setState({ errors: response.data.message, isLoading: false })
@@ -125,7 +128,8 @@ class HomePage extends React.Component {
   }
 }
 HomePage.propTypes ={
-  LoginAction: PropTypes.func.isRequired
+  LoginAction: PropTypes.func.isRequired,
+  addFlashMessage: PropTypes.func.isRequired
 }
 HomePage.contextTypes = {
   router: PropTypes.object.isRequired

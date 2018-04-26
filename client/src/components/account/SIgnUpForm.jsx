@@ -31,11 +31,11 @@ this.setState({ errors : [] , isLoading: true });
   this.props.SignUpAction(this.state).then(
     () => {
       this.props.addFlashMessage({
-        type: 'successs',
+        type: 'success',
         text: 'signed up successfully!'
       })
-      this.context.router.history.push('/UserProfile');
-    },
+      this.context.router.history.push('/businessCatalog');
+     },
     ({ response }) => this.setState({ errors: response.data.message, isLoading: false })
   );
 }
