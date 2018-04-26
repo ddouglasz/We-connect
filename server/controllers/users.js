@@ -86,6 +86,9 @@ class Users {
           id: user.id,
         });
       }
+      return res.status(401).json({
+        message: 'invalid credentials'
+      });
     })
       .catch(error => res.status(404).json(error));
   }
