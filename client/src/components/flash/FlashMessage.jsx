@@ -11,6 +11,7 @@ class FlashMessage extends React.Component {
                 'alert-success': type === 'success',
                 'alert-danger': type === 'error'
             })} >
+            <button className="close"><span>&times;</span></button>
             {text}
               </div>
         );
