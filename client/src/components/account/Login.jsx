@@ -19,8 +19,8 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
-     LoginAction: PropTypes.func.isRequired,
-    addFlashMessage: PropTypes.func.isRequired 
+  LoginAction: PropTypes.func.isRequired,
+  addFlashMessage: PropTypes.func.isRequired
 }
 
 export default connect((state) => {return {}} , { LoginAction, addFlashMessage })(Login);
