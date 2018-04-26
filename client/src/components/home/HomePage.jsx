@@ -28,12 +28,12 @@ class HomePage extends React.Component {
       () => {
         this.props.addFlashMessage({
           type: 'success',
-          text: 'Login up successful!'
+          text: 'Login successful!'
         })
         this.context.router.history.push('/UserProfile')
       },
       ({ response }) => this.setState({ errors: response.data.message, isLoading: false })
-    )
+    );
   }
 
 
@@ -127,7 +127,7 @@ class HomePage extends React.Component {
     );
   }
 }
-HomePage.propTypes ={
+HomePage.propTypes = {
   LoginAction: PropTypes.func.isRequired,
   addFlashMessage: PropTypes.func.isRequired
 }
