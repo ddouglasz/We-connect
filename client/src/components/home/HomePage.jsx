@@ -30,7 +30,7 @@ class HomePage extends React.Component {
           type: 'success',
           text: 'Login successful!'
         })
-        this.context.router.history.push('/UserProfile')
+        this.context.router.history.push('/registerBusiness')
       },
       ({ response }) => this.setState({ errors: response.data.message, isLoading: false })
     );
