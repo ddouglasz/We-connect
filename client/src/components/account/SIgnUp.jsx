@@ -4,7 +4,7 @@ import toastr from 'toastr';
 import SignUpForm from './SIgnUpForm';
 import { connect } from 'react-redux';
 import { SignUpAction } from '../../actions/SignUpAction';
-import addFlashMessage from '../../actions/flashMessages';
+import { addFlashMessage } from '../../actions/flashMessages';
 
 /**
  * Class component for signing up page
