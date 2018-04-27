@@ -34,17 +34,11 @@ this.setState({ errors : [] , isLoading: true });
         type: 'success',
         text: 'signed up successfully!'
       })
-      redirect('/businessCatalog');
-     },
+  this.context.router.history.push('/registerBusiness')
+      },
     ({ response }) => this.setState({ errors: response.data.message, isLoading: false })
   );
 }
-
-// extract redirecting as a function for future use.
- redirect(address){
-  this.context.router.push(address);
-}
-
 
   render() {
     const { errors } = this.state;
