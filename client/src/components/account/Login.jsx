@@ -4,7 +4,7 @@ import toastr from 'toastr';
 import HomePage from '../home/HomePage';
 import { connect } from 'react-redux';
 import { LoginAction } from '../../actions/LoginAction';
-import addFlashMessage from '../../actions/flashMessages';
+import { addFlashMessage } from '../../actions/flashMessages';
 
 /**
  * Class component for Login page
