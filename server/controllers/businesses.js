@@ -254,6 +254,7 @@ class Businesses {
                 status: 'success',
                 userdata: {
                   createdBy: `${user.firstName} ${user.lastName}`,
+                  email: user.email,
                   id: user.id,
                   Businesses: businesses
                 }
