@@ -253,8 +253,8 @@ class Businesses {
               return res.status(200).json({
                 status: 'success',
                 userdata: {
+                  createdBy: `${user.firstName} ${user.lastName}`,
                   id: user.id,
-                  title: user.firstname,
                   Businesses: businesses
                 }
               });
