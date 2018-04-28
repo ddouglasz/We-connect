@@ -14,7 +14,7 @@ export const currentUser = user => ({
  * @param {Object} userProfile
  * @returns {object} action to be dispatched
  */
-let localStorage;
+// let localStorage;
 export const LoginAction = userProfile => dispatch =>
   axios.post('api/v1/auth/login', userProfile)
     .then((response) => {
