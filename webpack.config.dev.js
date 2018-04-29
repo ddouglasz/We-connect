@@ -50,7 +50,7 @@ module.exports = {
       },
     ]
   },
- node: {
+  node: {
     net: 'empty',
     dns: 'empty'
   }
