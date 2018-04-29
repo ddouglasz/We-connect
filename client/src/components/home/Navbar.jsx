@@ -1,10 +1,11 @@
-import { PropTypes } from 'prop-types';
+// import { PropTypes } from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
-class NavBar extends React.Component {
-  render() {
+// class NavBar extends React.Component {
+//   render() {
+  const NavBar = () => {
     return (
       <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
         <button className="navbar-toggler navbar-toggler-right" type="button" id="btn-nav" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +54,7 @@ class NavBar extends React.Component {
         </div>
       </nav>
     );
-  }
+  // }
 }
 
 export default NavBar;
@@ -67,4 +68,4 @@ export default NavBar;
 //   }; 
 // }
 
-// export default (connect)(mapStateToProps(NavBar));
+// export default connect(mapStateToProps(NavBar));

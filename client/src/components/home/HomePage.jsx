@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { LoginAction } from "../../actions/LoginAction";
+import { LoginAction } from '../../actions/LoginAction';
 import { PropTypes } from 'prop-types';
-import classnames from 'classnames';
+import { classnames } from 'classnames';
 
+ 
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
@@ -127,6 +128,7 @@ class HomePage extends React.Component {
     );
   }
 }
+
 HomePage.propTypes = {
   LoginAction: PropTypes.func.isRequired,
   addFlashMessage: PropTypes.func.isRequired

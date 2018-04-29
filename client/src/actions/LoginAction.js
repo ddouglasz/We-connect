@@ -11,7 +11,7 @@ export const currentUser = user => ({
 
 /**
  * Login
- * @param {Object} userProfile
+ * @param {*} userProfile
  * @returns {object} action to be dispatched
  */
 // let localStorage;
