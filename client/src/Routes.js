@@ -15,8 +15,7 @@ import styles from '../src/public/styles/main.scss'
 
 const Routes = () => (
   <Switch>
-    <Route path="/" exact component={HomePage} />
-    <Route path="/Login" exact component={Login} />
+    <Route path="/" exact component={Login} />
     <Route path="/Signup" exact component={SignUp} />
     <Route path="/businessCatalog"  exact component={BusinessCatalog} />
     <Route path="/businessProfile"  exact component={BusinessProfile} />
