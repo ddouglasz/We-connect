@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { LoginAction } from '../../actions/LoginAction';
 import { PropTypes } from 'prop-types';
 import { classnames } from 'classnames';
+import { LoginAction } from '../../actions/LoginAction';
+ import { addFlashMessage } from '../../actions/flashMessages';
+
 
  
 class HomePage extends React.Component {
@@ -41,7 +43,7 @@ class HomePage extends React.Component {
   render() {
     const { errors } = this.state;
     return (
-      <div className="jumbotron jumbotron-fluid  home-wrapper-index" onSubmit={this.onSubmit}>
+      <div className="jumbotron jumbotron-fluid  home-wrapper-index" onSubmit={this.onSubmit} >
         <div className="jumbotron-cover">
           <div className="row">
             <div className="col-md-5">

@@ -5,7 +5,7 @@ import { SignUpAction } from "../../actions/SignUpAction";
 import classnames from 'classnames';
 
 class SignUpForm extends React.Component {
-  constructor(props){
+  constructor(props){ 
     super(props);
     this.state = {
       firstName: '',
@@ -20,7 +20,7 @@ class SignUpForm extends React.Component {
   };
   
 
-
+  
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
