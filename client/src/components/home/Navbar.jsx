@@ -2,10 +2,15 @@ import { PropTypes } from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { logout } from '../../actions/authActions';
 
 class NavBar extends React.Component {
+  logout(e) {
+    e.preventDefault();
+    this.props.logout();
+  }
+
   render() {
-    // const NavBar = () => {
     const { isAuthenticated } = this.props.auth;
 
     const userLinks = (
@@ -26,9 +31,10 @@ class NavBar extends React.Component {
           </Link>
         </form>
         <form className="form-inline nav-close my-sm-0">
-          <Link to="/" className="nav-link text">
+          {/* <Link to="/" className="nav-link text">
             <span>Log Out</span>
-          </Link>
+          </Link> */}
+          <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li>
         </form>
       </div>
      );
@@ -64,15 +70,14 @@ return (
     </Link>
     
       {isAuthenticated ? userLinks : guestLinks}
-    {/* </div> */}
   </nav>
 );
   }
 }
 
-// export default NavBar;
 NavBar.propTypes = {
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
@@ -81,5 +86,5 @@ function mapStateToProps(state) {
   }; 
 }
 
-export default connect(mapStateToProps)(NavBar);
+export default connect(mapStateToProps, { logout })(NavBar);
 
