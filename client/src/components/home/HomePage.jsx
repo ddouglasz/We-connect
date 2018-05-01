@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { classnames } from 'classnames';
-import { LoginAction } from '../../actions/LoginAction';
- import { addFlashMessage } from '../../actions/flashMessages';
+import { LoginAction } from '../../actions/authActions';
+import { addFlashMessage } from '../../actions/flashMessages';
 
 
  
