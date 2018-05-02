@@ -6,7 +6,7 @@ import { LoginAction } from '../../actions/authActions';
 import { addFlashMessage } from '../../actions/flashMessages';
 
 
- 
+
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
@@ -107,10 +107,13 @@ class HomePage extends React.Component {
                             />
                           </div>
                         </div>
-                      {errors && <span className="help-block text-danger">{errors}</span>}                        
+                        {errors && <span className="help-block text-danger">{errors}</span>}
                       </div>
                     </div>
-                    <button disabled={this.state.isLoading} className="btn btn-lg btn-primary   btn-decor btn-block" >
+                    <button
+                     disabled={this.state.isLoading}
+                      className="btn btn-lg btn-primary   
+                      btn-decor btn-block" >
                       Sign in
                     </button>
                   </form>
