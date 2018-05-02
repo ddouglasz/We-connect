@@ -9,7 +9,7 @@ export const currentUser = user => ({
   isAuthenticated: true
 });
 
-export const logout = () => ( dispatch ) => {
+export const logout = () => (dispatch) => {
   localStorage.removeItem('userToken');
   setAuth(false);
   dispatch(currentUser({}));
