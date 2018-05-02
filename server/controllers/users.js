@@ -70,7 +70,7 @@ class Users {
       }
       password = bcrypt.compareSync(req.body.password, user.hashPassword);
       if (password) {
-        res.status(200).json({
+        return res.status(200).json({
           message: 'signed in successfully',
           token: jwt.sign(
             {
@@ -90,7 +90,7 @@ class Users {
         message: 'invalid credentials'
       });
     })
-      .catch(error => res.status(404).json(error));
+      .catch(error => res.status(500).json(error));
   }
 }
 export default Users;
