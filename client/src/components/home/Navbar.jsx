@@ -31,9 +31,6 @@ class NavBar extends React.Component {
           </Link>
         </form>
         <form className="form-inline nav-close my-sm-0">
-          {/* <Link to="/" className="nav-link text">
-            <span>Log Out</span>
-          </Link> */}
           <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li>
         </form>
       </div>
