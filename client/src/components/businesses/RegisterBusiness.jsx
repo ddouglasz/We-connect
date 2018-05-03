@@ -57,7 +57,14 @@ class RegisterBusiness extends React.Component {
                         <div className="text-center">
                             <img src={require('../../public/images/irokotv.jpg')} className="img-rounded" id="profile-image" alt="chefchef" width="250" />
                             <h6>Upload a different photo...</h6>
-                            <input type="file" className="form-control btn-primary" />
+                            <input
+                             type="file" 
+                             className="form-control btn-primary" 
+                             name="image"
+                             placeholder="company or firm"
+                             value={this.state.image}
+                             onChange={this.onChange}
+                             />
                         </div>
                     </div>
 
