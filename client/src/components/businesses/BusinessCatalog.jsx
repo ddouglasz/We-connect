@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import images from '../../public/images/index'
-// import images from '../../public/images/airbnb.jpg'
-
+ 
 const BusinessCatalog = () => (
 <div className="catalog-cover">
     <div className="jumbotron2 jumbotron-fluid home-wrapper-catalog">
@@ -173,9 +171,9 @@ const BusinessCatalog = () => (
 
       <div className="col-md-4 col-sm-6 col-xs-12">
         <div className=" img-zoom card-space">
-          <a className="cat-form" href="businessProfile.html">
+        <Link to="/businessProfile" className="nav-link text">
             <img className="img img-fluid" src={require('../../public/images/printivomug.jpg')} alt="Card image cap" width="537.5" />
-          </a>
+          </Link>
           <div className="card-block">
             <h4 className="card-title detail-text">Printivo</h4>
             <p className="card-text detail-text">This card has supporting text below as a natural lead-in to additional content.</p>

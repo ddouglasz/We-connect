@@ -8,50 +8,37 @@ import validator from 'validator';
    * @param {*} next
    */
 const validateInput = (req, res, next) => {
-  if (
-    !req.body.title ||
-    !req.body.description ||
-    !req.body.category ||
-    !req.body.location ||
-    !req.body.image ||
-    !req.body.email
-  ) {
-    res.status(400)
-      .json({
-        message: 'All or some of the field is/are undefined',
-      });
-  }
-  if (req.body.title.trim().length === 0) {
+  if (!req.body.title) {
     return res.status(400).send({
       message: 'Title is required',
     });
   }
-  if (req.body.description.trim().length === 0) {
+  if (!req.body.description) {
     return res.status(400).send({
       message: 'description is required',
     });
   }
-  if (req.body.category.trim().length === 0) {
+  if (!req.body.category) {
     return res.status(400).send({
       message: 'category is required',
     });
   }
-  if (req.body.location.trim().length === 0) {
+  if (!req.body.location) {
     return res.status(400).send({
       message: 'location is required',
     });
   }
-  if (req.body.category.trim().length === 0) {
+  if (!req.body.category) {
     return res.status(400).send({
       message: 'category is required',
     });
   }
-  if (req.body.email.trim().length === 0) {
+  if (!req.body.email) {
     return res.status(401).send({
       message: 'email is required',
     });
   }
-  if (req.body.image.trim().length === 0) {
+  if (!req.body.image) {
     return res.status(400).send({
       message: 'image is required',
     });

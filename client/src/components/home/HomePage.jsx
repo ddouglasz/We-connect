@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { LoginAction } from "../../actions/LoginAction";
 import { PropTypes } from 'prop-types';
-import classnames from 'classnames';
+import { classnames } from 'classnames';
+import { LoginAction } from '../../actions/authActions';
+import { addFlashMessage } from '../../actions/flashMessages';
+
+
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -40,7 +43,7 @@ class HomePage extends React.Component {
   render() {
     const { errors } = this.state;
     return (
-      <div className="jumbotron jumbotron-fluid  home-wrapper-index" onSubmit={this.onSubmit}>
+      <div className="jumbotron jumbotron-fluid  home-wrapper-index" onSubmit={this.onSubmit} >
         <div className="jumbotron-cover">
           <div className="row">
             <div className="col-md-5">
@@ -104,10 +107,13 @@ class HomePage extends React.Component {
                             />
                           </div>
                         </div>
-                      {errors && <span className="help-block text-danger">{errors}</span>}                        
+                        {errors && <span className="help-block text-danger">{errors}</span>}
                       </div>
                     </div>
-                    <button disabled={this.state.isLoading} className="btn btn-lg btn-primary   btn-decor btn-block" >
+                    <button
+                     disabled={this.state.isLoading}
+                      className="btn btn-lg btn-primary   
+                      btn-decor btn-block" >
                       Sign in
                     </button>
                   </form>
@@ -127,6 +133,7 @@ class HomePage extends React.Component {
     );
   }
 }
+
 HomePage.propTypes = {
   LoginAction: PropTypes.func.isRequired,
   addFlashMessage: PropTypes.func.isRequired

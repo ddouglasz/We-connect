@@ -1,11 +1,11 @@
 import React from 'react';
 import { PropTypes } from 'prop-types'; 
 import { Link } from 'react-router-dom';
-import { SignUpAction } from "../../actions/SignUpAction";
+import { SignUpAction } from "../../actions/authActions";
 import classnames from 'classnames';
 
 class SignUpForm extends React.Component {
-  constructor(props){
+  constructor(props){ 
     super(props);
     this.state = {
       firstName: '',

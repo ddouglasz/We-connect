@@ -1,9 +1,8 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import toastr from 'toastr';
 import HomePage from '../home/HomePage';
 import { connect } from 'react-redux';
-import { LoginAction } from '../../actions/LoginAction';
+import { LoginAction } from '../../actions/authActions';
 import { addFlashMessage } from '../../actions/flashMessages';
 
 /**
