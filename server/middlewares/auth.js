@@ -16,13 +16,13 @@ const confirmToken = (req, res, next) => {
   if (token) {
     jwt.verify(token, secret, (err, decoded) => {
       if (err) {
-        return res.status(401).send({ error: 'Token expired. kindly start a new session' });
+        return res.status(401).send({ message: 'Your session has expired. please kindly Login' });
       }
       req.decoded = decoded;
       return next();
     });
   } else {
-    return res.status(401).send({ error: 'Access Denied! kindly login' });
+    return res.status(401).send({ message: 'You are not authorized to perform this change! kindly login' });
   }
 };
 
