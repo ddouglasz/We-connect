@@ -57,9 +57,9 @@ const BusinessProfile = () => {
               <label className="col-sm-6 control-label">
 
                 <strong>Business Added by:</strong>
-                <Link to="/userProfile" className="user-profile-link">
+                {/* <Link to="#" className="user-profile-link"> */}
                   <span> @Mr.steve</span>
-                </Link>
+                {/* </Link> */}
               </label>
 
             </div>
