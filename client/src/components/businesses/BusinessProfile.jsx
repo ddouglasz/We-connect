@@ -1,8 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import images from '../../public/images/irokotv.jpg'
+import { title, description, category, location } from './RegisterBusiness';
 
-const BusinessProfile = () => {
+class BusinessProfile extends React.Component {
+render() {
   return (
     <div className="container">
       <div className="form-actions" />
@@ -57,9 +60,7 @@ const BusinessProfile = () => {
               <label className="col-sm-6 control-label">
 
                 <strong>Business Added by:</strong>
-                {/* <Link to="#" className="user-profile-link"> */}
-                  <span> @Mr.steve</span>
-                {/* </Link> */}
+                <span> @Mr.steve</span>
               </label>
 
             </div>
@@ -76,7 +77,7 @@ const BusinessProfile = () => {
             <div className="form-group form-spacing">
               <label className="col-sm-6 control-label">
                 <strong>Business location:</strong> Lagos
-                </label>
+              </label>
             </div>
             <div className="form-group form-spacing">
               <label className="col-sm-6 control-label">
@@ -157,5 +158,7 @@ const BusinessProfile = () => {
     </div>
   );
 }
+}
+
 
 export default BusinessProfile; 
