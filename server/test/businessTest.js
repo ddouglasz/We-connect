@@ -66,56 +66,107 @@ describe('TEST for businesses', () => {
         });
     });
 
-    it('should return a status 400 for any undefined field', (done) => {
+    it('should return a status code 406 and a response message for an empty email field', (done) => {
       chai.request(app)
         .post('/api/v1/businesses')
         .set('auth', auth1)
         .type('form')
         .send({
-          image: 'andela.jpg',
-          description: 'a software development company changing the face of africa',
-          category: 'ICT',
-          location: 'lagos',
-          email: 'andela@andela.com',
-        })
-        .end((err, res) => {
-          res.should.have.status(400);
-          res.body.should.be.a('object');
-          expect(res.body).to.be.a('object');
-          assert.equal(
-            res.body.message,
-            'All or some of the field is/are undefined'
-          );
-          done();
-        });
-    });
-
-    it('should return a status 401 and a response message for an empty field', (done) => {
-      chai.request(app)
-        .post('/api/v1/businesses')
-        .set('auth', auth1)
-        .type('form')
-        .send({
-          title: 'andela',
-          image: 'andela.jpg',
-          description: 'a software development company changing the face of africa',
-          category: 'ICT',
-          location: 'lagos',
+          title: 'dangote',
+          image: 'dangote.jpg',
+          description: 'a salesn and development company.',
+          category: 'Sales',
+          location: 'Kano',
           email: ' ',
         })
         .end((err, res) => {
-          res.should.have.status(401);
+          res.should.have.status(406);
           res.body.should.be.a('object');
           expect(res.body).to.be.a('object');
           assert.equal(
             res.body.message,
-            'email is required'
+            'email can not be empty'
           );
           done();
         });
     });
 
-    it('should return a status 406 and a response message for a business title out of 3 to 30 characters', (done) => {
+    it('should return a status code 406 and a response message for an empty category field', (done) => {
+      chai.request(app)
+        .post('/api/v1/businesses')
+        .set('auth', auth1)
+        .type('form')
+        .send({
+          title: 'dangote',
+          image: 'dangote.jpg',
+          description: 'a salesn and development company.',
+          category: ' ',
+          location: 'Kano',
+          email: 'dangote@gmail.com ',
+        })
+        .end((err, res) => {
+          res.should.have.status(406);
+          res.body.should.be.a('object');
+          expect(res.body).to.be.a('object');
+          assert.equal(
+            res.body.message,
+            'category can not be empty'
+          );
+          done();
+        });
+      });
+
+    it('should return a status code 401 and a response message for an empty location field', (done) => {
+      chai.request(app)
+        .post('/api/v1/businesses')
+        .set('auth', auth1)
+        .type('form')
+        .send({
+          title: 'dangote',
+          image: 'dangote.jpg',
+          description: 'hgftygigiyfiyiuoufiuou ',
+          category: 'Sales',
+          location: ' ',
+          email: 'dangote@dangote.com',
+        })
+        .end((err, res) => {
+          res.should.have.status(406);
+          res.body.should.be.a('object');
+          expect(res.body).to.be.a('object');
+          assert.equal(
+            res.body.message,
+            'location can not be empty'
+          );
+          done();
+        });
+    });
+
+    it('should return a status code 401 and a response message for an empty title field', (done) => {
+      chai.request(app)
+        .post('/api/v1/businesses')
+        .set('auth', auth1)
+        .type('form')
+        .send({
+          title: ' ',
+          image: 'dangote.jpg',
+          description: 'hgftygigiyfiyiuoufiuou ',
+          category: 'Sales',
+          location: 'kano',
+          email: 'dangote@dangote.com',
+        })
+        .end((err, res) => {
+          res.should.have.status(406);
+          res.body.should.be.a('object');
+          expect(res.body).to.be.a('object');
+          assert.equal(
+            res.body.message,
+            'title can not be empty'
+          );
+          done();
+        });
+    });
+
+    it('should return a status 406 and a response message for a business title out of the range of 3 to 30 characters', (done) => {
       chai.request(app)
         .post('/api/v1/businesses')
         .set('auth', auth1)

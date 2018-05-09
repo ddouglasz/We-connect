@@ -8,10 +8,8 @@ import signinValidator from '../middlewares/signinValidator';
 import auth from '../middlewares/auth';
 
 export default (app) => {
-  setTimeout(() => {
-    app.post('/api/v1/auth/signup', validateUserSignUp, Users.signUp);
-    app.post('/api/v1/auth/login', signinValidator, Users.signIn);
-  }, 5000);
+  app.post('/api/v1/auth/signup', validateUserSignUp, Users.signUp);
+  app.post('/api/v1/auth/login', signinValidator, Users.signIn);
   app.post('/api/v1/businesses', auth, postBusinessValidator, businesses.createBusinesses);
   app.get('/api/v1/businesses', filterSearch.filterBusinessSearch, businesses.getBusinesses);
   app.delete('/api/v1/businesses/:businessId', auth, businesses.deleteBusiness);

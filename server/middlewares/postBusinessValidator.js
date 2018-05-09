@@ -8,6 +8,26 @@ import validator from 'validator';
    * @param {*} next
    */
 const validateInput = (req, res, next) => {
+  if (req.body.location.trim().length === 0) {
+    return res.status(406).send({
+      message: 'location can not be empty',
+    });
+  }
+  if (req.body.category.trim().length === 0) {
+    return res.status(406).send({
+      message: 'category can not be empty',
+    });
+  }
+  if (req.body.title.trim().length === 0) {
+    return res.status(406).send({
+      message: 'title can not be empty',
+    });
+  }
+  if (req.body.email.trim().length === 0) {
+    return res.status(406).send({
+      message: 'email can not be empty',
+    });
+  }
   if (!req.body.title) {
     return res.status(400).send({
       message: 'Title is required',
@@ -34,12 +54,12 @@ const validateInput = (req, res, next) => {
     });
   }
   if (!req.body.email) {
-    return res.status(401).send({
+    return res.status(406).send({
       message: 'email is required',
     });
   }
   if (!req.body.image) {
-    return res.status(400).send({
+    return res.status(406).send({
       message: 'image is required',
     });
   }

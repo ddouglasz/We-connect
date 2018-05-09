@@ -7,22 +7,20 @@ import isEmail from 'validator/lib/isEmail';
  * @param {*} next
  */
 const validateUserSignUp = (req, res, next) => {
-  const {
-    password,
-    firstName,
-    email,
-    lastName,
-  } = req.body;
-  if (
-    !password ||
-    !firstName ||
-    !lastName ||
-    !email
-  ) {
-    return res.status(401)
-      .json({
-        message: 'All or some of the field is/are undefined',
-      });
+  if (req.body.email.trim().length === 0) {
+    return res.status(401).send({
+      message: 'email can not be empty',
+    });
+  }
+  if (req.body.firstName.trim().length === 0) {
+    return res.status(401).send({
+      message: 'firstname can not be empty',
+    });
+  }
+  if (req.body.lastName.trim().length === 0) {
+    return res.status(401).send({
+      message: 'lastname can not be empty',
+    });
   }
   if (!req.body.email.trim()) {
     return res.status(401).json({

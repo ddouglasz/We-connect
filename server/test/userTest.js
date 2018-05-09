@@ -36,7 +36,7 @@ describe('TEST for user routes', () => {
         });
     });
 
-    it('should return a status 401 if required field is empty', (done) => {
+    it('should return a status 401 for an empty email field', (done) => {
       chai.request(app)
         .post('/api/v1/auth/signup')
         .send({
@@ -50,7 +50,47 @@ describe('TEST for user routes', () => {
           expect(res.body).to.be.a('object');
           assert.equal(
             res.body.message,
-            'All or some of the field is/are undefined'
+            'email can not be empty'
+          );
+          done();
+        });
+    });
+
+    it('should return a status 401 for an empty firstname field', (done) => {
+      chai.request(app)
+        .post('/api/v1/auth/signup')
+        .send({
+          firstName: '',
+          lastName: 'dougs',
+          email: 'steve@gmail.com',
+          password: 'password'
+        })
+        .end((err, res) => {
+          res.should.have.status(401);
+          expect(res.body).to.be.a('object');
+          assert.equal(
+            res.body.message,
+            'firstname can not be empty'
+          );
+          done();
+        });
+    });
+
+    it('should return a status 401 for an empty lastname field', (done) => {
+      chai.request(app)
+        .post('/api/v1/auth/signup')
+        .send({
+          firstName: 'steve',
+          lastName: '',
+          email: 'steve@gmail.com',
+          password: 'password'
+        })
+        .end((err, res) => {
+          res.should.have.status(401);
+          expect(res.body).to.be.a('object');
+          assert.equal(
+            res.body.message,
+            'lastname can not be empty'
           );
           done();
         });
@@ -140,7 +180,7 @@ describe('TEST for user routes', () => {
         });
     });
 
-    it('should return a status 401 if required field is empty', (done) => {
+    it('should return a status 401 if email field is empty', (done) => {
       chai.request(app)
         .post('/api/v1/auth/login')
         .send({
@@ -152,43 +192,7 @@ describe('TEST for user routes', () => {
           expect(res.body).to.be.a('object');
           assert.equal(
             res.body.message,
-            'All or some of the field is/are undefined'
-          );
-          done();
-        });
-    });
-
-    it('should return a status 404 if email is not in database', (done) => {
-      chai.request(app)
-        .post('/api/v1/auth/login')
-        .send({
-          email: 'steve@thomas.com',
-          password: 'password'
-        })
-        .end((err, res) => {
-          res.should.have.status(404);
-          expect(res.body).to.be.a('object');
-          assert.equal(
-            res.body.message,
-            'User Not Found'
-          );
-          done();
-        });
-    });
-
-    it('should return a status 404 if email is not in database', (done) => {
-      chai.request(app)
-        .post('/api/v1/auth/login')
-        .send({
-          email: 'steve@thomas.com',
-          password: 'password'
-        })
-        .end((err, res) => {
-          res.should.have.status(404);
-          expect(res.body).to.be.a('object');
-          assert.equal(
-            res.body.message,
-            'User Not Found'
+            'email can not be empty'
           );
           done();
         });
@@ -224,7 +228,7 @@ describe('TEST for user routes', () => {
           expect(res.body).to.be.a('object');
           assert.equal(
             res.body.message,
-            'invalid email format'
+            'invalid credentials'
           );
           done();
         });
