@@ -70,11 +70,11 @@ const validateInput = (req, res, next) => {
         message: 'Business title should be 3 to 30 characters',
       });
   }
-  if (!validator.isLength(req.body.description.trim(), { min: 2, max: 50 })) {
+  if (!validator.isLength(req.body.description.trim(), { min: 2, max: 100 })) {
     return res.status(406)
       .send({
         status: 'Fail',
-        message: 'description should be between 2 to 50 characters',
+        message: 'description should be between 2 to 100 characters',
       });
   }
   next();
