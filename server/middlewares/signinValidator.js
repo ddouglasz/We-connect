@@ -1,4 +1,6 @@
 import isEmail from 'validator/lib/isEmail';
+import validator from 'validator';
+
 /**
    * @returns {Object} validate Input
    * @param {*} req
@@ -6,11 +8,10 @@ import isEmail from 'validator/lib/isEmail';
    * @param {*} next
    */
 const validateUserSignIn = (req, res, next) => {
-  if (!req.body.password || !req.body.email) {
-    return res.status(401)
-      .json({
-        message: 'All or some of the field is/are undefined',
-      });
+  if (req.body.email.trim().length === 0) {
+    return res.status(401).send({
+      message: 'email can not be empty',
+    });
   }
   if (!req.body.email.trim()) {
     return res.status(401).json({

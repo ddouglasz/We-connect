@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for We-connect/server/test/businessTest.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">All files</a> / <a href="index.html">We-connect/server/test</a> businessTest.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">3.06% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>3/98</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/27</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">3.06% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>3/98</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import chaiHttp from 'chai-http';
+import chai from 'chai';
+import app from '../../app';
+<span class="cstat-no" title="statement not covered" >import models from './../models';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >import { businessesDb } from '../seedData/business';</span>
+<span class="cstat-no" title="statement not covered" >import { reviewsDb } from '../seedData/review';</span>
+<span class="cstat-no" title="statement not covered" >import { usersDb } from '../seedData/user';</span>
+&nbsp;
+const { expect, assert, should } = chai;
+const businessModel = <span class="cstat-no" title="statement not covered" >models.businesses;</span>
+&nbsp;
+let <span class="cstat-no" title="statement not covered" >auth1;</span>
+let <span class="cstat-no" title="statement not covered" >auth2;</span>
+let <span class="cstat-no" title="statement not covered" >businessId1;</span>
+let <span class="cstat-no" title="statement not covered" >businessId2;</span>
+<span class="cstat-no" title="statement not covered" >should();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >chai.use(chaiHttp);</span>
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >describe('TEST for businesses', <span class="fstat-no" title="function not covered" >() =&gt; </span>{</span>
+<span class="cstat-no" title="statement not covered" >  before(<span class="fstat-no" title="function not covered" >(</span>done) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    businessModel.sync({ force: true })</span>
+      .then(<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt; done());</span></span>
+  });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  describe('POST business:When user sends a POST request to /api/v1/businesses/', <span class="fstat-no" title="function not covered" >() =&gt; </span>{</span>
+<span class="cstat-no" title="statement not covered" >    before(<span class="fstat-no" title="function not covered" >(</span>done) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      chai.request(app)</span>
+        .post('/api/v1/auth/login')
+        .type('form')
+        .send({
+          email: 'steve@dougs.com',
+          password: 'password'
+        })
+        .end(<span class="fstat-no" title="function not covered" >(</span>err, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >          auth1 = res.body.token;</span>
+<span class="cstat-no" title="statement not covered" >          done();</span>
+        });
+    });
+<span class="cstat-no" title="statement not covered" >    it('should return a status 201 and a response message for a new business', <span class="fstat-no" title="function not covered" >(</span>done) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      chai.request(app)</span>
+        .post('/api/v1/businesses')
+        .set('auth', auth1)
+        .type('form')
+        .send({
+          title: 'andela',
+          image: 'andela.jpg',
+          description: 'a software development company.',
+          category: 'ICT',
+          location: 'lagos',
+          email: 'andela@andela.com',
+        })
+        .end(<span class="fstat-no" title="function not covered" >(</span>err, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >          res.should.have.status(201);</span>
+<span class="cstat-no" title="statement not covered" >          res.body.should.be.a('object');</span>
+<span class="cstat-no" title="statement not covered" >          res.body.business.should.be.a('object');</span>
+<span class="cstat-no" title="statement not covered" >          expect(res.body).to.be.a('object');</span>
+<span class="cstat-no" title="statement not covered" >          assert.equal(</span>
+            res.body.message,
+            'Business added successfully.'
+          );
+<span class="cstat-no" title="statement not covered" >          businessId1 = res.body.business.id;</span>
+<span class="cstat-no" title="statement not covered" >          done();</span>
+        });
+    });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    it('should return a status 400 for any undefined field', <span class="fstat-no" title="function not covered" >(</span>done) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      chai.request(app)</span>
+        .post('/api/v1/businesses')
+        .set('auth', auth1)
+        .type('form')
+        .send({
+          image: 'andela.jpg',
+          description: 'a software development company changing the face of africa',
+          category: 'ICT',
+          location: 'lagos',
+          email: 'andela@andela.com',
+        })
+        .end(<span class="fstat-no" title="function not covered" >(</span>err, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >          res.should.have.status(400);</span>
+<span class="cstat-no" title="statement not covered" >          res.body.should.be.a('object');</span>
+<span class="cstat-no" title="statement not covered" >          expect(res.body).to.be.a('object');</span>
+<span class="cstat-no" title="statement not covered" >          assert.equal(</span>
+            res.body.message,
+            'All or some of the field is/are undefined'
+          );
+<span class="cstat-no" title="statement not covered" >          done();</span>
+        });
+    });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    it('should return a status 401 and a response message for an empty field', <span class="fstat-no" title="function not covered" >(</span>done) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      chai.request(app)</span>
+        .post('/api/v1/businesses')
+        .set('auth', auth1)
+        .type('form')
+        .send({
+          title: 'andela',
+          image: 'andela.jpg',
+          description: 'a software development company changing the face of africa',
+          category: 'ICT',
+          location: 'lagos',
+          email: ' ',
+        })
+        .end(<span class="fstat-no" title="function not covered" >(</span>err, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >          res.should.have.status(401);</span>
+<span class="cstat-no" title="statement not covered" >          res.body.should.be.a('object');</span>
+<span class="cstat-no" title="statement not covered" >          expect(res.body).to.be.a('object');</span>
+<span class="cstat-no" title="statement not covered" >          assert.equal(</span>
+            res.body.message,
+            'email is required'
+          );
+<span class="cstat-no" title="statement not covered" >          done();</span>
+        });
+    });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    it('should return a status 406 and a response message for a business title out of 3 to 30 characters', <span class="fstat-no" title="function not covered" >(</span>done) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      chai.request(app)</span>
+        .post('/api/v1/businesses')
+        .set('auth', auth1)
+        .type('form')
+        .send({
+          title: 'a',
+          image: 'andela.jpg',
+          description: 'a software development.',
+          category: 'ICT',
+          location: 'lagos',
+          email: 'andela@andela.com',
+        })
+        .end(<span class="fstat-no" title="function not covered" >(</span>err, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >          res.should.have.status(406);</span>
+<span class="cstat-no" title="statement not covered" >          res.body.should.be.a('object');</span>
+<span class="cstat-no" title="statement not covered" >          expect(res.body).to.be.a('object');</span>
+<span class="cstat-no" title="statement not covered" >          assert.equal(</span>
+            res.body.message,
+            'Business title should be 3 to 30 characters'
+          );
+<span class="cstat-no" title="statement not covered" >          done();</span>
+        });
+    });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    it('should return a status 406 and a response message for a business description out of 3 to 50 characters', <span class="fstat-no" title="function not covered" >(</span>done) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      chai.request(app)</span>
+        .post('/api/v1/businesses')
+        .set('auth', auth1)
+        .type('form')
+        .send({
+          title: 'andela',
+          image: 'andela.jpg',
+          description: 'a software development company.To take this a step further, I can display this information in a browser to confirm the app can read it.',
+          category: 'ICT',
+          location: 'lagos',
+          email: 'andela@andela.com',
+        })
+        .end(<span class="fstat-no" title="function not covered" >(</span>err, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >          res.should.have.status(406);</span>
+<span class="cstat-no" title="statement not covered" >          res.body.should.be.a('object');</span>
+<span class="cstat-no" title="statement not covered" >          expect(res.body).to.be.a('object');</span>
+<span class="cstat-no" title="statement not covered" >          assert.equal(</span>
+            res.body.message,
+            'description should be between 2 to 50 characters'
+          );
+<span class="cstat-no" title="statement not covered" >          done();</span>
+        });
+    });
+  });
+});
+<span class="cstat-no" title="statement not covered" >describe(' GET request for /api/v1/businesses/:businessId', <span class="fstat-no" title="function not covered" >() =&gt; </span>{</span>
+<span class="cstat-no" title="statement not covered" >  it('should return 200 status code and retrieve business with the provided businessId', <span class="fstat-no" title="function not covered" >(</span>done) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    chai.request(app)</span>
+      .get('/api/v1/businesses/1')
+      .end(<span class="fstat-no" title="function not covered" >(</span>err, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >        res.should.have.status(200);</span>
+<span class="cstat-no" title="statement not covered" >        res.body.should.be.a('object');</span>
+<span class="cstat-no" title="statement not covered" >        res.body.business.should.be.a('object');</span>
+<span class="cstat-no" title="statement not covered" >        assert.isString(</span>
+          res.body.message,
+          'succes'
+        );
+<span class="cstat-no" title="statement not covered" >        done();</span>
+      });
+  });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  it('should return 404 status code and  an error message for a business that is not in the database', <span class="fstat-no" title="function not covered" >(</span>done) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    chai.request(app)</span>
+      .get('/api/v1/businesses/400')
+      .end(<span class="fstat-no" title="function not covered" >(</span>err, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >        res.should.have.status(404);</span>
+<span class="cstat-no" title="statement not covered" >        res.body.should.be.a('object');</span>
+<span class="cstat-no" title="statement not covered" >        assert.equal(</span>
+          res.body.message,
+          'Business Not Found'
+        );
+<span class="cstat-no" title="statement not covered" >        done();</span>
+      });
+  });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  it('should return 404 status code and  an error message for a business with wrong params', <span class="fstat-no" title="function not covered" >(</span>done) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    chai.request(app)</span>
+      .get('/api/v1/businesses/40a')
+      .end(<span class="fstat-no" title="function not covered" >(</span>err, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >        res.should.have.status(500);</span>
+<span class="cstat-no" title="statement not covered" >        res.body.should.be.a('object');</span>
+<span class="cstat-no" title="statement not covered" >        assert.equal(</span>
+          res.body.message,
+          'internal server error.'
+        );
+<span class="cstat-no" title="statement not covered" >        done();</span>
+      });
+<span class="cstat-no" title="statement not covered" >    chai.request(app)</span>
+      .get('/api/v1/businesses/?category=ICT')
+      .end(<span class="fstat-no" title="function not covered" >(</span>err, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >        res.should.have.status(200);</span>
+<span class="cstat-no" title="statement not covered" >        res.body.should.be.a('object');</span>
+<span class="cstat-no" title="statement not covered" >        res.body.businesses.should.be.a('array');</span>
+<span class="cstat-no" title="statement not covered" >        assert.isString(</span>
+          res.body.message,
+          'We found some businesses with the category or location you entered'
+        );
+<span class="cstat-no" title="statement not covered" >        done();</span>
+      });
+  });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  it('should return 404 status code and  an error message for a business with wrong params', <span class="fstat-no" title="function not covered" >(</span>done) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    chai.request(app)</span>
+      .get('/api/v1/businesses/40a')
+      .end(<span class="fstat-no" title="function not covered" >(</span>err, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >        res.should.have.status(500);</span>
+<span class="cstat-no" title="statement not covered" >        res.body.should.be.a('object');</span>
+<span class="cstat-no" title="statement not covered" >        assert.equal(</span>
+          res.body.message,
+          'internal server error.'
+        );
+<span class="cstat-no" title="statement not covered" >        done();</span>
+      });
+<span class="cstat-no" title="statement not covered" >    chai.request(app)</span>
+      .get('/api/v1/businesses/?category=ICT')
+      .end(<span class="fstat-no" title="function not covered" >(</span>err, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >        res.should.have.status(200);</span>
+<span class="cstat-no" title="statement not covered" >        res.body.should.be.a('object');</span>
+<span class="cstat-no" title="statement not covered" >        res.body.businesses.should.be.a('array');</span>
+<span class="cstat-no" title="statement not covered" >        assert.isString(</span>
+          res.body.message,
+          'We found some businesses with the category or location you entered'
+        );
+<span class="cstat-no" title="statement not covered" >        done();</span>
+      });
+  });
+});
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Apr 07 2018 00:15:35 GMT+0100 (WAT)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

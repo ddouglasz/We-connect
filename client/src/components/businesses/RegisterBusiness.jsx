@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { RegBusAction } from "../../actions/businessActions";
+import { RegisterBusinessAction }  from "../../actions/businessActions";
 import classnames from 'classnames';
 
 
@@ -29,7 +29,7 @@ class RegisterBusiness extends React.Component {
     onSubmit(e) {
         e.preventDefault();
         this.setState({ errors: [], isLoading: true });
-        this.props.RegBusAction(this.state).then(
+        this.props.RegisterBusinessAction(this.state).then(
             () => {
                 this.props.addFlashMessage({
                     type: 'success',
@@ -174,7 +174,7 @@ class RegisterBusiness extends React.Component {
 }
 
 RegisterBusiness.proptypes = {
-    RegBusAction: PropTypes.func.isRequired,
+    RegisterBusinessAction: PropTypes.func.isRequired,
     addFlashMessage: PropTypes.func.isRequired
 }
 

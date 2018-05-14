@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import RegisterBusiness from '../businesses/RegisterBusiness';
 import { connect } from 'react-redux';
-import   RegBusAction   from '../../actions/businessActions';
+import   { RegisterBusinessAction }  from '../../actions/businessActions';
 import { addFlashMessage } from '../../actions/flashMessages';
 
 /**
@@ -10,16 +10,16 @@ import { addFlashMessage } from '../../actions/flashMessages';
 */
 class RegisterBusinessPage extends React.Component {
     render() {
-        const { RegBusAction, addFlashMessage } = this.props;
+        const { RegisterBusinessAction, addFlashMessage } = this.props;
         return (
-            <RegisterBusiness RegBusAction={RegBusAction} addFlashMessage={addFlashMessage} />
+            <RegisterBusiness RegisterBusinessAction={RegisterBusinessAction} addFlashMessage={addFlashMessage} />
         );
     }
 }
 
 RegisterBusinessPage.propTypes = {
-    RegBusAction: PropTypes.func.isRequired,
+    RegisterBusinessAction: PropTypes.func.isRequired,
     addFlashMessage: PropTypes.func.isRequired
 }
 
-export default connect((state) => { return {} }, { RegBusAction, addFlashMessage })(RegisterBusinessPage);
+export default connect((state) => { return {} }, { RegisterBusinessAction, addFlashMessage })(RegisterBusinessPage);

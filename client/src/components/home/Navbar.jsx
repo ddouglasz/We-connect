@@ -8,13 +8,14 @@ class NavBar extends React.Component {
   logout(e) {
     e.preventDefault();
     this.props.logout();
+    this.context.router.history.push('/')
   }
 
   render() {
     const { isAuthenticated } = this.props.auth;
 
     const userLinks = (
-         <div className="collapse navbar-collapse" id="navbarSupportedContent">
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
           <Link to="/businessCatalog" className="nav-link text">
             <span>Catalog</span>
@@ -30,14 +31,19 @@ class NavBar extends React.Component {
             <span >Register Business</span>
           </Link>
         </form>
+        <form className="form-inline nav-close my-sm-0" >
+          <Link to="/userProfile" className="nav-link text">
+            <span>My Profile</span>
+          </Link>
+        </form >
         <form className="form-inline nav-close my-sm-0">
           <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li>
         </form>
       </div>
-     );
+    );
 
     const guestLinks = (
-       <div className="collapse navbar-collapse" id="navbarSupportedContent">
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
           <Link to="/businessCatalog" className="nav-link text">
             <span>Catalog</span>
@@ -54,21 +60,21 @@ class NavBar extends React.Component {
           </Link>
         </form>
       </div>
-      
-  );
 
-return (
-  <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
-    <button className="navbar-toggler navbar-toggler-right" type="button" id="btn-nav" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon" />
-    </button>
-    <Link to="/" className="navbar-brand">
-      <span>WEConnect</span>
-    </Link>
-    
-      {isAuthenticated ? userLinks : guestLinks}
-  </nav>
-);
+    );
+
+    return (
+      <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
+        <button className="navbar-toggler navbar-toggler-right" type="button" id="btn-nav" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon" />
+        </button>
+        <Link to="/" className="navbar-brand">
+          <span>WEConnect</span>
+        </Link>
+
+        {isAuthenticated ? userLinks : guestLinks}
+      </nav>
+    );
   }
 }
 
@@ -77,11 +83,14 @@ NavBar.propTypes = {
   logout: PropTypes.func.isRequired
 }
 
+NavBar.contextTypes = {
+  router: PropTypes.object.isRequired
+}
+
 function mapStateToProps(state) {
-   return {
+  return {
     auth: state.auth
-  }; 
+  };
 }
 
 export default connect(mapStateToProps, { logout })(NavBar);
-

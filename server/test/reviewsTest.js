@@ -73,4 +73,40 @@ describe('POST business:When user sends a POST request to /api/v1/businesses/:bu
         done();
       });
   });
+  it('should return a status 401 error and a response message for business that does not exist and wants to be reviewed', (done) => {
+    chai.request(app)
+      .post(`/api/v1/businesses/${businessId1}/reviews`)
+      .set('auth', auth1)
+      .type('form')
+      .send({
+        title: 'pascal',
+        review: 'truly built on excellence'
+      })
+      .end((err, res) => {
+        res.should.have.status(404);
+        assert.equal(
+          res.body.message,
+          'business not found'
+        );
+        done();
+      });
+  });
+  it('should return a status 400 error and a response message for business for a review out of the range of 2 to 100 characters', (done) => {
+    chai.request(app)
+      .post(`/api/v1/businesses/${businessId1}/reviews`)
+      .set('auth', auth1)
+      .type('form')
+      .send({
+        title: 'pascal',
+        review: 't'
+      })
+      .end((err, res) => {
+        res.should.have.status(406);
+        assert.equal(
+          res.body.message,
+          'review content should have between 2 and 100 characters'
+        );
+        done();
+      });
+  });
 });
