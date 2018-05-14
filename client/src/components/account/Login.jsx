@@ -12,7 +12,7 @@ class Login extends React.Component {
   render() {
     const { LoginAction, addFlashMessage } = this.props;
     return (
-      <HomePage LoginAction={ LoginAction} addFlashMessage={addFlashMessage} />
+      <HomePage LoginAction={ LoginAction } addFlashMessage={addFlashMessage} />
     );
   }
 }
