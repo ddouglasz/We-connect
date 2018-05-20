@@ -73,8 +73,8 @@ class EditBusiness extends React.Component {
                              className="form-control btn-primary" 
                              name="image"
                              placeholder="company or firm"
-                             value={this.state.image}
-                             onChange={this.onChange}
+                            //  value={this.state.image}
+                            //  onChange={this.onChange}
                              />
                         </div>
                     </div>
