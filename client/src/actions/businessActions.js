@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ALL_BUSINESSES, ONE_BUSINESS, EDIT_SUCCESSFUL, EDIT_FAILED } from './types';
+import { ALL_BUSINESSES, ONE_BUSINESS, EDIT_SUCCESSFUL, EDIT_FAILED, DELETE_FAILED, DELETE_SUCCESSFUL } from './types';
 
 
 export function allBusinesses(businesses) {
@@ -64,4 +64,27 @@ export const editBusinessAction = business => dispatch =>
     })
     .catch(() => {
       dispatch(editFailed('Your business did not update'));
+    });
+
+export function deleteSuccessful(message) {
+  return {
+    type: DELETE_SUCCESSFUL,
+    message
+  };
+}
+
+export function deleteFailed(error) {
+  return {
+    type: DELETE_FAILED,
+    error
+  };
+}
+
+export const deleteBusinessAction = id => dispatch =>
+  axios.delete(`http://localhost:8000/api/v1/businesses/${id}`)
+    .then((response) => {
+      dispatch(deleteSuccessful(response.data.message));
+    })
+    .catch((error) => {
+      dispatch(deleteFailed(error.response.data.message));
     });
