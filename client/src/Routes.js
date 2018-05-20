@@ -8,6 +8,7 @@ import BusinessCatalog from './components/businesses/BusinessCatalog';
 import BusinessProfile from './components/businesses/BusinessProfile';
 import RegisterBusinessPage from './components/businesses/RegisterBusinessPage';
 import RegisterBusiness from './components/businesses/RegisterBusiness';
+import EditBusiness from './components/businesses/EditBusiness';
 import UserProfile from './components/user/UserProfile';
 import NotFound from './components/404Page';
 import Footer from './components/home/Footer';
@@ -21,7 +22,7 @@ const Routes = () => (
     <Route path="/businessCatalog"  exact component={BusinessCatalog} />
     <Route path="/businessProfile/:id"  exact component={BusinessProfile} />
     <Route path="/registerBusiness"  exact component={RegisterBusinessPage} />
-    <Route path="/editBusiness"  exact component={RegisterBusiness} />
+    <Route path="/editBusiness/:id"  exact component={EditBusiness} />
     <Route path="/userProfile"  exact component={UserProfile} />
     <Route path="/logout"  exact component={HomePage} />
     <Route path="/*"  exact component={NotFound} />
