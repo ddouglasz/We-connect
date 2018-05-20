@@ -7,15 +7,14 @@ import { title, description, category, location } from './RegisterBusiness';
 import { getOneBusinessAction } from '../../actions/businessActions';
 
 class BusinessProfile extends React.Component {
-  componentWillMount() {
-    console.log(this.props.match.params.id)
-    this.props.getOneBusinessAction(this.props.match.params.id)
+  componentDidMount() {
+     this.props.getOneBusinessAction(this.props.match.params.id)
   }
 
 
   render() {
     const { business } = this.props;
-    return (
+     return (
       <div className="container">
         <div className="form-actions" />
         <div className="row">
@@ -93,12 +92,15 @@ class BusinessProfile extends React.Component {
               <div className="form-group form-spacing">
                 <label className="col-sm-3 control-label" />
                 <div className="col-sm-8">
-                  <button className="btn btn-primary" href="manageBusiness.html">
+                <Link to={`/editBusiness/${this.props.match.params.id}`}>
+                  <button className="btn btn-primary" >
                     Edit Business
                   </button>
+                  </Link>
                   <button type="reset" className="btn btn-danger" id="btn-delete" value="Delete Business" >
                     Delete
                   </button>
+                  
                 </div>
               </div>
               <div className="form-group form-spacing row">
