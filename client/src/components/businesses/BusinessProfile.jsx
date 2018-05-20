@@ -4,17 +4,45 @@ import { Link } from 'react-router-dom';
 import images from '../../public/images/irokotv.jpg'
 import { connect } from 'react-redux';
 import { title, description, category, location } from './RegisterBusiness';
-import { getOneBusinessAction } from '../../actions/businessActions';
+import { getOneBusinessAction, deleteBusinessAction } from '../../actions/businessActions';
+import { addFlashMessage } from '../../actions/flashMessages';
 
 class BusinessProfile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onDelete = this.onDelete.bind(this);
+  }
+  onDelete(event) {
+    event.preventDefault();
+    const { id } = this.props.match.params;
+    this.props.deleteBusinessAction(id);
+  }
   componentDidMount() {
-     this.props.getOneBusinessAction(this.props.match.params.id)
+    this.props.getOneBusinessAction(this.props.match.params.id)
+  }
+  componentWillReceiveProps(nextProps){
+    const { isDeleted, message, error, hasError } = nextProps.deleteBusiness;
+    if(isDeleted){
+      this.props.addFlashMessage({
+        type: 'success',
+        text: `${message}`
+    })
+    this.context.router.history.push('/businessCatalog');
+      
+    }
+    else if(!isDeleted && hasError){
+      this.props.addFlashMessage({
+        type: 'error',
+        text: `${error}`
+    })
+    // this.context.router.history.push('/businessProfile')
+    }
   }
 
 
   render() {
     const { business } = this.props;
-     return (
+    return (
       <div className="container">
         <div className="form-actions" />
         <div className="row">
@@ -83,7 +111,7 @@ class BusinessProfile extends React.Component {
               </div>
               <div className="form-group form-spacing">
                 <label className="col-sm-6 control-label">
-                  <strong>Business Email: </strong> {business.email} 
+                  <strong>Business Email: </strong> {business.email}
                   <strong>
                     &nbsp;&nbsp;
                    </strong>
@@ -92,15 +120,21 @@ class BusinessProfile extends React.Component {
               <div className="form-group form-spacing">
                 <label className="col-sm-3 control-label" />
                 <div className="col-sm-8">
-                <Link to={`/editBusiness/${this.props.match.params.id}`}>
-                  <button className="btn btn-primary" >
-                    Edit Business
+                  <Link to={`/editBusiness/${this.props.match.params.id}`}>
+                    <button className="btn btn-primary" >
+                      Edit Business
                   </button>
                   </Link>
-                  <button type="reset" className="btn btn-danger" id="btn-delete" value="Delete Business" >
+                  <button
+                    type="reset"
+                    className="btn btn-danger"
+                    id="btn-delete"
+                    value="Delete Business"
+                    onClick={this.onDelete}
+                  >
                     Delete
                   </button>
-                  
+
                 </div>
               </div>
               <div className="form-group form-spacing row">
@@ -152,9 +186,20 @@ class BusinessProfile extends React.Component {
     );
   }
 }
+
+// RegisterBusiness.proptypes = {
+//   registerBusinessAction: PropTypes.func.isRequired,
+//   addFlashMessage: PropTypes.func.isRequired
+// }
+
+BusinessProfile.contextTypes = {
+  router: PropTypes.object.isRequired
+}
+
 const mapStateToProps = state => ({
-  business: state.oneBusiness
+  business: state.oneBusiness,
+  deleteBusiness: state.deleteBusiness
 })
 
-export default connect(mapStateToProps, { getOneBusinessAction })(BusinessProfile);
+export default connect(mapStateToProps, { getOneBusinessAction, deleteBusinessAction, addFlashMessage })(BusinessProfile);
 
