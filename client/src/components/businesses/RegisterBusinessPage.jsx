@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import RegisterBusiness from '../businesses/RegisterBusiness';
 import { connect } from 'react-redux';
-import   { RegisterBusinessAction }  from '../../actions/businessActions';
+import { registerBusinessAction, editBusinessAction } from '../../actions/businessActions';
 import { addFlashMessage } from '../../actions/flashMessages';
 
 /**
@@ -10,16 +10,32 @@ import { addFlashMessage } from '../../actions/flashMessages';
 */
 class RegisterBusinessPage extends React.Component {
     render() {
-        const { RegisterBusinessAction, addFlashMessage } = this.props;
+        const { registerBusinessAction, addFlashMessage, editBusinessAction, business } = this.props;
         return (
-            <RegisterBusiness RegisterBusinessAction={RegisterBusinessAction} addFlashMessage={addFlashMessage} />
+            <RegisterBusiness 
+                editBusinessAction={editBusinessAction} 
+                registerBusinessAction={registerBusinessAction} 
+                addFlashMessage={addFlashMessage} 
+                business={business}
+            />
         );
     }
 }
 
 RegisterBusinessPage.propTypes = {
-    RegisterBusinessAction: PropTypes.func.isRequired,
+    registerBusinessAction: PropTypes.func.isRequired,
+    editBusinessAction: PropTypes.func.isRequired,
     addFlashMessage: PropTypes.func.isRequired
 }
 
-export default connect((state) => { return {} }, { RegisterBusinessAction, addFlashMessage })(RegisterBusinessPage);
+function mapStateToProps(state, props) {
+     
+    if (props.match.params) {       
+        return {
+            business: state.oneBusiness
+        }
+    }
+    return { business: null}
+}
+
+export default connect(mapStateToProps, { registerBusinessAction, editBusinessAction, addFlashMessage })(RegisterBusinessPage);
