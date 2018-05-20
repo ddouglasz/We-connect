@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/authActions';
 
 class NavBar extends React.Component {
-  logout(e) {
-    e.preventDefault();
+  logout(event) {
+    event.preventDefault();
     this.props.logout();
     this.context.router.history.push('/')
   }
