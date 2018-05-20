@@ -2,45 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import BusinessList from './BusinessList';
 import { getBusinessAction } from '../../actions/businessActions';
 import Cards from './cards';
 
 class BusinessCatalog extends React.Component {
 constructor(props){
 super(props);
-// this.displayBusiness = this.displayBusiness.bind(this); 
 }
   componentDidMount() {
     this.props.getBusinessAction()
-    // .then(
-    //   () => {
-
-    //   }
-    // );
   }
-
-  // displayBusiness() {
-  //   const allBsuinesses = this.props.businesses
-  //   return(
-  //     allBsuinesses.map((business) => (
-  //      <Card 
-  //       Key={business}
-  //       id={business.id}
-  //       name={business.name}
-  //       description={business.description}
-  //       />
-  //     ))
-  //   )
-  // }
-
-   
-    
-    
-  
-
-
-
   render() {
     const allBsuinesses = this.props.businesses;
     const displayAllBusiness = allBsuinesses.map((business) => {
@@ -54,9 +25,6 @@ super(props);
         />
       )
     })
-
-    // console.log(this.props.businesses);
-
     return (
       <div className="catalog-cover">
         <div className="jumbotron2 jumbotron-fluid home-wrapper-catalog">
@@ -100,15 +68,8 @@ super(props);
         </div>
         <div className="body-cover">
           <div className="row">
-              {/* <Cards /> */}
-
-            {/* <BusinessList businesses={this.props.businesses}  /> */}
-            {/* <div> */}
-              { allBsuinesses && displayAllBusiness }
-{/* this.displayBusiness() */}
-{/* </div> */}
-            {/* <div className="col-lg-1"></div> */}
-            <div className="pagination-card btn1-spacing">
+               { allBsuinesses && displayAllBusiness }
+             <div className="pagination-card btn1-spacing">
               <nav aria-label="pages">
                 <ul className="pagination">
                   <li className="page-item disabled">
@@ -138,16 +99,9 @@ super(props);
   }
 }
 BusinessCatalog.propTypes = {
-  // businesses: PropTypes.array.isRequired,
-  getBusinessAction: PropTypes.func.isRequired
+   getBusinessAction: PropTypes.func.isRequired
 }
 
-// function mapStateToProps(state) {
-//   return {
-//     // businesses: state.businesses,
-//     allbusinesses: state.allBusinesses
-//   }
-// }
 
 const mapStateToProps = state => ({
   businesses: state.allBusinesses,
