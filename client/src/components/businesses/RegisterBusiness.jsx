@@ -1,16 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { RegisterBusinessAction }  from "../../actions/businessActions";
+import { connect } from 'react-redux'
+import { registerBusinessAction }  from '../../actions/businessActions';
 import classnames from 'classnames';
 
 
 class RegisterBusiness extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
             title: '',
-            description: '',
+            description : '',
             category: '',
             location: '',
             email: '',
@@ -18,24 +20,25 @@ class RegisterBusiness extends React.Component {
             errors: [],
             isLoading: false
         }
-        this.onChange = this.onChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-    };
 
-    onChange(e) {
-        this.setState({ [e.target.name]: e.target.value });
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this); 
     }
 
-    onSubmit(e) {
-        e.preventDefault();
+    onChange(event) {
+        this.setState({ [event.target.name]: event.target.value });
+    }
+
+    onSubmit(event) {
+        event.preventDefault();
         this.setState({ errors: [], isLoading: true });
-        this.props.RegisterBusinessAction(this.state).then(
+        this.props.registerBusinessAction(this.state).then(
             () => {
                 this.props.addFlashMessage({
                     type: 'success',
                     text: 'Business added successfully'
                 })
-                this.context.router.history.push('/businessProfile')
+                this.context.router.history.push('/businessCatalog')
             },
             ({ response }) => this.setState({ errors: response.data.message, isLoading: false })
         );
@@ -46,7 +49,7 @@ class RegisterBusiness extends React.Component {
         return (
             <div className="container" onSubmit={this.onSubmit}>
                 <div className="form-actions2">
-                    <h1>Edit or Add a new Business</h1>
+                    <h1>Add a new Business</h1>
                     
                 {errors && <span className="help-block text-danger"><div className="form-action">{errors}</div></span>  }                                                      
                 
@@ -174,7 +177,7 @@ class RegisterBusiness extends React.Component {
 }
 
 RegisterBusiness.proptypes = {
-    RegisterBusinessAction: PropTypes.func.isRequired,
+    registerBusinessAction: PropTypes.func.isRequired,
     addFlashMessage: PropTypes.func.isRequired
 }
 
@@ -182,4 +185,4 @@ RegisterBusiness.contextTypes = {
     router: PropTypes.object.isRequired
 }
 
-export default RegisterBusiness;
+export default connect(null, { registerBusinessAction })(RegisterBusiness);
