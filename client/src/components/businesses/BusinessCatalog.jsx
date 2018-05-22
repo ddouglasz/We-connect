@@ -20,6 +20,7 @@ super(props);
         Key={business}
         id={business.id}
         name={business.title}
+        image={business.image}
         description={business.description}
         category={business.category}
         />

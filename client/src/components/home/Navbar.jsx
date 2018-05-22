@@ -21,11 +21,6 @@ class NavBar extends React.Component {
             <span>Catalog</span>
           </Link>
         </ul>
-        <form className="form-inline nav-close my-sm-0" >
-          <Link to="/editBusiness" className="nav-link text">
-            <span>Edit Business</span>
-          </Link>
-        </form >
         <form className="form-inline nav-close my-sm-0">
           <Link to="/registerBusiness" className="nav-link text ">
             <span >Register Business</span>
@@ -60,7 +55,6 @@ class NavBar extends React.Component {
           </Link>
         </form>
       </div>
-
     );
 
     return (

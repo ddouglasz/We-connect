@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { title, description, category, location } from './RegisterBusiness';
 import { getOneBusinessAction, deleteBusinessAction } from '../../actions/businessActions';
 import { addFlashMessage } from '../../actions/flashMessages';
+import ReviewsCard from './ReviewsCards';
+import { getReviewsAction } from '../../actions/reviewsActions'
 
 class BusinessProfile extends React.Component {
   constructor(props) {
@@ -19,6 +21,7 @@ class BusinessProfile extends React.Component {
   }
   componentDidMount() {
     this.props.getOneBusinessAction(this.props.match.params.id)
+    this.props.getReviewsAction()
   }
   componentWillReceiveProps(nextProps){
     const { isDeleted, message, error, hasError } = nextProps.deleteBusiness;
@@ -28,7 +31,6 @@ class BusinessProfile extends React.Component {
         text: `${message}`
     })
     this.context.router.history.push('/businessCatalog');
-      
     }
     else if(!isDeleted && hasError){
       this.props.addFlashMessage({
@@ -41,6 +43,7 @@ class BusinessProfile extends React.Component {
 
 
   render() {
+    // const allReviews = this.props
     const { business } = this.props;
     return (
       <div className="container">
@@ -49,28 +52,8 @@ class BusinessProfile extends React.Component {
           <div className="col-sm-4">
             <br />
             <div className="text-center">
-              <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
-                <div className="carousel-inner profile-images" role="listbox">
-                  <div className="carousel-item active">
-                    <img className="d-block img-fluid" src={require('../../public/images/irokotv2.jpg')} alt="First slide" id="profile-image1" />
-                  </div>
-                  <div className="carousel-item">
-                    <img className="d-block img-fluid" src={require('../../public/images/iroko960.jpg')} alt="Second slide" id="profile-image2" />
-                  </div>
-                  <div className="carousel-item">
-                    <img className="d-block img-fluid" src={require('../../public/images/irokotv1.jpg')} alt="Third slide" id="profile-image3" />
-                  </div>
-                </div>
-                <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                  <span className="carousel-control-prev-icon" aria-hidden="true" />
-                  <span className="sr-only">Previous</span>
-                </a>
-                <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                  <span className="carousel-control-next-icon" aria-hidden="true" />
-                  <span className="sr-only">Next</span>
-                </a>
-              </div>
-              <div className="form-group form-spacing">
+            <img className="img img-fluid" src={business.image} alt="Card image cap" width="537.5" />            
+               <div className="form-group form-spacing">
                 <label className="col-sm-6 control-label">
                   <h3>
                     <br />
@@ -157,26 +140,9 @@ class BusinessProfile extends React.Component {
               </div>
               <div className="edit-spacing" id="chat-cards-buttom-spacing">
                 <ul className="list-unstyled">
-                  <li className="media">
-                    <img className="d-flex mr-3" id="reviews-image" src={require('../../public/images/bean.jpg')} alt="Generic placeholder image" />
-                    <div className="media-body">
-                      <h5 className="mt-0 mb-1">List-based media object</h5>
-                    </div>
-                  </li>
-                  <li className="media my-4">
-                    <img className="d-flex mr-3" id="reviews-image" src={require('../../public/images/profileGlyph.jpg')} alt="Generic placeholder image" />
-                    <div className="media-body">
-                      <h5 className="mt-0 mb-1">List-based media object</h5>
-                      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
-                  </li>
-                  <li className="media">
-                    <img className="d-flex mr-3" id="reviews-image" src={require('../../public/images/beardedsmiley.jpg')} alt="Generic placeholder image" />
-                    <div className="media-body">
-                      <h5 className="mt-0 mb-1">List-based media object</h5>
-                      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
-                  </li>
+                  < ReviewsCard 
+                  reviews={business.review}
+                  />
                 </ul>
               </div>
             </form>
@@ -187,11 +153,6 @@ class BusinessProfile extends React.Component {
   }
 }
 
-// RegisterBusiness.proptypes = {
-//   registerBusinessAction: PropTypes.func.isRequired,
-//   addFlashMessage: PropTypes.func.isRequired
-// }
-
 BusinessProfile.contextTypes = {
   router: PropTypes.object.isRequired
 }
@@ -201,5 +162,5 @@ const mapStateToProps = state => ({
   deleteBusiness: state.deleteBusiness
 })
 
-export default connect(mapStateToProps, { getOneBusinessAction, deleteBusinessAction, addFlashMessage })(BusinessProfile);
+export default connect(mapStateToProps, { getOneBusinessAction, deleteBusinessAction, addFlashMessage, getReviewsAction })(BusinessProfile);
 

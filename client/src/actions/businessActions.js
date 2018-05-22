@@ -1,5 +1,14 @@
 import axios from 'axios';
-import { ALL_BUSINESSES, ONE_BUSINESS, EDIT_SUCCESSFUL, EDIT_FAILED, DELETE_FAILED, DELETE_SUCCESSFUL } from './types';
+import {
+  ALL_BUSINESSES,
+  ONE_BUSINESS,
+  EDIT_SUCCESSFUL,
+  EDIT_FAILED,
+  DELETE_FAILED,
+  DELETE_SUCCESSFUL,
+  ADD_IMAGE_SUCCESSFUL,
+  ADD_IMAGE_FAILED
+} from './types';
 
 
 export function allBusinesses(businesses) {
@@ -88,3 +97,33 @@ export const deleteBusinessAction = id => dispatch =>
     .catch((error) => {
       dispatch(deleteFailed(error.response.data.message));
     });
+
+export function addImageSuccessful(image) {
+  return {
+    type: ADD_IMAGE_SUCCESSFUL,
+    image
+  };
+}
+
+export function addImageFailed(error) {
+  return {
+    type: ADD_IMAGE_FAILED,
+    error
+  };
+}
+
+export function saveImageCloudinary(image) {
+  const data = new FormData();
+  data.append('file', image);
+  data.append('upload_preset', 'cbv7b7lm');
+  delete axios.defaults.headers.common.Authorization;
+  return dispatch => axios.post('https://api.cloudinary.com/v1_1/douglas-weconnect/image/upload', data)
+    .then((response) => {
+      const token = localStorage.getItem('userToken');
+      axios.defaults.headers.common.Authorization = token;
+      dispatch(addImageSuccessful(response.data.secure_url));
+    })
+    .catch(() => {
+      dispatch(addImageFailed('Sorry, your image didnt upload'));
+    });
+}
