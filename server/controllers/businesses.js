@@ -160,7 +160,7 @@ class Businesses {
    * @param {res} res
    */
   static postReview(req, res) {
-    return ReviewsModel.findOne({
+    return BusinessModel.findOne({
       where: {
         id: req.params.businessId
       }
