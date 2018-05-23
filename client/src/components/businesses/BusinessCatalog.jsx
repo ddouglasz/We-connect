@@ -13,8 +13,8 @@ super(props);
     this.props.getBusinessAction()
   }
   render() {
-    const allBsuinesses = this.props.businesses;
-    const displayAllBusiness = allBsuinesses.map((business) => {
+    const allBusinesses = this.props.businesses;
+    const displayAllBusiness = allBusinesses.map((business) => {
       return(
         <Cards
         Key={business}
@@ -69,7 +69,7 @@ super(props);
         </div>
         <div className="body-cover">
           <div className="row">
-               { allBsuinesses && displayAllBusiness }
+               { allBusinesses && displayAllBusiness }
              <div className="pagination-card btn1-spacing">
               <nav aria-label="pages">
                 <ul className="pagination">

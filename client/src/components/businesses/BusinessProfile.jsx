@@ -7,53 +7,91 @@ import { title, description, category, location } from './RegisterBusiness';
 import { getOneBusinessAction, deleteBusinessAction } from '../../actions/businessActions';
 import { addFlashMessage } from '../../actions/flashMessages';
 import ReviewsCard from './ReviewsCards';
-import { getReviewsAction } from '../../actions/reviewsActions'
+import { getReviewsAction, postReviewAction } from '../../actions/reviewsActions'
 
 class BusinessProfile extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      review: '',
+      errors: [],
+      isLoading: false
+    }
     this.onDelete = this.onDelete.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
+
   onDelete(event) {
     event.preventDefault();
     const { id } = this.props.match.params;
     this.props.deleteBusinessAction(id);
   }
+
+  onChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
+  onSubmit(event) {
+    event.preventDefault();
+    const { id } = this.props.match.params;
+    this.setState({ errors: [], isLodaing: true });
+    this.props.postReviewAction(this.state, id)
+      .then(() => {
+        this.props.addFlashMessage({
+          type: 'success',
+          text: 'review added successfully'
+        })
+      },
+      (err) => {
+        console.log(err.response.data.message);
+        this.props.addFlashMessage({
+        type: 'error',
+        // text:  this.props.addReview.error
+        text: err.response.data.message
+        // text: thi.props.
+      })
+    }
+      // (error) => this.setState({ errors: response.data.message, isLoading: false })
+    );
+  }
+
   componentDidMount() {
     this.props.getOneBusinessAction(this.props.match.params.id)
-    this.props.getReviewsAction()
+    this.props.getReviewsAction(this.props.match.params.id)
   }
-  componentWillReceiveProps(nextProps){
+
+  componentWillReceiveProps(nextProps) {
     const { isDeleted, message, error, hasError } = nextProps.deleteBusiness;
-    if(isDeleted){
+    if (isDeleted) {
       this.props.addFlashMessage({
         type: 'success',
         text: `${message}`
-    })
-    this.context.router.history.push('/businessCatalog');
+      })
+      this.context.router.history.push('/businessCatalog');
     }
-    else if(!isDeleted && hasError){
+    else if (!isDeleted && hasError) {
       this.props.addFlashMessage({
         type: 'error',
         text: `${error}`
-    })
-    // this.context.router.history.push('/businessProfile')
+      })
     }
   }
 
 
   render() {
-    // const allReviews = this.props
-    const { business } = this.props;
+    const { business, review } = this.props;
+
     return (
-      <div className="container">
+      <div className="container" >
         <div className="form-actions" />
         <div className="row">
           <div className="col-sm-4">
             <br />
             <div className="text-center">
-            <img className="img img-fluid" src={business.image} alt="Card image cap" width="537.5" />            
-               <div className="form-group form-spacing">
+              <img className="img img-fluid" src={business.image} alt="Card image cap" width="537.5" />
+              <div className="form-group form-spacing">
                 <label className="col-sm-6 control-label">
                   <h3>
                     <br />
@@ -120,29 +158,40 @@ class BusinessProfile extends React.Component {
 
                 </div>
               </div>
-              <div className="form-group form-spacing row">
-                <label htmlFor="smFormGroupInput" className="col-sm-12 col-form-label col-form-label-sm" />
-                <div className="col-sm-8" id="description">
-                  <textarea className="form-control" id="exampleTextarea" rows="3" placeholder="add a review" />
+              <form onSubmit={this.onSubmit}>
+                <div className="form-group form-spacing row">
+                  <div className="col-sm-8" id="description">
+                    <textarea
+                      name="review"
+                      className="form-control"
+                      id="exampleTextarea"
+                      rows="3" placeholder="add a review"
+                      value={this.state.review}
+                      onChange={this.onChange}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="form-group form-spacing">
-                <label className="col-sm-3 control-label" />
-                <div className="col-sm-8">
-                  <a className="btn btn-primary" href="businessProfile.html" role="button">
-                    Post Review
-                  </a>
+                <div className="form-group form-spacing">
+                  <div className="col-sm-8">
+                    <button
+                      disabled={this.state.isLoading}
+                      className="btn btn-primary"
+                    >
+                      Post Review
+                  </button>
+                  </div>
                 </div>
-              </div>
+              </form>
               <br />
               <div className="form-reviews" id="description-header">
                 <h3>Reviews</h3>
               </div>
               <div className="edit-spacing" id="chat-cards-buttom-spacing">
                 <ul className="list-unstyled">
-                  < ReviewsCard 
-                  reviews={business.review}
-                  />
+                  {this.props.reviewsData.Reviews &&
+                    <ReviewsCard
+                      reviews={this.props.reviewsData.Reviews}
+                    />}
                 </ul>
               </div>
             </form>
@@ -159,8 +208,9 @@ BusinessProfile.contextTypes = {
 
 const mapStateToProps = state => ({
   business: state.oneBusiness,
-  deleteBusiness: state.deleteBusiness
+  deleteBusiness: state.deleteBusiness,
+  reviewsData: state.allReviews
 })
 
-export default connect(mapStateToProps, { getOneBusinessAction, deleteBusinessAction, addFlashMessage, getReviewsAction })(BusinessProfile);
+export default connect(mapStateToProps, { getOneBusinessAction, deleteBusinessAction, addFlashMessage, getReviewsAction, postReviewAction })(BusinessProfile);
 
