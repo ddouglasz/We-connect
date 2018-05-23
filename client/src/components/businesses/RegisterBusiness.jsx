@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
-import { registerBusinessAction }  from '../../actions/businessActions';
+import { registerBusinessAction, saveImageCloudinary }  from '../../actions/businessActions';
 import classnames from 'classnames';
 
 
@@ -16,6 +16,7 @@ class RegisterBusiness extends React.Component {
             category: '',
             location: '',
             email: '',
+            imageUpload: '',
             image: '',
             errors: [],
             isLoading: false
@@ -23,12 +24,31 @@ class RegisterBusiness extends React.Component {
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this); 
+        this.onImageChange = this.onImageChange.bind(this);
+        this.saveImage = this.saveImage.bind(this);
     }
 
     onChange(event) {
         this.setState({ [event.target.name]: event.target.value });
     }
 
+    onImageChange(event){
+        
+        event.preventDefault();
+        console.log('hi');
+        // this.setState({imageUpload: event.target.files[0]});
+        this.saveImage(event);
+        // this.props.saveImageCloudinary(event.target.files[0]);
+    }
+
+    saveImage(event){
+        // event.preventDefault();
+        this.props.saveImageCloudinary(event.target.files[0]).then(() =>{
+            this.setState({
+                image: this.props.imageUrl
+            })
+        })
+    }
     onSubmit(event) {
         event.preventDefault();
         this.setState({ errors: [], isLoading: true });
@@ -63,10 +83,9 @@ class RegisterBusiness extends React.Component {
                             <input
                              type="file" 
                              className="form-control btn-primary" 
-                             name="image"
+                             // name="image"
                              placeholder="company or firm"
-                             value={this.state.image}
-                             onChange={this.onChange}
+                             onChange={this.onImageChange}
                              />
                         </div>
                     </div>
@@ -184,5 +203,8 @@ RegisterBusiness.proptypes = {
 RegisterBusiness.contextTypes = {
     router: PropTypes.object.isRequired
 }
+const mapStateToProps = (state) => ({
+    imageUrl: state.imageReducer.imageUrl
+})
 
-export default connect(null, { registerBusinessAction })(RegisterBusiness);
+export default connect(mapStateToProps, { registerBusinessAction, saveImageCloudinary })(RegisterBusiness);

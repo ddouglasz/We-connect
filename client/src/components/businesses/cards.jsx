@@ -3,11 +3,11 @@ import {Link} from 'react-router-dom';
 import Truncate from 'react-truncate';
 import TextTruncate from 'react-text-truncate';
 
-const Cards = ({name, description, category, id}) => {
+const Cards = ({ name, description, category, id, image }) => {
 return (
     <div className="col-md-4 col-sm-6 col-xs-12">
         <div className=" img-zoom card-space">
-                 <img className="img img-fluid" src={require('../../public/images/printivomug.jpg')} alt="Card image cap" width="537.5" />
+                 <img className="img img-fluid card-image" src={image} alt="Card image cap" width="537.5" />
              <div className="card-block">
                 <h4 className="card-title detail-text">{name}</h4>
                 <TextTruncate className="card-title detail-text" text={description} lines={1}/>

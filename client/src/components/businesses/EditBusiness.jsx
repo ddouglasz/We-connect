@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { editBusinessAction, getOneBusinessAction }  from '../../actions/businessActions';
+import { editBusinessAction, getOneBusinessAction } from '../../actions/businessActions';
 import { addFlashMessage } from '../../actions/flashMessages';
 import classnames from 'classnames';
 
@@ -14,7 +13,7 @@ class EditBusiness extends React.Component {
         this.state = {
             id: this.props.business.id,
             title: this.props.business.title,
-            description : this.props.business.description,
+            description: this.props.business.description,
             category: this.props.business.category,
             location: this.props.business.location,
             email: this.props.business.email,
@@ -24,11 +23,11 @@ class EditBusiness extends React.Component {
         }
 
         this.onChange = this.onChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this); 
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     componentWillMount() {
-         this.props.getOneBusinessAction(this.props.match.params.id);
+        this.props.getOneBusinessAction(this.props.match.params.id);
     }
 
     onChange(event) {
@@ -39,17 +38,16 @@ class EditBusiness extends React.Component {
         event.preventDefault();
         this.setState({ errors: [], isLoading: true });
         this.props.editBusinessAction(this.state)
-        .then(
-            () => {
-                // console.log('are you here');
-                this.props.addFlashMessage({
-                    type: 'success',
-                    text: 'Business Edited successfully'
-                })
-                this.context.router.history.push('/businessCatalog')
-            },
-            (error) => this.setState({ errors: response.data.message, isLoading: false })
-         );
+            .then(
+                () => {
+                     this.props.addFlashMessage({
+                        type: 'success',
+                        text: 'Business Edited successfully'
+                    })
+                    this.context.router.history.push('/businessCatalog')
+                },
+                (error) => this.setState({ errors: response.data.message, isLoading: false })
+            );
     }
 
     render() {
@@ -58,9 +56,9 @@ class EditBusiness extends React.Component {
             <div className="container" onSubmit={this.onSubmit}>
                 <div className="form-actions2">
                     <h1>Edit a Business</h1>
-                    
-                {errors && <span className="help-block text-danger"><div className="form-action">{errors}</div></span>  }                                                      
-                
+
+                    {errors && <span className="help-block text-danger"><div className="form-action">{errors}</div></span>}
+
                 </div>
                 <hr />
                 <div className="row">
@@ -69,13 +67,13 @@ class EditBusiness extends React.Component {
                             <img src={require('../../public/images/irokotv.jpg')} className="img-rounded" id="profile-image" alt="chefchef" width="250" />
                             <h6>Upload a different photo...</h6>
                             <input
-                             type="file" 
-                             className="form-control btn-primary" 
-                             name="image"
-                             placeholder="company or firm"
-                             value={this.state.image}
-                             onChange={this.onChange}
-                             />
+                                type="file"
+                                className="form-control btn-primary"
+                                name="image"
+                                placeholder="company or firm"
+                            //  value={this.state.image}
+                            //  onChange={this.onChange}
+                            />
                         </div>
                     </div>
 
@@ -189,8 +187,8 @@ EditBusiness.proptypes = {
     addFlashMessage: PropTypes.func.isRequired
 }
 const mapStateToProps = state => ({
-        business: state.oneBusiness
-      })
+    business: state.oneBusiness
+})
 
 EditBusiness.contextTypes = {
     router: PropTypes.object.isRequired
