@@ -38,8 +38,7 @@ class EditBusiness extends React.Component {
         event.preventDefault();
         this.setState({ errors: [], isLoading: true });
         this.props.editBusinessAction(this.state)
-            .then(
-                () => {
+            .then(() => {
                      this.props.addFlashMessage({
                         type: 'success',
                         text: 'Business Edited successfully'

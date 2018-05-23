@@ -33,17 +33,12 @@ class RegisterBusiness extends React.Component {
     }
 
     onImageChange(event){
-        
         event.preventDefault();
-        console.log('hi');
-        // this.setState({imageUpload: event.target.files[0]});
-        this.saveImage(event);
-        // this.props.saveImageCloudinary(event.target.files[0]);
-    }
+         this.saveImage(event);
+     }
 
     saveImage(event){
-        // event.preventDefault();
-        this.props.saveImageCloudinary(event.target.files[0]).then(() =>{
+         this.props.saveImageCloudinary(event.target.files[0]).then(() =>{
             this.setState({
                 image: this.props.imageUrl
             })
@@ -83,7 +78,6 @@ class RegisterBusiness extends React.Component {
                             <input
                              type="file" 
                              className="form-control btn-primary" 
-                             // name="image"
                              placeholder="company or firm"
                              onChange={this.onImageChange}
                              />
@@ -165,15 +159,6 @@ class RegisterBusiness extends React.Component {
                                 </div>
                             </div>
                             <div className="form-group btn1-spacing">
-                                <label className="col-md-3 control-label"><strong>Add social network:</strong></label>
-                                <div className="col-md-8">
-                                    <input
-                                        className="form-control"
-                                        type="text"
-                                        placeholder="@social" />
-                                </div>
-                            </div>
-                            <div className="form-group btn1-spacing">
                                 <label className="col-md-3 control-label"></label>
                                 <div className="col-md-8 edit-spacing">
                                     <div className="btn-toolbar ">
@@ -183,7 +168,17 @@ class RegisterBusiness extends React.Component {
                                             role="button">
                                             save
                                     </button>
-                                        <button type="reset" className="btn btn-danger" value="Cancel" id="cancel-reg" href="businessProfile.html">Cancel</button>
+                                        <button
+                                          type="reset" 
+                                         className="btn btn-danger" 
+                                         value="Cancel" 
+                                         id="cancel-reg" 
+                                         href="/businessCatalog"
+                                         >
+                                         <Link to={"/businessCatalog"} className="btn btn-danger">
+                                         Cancel
+                                         </Link>
+                                         </button>
                                     </div>
                                 </div>
                             </div>
