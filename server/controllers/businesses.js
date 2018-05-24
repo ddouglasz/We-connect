@@ -105,7 +105,7 @@ class Businesses {
       }
       return business.update({
         title: req.body.title || business.title,
-        descriprion: req.body.descriprion || business.descriprion,
+        description: req.body.description || business.description,
         category: req.body.category || business.category,
         location: req.body.location || business.location,
         image: req.body.image || business.image,
