@@ -43,7 +43,7 @@ class EditBusiness extends React.Component {
                         type: 'success',
                         text: 'Business Edited successfully'
                     })
-                    this.context.router.history.push('/businessCatalog')
+                    this.context.router.history.push("/businessCatalog")
                 },
                 (error) => this.setState({ errors: response.data.message, isLoading: false })
             );
@@ -148,15 +148,6 @@ class EditBusiness extends React.Component {
                                         value={this.state.email}
                                         onChange={this.onChange}
                                     />
-                                </div>
-                            </div>
-                            <div className="form-group btn1-spacing">
-                                <label className="col-md-3 control-label"><strong>Add social network:</strong></label>
-                                <div className="col-md-8">
-                                    <input
-                                        className="form-control"
-                                        type="text"
-                                        placeholder="@social" />
                                 </div>
                             </div>
                             <div className="form-group btn1-spacing">
