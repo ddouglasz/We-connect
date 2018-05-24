@@ -42,18 +42,16 @@ class BusinessProfile extends React.Component {
         this.props.addFlashMessage({
           type: 'success',
           text: 'review added successfully'
-        })
+        });   
+        this.props.getReviewsAction(this.props.match.params.id)
+
       },
       (err) => {
-        console.log(err.response.data.message);
         this.props.addFlashMessage({
         type: 'error',
-        // text:  this.props.addReview.error
         text: err.response.data.message
-        // text: thi.props.
       })
     }
-      // (error) => this.setState({ errors: response.data.message, isLoading: false })
     );
   }
 
@@ -101,7 +99,6 @@ class BusinessProfile extends React.Component {
               </div>
             </div>
           </div>
-
           <div className="col-sm-8 personal-info">
             <div className="form-profile" id="description">
               <h3>Business Profile</h3>
@@ -155,7 +152,6 @@ class BusinessProfile extends React.Component {
                   >
                     Delete
                   </button>
-
                 </div>
               </div>
               <form onSubmit={this.onSubmit}>

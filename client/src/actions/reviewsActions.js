@@ -35,7 +35,4 @@ export const postReviewAction = (review, id) => dispatch =>
     .then(() => {
       dispatch(addReviewSuccess('successfully added a review'));
     })
-    // .catch((err) => {
-    //   console.log(err.data.message);
-    //   dispatch(addReviewFailed('hi'));
-    // });
+   
