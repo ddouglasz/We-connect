@@ -44,7 +44,6 @@ class BusinessProfile extends React.Component {
           text: 'review added successfully'
         });   
         this.props.getReviewsAction(this.props.match.params.id)
-
       },
       (err) => {
         this.props.addFlashMessage({
@@ -54,6 +53,8 @@ class BusinessProfile extends React.Component {
     }
     );
   }
+
+
 
   componentDidMount() {
     this.props.getOneBusinessAction(this.props.match.params.id)
@@ -79,7 +80,7 @@ class BusinessProfile extends React.Component {
 
 
   render() {
-    const { business, review } = this.props;
+    const { business, review, user } = this.props;
 
     return (
       <div className="container" >
@@ -135,7 +136,8 @@ class BusinessProfile extends React.Component {
                    </strong>
                 </label>
               </div>
-              <div className="form-group form-spacing">
+              { user.id === business.userId ?
+                (<div className="form-group form-spacing">
                 <label className="col-sm-3 control-label" />
                 <div className="col-sm-8">
                   <Link to={`/editBusiness/${this.props.match.params.id}`}>
@@ -153,7 +155,8 @@ class BusinessProfile extends React.Component {
                     Delete
                   </button>
                 </div>
-              </div>
+              </div>) : null
+            }
               <form onSubmit={this.onSubmit}>
                 <div className="form-group form-spacing row">
                   <div className="col-sm-8" id="description">
@@ -205,7 +208,8 @@ BusinessProfile.contextTypes = {
 const mapStateToProps = state => ({
   business: state.oneBusiness,
   deleteBusiness: state.deleteBusiness,
-  reviewsData: state.allReviews
+  reviewsData: state.allReviews,
+  user: state.auth.user
 })
 
 export default connect(mapStateToProps, { getOneBusinessAction, deleteBusinessAction, addFlashMessage, getReviewsAction, postReviewAction })(BusinessProfile);
