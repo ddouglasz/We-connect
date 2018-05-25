@@ -53,11 +53,24 @@ export const registerBusinessAction = businesses => dispatch =>
  * @param {*} businesses
  * @returns {object} action to be dispatched
  */
-export const getBusinessAction = businesses => dispatch =>
-  axios.get('api/v1/businesses', businesses)
+export const getBusinessAction =  () => dispatch =>
+axios.get('api/v1/businesses')
     .then((response) => {
       dispatch(allBusinesses(response.data.businesses));
     });
+  
+
+/**
+ * Register a business
+ * @param {*} businesses
+ * @returns {object} action to be dispatched
+ */
+export const getAllBusinessSearchAction = (searchType, keyValue) => dispatch =>
+axios.get(`api/v1/businesses?${searchType}=${keyValue}`)
+  .then((response) => {
+    dispatch(allBusinesses(response.data.business));
+  }   
+);
 
 
 export const getOneBusinessAction = id => dispatch =>
@@ -127,3 +140,5 @@ export function saveImageCloudinary(image) {
       dispatch(addImageFailed('Sorry, your image didnt upload'));
     });
 }
+
+
