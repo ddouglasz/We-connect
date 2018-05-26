@@ -73,7 +73,7 @@ class RegisterBusiness extends React.Component {
                 <div className="row">
                     <div className="col-md-3">
                         <div className="text-center">
-                            <img src={require('../../public/images/irokotv.jpg')} className="img-rounded" id="profile-image" alt="chefchef" width="250" />
+                            <img src={this.state.image} className="img-rounded" id="profile-image" alt="chefchef" width="250" />
                             <h6>Upload a different photo...</h6>
                             <input
                              type="file" 
