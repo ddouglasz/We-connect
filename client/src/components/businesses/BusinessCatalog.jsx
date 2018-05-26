@@ -62,7 +62,7 @@ onSearch(event) {
                 <div className="input-group input-search-field border-right=0" id="searchbar">
                   <span className="input-group-dropdown" id="searchField">
                     <select className="custom-select btn  searchbar-decors text-white dropdown-toggle" id="dropdownMenuButton"  name="searchType" onChange={this.onChange} >
-                      <option id="text-white" value=''>Choose Search type</option>
+                      <option id="text-white" value=''>Choose</option>
                       <option value={this.state.location}>location</option>
                       <option value={this.state.category}>category</option>
                       <option value={this.state.name}>business name</option>
@@ -87,7 +87,11 @@ onSearch(event) {
         <div className="body-cover">
           <div className="row">
             {allBusinesses && displayAllBusiness}
-            <div className="pagination-card btn1-spacing">
+            
+          </div>
+          
+        </div>
+        <div className="pagination-card btn1-spacing">
               <nav aria-label="pages">
                 <ul className="pagination">
                   <li className="page-item disabled">
@@ -110,9 +114,8 @@ onSearch(event) {
                 </ul>
               </nav>
             </div>
-          </div>
-        </div>
       </div>
+      
     );
   }
 }
