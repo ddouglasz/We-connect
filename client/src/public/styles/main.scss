@@ -79,7 +79,7 @@ input[type="btn"]:hover {
 #email,
 #password {
     background: transparent;
-    -webkit-text-fill-color: white;
+    -webkit-text-fill-color: #03a9f4;
 }
 
 #searchField {
@@ -184,7 +184,7 @@ input[type="btn"]:hover {
     font-weight: 100;
     font-size: 14px;
     background: transparent;
-    -webkit-text-fill-color: white;
+    -webkit-text-fill-color: #03a9f4;
 }
 
 #loginForm,
@@ -208,6 +208,7 @@ input[type="btn"]:hover {
     margin: 20px;
     padding: 10px;
     min-height: 570px;
+    
 }
 
 .btn-decor {
@@ -392,8 +393,10 @@ input[type="btn"]:hover {
 .pagination-card {
     width: 200px;
     padding: 15px;
+    bottom: 0;
     margin-bottom: 35px;
     z-index: 1;
+    position: fixed;
     color: #001f3f;
 }
 
@@ -404,7 +407,7 @@ input[type="btn"]:hover {
     height: 60px;
     line-height: 60px;
     background-color: #001f3f;
-    z-index: 2;
+    z-index: 1;
     color: white;
 }
 
@@ -437,4 +440,12 @@ input[type="btn"]:hover {
 .btn-success:disabled {
      background-color: #0a0e0a;
     border-color: #aa1616;
+}
+
+// #image-style1 img{
+//     height: 300px;
+// }
+
+.img-fluid {
+    height: 300px;
 }

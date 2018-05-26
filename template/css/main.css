@@ -35,7 +35,6 @@ nav.navbar {
     text-align: center;
     font-weight: 200;
     color: #1565C0;
-    /* font-family: "Museo Slab", sans-serif; */
     font-family: "Museo Slab";
     margin-top: 5rem;
 }
@@ -43,7 +42,6 @@ nav.navbar {
 #welcomeText a {
     text-align: center;
     font-weight: 200;
-    /* opacity: 0.5; */
     color: #001f3f;
     font-family: "Museo Slab", sans-serif;
     margin-top: 5rem;
@@ -118,7 +116,6 @@ input[type=btn]:hover {
 .signup-page-background{
     background: url("../images/businessIdeas.jpg")center center no-repeat fixed;
     height: 800px;
-    /* border-top: 0; */
 }
 
 .home-wrapper-catalog {
@@ -161,7 +158,6 @@ input[type=btn]:hover {
     margin: 70px 10px 40px 10px;
     padding: 50px 10px 40px 10px;
     height: 450px;
-    /* width: 100%; */
 }
 #signupForm {
    background: #001f3f !important;
@@ -170,7 +166,6 @@ input[type=btn]:hover {
    height: 450px;
    width: 400px;
    text-align: center;
-    /* width: 100%; */
 }
 
 #loginForm,
@@ -184,7 +179,7 @@ input[type=btn]:hover {
 
 #catalogForm {
     background: #001f3f;
-     margin: 20px;
+    margin: 20px;
     padding: 10px;
     overflow: hidden;
 }
@@ -221,7 +216,6 @@ input[type=btn]:hover {
 .form-signup {
     opacity: 0.7;
     min-width: 100px!important;
-    /* width: 00px; */
     max-width: 500px;
     padding: 60px 50px 90px 50px;
     margin: 30px auto;
@@ -348,7 +342,7 @@ input[type=btn]:hover {
     color: #fff;
 }
 
-@media (max-width: 575px) {
+@media (max-height: 575px) {
     .display-3 {
         font-size: 30px;
     }
@@ -401,6 +395,4 @@ margin-left: 12px;
 .res{
    margin-top: 3px;
 }
-.card-image{
-    max-height: 200px!important;
-}
+
