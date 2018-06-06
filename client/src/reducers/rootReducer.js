@@ -8,6 +8,7 @@ import deleteBusiness from './deletBusinessReducer';
 import imageReducer from './imageReducer';
 import allReviews from './reviewsReducer';
 import addReview from './addReviewReducer';
+import getUserProfile from './userProfileReducer';
 
 
 export default combineReducers({
@@ -19,6 +20,7 @@ export default combineReducers({
   imageReducer,
   addReview,
   allReviews,
+  getUserProfile,
   auth
 });
 

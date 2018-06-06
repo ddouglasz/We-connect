@@ -34,5 +34,5 @@ export const postReviewAction = (review, id) => dispatch =>
   axios.post(`http://localhost:8000/api/v1/businesses/${id}/reviews`, review)
     .then(() => {
       dispatch(addReviewSuccess('successfully added a review'));
-    })
+    });
    

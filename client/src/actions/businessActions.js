@@ -1,4 +1,6 @@
 import axios from 'axios';
+import jwt from 'jsonwebtoken';
+
 import {
   ALL_BUSINESSES,
   ONE_BUSINESS,
@@ -7,7 +9,9 @@ import {
   DELETE_FAILED,
   DELETE_SUCCESSFUL,
   ADD_IMAGE_SUCCESSFUL,
-  ADD_IMAGE_FAILED
+  ADD_IMAGE_FAILED,
+  GET_USER_PROFILE_SUCCESSFUL,
+  GET_USER_PROFILE_FAILED,
 } from './types';
 
 
@@ -59,7 +63,6 @@ axios.get('api/v1/businesses')
       dispatch(allBusinesses(response.data.businesses));
     });
   
-
 /**
  * Register a business
  * @param {*} businesses
@@ -142,3 +145,28 @@ export function saveImageCloudinary(image) {
 }
 
 
+
+
+export function getUserProfileSuccessful(userProfile) {
+  return {
+    type: GET_USER_PROFILE_SUCCESSFUL,
+    userProfile
+  };
+}
+
+export function getUserProfileFailed(error) {
+  return {
+    type: GET_USER_PROFILE_FAILED,
+    error
+  };
+}
+
+
+
+export const UserDashBoardAction = () => dispatch => {
+const userId = jwt.decode(localStorage.getItem('userToken')).id
+axios.get(`/api/v1/businesses/${userId}/userProfile`)
+.then((response) => {
+  dispatch(getUserProfileSuccessful(response.data.userdata.Businesses))
+});
+}
