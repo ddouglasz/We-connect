@@ -208,8 +208,7 @@ input[type="btn"]:hover {
     background: #001f3f;
     margin: 20px;
     padding: 10px;
-    min-height: 570px;
-    
+    min-height: 570px; 
 }
 
 .btn-decor {
@@ -268,7 +267,7 @@ input[type="btn"]:hover {
 }
 
 .btn1-spacing {
-    margin-bottom: 10px;
+    margin-bottom: 10px;    
 }
 
 .form-signin-heading {
@@ -410,6 +409,7 @@ input[type="btn"]:hover {
     background-color: #001f3f;
     z-index: 1;
     color: white;
+    margin-top: 500px;
 }
 
 .auth {
@@ -443,10 +443,34 @@ input[type="btn"]:hover {
     border-color: #aa1616;
 }
 
-// #image-style1 img{
-//     height: 300px;
-// }
-
 .img-fluid {
     height: 300px;
+}
+
+.catalog-cover {
+    margin-bottom: 100px;
+}
+
+.user-details-cover{
+    // background-color: #001f3f;
+    // position: fixed;
+    width: 40%;
+}
+
+// .user-cards {
+// position: relative;
+// width: 60%;
+// }
+
+// .row {
+//     width: 100%;
+// }
+.profile-image{
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+.jumbotron2{
+    position: relative;
 }

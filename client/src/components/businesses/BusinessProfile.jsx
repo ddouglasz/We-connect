@@ -42,7 +42,8 @@ class BusinessProfile extends React.Component {
         this.props.addFlashMessage({
           type: 'success',
           text: 'review added successfully'
-        });   
+        }
+      );   
         this.props.getReviewsAction(this.props.match.params.id)
       },
       (err) => {
@@ -51,10 +52,10 @@ class BusinessProfile extends React.Component {
         text: err.response.data.message
       })
     }
-    );
-  }
+  );
+}
 
-
+ 
 
   componentDidMount() {
     this.props.getOneBusinessAction(this.props.match.params.id)
@@ -77,10 +78,13 @@ class BusinessProfile extends React.Component {
       })
     }
   }
-
+  
+  
 
   render() {
     const { business, review, user } = this.props;
+    // const reviewsNumber = this.props.reviewsData;
+    // console.log(reviewsNumber.Reviews.length);
 
     return (
       <div className="container" >
@@ -190,6 +194,7 @@ class BusinessProfile extends React.Component {
                   {this.props.reviewsData.Reviews &&
                     <ReviewsCard
                       reviews={this.props.reviewsData.Reviews}
+                      // {console.log(this.props.reviewsData.Reviews)}
                     />}
                 </ul>
               </div>
@@ -204,7 +209,6 @@ class BusinessProfile extends React.Component {
 BusinessProfile.contextTypes = {
   router: PropTypes.object.isRequired
 }
-
 const mapStateToProps = state => ({
   business: state.oneBusiness,
   deleteBusiness: state.deleteBusiness,

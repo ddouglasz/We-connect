@@ -16,9 +16,9 @@ class Businesses {
    */
   static getBusinesses(req, res) {
     return BusinessModel.all()
-      .then(business => res.status(200).json(
-        {businesses: business}
-      ))
+      .then(business => res.status(200).json({
+        businesses: business
+      }))
       .catch(() => res.status(404).json({
         message: 'business not found'
       }));
@@ -226,7 +226,7 @@ class Businesses {
       });
   }
 
- /**
+  /**
    * @returns {Object} getUserProfile
    * @param {req} req
    * @param {res} res

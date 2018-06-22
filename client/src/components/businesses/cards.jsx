@@ -2,8 +2,9 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import Truncate from 'react-truncate';
 import TextTruncate from 'react-text-truncate';
+import moment from 'moment';
 
-const Cards = ({ name, description, category, id, image }) => {
+const Cards = ({ name, description, category, id, image, createdAt, reviews }) => {
 return (
     <div className="col-md-4 col-sm-6 col-xs-12 business-card">
         <div className=" img-zoom card-space">
@@ -15,19 +16,21 @@ return (
                 <TextTruncate className="card-title detail-text" text={description} lines={1}/>
                 <hr/>
                 <h6 className="card-title detail-text">Category: {category}</h6>
+                <small className="updated" id="updated-text">
+                   <a>created at:</a> {moment(createdAt).format('Do MMMM YYYY')}
+                </small>
                 <div className="icons ">
                     <Link to={`/businessProfile/${id}`}>
                          <i className="fa fa-info-circle fa-lg fa-fw" aria-hidden="true"></i>
                         <strong>Find out more</strong>
                     </Link>
                 </div>
-                <div className="icons">
+                {/* <div className="icons">
                     <a href="#">
                         <i className="fa fa-commenting-o" aria-hidden="true"></i>
-                        <strong> 156 reviews</strong>
+                        <strong> {reviews} reviews</strong>
                     </a>
-                </div>
-                <small className="updated" id="updated-text">Last updated 4 mins ago</small>
+                </div> */}
             </div>
         </div>
     </div>

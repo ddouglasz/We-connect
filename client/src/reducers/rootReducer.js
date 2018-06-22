@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import allBusinesses from  './businessReducer';
+import allBusinesses from './businessReducer';
 import oneBusiness from './oneBusinessReducer';
 import flashMessages from './flashMessages';
 import auth from './auth';

@@ -57,23 +57,21 @@ export const registerBusinessAction = businesses => dispatch =>
  * @param {*} businesses
  * @returns {object} action to be dispatched
  */
-export const getBusinessAction =  () => dispatch =>
-axios.get('api/v1/businesses')
+export const getBusinessAction = () => dispatch =>
+  axios.get('api/v1/businesses')
     .then((response) => {
       dispatch(allBusinesses(response.data.businesses));
     });
-  
 /**
  * Register a business
  * @param {*} businesses
  * @returns {object} action to be dispatched
  */
 export const getAllBusinessSearchAction = (searchType, keyValue) => dispatch =>
-axios.get(`api/v1/businesses?${searchType}=${keyValue}`)
-  .then((response) => {
-    dispatch(allBusinesses(response.data.business));
-  }   
-);
+  axios.get(`api/v1/businesses?${searchType}=${keyValue}`)
+    .then((response) => {
+      dispatch(allBusinesses(response.data.business));
+    });
 
 
 export const getOneBusinessAction = id => dispatch =>
@@ -145,8 +143,6 @@ export function saveImageCloudinary(image) {
 }
 
 
-
-
 export function getUserProfileSuccessful(userProfile) {
   return {
     type: GET_USER_PROFILE_SUCCESSFUL,
@@ -162,11 +158,10 @@ export function getUserProfileFailed(error) {
 }
 
 
-
-export const UserDashBoardAction = () => dispatch => {
-const userId = jwt.decode(localStorage.getItem('userToken')).id
-axios.get(`/api/v1/businesses/${userId}/userProfile`)
-.then((response) => {
-  dispatch(getUserProfileSuccessful(response.data.userdata.Businesses))
-});
-}
+export const UserDashBoardAction = () => (dispatch) => {
+  const userId = jwt.decode(localStorage.getItem('userToken')).id;
+  axios.get(`/api/v1/businesses/${userId}/userProfile`)
+    .then((response) => {
+      dispatch(getUserProfileSuccessful(response.data.userdata.Businesses));
+    });
+};

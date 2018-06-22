@@ -35,4 +35,3 @@ export const postReviewAction = (review, id) => dispatch =>
     .then(() => {
       dispatch(addReviewSuccess('successfully added a review'));
     });
-   
