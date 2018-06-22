@@ -38,16 +38,14 @@ class EditBusiness extends React.Component {
         event.preventDefault();
         this.setState({ errors: [], isLoading: true });
         this.props.editBusinessAction(this.state)
-            .then(
-                () => {
+            .then(() => {
                      this.props.addFlashMessage({
                         type: 'success',
                         text: 'Business Edited successfully'
                     })
-                    this.context.router.history.push('/businessCatalog')
+                    this.context.router.history.push("/businessCatalog")
                 },
-                (error) => this.setState({ errors: response.data.message, isLoading: false })
-            );
+            )
     }
 
     render() {
@@ -64,7 +62,8 @@ class EditBusiness extends React.Component {
                 <div className="row">
                     <div className="col-md-3">
                         <div className="text-center">
-                            <img src={require('../../public/images/irokotv.jpg')} className="img-rounded" id="profile-image" alt="chefchef" width="250" />
+                        <img defaultValue={this.state.image} className="img-rounded" id="profile-image" alt="chefchef" width="250"/>
+                            {/* <img src={require('../../public/images/irokotv.jpg')} className="img-rounded" id="profile-image" alt="chefchef" width="250" /> */}
                             <h6>Upload a different photo...</h6>
                             <input
                                 type="file"
@@ -149,15 +148,6 @@ class EditBusiness extends React.Component {
                                         value={this.state.email}
                                         onChange={this.onChange}
                                     />
-                                </div>
-                            </div>
-                            <div className="form-group btn1-spacing">
-                                <label className="col-md-3 control-label"><strong>Add social network:</strong></label>
-                                <div className="col-md-8">
-                                    <input
-                                        className="form-control"
-                                        type="text"
-                                        placeholder="@social" />
                                 </div>
                             </div>
                             <div className="form-group btn1-spacing">

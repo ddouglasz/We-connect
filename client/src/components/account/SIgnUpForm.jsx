@@ -21,12 +21,12 @@ class SignUpForm extends React.Component {
   
 
 
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+  onChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
   }
 
-onSubmit(e) {
-e.preventDefault();
+onSubmit(event) {
+event.preventDefault();
 this.setState({ errors : [] , isLoading: true });
   this.props.SignUpAction(this.state).then(
     () => {

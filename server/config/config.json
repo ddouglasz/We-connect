@@ -8,7 +8,7 @@
   },
   "tests": {
     "username": "postgres",
-    "password": "",
+    "password": "PASSWORD",
     "database": "weconnect_test",
     "host": "127.0.0.1",
     "dialect": "postgres"

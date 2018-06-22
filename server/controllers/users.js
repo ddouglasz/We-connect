@@ -35,13 +35,13 @@ class Users {
       }).then((user) => {
         const accessToken = jwt.sign(
           {
-            userId: user.id,
+            id: user.id,
             firstName: user.firstName,
             lastName: user.lastName,
             email: user.email
           },
           process.env.secretKey,
-          { expiresIn: 60 * 60 },
+          { expiresIn: '24h' },
         );
         return (res.status(201).send({
           message: 'Registration Successful',
@@ -80,7 +80,7 @@ class Users {
               email: user.email
             }
             , process.env.secretKey,
-            { expiresIn: 60 * 60 }
+            { expiresIn: '24h' }
           ),
           email: user.email,
           id: user.id,

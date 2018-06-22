@@ -1,4 +1,6 @@
 import axios from 'axios';
+import jwt from 'jsonwebtoken';
+
 import {
   ALL_BUSINESSES,
   ONE_BUSINESS,
@@ -7,7 +9,9 @@ import {
   DELETE_FAILED,
   DELETE_SUCCESSFUL,
   ADD_IMAGE_SUCCESSFUL,
-  ADD_IMAGE_FAILED
+  ADD_IMAGE_FAILED,
+  GET_USER_PROFILE_SUCCESSFUL,
+  GET_USER_PROFILE_FAILED,
 } from './types';
 
 
@@ -53,10 +57,20 @@ export const registerBusinessAction = businesses => dispatch =>
  * @param {*} businesses
  * @returns {object} action to be dispatched
  */
-export const getBusinessAction = businesses => dispatch =>
-  axios.get('api/v1/businesses', businesses)
+export const getBusinessAction = () => dispatch =>
+  axios.get('api/v1/businesses')
     .then((response) => {
       dispatch(allBusinesses(response.data.businesses));
+    });
+/**
+ * Register a business
+ * @param {*} businesses
+ * @returns {object} action to be dispatched
+ */
+export const getAllBusinessSearchAction = (searchType, keyValue) => dispatch =>
+  axios.get(`api/v1/businesses?${searchType}=${keyValue}`)
+    .then((response) => {
+      dispatch(allBusinesses(response.data.business));
     });
 
 
@@ -127,3 +141,27 @@ export function saveImageCloudinary(image) {
       dispatch(addImageFailed('Sorry, your image didnt upload'));
     });
 }
+
+
+export function getUserProfileSuccessful(userProfile) {
+  return {
+    type: GET_USER_PROFILE_SUCCESSFUL,
+    userProfile
+  };
+}
+
+export function getUserProfileFailed(error) {
+  return {
+    type: GET_USER_PROFILE_FAILED,
+    error
+  };
+}
+
+
+export const UserDashBoardAction = () => (dispatch) => {
+  const userId = jwt.decode(localStorage.getItem('userToken')).id;
+  axios.get(`/api/v1/businesses/${userId}/userProfile`)
+    .then((response) => {
+      dispatch(getUserProfileSuccessful(response.data.userdata.Businesses));
+    });
+};

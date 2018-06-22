@@ -2,22 +2,45 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getBusinessAction } from '../../actions/businessActions';
+import { getReviewsAction } from '../../actions/reviewsActions'
+import { getBusinessAction, getAllBusinessSearchAction } from '../../actions/businessActions';
 import Cards from './cards';
 
 class BusinessCatalog extends React.Component {
-constructor(props){
-super(props);
-}
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchType: '',
+      keyValue: ''
+    }
+    this.onChange = this.onChange.bind(this);
+    this.onSearch = this.onSearch.bind(this);
+  }
+  onChange(event) {
+    event.preventDefault();
+    this.setState({ [event.target.name]: event.target.value });
+  }
+  
+  onSearch(event) {
+    event.preventDefault();
+    const { searchType, keyValue } = this.state;
+    if (!searchType || !keyValue) {
+      this.props.getBusinessAction();
+    }
+    this.props.getAllBusinessSearchAction(searchType, keyValue)
+  };
+  
   componentDidMount() {
+    const { searchType, keyValue } = this.state;
+    // this.props.getBusinessAction(searchType, keyValue)
     this.props.getBusinessAction()
   }
   render() {
-    const allBsuinesses = this.props.businesses;
-    const displayAllBusiness = allBsuinesses.map((business) => {
-      return(
+    const allBusinesses = this.props.businesses;
+    const displayAllBusiness = allBusinesses.map((business) => {
+      return (
         <Cards
-        Key={business}
+        key={business.id}
         id={business.id}
         name={business.title}
         image={business.image}
@@ -36,23 +59,19 @@ super(props);
             <div className="col-sm-4 col-md-4 col-lg-4 cat-image">
             </div>
             <div className="col-sm-4 cat-image">
-              <form>
+              <form onSubmit={this.onSearch}>
                 <div className="input-group input-search-field border-right=0" id="searchbar">
                   <span className="input-group-dropdown" id="searchField">
-                    <div className="dropdown">
-                      <button className="btn  searchbar-decors text-white btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <a id="text-white">select:</a>
-                      </button>
-                      <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a className="dropdown-item" href="#">Location</a>
-                        <a className="dropdown-item" href="#">Category</a>
-                      </div>
-                    </div>
+                    <select className="custom-select btn  searchbar-decors text-white dropdown-toggle" id="dropdownMenuButton" name="searchType" onChange={this.onChange} >
+                      <option id="text-white" value=''>Choose</option>
+                      <option value={this.state.location}>location</option>
+                      <option value={this.state.category}>category</option>
+                      <option value={this.state.title}>business name</option>
+                    </select>
                   </span>
-                  <input type="text" className="form-control SearchBar" id="input-search" placeholder="Direct search" />
+                  <input type="text" className="form-control SearchBar" id="input-search" placeholder="Direct search" name="keyValue" onChange={this.onChange} />
                   <span className="input-group-btn">
-                    <button className="btn  searchbar-decors btn-search" type="button" id="searchField">
+                    <button className="btn  searchbar-decors btn-search" id="searchField">
                       <strong className="searchbtntext">
                         <a id="text-white">Search</a>
                       </strong>
@@ -63,50 +82,54 @@ super(props);
             </div>
           </div>
         </div>
-
         <div className="form-action">
           <h3 className="center-align">Popular Businesses</h3>
         </div>
         <div className="body-cover">
           <div className="row">
-               { allBsuinesses && displayAllBusiness }
-             <div className="pagination-card btn1-spacing">
-              <nav aria-label="pages">
-                <ul className="pagination">
-                  <li className="page-item disabled">
-                    <a className="page-link" href="#" tabIndex="-1">Previous</a>
-                  </li>
-                  <li className="page-item">
-                    <a className="page-link" href="#">1</a>
-                  </li>
-                  <li className="page-item active">
-                    <a className="page-link" href="#">2
-                <span className="sr-only">(current)</span>
-                    </a>
-                  </li>
-                  <li className="page-item">
-                    <a className="page-link" href="#">3</a>
-                  </li>
-                  <li className="page-item">
-                    <a className="page-link" href="#">Next</a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
+
+            {allBusinesses && displayAllBusiness}
+
           </div>
+
+        </div>
+        <div className="pagination-card btn1-spacing">
+          <nav aria-label="pages">
+            <ul className="pagination">
+              <li className="page-item disabled">
+                <a className="page-link" href="#" tabIndex="-1">Previous</a>
+              </li>
+              <li className="page-item">
+                <a className="page-link" href="#">1</a>
+              </li>
+              <li className="page-item active">
+                <a className="page-link" href="#">2
+                <span className="sr-only">(current)</span>
+                </a>
+              </li>
+              <li className="page-item">
+                <a className="page-link" href="#">3</a>
+              </li>
+              <li className="page-item">
+                <a className="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
-    );
-  }
+
+);
+}
 }
 BusinessCatalog.propTypes = {
-   getBusinessAction: PropTypes.func.isRequired
+  getBusinessAction: PropTypes.func.isRequired
 }
 
 
 const mapStateToProps = state => ({
   businesses: state.allBusinesses,
+  reviewData: state.allReviews
 })
 
-export default connect(mapStateToProps, { getBusinessAction })(BusinessCatalog);
+export default connect(mapStateToProps, { getBusinessAction, getReviewsAction, getAllBusinessSearchAction })(BusinessCatalog);
 

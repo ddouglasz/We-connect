@@ -16,9 +16,9 @@ class Businesses {
    */
   static getBusinesses(req, res) {
     return BusinessModel.all()
-      .then(business => res.status(200).json(
-        {businesses: business}
-      ))
+      .then(business => res.status(200).json({
+        businesses: business
+      }))
       .catch(() => res.status(404).json({
         message: 'business not found'
       }));
@@ -105,7 +105,7 @@ class Businesses {
       }
       return business.update({
         title: req.body.title || business.title,
-        descriprion: req.body.descriprion || business.descriprion,
+        description: req.body.description || business.description,
         category: req.body.category || business.category,
         location: req.body.location || business.location,
         image: req.body.image || business.image,
@@ -160,7 +160,7 @@ class Businesses {
    * @param {res} res
    */
   static postReview(req, res) {
-    return ReviewsModel.findOne({
+    return BusinessModel.findOne({
       where: {
         id: req.params.businessId
       }
@@ -226,7 +226,7 @@ class Businesses {
       });
   }
 
- /**
+  /**
    * @returns {Object} getUserProfile
    * @param {req} req
    * @param {res} res

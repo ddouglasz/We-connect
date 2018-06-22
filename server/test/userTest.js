@@ -5,6 +5,7 @@ import models from './../models';
 
 const usersModel = models.users;
 const { expect, assert, should } = chai;
+const userEmail = `steve${Math.random() * 100}@weconnect.com`;
 should();
 
 chai.use(chaiHttp);
@@ -22,7 +23,7 @@ describe('TEST for user routes', () => {
         .send({
           firstName: 'steve',
           lastName: 'dougs',
-          email: 'steve@dougs.com',
+          email: userEmail,
           password: 'password'
         })
         .end((err, res) => {

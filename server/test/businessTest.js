@@ -3,17 +3,10 @@ import chai from 'chai';
 import app from '../../app';
 import models from './../models';
 
-import { businessesDb } from '../seedData/business';
-import { reviewsDb } from '../seedData/review';
-import { usersDb } from '../seedData/user';
-
 const { expect, assert, should } = chai;
 const businessModel = models.businesses;
 
 let auth1;
-let auth2;
-let businessId1;
-let businessId2;
 should();
 
 chai.use(chaiHttp);
@@ -99,7 +92,7 @@ describe('TEST for businesses', () => {
         .send({
           title: 'dangote',
           image: 'dangote.jpg',
-          description: 'a salesn and development company.',
+          description: 'a sales and development company.',
           category: ' ',
           location: 'Kano',
           email: 'dangote@gmail.com ',
@@ -114,7 +107,7 @@ describe('TEST for businesses', () => {
           );
           done();
         });
-      });
+    });
 
     it('should return a status code 401 and a response message for an empty location field', (done) => {
       chai.request(app)
@@ -210,7 +203,7 @@ describe('TEST for businesses', () => {
           expect(res.body).to.be.a('object');
           assert.equal(
             res.body.message,
-            'description should be between 2 to 50 characters'
+            'description should be between 2 to 100 characters'
           );
           done();
         });
@@ -261,7 +254,7 @@ describe(' GET request for /api/v1/businesses/:businessId', () => {
       });
     chai.request(app)
       .get('/api/v1/businesses/?category=ICT')
-      .end((err, res) => {
+      .end((err, res) => { 
         res.should.have.status(200);
         res.body.should.be.a('object');
         res.body.businesses.should.be.a('array');
