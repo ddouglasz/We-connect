@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 
 import {
   ALL_BUSINESSES,
+  PAGINATE,
   ONE_BUSINESS,
   EDIT_SUCCESSFUL,
   EDIT_FAILED,
@@ -14,6 +15,13 @@ import {
   GET_USER_PROFILE_FAILED,
 } from './types';
 
+
+export function paginateBusinessAction(paginate) {
+  return {
+    type: PAGINATE,
+    paginate
+  };
+}
 
 export function allBusinesses(businesses) {
   return {
@@ -57,11 +65,13 @@ export const registerBusinessAction = businesses => dispatch =>
  * @param {*} businesses
  * @returns {object} action to be dispatched
  */
-export const getBusinessAction = () => dispatch =>
-  axios.get('api/v1/businesses')
+export const getBusinessAction = page => dispatch =>
+  axios.get(`api/v1/businesses?page=${page || 1}`)
     .then((response) => {
       dispatch(allBusinesses(response.data.businesses));
+      dispatch(paginateBusinessAction(response.data.paginate));
     });
+
 /**
  * Register a business
  * @param {*} businesses

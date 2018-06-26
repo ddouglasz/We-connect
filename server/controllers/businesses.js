@@ -9,20 +9,45 @@ const UsersModel = models.users;
  * @class business
  */
 class Businesses {
-/**
-   * @returns {Object} business
-   * @param {req} req
-   * @param {res} res
-   */
+  /**
+    * @returns {Object} business
+    * @param {req} req
+    * @param {res} res
+    */
   static getBusinesses(req, res) {
-    return BusinessModel.all()
-      .then(business => res.status(200).json({
-        businesses: business
-      }))
-      .catch(() => res.status(404).json({
-        message: 'business not found'
-      }));
+    const limit = 6;
+    const page = req.query.page || 1;
+    const offset = limit * (page - 1);
+
+    return BusinessModel.findAndCountAll({
+      limit,
+      offset,
+      order: [['createdAt', 'DESC']]
+    })
+      .then((returnBusiness) => {
+        const { count, rows } = returnBusiness;
+        const pages = Math.ceil(count / limit);
+        const presentPage = Math.floor(offset / limit) + 1;
+
+        return res.status(200).json({
+          businesses: rows,
+          pagination: {
+            count,
+            pages,
+            presentPage,
+            pageSize: returnBusiness.rows.length,
+            limit
+          }
+        });
+      })
+      .catch(() => {
+        res.status(404).json({
+          message: 'business not found'
+        });
+      });
   }
+
+
   /**
    * @returns {Object} createBusiness
    * @param {req} req
