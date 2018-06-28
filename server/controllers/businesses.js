@@ -32,11 +32,11 @@ class Businesses {
         return res.status(200).json({
           businesses: rows,
           pagination: {
+            limit,
             count,
             pages,
             presentPage,
             pageSize: returnBusiness.rows.length,
-            limit
           }
         });
       })
@@ -232,7 +232,7 @@ class Businesses {
             .then((reviews) => {
               if (!reviews) {
                 return res.status(404).json({
-                  message: 'this business does not have any reviews yet,'
+                  message: 'this business does not have any reviews yet'
                 });
               }
               return res.status(200).json({

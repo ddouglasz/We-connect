@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 
 import {
   ALL_BUSINESSES,
-  PAGINATE,
+  PAGINATION,
   ONE_BUSINESS,
   EDIT_SUCCESSFUL,
   EDIT_FAILED,
@@ -18,8 +18,8 @@ import {
 
 export function paginateBusinessAction(paginate) {
   return {
-    type: PAGINATE,
-    paginate
+    type: PAGINATION,
+    pagination
   };
 }
 
@@ -69,7 +69,7 @@ export const getBusinessAction = page => dispatch =>
   axios.get(`api/v1/businesses?page=${page || 1}`)
     .then((response) => {
       dispatch(allBusinesses(response.data.businesses));
-      dispatch(paginateBusinessAction(response.data.paginate));
+      dispatch(paginateBusinessAction(response.data.pagination));
     });
 
 /**
