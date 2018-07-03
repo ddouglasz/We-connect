@@ -43,20 +43,20 @@ class BusinessProfile extends React.Component {
           type: 'success',
           text: 'review added successfully'
         }
-      );   
+        );
         this.props.getReviewsAction(this.props.match.params.id)
         this.setState({ review: '' });
       },
-      (err) => {
-        this.props.addFlashMessage({
-        type: 'error',
-        text: err.response.data.message
-      })
-    }
-  );
-}
+        (err) => {
+          this.props.addFlashMessage({
+            type: 'error',
+            text: err.response.data.message
+          })
+        }
+      );
+  }
 
- 
+
 
   componentDidMount() {
     this.props.getOneBusinessAction(this.props.match.params.id)
@@ -79,17 +79,17 @@ class BusinessProfile extends React.Component {
       })
     }
   }
-  
-  
-  
+
+
+
   render() {
     const { business, review, user, count } = this.props;
-    if (!this.props.reviewsData.Reviews){
+    if (!this.props.reviewsData.Reviews) {
       return 'loading...'
     }
     // console.log(this.props.reviewsData.Reviews.count);
 
-    
+
     return (
       <div className="container" >
         <div className="form-actions" />
@@ -144,28 +144,28 @@ class BusinessProfile extends React.Component {
                    </strong>
                 </label>
               </div>
-              { user.id === business.userId ?
+              {user.id === business.userId ?
                 (<div className="form-group form-spacing">
-                <label className="col-sm-3 control-label" />
-                <div className="col-sm-8">
-                  <Link to={`/editBusiness/${this.props.match.params.id}`}>
-                    <button className="btn btn-primary" >
-                      Edit Business
+                  <label className="col-sm-3 control-label" />
+                  <div className="col-sm-8">
+                    <Link to={`/editBusiness/${this.props.match.params.id}`}>
+                      <button className="btn btn-primary" >
+                        Edit Business
                   </button>
-                  </Link>
-                  <button
-                    type="reset"
-                    className="btn btn-danger"
-                    id="btn-delete"
-                    value="Delete Business"
-                    onClick={this.onDelete}
-                  >
-                    Delete
+                    </Link>
+                    <button
+                      type="reset"
+                      className="btn btn-danger"
+                      id="btn-delete"
+                      value="Delete Business"
+                      onClick={this.onDelete}
+                    >
+                      Delete
                   </button>
-                </div>
-              </div>) : null
-            }
-             { user.id !== business.userId ? (<form onSubmit={this.onSubmit}>
+                  </div>
+                </div>) : null
+              }
+              {user.id !== business.userId ? (<form onSubmit={this.onSubmit}>
                 <div className="form-group form-spacing row">
                   <div className="col-sm-8" id="description">
                     <textarea
@@ -188,7 +188,7 @@ class BusinessProfile extends React.Component {
                   </button>
                   </div>
                 </div>
-    </form>) : null }
+              </form>) : null}
               <br />
               <div className="form-reviews" id="description-header">
                 <h3>Reviews</h3>
@@ -198,7 +198,7 @@ class BusinessProfile extends React.Component {
                   {this.props.reviewsData.Reviews &&
                     <ReviewsCard
                       reviews={this.props.reviewsData.Reviews.rows}
-                      />}
+                    />}
                 </ul>
               </div>
             </form>
