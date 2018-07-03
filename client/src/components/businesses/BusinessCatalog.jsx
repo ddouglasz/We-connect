@@ -1,15 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Pagination from 'rc-pagination';
 import { getReviewsAction } from '../../actions/reviewsActions';
 import { getBusinessAction, getAllBusinessSearchAction } from '../../actions/businessActions';
 import Cards from './cards';
 
+
+/**
+ * @description - returns pagination object
+ * @param {number} count - document/user count
+ * @param {object} rows - rows fetched with Sequelize findAndCountAll query
+ * @param {number} limit - limit
+ * @param {number} offset - offset
+ * @returns {void}
+ */
+
 class BusinessCatalog extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       presentPage: 1,
       limit: 0,
@@ -21,6 +31,7 @@ class BusinessCatalog extends React.Component {
     this.onSearch = this.onSearch.bind(this);
     this.onChangepage = this.onChangepage.bind(this);
   }
+
   onChange(event) {
     event.preventDefault();
     this.setState({ [event.target.name]: event.target.value });
@@ -35,9 +46,8 @@ class BusinessCatalog extends React.Component {
     this.props.getAllBusinessSearchAction(searchType, keyValue)
   };
 
-
   onChangepage(page) {
-    this.props.getBusinessAction().
+    this.props.getBusinessAction(page).
       then(() => {
         const { presentPage, limit, count } = this.props.pagination;
         this.setState({
@@ -48,33 +58,35 @@ class BusinessCatalog extends React.Component {
       });
   }
 
-  // componentDidMount() {
-  //   const { searchType, keyValue } = this.state;
-  //   // this.props.getBusinessAction(searchType, keyValue)
-  //   this.props.getBusinessAction()
-  // }
-
-
   componentDidMount() {
+    // this.props.getReviewsAction(this.props.match.params.id)    
     // this.props.getBusinessAction(searchType, keyValue)
-    const { searchType, keyValue } = this.state;
-    this.props.getBusinessAction().then(() => {
-      const { presentPage, limit, count } = this.props.pagination;
-      this.setState({
-        presentPage,
-        count,
-        limit
+    // this.props.getReviewsAction(this.props.match.params.id).then(() => {
+    //   const { reviewCount: count } = this.props.businessdata;
+    //   this.setState({
+    //     reviewCount
+    //   });
+    // });
+    
+    // const { searchType, keyValue } = this.state;
+    this.props.getBusinessAction()
+      .then(() => {
+        const { presentPage, limit, count } = this.props.pagination;
+        this.setState({
+          presentPage,
+          count,
+          limit
+        });
       });
-    });
   }
-
-
-
+  
+  
+  
   render() {
     const allBusinesses = this.props.businesses;
     const { count, presentPage, limit } = this.state;
     const displayAllBusiness = allBusinesses.map((business) => {
-      console.log(this.state.limit)
+
       return (
         <Cards
           key={business.id}
@@ -83,9 +95,12 @@ class BusinessCatalog extends React.Component {
           image={business.image}
           description={business.description}
           category={business.category}
+          createdAt={business.createdAt}
+        // reviewsNumber={count}
         />
       )
-    })
+    });
+
     return (
       <div className="catalog-cover">
         <div className="jumbotron2 jumbotron-fluid home-wrapper-catalog">
@@ -134,13 +149,13 @@ class BusinessCatalog extends React.Component {
         {/* <div className="pagination-card btn1-spacing">
           <nav aria-label="pages">
             <ul className="pagination">
-              <li className="page-item disabled">
+              <li className="page-item disabled active">
                 <a className="page-link" href="#" tabIndex="-1">Previous</a>
               </li>
               <li className="page-item">
                 <a className="page-link" href="#">1</a>
               </li>
-              <li className="page-item active">
+              <li className="page-item">
                 <a className="page-link" href="#">2
                 <span className="sr-only">(current)</span>
                 </a>
@@ -157,10 +172,10 @@ class BusinessCatalog extends React.Component {
 
         <div className="d-flex justify-content-center mt-5">
           <Pagination
-            getSum={(sum, range) =>
-              `${range[0]} - ${range[1]} of ${sum} items`
+            showTotal={(total, range) =>
+              `${range[0]} - ${range[1]} of ${total} items`
             }
-            sum={count}
+            total={count}
             pageSize={limit}
             current={presentPage}
             onChange={this.onChangepage}
@@ -172,16 +187,19 @@ class BusinessCatalog extends React.Component {
     );
   }
 }
+
 BusinessCatalog.propTypes = {
   getBusinessAction: PropTypes.func.isRequired
-}
-
+};
 
 const mapStateToProps = state => ({
-  businesses: state.allBusinesses,
-  reviewData: state.allReviews,
+  businesses: state.allBusinesses.businesses,
+  reviewsData: state.allReviews,
   pagination: state.allBusinesses.pagination
-})
+});
 
-export default connect(mapStateToProps, { getBusinessAction, getReviewsAction, getAllBusinessSearchAction })(BusinessCatalog);
-
+export default connect(mapStateToProps, {
+  getBusinessAction,
+  getReviewsAction,
+  getAllBusinessSearchAction
+})(BusinessCatalog);

@@ -16,17 +16,17 @@ import {
 } from './types';
 
 
-export function paginateBusinessAction(paginate) {
-  return {
-    type: PAGINATION,
-    pagination
-  };
-}
+// export function paginateBusinessAction(paginate) {
+//   return {
+//     type: PAGINATION,
+//     pagination
+//   };
+// }
 
-export function allBusinesses(businesses) {
+export function allBusinesses(allBusinesses) {
   return {
     type: ALL_BUSINESSES,
-    allBusinesses: businesses
+    allBusinesses
   };
 }
 
@@ -68,14 +68,17 @@ export const registerBusinessAction = businesses => dispatch =>
 export const getBusinessAction = page => dispatch =>
   axios.get(`api/v1/businesses?page=${page || 1}`)
     .then((response) => {
-      dispatch(allBusinesses(response.data.businesses));
-      dispatch(paginateBusinessAction(response.data.pagination));
+      dispatch(allBusinesses(response.data));
     });
 
 /**
- * Register a business
- * @param {*} businesses
- * @returns {object} action to be dispatched
+ * @description - returns pagination object
+ * @param {number} count - document/user count
+ * @param {object}  - rows fetched with Sequelize findAndCountAll query
+ * @param {object} business - gets all businesses
+ * @param {number} limit - limit
+ * @param {number} offset - offset
+ * @returns {void}
  */
 export const getAllBusinessSearchAction = (searchType, keyValue) => dispatch =>
   axios.get(`api/v1/businesses?${searchType}=${keyValue}`)
