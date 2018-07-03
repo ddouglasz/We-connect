@@ -45,6 +45,7 @@ class BusinessProfile extends React.Component {
         }
       );   
         this.props.getReviewsAction(this.props.match.params.id)
+        this.setState({ review: '' });
       },
       (err) => {
         this.props.addFlashMessage({
@@ -80,12 +81,15 @@ class BusinessProfile extends React.Component {
   }
   
   
-
+  
   render() {
-    const { business, review, user } = this.props;
-    // const reviewsNumber = this.props.reviewsData;
-    // console.log(reviewsNumber.Reviews.length);
+    const { business, review, user, count } = this.props;
+    if (!this.props.reviewsData.Reviews){
+      return 'loading...'
+    }
+    // console.log(this.props.reviewsData.Reviews.count);
 
+    
     return (
       <div className="container" >
         <div className="form-actions" />
@@ -161,7 +165,7 @@ class BusinessProfile extends React.Component {
                 </div>
               </div>) : null
             }
-              <form onSubmit={this.onSubmit}>
+             { user.id !== business.userId ? (<form onSubmit={this.onSubmit}>
                 <div className="form-group form-spacing row">
                   <div className="col-sm-8" id="description">
                     <textarea
@@ -184,7 +188,7 @@ class BusinessProfile extends React.Component {
                   </button>
                   </div>
                 </div>
-              </form>
+    </form>) : null }
               <br />
               <div className="form-reviews" id="description-header">
                 <h3>Reviews</h3>
@@ -193,9 +197,8 @@ class BusinessProfile extends React.Component {
                 <ul className="list-unstyled">
                   {this.props.reviewsData.Reviews &&
                     <ReviewsCard
-                      reviews={this.props.reviewsData.Reviews}
-                      // {console.log(this.props.reviewsData.Reviews)}
-                    />}
+                      reviews={this.props.reviewsData.Reviews.rows}
+                      />}
                 </ul>
               </div>
             </form>
