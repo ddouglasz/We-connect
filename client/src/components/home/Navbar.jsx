@@ -62,7 +62,7 @@ class NavBar extends React.Component {
         <button className="navbar-toggler navbar-toggler-right" type="button" id="btn-nav" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon" />
         </button>
-        <Link to="/" className="navbar-brand">
+        <Link to="#" className="navbar-brand">
           <span>WEConnect</span>
         </Link>
 
