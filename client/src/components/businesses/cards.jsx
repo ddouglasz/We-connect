@@ -4,7 +4,7 @@ import Truncate from 'react-truncate';
 import TextTruncate from 'react-text-truncate';
 import moment from 'moment';
 
-const Cards = ({ name, description, category, id, image, createdAt, reviews }) => {
+const Cards = ({ name, description, category, id, image, createdAt, reviewsNumber }) => {
 return (
     <div className="col-md-4 col-sm-6 col-xs-12 business-card">
         <div className=" img-zoom card-space">
@@ -17,7 +17,7 @@ return (
                 <hr/>
                 <h6 className="card-title detail-text">Category: {category}</h6>
                 <small className="updated" id="updated-text">
-                   <a>created at:</a> {moment(createdAt).format('Do MMMM YYYY')}
+                   <a>Created On:</a> {moment(createdAt).format('MMMM Do YYYY')}
                 </small>
                 <div className="icons ">
                     <Link to={`/businessProfile/${id}`}>
@@ -25,12 +25,12 @@ return (
                         <strong>Find out more</strong>
                     </Link>
                 </div>
-                {/* <div className="icons">
+                <div className="icons">
                     <a href="#">
                         <i className="fa fa-commenting-o" aria-hidden="true"></i>
-                        <strong> {reviews} reviews</strong>
+                        <strong> {reviewsNumber} reviews</strong>
                     </a>
-                </div> */}
+                </div>
             </div>
         </div>
     </div>
