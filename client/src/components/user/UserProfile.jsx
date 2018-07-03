@@ -61,7 +61,7 @@ class UserProfile extends React.Component {
       <div className="catalog-cover">
         <div className="jumbotron2 jumbotron-fluid home-wrapper-catalog">
           <div className="container-overlay">
-            <h1 className="display-3">Welcome {this.state.name}</h1>
+            <h1 className="display-3">Welcome {}</h1>
           </div>
           <div className="row ">
           <div className="col-sm-4 col-md-4 col-lg-4 cat-image">
