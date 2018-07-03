@@ -224,12 +224,13 @@ class Businesses {
       .then((business) => {
         if (business) {
           return ReviewsModel
-            .findAll({
+            .findAndCountAll({
               where: {
                 businessId: req.params.businessId
               }
             })
             .then((reviews) => {
+              // const { reviewsNumber } = reviews;
               if (!reviews) {
                 return res.status(404).json({
                   message: 'this business does not have any reviews yet'
@@ -240,7 +241,7 @@ class Businesses {
                 businessdata: {
                   id: business.id,
                   title: business.title,
-                  Reviews: reviews
+                  Reviews: reviews,
                 }
               });
             });
