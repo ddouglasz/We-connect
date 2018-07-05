@@ -5,8 +5,12 @@ const initialState = {
   hasError: false,
   userProfile: [],
   error: ''
-}
-
+};
+/**
+   * @param {object} state
+   * @param {object} action
+   * @return {object} object
+   */
 export default function getUserProfile(state = initialState, action = {}) {
   switch (action.type) {
     case GET_USER_PROFILE_SUCCESSFUL:
@@ -17,7 +21,6 @@ export default function getUserProfile(state = initialState, action = {}) {
         error: ''
       };
 
-
     case GET_USER_PROFILE_FAILED:
       return {
         userFound: false,
@@ -27,4 +30,4 @@ export default function getUserProfile(state = initialState, action = {}) {
       };
     default: return state;
   }
-};
+}

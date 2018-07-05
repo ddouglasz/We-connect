@@ -1,17 +1,23 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import React from'react';
 
+
+/**
+   * @param {Object} businesses
+   * @return {function} function
+   */
 export default function BusinessList({ businesses }) {
-    const emptyMessage = (
+  const emptyMessage = (
         <p>There are no businesses yet in the database</p>
-    );
-    return (
+  );
+  return (
         <div>
-{ businesses === 0 ? emptyMesage : BusinessList }
+            {businesses === 0 ? emptyMessage : BusinessList}
         </div>
-    );
+  );
 }
 
 BusinessList.proptypes = {
-    BusinessList: PropTypes.array.isRequired
-}
+  BusinessList: PropTypes.array.isRequired,
+  businesses: PropTypes.Object.isRequired
+};

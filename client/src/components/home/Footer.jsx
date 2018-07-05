@@ -1,8 +1,6 @@
 import React from 'react';
-import {link} from 'react-router-dom';
 
-const Footer = () => {
-    return(
+const Footer = () => (
       <footer className="bg-color footer">
         <div className="col  ">
             <div className="author float-left">
@@ -17,6 +15,5 @@ const Footer = () => {
         </div>
       </footer>
 );
-}
 
 export default Footer;

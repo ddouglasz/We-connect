@@ -4,16 +4,25 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/authActions';
 
+/**
+   * @description - class component for the navvbar
+   * @class BusinessCatalog
+   */
 class NavBar extends React.Component {
+  /**
+   * @param {Object} event
+   * @return {function} function
+   */
   logout(event) {
     event.preventDefault();
     this.props.logout();
-    this.context.router.history.push('/')
+    this.context.router.history.push('/');
   }
-
+  /**
+   * @return {function} function
+   */
   render() {
     const { isAuthenticated } = this.props.auth;
-
     const userLinks = (
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
@@ -75,12 +84,15 @@ class NavBar extends React.Component {
 NavBar.propTypes = {
   auth: PropTypes.object.isRequired,
   logout: PropTypes.func.isRequired
-}
+};
 
 NavBar.contextTypes = {
   router: PropTypes.object.isRequired
-}
-
+};
+/**
+   * @param {object} state
+   * @return {function} function
+   */
 function mapStateToProps(state) {
   return {
     auth: state.auth

@@ -1,56 +1,75 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { editBusinessAction, getOneBusinessAction } from '../../actions/businessActions';
 import { addFlashMessage } from '../../actions/flashMessages';
-import classnames from 'classnames';
+// import classnames from 'classnames';
 
-
+/**
+   * @description - Edit business component page
+   * @class EditBusiness
+   */
 class EditBusiness extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            id: this.props.business.id,
-            title: this.props.business.title,
-            description: this.props.business.description,
-            category: this.props.business.category,
-            location: this.props.business.location,
-            email: this.props.business.email,
-            image: this.props.business.image,
-            errors: [],
-            isLoading: false
-        }
-
-        this.onChange = this.onChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-    }
-
-    componentWillMount() {
-        this.props.getOneBusinessAction(this.props.match.params.id);
-    }
-
-    onChange(event) {
-        this.setState({ [event.target.name]: event.target.value });
-    }
-
-    onSubmit(event) {
-        event.preventDefault();
-        this.setState({ errors: [], isLoading: true });
-        this.props.editBusinessAction(this.state)
-            .then(() => {
-                     this.props.addFlashMessage({
-                        type: 'success',
-                        text: 'Business Edited successfully'
-                    })
-                    this.context.router.history.push("/businessCatalog")
-                },
-            )
-    }
-
-    render() {
-        const { errors } = this.state;
-        return (
+  /**
+       * @description - business display form
+       * @param {Object} props
+       * @param {object} object
+       */
+  constructor(props) {
+    super(props);
+    const {
+      id, title, description, category, location, Email, image
+    } = this.props.business;
+    this.state = {
+      id,
+      title,
+      description,
+      category,
+      location,
+      Email,
+      image,
+      errors: [],
+      isLoading: false
+    };
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+  /**
+   * @return {function} function
+   */
+  componentWillMount() {
+    this.props.getOneBusinessAction(this.props.match.params.id);
+  }
+  /**
+   * @param {Object} event
+   * @return {function} function
+   */
+  onChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+  /**
+   * @param {Object} event
+   * @return {function} function
+   */
+  onSubmit(event) {
+    event.preventDefault();
+    this.setState({ errors: [], isLoading: true });
+    this.props.editBusinessAction(this.state)
+      .then(() => {
+        this.props.addFlashMessage({
+          type: 'success',
+          text: 'Business Edited successfully'
+        });
+        this.context.router.history.push('/businessCatalog');
+      });
+  }
+  /**
+   * @param {array} errors
+   * @return {function} function
+   */
+  render() {
+    const { errors } = this.state;
+    return (
             <div className="container" onSubmit={this.onSubmit}>
                 <div className="form-actions2">
                     <h1>Edit a Business</h1>
@@ -63,7 +82,6 @@ class EditBusiness extends React.Component {
                     <div className="col-md-3">
                         <div className="text-center">
                         <img defaultValue={this.state.image} className="img-rounded" id="profile-image" alt="chefchef" width="250"/>
-                            {/* <img src={require('../../public/images/irokotv.jpg')} className="img-rounded" id="profile-image" alt="chefchef" width="250" /> */}
                             <h6>Upload a different photo...</h6>
                             <input
                                 type="file"
@@ -116,7 +134,7 @@ class EditBusiness extends React.Component {
                                             id="exampleTextarea"
                                             rows="4"
                                             name="description"
-                                            placeholder="add brief summary of business content here..." value={this.state.description}
+                                            placeholder="add brief summary of business content here..."
                                             value={this.state.description}
                                             onChange={this.onChange}
                                         >
@@ -168,20 +186,27 @@ class EditBusiness extends React.Component {
                     </div>
                 </div>
             </div>
-        );
-    }
+    );
+  }
 }
 
-EditBusiness.proptypes = {
-    editBusinessAction: PropTypes.func.isRequired,
-    addFlashMessage: PropTypes.func.isRequired
-}
+EditBusiness.propTypes = {
+  editBusinessAction: PropTypes.func.isRequired,
+  addFlashMessage: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+};
+
 const mapStateToProps = state => ({
-    business: state.oneBusiness
-})
+  business: state.oneBusiness
+});
 
 EditBusiness.contextTypes = {
-    router: PropTypes.object.isRequired
-}
+  router: PropTypes.object.isRequired
+};
 
-export default connect(mapStateToProps, { editBusinessAction, getOneBusinessAction, addFlashMessage })(EditBusiness);
+export default connect(mapStateToProps, {
+  editBusinessAction,
+  getOneBusinessAction,
+  addFlashMessage
+})(EditBusiness);

@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
-import { classnames } from 'classnames';
-import { LoginAction } from '../../actions/authActions';
-import { addFlashMessage } from '../../actions/flashMessages';
-
-
-
+/**
+   * @description - Component for landing page
+   * @class HomePage
+   */
 class HomePage extends React.Component {
+  /**
+   * @description - business display form
+   * @param {Object} props
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -15,31 +17,41 @@ class HomePage extends React.Component {
       password: '',
       errors: [],
       isLoading: false
-    }
+    };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-  };
-
-  onChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
   }
-
-  onSubmit(e) {
-    e.preventDefault();
+  /**
+   * @description - business display form
+   * @param {Object} event
+   * @return {function} function
+   */
+  onChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+  /**
+   * @description - business display form
+   * @param {Object} event
+   * @return {function} function
+   */
+  onSubmit(event) {
+    event.preventDefault();
     this.setState({ errors: [], isLoading: true });
     this.props.LoginAction(this.state).then(
       () => {
         this.props.addFlashMessage({
           type: 'success',
           text: 'Login successful!'
-        })
-        this.context.router.history.push('/businessCatalog')
+        });
+        this.context.router.history.push('/businessCatalog');
       },
       ({ response }) => this.setState({ errors: response.data.message, isLoading: false })
     );
   }
 
-
+  /**
+   * @return {function} function
+   */
   render() {
     const { errors } = this.state;
     return (
@@ -68,7 +80,7 @@ class HomePage extends React.Component {
                       <div className="col-md-12">
                         <div className="form-group  form-spacing">
                           <div className="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div className="input-group-addon" style={{ width: 2.6 + "rem" }}>
+                            <div className="input-group-addon" style={{ width: `${2.6}rem` }}>
                               <i className="fa  font-a fa-at" />
                             </div>
                             <input
@@ -91,7 +103,7 @@ class HomePage extends React.Component {
                       <div className="col-md-12">
                         <div className="form-group  form-spacing">
                           <div className="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div className="input-group-addon" style={{ width: 2.6 + "rem" }}>
+                            <div className="input-group-addon" style={{ width: `${2.6}rem` }}>
                               <i className="fa font-a  fa-key" />
                             </div>
                             <input
@@ -112,7 +124,7 @@ class HomePage extends React.Component {
                     </div>
                     <button
                      disabled={this.state.isLoading}
-                      className="btn btn-lg btn-primary   
+                      className="btn btn-lg btn-primary
                       btn-decor btn-block" >
                       Sign in
                     </button>
@@ -137,9 +149,9 @@ class HomePage extends React.Component {
 HomePage.propTypes = {
   LoginAction: PropTypes.func.isRequired,
   addFlashMessage: PropTypes.func.isRequired
-}
+};
 HomePage.contextTypes = {
   router: PropTypes.object.isRequired
-}
+};
 
 export default HomePage;

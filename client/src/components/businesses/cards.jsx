@@ -1,11 +1,12 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import Truncate from 'react-truncate';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import TextTruncate from 'react-text-truncate';
 import moment from 'moment';
 
-const Cards = ({ name, description, category, id, image, createdAt, reviewsNumber }) => {
-return (
+const Cards = ({
+  name, description, category, id, image, createdAt, reviewsNumber
+}) => (
     <div className="col-md-4 col-sm-6 col-xs-12 business-card">
         <div className=" img-zoom card-space">
         <div className="image-style" id="image-style1">
@@ -34,7 +35,17 @@ return (
             </div>
         </div>
     </div>
- );
-}
+);
+
+Cards.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  reviewsNumber: PropTypes.number.isRequired
+};
 
 export default Cards;

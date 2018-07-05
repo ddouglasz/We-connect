@@ -5,7 +5,11 @@ const initialState = {
   isAuthenticated: false,
   user: {}
 };
-
+  /**
+   * @param {object} state
+   * @param {object} action
+   * @return {object} object
+   */
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case CURRENT_USER:

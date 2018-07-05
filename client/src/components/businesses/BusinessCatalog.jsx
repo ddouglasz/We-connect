@@ -1,54 +1,61 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Pagination from 'rc-pagination';
+import Cards from './cards.jsx';
 import { getReviewsAction } from '../../actions/reviewsActions';
 import { getBusinessAction, getAllBusinessSearchAction } from '../../actions/businessActions';
-import Cards from './cards';
-
 
 /**
- * @description - returns pagination object
- * @param {number} count - document/user count
- * @param {object} rows - rows fetched with Sequelize findAndCountAll query
- * @param {number} limit - limit
- * @param {number} offset - offset
- * @returns {void}
- */
-
+   * @description - returns business cards on the catalog page
+   * @class BusinessCatalog
+   */
 class BusinessCatalog extends React.Component {
+  /**
+   * @description - business display form
+   * @param {Object} props
+   * @param {object} object
+   */
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       presentPage: 1,
       limit: 0,
       count: 0,
       searchType: '',
       keyValue: '',
-    }
+    };
     this.onChange = this.onChange.bind(this);
     this.onSearch = this.onSearch.bind(this);
     this.onChangepage = this.onChangepage.bind(this);
   }
-
+  /**
+   * @param {Object} event
+   * @return {function} function
+   */
   onChange(event) {
     event.preventDefault();
     this.setState({ [event.target.name]: event.target.value });
   }
-
+  /**
+   * @param {Object} event
+   * @return {function} function
+   */
   onSearch(event) {
     event.preventDefault();
     const { searchType, keyValue } = this.state;
     if (!searchType || !keyValue) {
       this.props.getBusinessAction();
     }
-    this.props.getAllBusinessSearchAction(searchType, keyValue)
-  };
-
+    this.props.getAllBusinessSearchAction(searchType, keyValue);
+  }
+  /**
+   * @param {number} page
+   * @return {function} function
+   */
   onChangepage(page) {
-    this.props.getBusinessAction(page).
-      then(() => {
+    this.props.getBusinessAction(page)
+      .then(() => {
         const { presentPage, limit, count } = this.props.pagination;
         this.setState({
           count,
@@ -57,18 +64,10 @@ class BusinessCatalog extends React.Component {
         });
       });
   }
-
+  /**
+   * @return {function} function
+   */
   componentDidMount() {
-    // this.props.getReviewsAction(this.props.match.params.id)    
-    // this.props.getBusinessAction(searchType, keyValue)
-    // this.props.getReviewsAction(this.props.match.params.id).then(() => {
-    //   const { reviewCount: count } = this.props.businessdata;
-    //   this.setState({
-    //     reviewCount
-    //   });
-    // });
-    
-    // const { searchType, keyValue } = this.state;
     this.props.getBusinessAction()
       .then(() => {
         const { presentPage, limit, count } = this.props.pagination;
@@ -79,15 +78,14 @@ class BusinessCatalog extends React.Component {
         });
       });
   }
-  
-  
-  
+  /**
+   * @param {object} business
+   * @return {function} function
+   */
   render() {
     const allBusinesses = this.props.businesses;
     const { count, presentPage, limit } = this.state;
-    const displayAllBusiness = allBusinesses.map((business) => {
-
-      return (
+    const displayAllBusiness = allBusinesses.map(business => (
         <Cards
           key={business.id}
           id={business.id}
@@ -96,10 +94,8 @@ class BusinessCatalog extends React.Component {
           description={business.description}
           category={business.category}
           createdAt={business.createdAt}
-        // reviewsNumber={count}
         />
-      )
-    });
+    ));
 
     return (
       <div className="catalog-cover">
@@ -139,12 +135,8 @@ class BusinessCatalog extends React.Component {
         </div>
         <div className="body-cover">
           <div className="row">
-
             {allBusinesses && displayAllBusiness}
-
-
           </div>
-
         </div>
         <div className="d-flex justify-content-center mt-5">
           <Pagination
@@ -165,7 +157,13 @@ class BusinessCatalog extends React.Component {
 }
 
 BusinessCatalog.propTypes = {
-  getBusinessAction: PropTypes.func.isRequired
+  getAllBusinessSearchAction: PropTypes.func.isRequired,
+  getBusinessAction: PropTypes.func.isRequired,
+  presentPage: PropTypes.object.isRequired,
+  pagination: PropTypes.object.isRequired,
+  businesses: PropTypes.object.isRequired,
+  limit: PropTypes.object.isRequired,
+  count: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
