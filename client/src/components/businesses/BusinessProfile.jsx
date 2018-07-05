@@ -1,90 +1,122 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import images from '../../public/images/irokotv.jpg'
 import { connect } from 'react-redux';
-import { title, description, category, location } from './RegisterBusiness';
-import { getOneBusinessAction, deleteBusinessAction } from '../../actions/businessActions';
+import { Link } from 'react-router-dom';
+import images from '../../public/images/irokotv.jpg';
 import { addFlashMessage } from '../../actions/flashMessages';
-import ReviewsCard from './ReviewsCards';
-import { getReviewsAction, postReviewAction } from '../../actions/reviewsActions'
+import ReviewsCard from './ReviewsCards.jsx';
+import { title, description, category, location } from './RegisterBusiness.jsx';
+import { getReviewsAction, postReviewAction } from '../../actions/reviewsActions';
+import { getOneBusinessAction, deleteBusinessAction } from '../../actions/businessActions';
 
+/**
+   * @description -  Description of a given business profile
+   * @class BusinessProfile
+   */
 class BusinessProfile extends React.Component {
+/**
+   * @description - business display form
+   * @param {Object} props
+   * @param {object} object
+   */
   constructor(props) {
     super(props);
-
     this.state = {
       review: '',
       errors: [],
       isLoading: false
-    }
+    };
     this.onDelete = this.onDelete.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-
+  /**
+   * @param {Object} event
+   * @return {function} function
+   */
   onDelete(event) {
     event.preventDefault();
     const { id } = this.props.match.params;
     this.props.deleteBusinessAction(id);
   }
-
+  /**
+   * @param {Object} event
+   * @return {function} function
+   */
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
-
+  /**
+   * @description -implement adding of reviews to a business
+   * @param {Object} event
+   * @return {function} function
+   */
   onSubmit(event) {
     event.preventDefault();
     const { id } = this.props.match.params;
     this.setState({ errors: [], isLodaing: true });
     this.props.postReviewAction(this.state, id)
-      .then(() => {
-        this.props.addFlashMessage({
-          type: 'success',
-          text: 'review added successfully'
+      .then(
+        () => {
+          this.props.addFlashMessage({
+            type: 'success',
+            text: 'review added successfully'
+          });
+          this.props.getReviewsAction(this.props.match.params.id);
+          this.setState({ review: '' });
+        },
+        (err) => {
+          this.props.addFlashMessage({
+            type: 'error',
+            text: err.response.data.message
+          });
         }
-      );   
-        this.props.getReviewsAction(this.props.match.params.id)
-      },
-      (err) => {
-        this.props.addFlashMessage({
-        type: 'error',
-        text: err.response.data.message
-      })
-    }
-  );
-}
-
- 
-
-  componentDidMount() {
-    this.props.getOneBusinessAction(this.props.match.params.id)
-    this.props.getReviewsAction(this.props.match.params.id)
+      );
   }
 
+  /**
+   * @description -get all reviews for a business when component mounts
+   * @return {function} function
+   */
+  componentDidMount() {
+    this.props.getOneBusinessAction(this.props.match.params.id);
+    this.props.getReviewsAction(this.props.match.params.id);
+  }
+  /**
+   * @description -get all reviews for a business when component mounts
+   * @param {object} nextProps
+   * @return {function} function
+   */
   componentWillReceiveProps(nextProps) {
-    const { isDeleted, message, error, hasError } = nextProps.deleteBusiness;
+    const {
+      isDeleted, message, error, hasError
+    } = nextProps.deleteBusiness;
     if (isDeleted) {
       this.props.addFlashMessage({
         type: 'success',
         text: `${message}`
-      })
+      });
       this.context.router.history.push('/businessCatalog');
-    }
-    else if (!isDeleted && hasError) {
+    } else if (!isDeleted && hasError) {
       this.props.addFlashMessage({
         type: 'error',
         text: `${error}`
-      })
+      });
     }
   }
-  
-  
 
+  /**
+   * @param {object} business
+   * @return {function} function
+   */
   render() {
-    const { business, review, user } = this.props;
-    // const reviewsNumber = this.props.reviewsData;
-    // console.log(reviewsNumber.Reviews.length);
+    const {
+      business, user
+    } = this.props;
+    if (!this.props.reviewsData.Reviews) {
+      return 'loading...';
+    }
+
 
     return (
       <div className="container" >
@@ -140,28 +172,28 @@ class BusinessProfile extends React.Component {
                    </strong>
                 </label>
               </div>
-              { user.id === business.userId ?
+              {user.id === business.userId ?
                 (<div className="form-group form-spacing">
-                <label className="col-sm-3 control-label" />
-                <div className="col-sm-8">
-                  <Link to={`/editBusiness/${this.props.match.params.id}`}>
-                    <button className="btn btn-primary" >
-                      Edit Business
+                  <label className="col-sm-3 control-label" />
+                  <div className="col-sm-8">
+                    <Link to={`/editBusiness/${this.props.match.params.id}`}>
+                      <button className="btn btn-primary" >
+                        Edit Business
                   </button>
-                  </Link>
-                  <button
-                    type="reset"
-                    className="btn btn-danger"
-                    id="btn-delete"
-                    value="Delete Business"
-                    onClick={this.onDelete}
-                  >
-                    Delete
+                    </Link>
+                    <button
+                      type="reset"
+                      className="btn btn-danger"
+                      id="btn-delete"
+                      value="Delete Business"
+                      onClick={this.onDelete}
+                    >
+                      Delete
                   </button>
-                </div>
-              </div>) : null
-            }
-              <form onSubmit={this.onSubmit}>
+                  </div>
+                </div>) : null
+              }
+              {user.id !== business.userId ? (<form onSubmit={this.onSubmit}>
                 <div className="form-group form-spacing row">
                   <div className="col-sm-8" id="description">
                     <textarea
@@ -184,7 +216,7 @@ class BusinessProfile extends React.Component {
                   </button>
                   </div>
                 </div>
-              </form>
+              </form>) : null}
               <br />
               <div className="form-reviews" id="description-header">
                 <h3>Reviews</h3>
@@ -193,8 +225,7 @@ class BusinessProfile extends React.Component {
                 <ul className="list-unstyled">
                   {this.props.reviewsData.Reviews &&
                     <ReviewsCard
-                      reviews={this.props.reviewsData.Reviews}
-                      // {console.log(this.props.reviewsData.Reviews)}
+                      reviews={this.props.reviewsData.Reviews.rows}
                     />}
                 </ul>
               </div>
@@ -207,14 +238,34 @@ class BusinessProfile extends React.Component {
 }
 
 BusinessProfile.contextTypes = {
-  router: PropTypes.object.isRequired
-}
+  router: PropTypes.object.isRequired,
+};
+
+BusinessProfile.propTypes = {
+  deleteBusinessAction: PropTypes.func.isRequired,
+  deleteBusiness: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
+  match: PropTypes.func.isRequired,
+  params: PropTypes.func.isRequired,
+  postReviewAction: PropTypes.func.isRequired,
+  addFlashMessage: PropTypes.func.isRequired,
+  getReviewsAction: PropTypes.func.isRequired,
+  getOneBusinessAction: PropTypes.func.isRequired,
+  reviewsData: PropTypes.func.isRequired,
+  user: PropTypes.func.isRequired,
+  business: PropTypes.object.isRequired,
+  Reviews: PropTypes.array.isRequired
+};
+
+
 const mapStateToProps = state => ({
   business: state.oneBusiness,
   deleteBusiness: state.deleteBusiness,
   reviewsData: state.allReviews,
   user: state.auth.user
-})
+});
 
-export default connect(mapStateToProps, { getOneBusinessAction, deleteBusinessAction, addFlashMessage, getReviewsAction, postReviewAction })(BusinessProfile);
+export default connect(mapStateToProps, {
+  getOneBusinessAction, deleteBusinessAction, addFlashMessage, getReviewsAction, postReviewAction
+})(BusinessProfile);
 

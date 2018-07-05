@@ -1,11 +1,19 @@
 import { ALL_BUSINESSES } from '../actions/types';
 
-export default function businesses(state = [], action = {}) {
-    switch (action.type) {
-        case ALL_BUSINESSES:
-        return action.allBusinesses
-
-        default:
-            return state;
-    }
+const initialState = {
+  businesses: [],
+  pagination: {}
+};
+  /**
+   * @param {object} state
+   * @param {object} action
+   * @return {object} state
+   */
+export default function businesses(state = initialState, action = {}) {
+  switch (action.type) {
+    case ALL_BUSINESSES:
+      return action.allBusinesses;
+    default:
+      return state;
+  }
 }

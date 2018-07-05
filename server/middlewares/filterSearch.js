@@ -14,9 +14,9 @@ class FilterBusinessSearch {
    * @param {*} next
    */
   static filterBusinessSearch(req, res, next) {
-    const { category, location } = req.query;
+    const { category, location, title } = req.query;
 
-    if (location || category) {
+    if (location || category || title) {
       businessModel.findAll({
         where: {
           $or: [
@@ -29,7 +29,13 @@ class FilterBusinessSearch {
               category: {
                 ilike: `%${category}`
               }
+            },
+            {
+              title: {
+                ilike: `%${title}`
+              }
             }
+
           ]
         }
       })
@@ -46,7 +52,7 @@ class FilterBusinessSearch {
             error: false
           });
         });
-    } else if (!location || !category) {
+    } else if (!location || !category || !title) {
       return next();
     }
   }

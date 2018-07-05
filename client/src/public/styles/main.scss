@@ -97,11 +97,13 @@ input[type="btn"]:hover {
 
 .btn-search {
     border-left: none !important;
+    cursor: pointer;
 }
 
 #dropdownMenuButton {
     background: #001f3f;
     border: none;
+    cursor: pointer;
 }
 
 .home-wrapper-index {
@@ -254,12 +256,14 @@ input[type="btn"]:hover {
     background: #0275d8;
     border: 1px solid #001f3f;
     color: white;
+    cursor: pointer;
 }
 
 .form-signup button:hover {
     background: #3e5f80;
     border: none;
     color: white;
+    cursor: pointer;
 }
 
 .form-spacing {
@@ -360,6 +364,7 @@ input[type="btn"]:hover {
 
 .blue-button {
     background-color: #03a9f4;
+    cursor: pointer;
 }
 
 #updated-text {
@@ -441,6 +446,7 @@ input[type="btn"]:hover {
 .btn-success:disabled {
      background-color: #0a0e0a;
     border-color: #aa1616;
+    cursor: pointer;
 }
 
 .img-fluid {
@@ -452,25 +458,70 @@ input[type="btn"]:hover {
 }
 
 .user-details-cover{
-    // background-color: #001f3f;
-    // position: fixed;
     width: 40%;
 }
 
-// .user-cards {
-// position: relative;
-// width: 60%;
-// }
+.btn-primary{
+    cursor: pointer;
+}
 
-// .row {
-//     width: 100%;
-// }
 .profile-image{
     padding: 10px;
     border-radius: 5px;
 }
 
-
 .jumbotron2{
     position: relative;
+}
+
+
+
+// ..................................................
+
+/* Chat containers */
+.containers {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+/* Darker chat container */
+.darker {
+    border-color: #ccc;
+    background-color: #ddd;
+}
+
+/* Clear floats */
+.container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Style images */
+.reviews-image {
+    float: left;
+    max-width: 90px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+/* Style the right image */
+.container img.right {
+    float: right;
+    margin-left: 20px;
+    margin-right:0;
+}
+
+/* Style time text */
+.time-right {
+    float: right;
+    color: #aaa;
+}
+
+.review-right{
+    bottom: 0;
 }

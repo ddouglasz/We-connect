@@ -1,18 +1,25 @@
 import React from 'react';
-import { PropTypes } from 'prop-types';
-import SignUpForm from './SIgnUpForm';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
+import SignUpForm from './SIgnUpForm.jsx';
 import { SignUpAction } from '../../actions/authActions';
 import { addFlashMessage } from '../../actions/flashMessages';
 
 /**
- * Class component for signing up page
+ * @class SignUp
 */
 class SignUp extends React.Component {
+  /**
+ * @description Class component for Sogn up page
+ * @param { function } function
+ * @return { object } object
+*/
   render() {
-    const { SignUpAction, addFlashMessage } = this.props;
     return (
-      <SignUpForm SignUpAction={SignUpAction} addFlashMessage={ addFlashMessage }/>
+      <SignUpForm
+      SignUpAction={this.props.SignUpAction}
+      addFlashMessage={this.props.addFlashMessage}
+      />
     );
   }
 }
@@ -20,8 +27,7 @@ class SignUp extends React.Component {
 SignUp.propTypes = {
   SignUpAction: PropTypes.func.isRequired,
   addFlashMessage: PropTypes.func.isRequired
-  
-}
+};
 
-export default connect((state) =>  { return {}}, { SignUpAction, addFlashMessage })(SignUp);
+export default connect(() => ({}), { SignUpAction, addFlashMessage })(SignUp);
 

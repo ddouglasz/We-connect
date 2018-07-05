@@ -1,18 +1,22 @@
 import React from 'react';
-import { PropTypes } from 'prop-types';
-import HomePage from '../home/HomePage';
 import { connect } from 'react-redux';
-import { LoginAction } from '../../actions/authActions';
-import { addFlashMessage } from '../../actions/flashMessages';
+import { PropTypes } from 'prop-types';
+import HomePage from '../home/HomePage.jsx';
+import { LoginAction } from '../../actions/authActions.js';
+import { addFlashMessage } from '../../actions/flashMessages.js';
 
 /**
- * Class component for Login page
+ * @class Login
 */
 class Login extends React.Component {
+  /**
+ * @description Class component for Login page
+ * @param { function } function
+ * @return { object } object
+*/
   render() {
-    const { LoginAction, addFlashMessage } = this.props;
     return (
-      <HomePage LoginAction={ LoginAction } addFlashMessage={addFlashMessage} />
+      <HomePage LoginAction={this.props.LoginAction} addFlashMessage={this.props.addFlashMessage} />
     );
   }
 }
@@ -20,6 +24,6 @@ class Login extends React.Component {
 Login.propTypes = {
   LoginAction: PropTypes.func.isRequired,
   addFlashMessage: PropTypes.func.isRequired
-}
+};
 
-export default connect((state) => {return {}} , { LoginAction, addFlashMessage })(Login);
+export default connect(() => ({}), { LoginAction, addFlashMessage })(Login);

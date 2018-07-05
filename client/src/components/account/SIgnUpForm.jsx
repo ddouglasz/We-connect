@@ -1,11 +1,15 @@
 import React from 'react';
-import { PropTypes } from 'prop-types'; 
-import { Link } from 'react-router-dom';
-import { SignUpAction } from "../../actions/authActions";
-import classnames from 'classnames';
-
+import { PropTypes } from 'prop-types';
+/**
+ * @class SignUpForm
+*/
 class SignUpForm extends React.Component {
-  constructor(props){ 
+  /**
+ * @description Class component for Sogn up form
+ * @param { object } props
+ * @return { object } object
+*/
+  constructor(props) {
     super(props);
     this.state = {
       firstName: '',
@@ -14,32 +18,44 @@ class SignUpForm extends React.Component {
       password: '',
       errors: [],
       isLoading: false
-    }
+    };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-  };
-  
+  }
 
 
+  /**
+ * @description onChange
+ * @param { object } event
+ * @return { object } object
+*/
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
-
-onSubmit(event) {
-event.preventDefault();
-this.setState({ errors : [] , isLoading: true });
-  this.props.SignUpAction(this.state).then(
-    () => {
-      this.props.addFlashMessage({
-        type: 'success',
-        text: 'signed up successfully!'
-      })
-  this.context.router.history.push('/registerBusiness')
+  /**
+ * @description onChange
+ * @param { object } event
+ * @return { object } object
+*/
+  onSubmit(event) {
+    event.preventDefault();
+    this.setState({ errors: [], isLoading: true });
+    this.props.SignUpAction(this.state).then(
+      () => {
+        this.props.addFlashMessage({
+          type: 'success',
+          text: 'signed up successfully!'
+        });
+        this.context.router.history.push('/registerBusiness');
       },
-    ({ response }) => this.setState({ errors: response.data.message, isLoading: false })
-  );
-}
-
+      ({ response }) => this.setState({ errors: response.data.message, isLoading: false })
+    );
+  }
+  /**
+ * @description Component for the signup form.
+ * @param { Array } errors
+ * @return { object } object
+*/
   render() {
     const { errors } = this.state;
     return (
@@ -58,7 +74,7 @@ this.setState({ errors : [] , isLoading: true });
                 <div className="col-md-12">
                    <div className="form-group form-spacing">
                     <div className="input-group mb-2 mr-sm-2 mb-sm-0">
-                      <div className="input-group-addon" style={{ width: 2.6 + 'rem' }} >
+                      <div className="input-group-addon" style={{ width: `${2.6}rem` }} >
                         <i className="fa font-a fa-user" />
                       </div>
                       <input
@@ -78,7 +94,7 @@ this.setState({ errors : [] , isLoading: true });
                 <div className="col-md-12">
                   <div className="form-group form-spacing">
                     <div className="input-group mb-2 mr-sm-2 mb-sm-0">
-                      <div className="input-group-addon" style={{ width: 2.6 + 'rem' }} >
+                      <div className="input-group-addon" style={{ width: `${2.6 }rem` }} >
                         <i className="fa font-a fa-user" />
                       </div>
                       <input
@@ -93,13 +109,13 @@ this.setState({ errors : [] , isLoading: true });
                         autoFocus
                       />
                     </div>
-                  </div>                  
+                  </div>
                 </div>
 
                 <div className="col-md-12">
                   <div className="form-group  form-spacing">
                     <div className="input-group mb-2 mr-sm-2 mb-sm-0">
-                      <div className="input-group-addon" style={{ width: 2.6 + 'rem' }}>
+                      <div className="input-group-addon" style={{ width: `${2.6 }rem` }}>
                         <i className="fa font-a fa-at" />
                       </div>
                       <input
@@ -122,7 +138,7 @@ this.setState({ errors : [] , isLoading: true });
                 <div className="col-md-12">
                   <div className="form-group  form-spacing">
                     <div className="input-group mb-2 mr-sm-2 mb-sm-0">
-                      <div className="input-group-addon" style={{ width: 2.6 + 'rem' }}>
+                      <div className="input-group-addon" style={{ width: `${2.6 }rem` }}>
                         <i className="fa font-a fa-key" />
                       </div>
                       <input
@@ -137,7 +153,7 @@ this.setState({ errors : [] , isLoading: true });
                       />
                     </div>
                   </div>
-                {errors && <span className="help-block text-danger"><div className="form-action">{errors}</div></span>  }                                  
+                {errors && <span className="help-block text-danger"><div className="form-action">{errors}</div></span> }
                 </div>
               </div>
             </div>
@@ -154,10 +170,10 @@ this.setState({ errors : [] , isLoading: true });
 SignUpForm.propTypes = {
   SignUpAction: PropTypes.func.isRequired,
   addFlashMessage: PropTypes.func.isRequired
-}
+};
 SignUpForm.contextTypes = {
   router: PropTypes.object.isRequired
-}
+};
 
 
 export default SignUpForm;

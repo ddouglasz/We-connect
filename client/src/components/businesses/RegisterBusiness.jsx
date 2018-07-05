@@ -1,73 +1,95 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux'
-import { registerBusinessAction, saveImageCloudinary }  from '../../actions/businessActions';
-import classnames from 'classnames';
+import { connect } from 'react-redux';
+import { registerBusinessAction, saveImageCloudinary } from '../../actions/businessActions';
 
-
+/**
+   * @description - component for fields to register a business
+   * @class RegisterBusiness
+   */
 class RegisterBusiness extends React.Component {
+  /**
+   * @description - business display form
+   * @param {Object} props
+   * @param {object} object
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: '',
+      description: '',
+      category: '',
+      location: '',
+      email: '',
+      imageUpload: '',
+      image: '',
+      errors: [],
+      isLoading: false
+    };
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            title: '',
-            description : '',
-            category: '',
-            location: '',
-            email: '',
-            imageUpload: '',
-            image: '',
-            errors: [],
-            isLoading: false
-        }
-
-        this.onChange = this.onChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this); 
-        this.onImageChange = this.onImageChange.bind(this);
-        this.saveImage = this.saveImage.bind(this);
-    }
-
-    onChange(event) {
-        this.setState({ [event.target.name]: event.target.value });
-    }
-
-    onImageChange(event){
-        event.preventDefault();
-         this.saveImage(event);
-     }
-
-    saveImage(event){
-         this.props.saveImageCloudinary(event.target.files[0]).then(() =>{
-            this.setState({
-                image: this.props.imageUrl
-            })
-        })
-    }
-    onSubmit(event) {
-        event.preventDefault();
-        this.setState({ errors: [], isLoading: true });
-        this.props.registerBusinessAction(this.state).then(
-            () => {
-                this.props.addFlashMessage({
-                    type: 'success',
-                    text: 'Business added successfully'
-                })
-                this.context.router.history.push('/businessCatalog')
-            },
-            ({ response }) => this.setState({ errors: response.data.message, isLoading: false })
-        );
-    }
-
-    render() {
-        const { errors } = this.state;
-        return (
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onImageChange = this.onImageChange.bind(this);
+    this.saveImage = this.saveImage.bind(this);
+  }
+  /**
+   * @param {Object} event
+   * @return {function} function
+   */
+  onChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+  /**
+   * @param {Object} event
+   * @return {function} function
+   */
+  onImageChange(event) {
+    event.preventDefault();
+    this.saveImage(event);
+  }
+  /**
+   * @param {Object} event
+   * @return {function} function
+   */
+  saveImage(event) {
+    this.props.saveImageCloudinary(event.target.files[0]).then(() => {
+      this.setState({
+        image: this.props.imageUrl
+      });
+    });
+  }
+  /**
+   * @param {Object} event
+   * @return {function} function
+   */
+  onSubmit(event) {
+    event.preventDefault();
+    this.setState({ errors: [], isLoading: true });
+    this.props.registerBusinessAction(this.state).then(
+      () => {
+        this.props.addFlashMessage({
+          type: 'success',
+          text: 'Business added successfully'
+        });
+        this.context.router.history.push('/businessCatalog');
+      },
+      ({ response }) => this.setState({ errors: response.data.message, isLoading: false })
+    );
+  }
+  /**
+   * @param {Object} errors
+   * @return {function} function
+   */
+  render() {
+    const { errors } = this.state;
+    return (
             <div className="container" onSubmit={this.onSubmit}>
                 <div className="form-actions2">
                     <h1>Add a new Business</h1>
-                    
-                {errors && <span className="help-block text-danger"><div className="form-action">{errors}</div></span>  }                                                      
-                
+
+                {errors && <span className="help-block text-danger"><div className="form-action">{errors}</div></span> }
+
                 </div>
                 <hr />
                 <div className="row">
@@ -76,8 +98,8 @@ class RegisterBusiness extends React.Component {
                             <img src={this.state.image} className="img-rounded" id="profile-image" alt="chefchef" width="250" />
                             <h6>Upload a different photo...</h6>
                             <input
-                             type="file" 
-                             className="form-control btn-primary" 
+                             type="file"
+                             className="form-control btn-primary"
                              placeholder="company or firm"
                              onChange={this.onImageChange}
                              />
@@ -169,13 +191,13 @@ class RegisterBusiness extends React.Component {
                                             save
                                     </button>
                                         <button
-                                          type="reset" 
-                                         className="btn btn-danger" 
-                                         value="Cancel" 
-                                         id="cancel-reg" 
+                                          type="reset"
+                                         className="btn btn-danger"
+                                         value="Cancel"
+                                         id="cancel-reg"
                                          href="/businessCatalog"
                                          >
-                                         <Link to={"/businessCatalog"} className="btn btn-danger">
+                                         <Link to={'/businessCatalog'} className="btn btn-danger">
                                          Cancel
                                          </Link>
                                          </button>
@@ -186,20 +208,23 @@ class RegisterBusiness extends React.Component {
                     </div>
                 </div>
             </div>
-        );
-    }
+    );
+  }
 }
 
 RegisterBusiness.proptypes = {
-    registerBusinessAction: PropTypes.func.isRequired,
-    addFlashMessage: PropTypes.func.isRequired
-}
+  registerBusinessAction: PropTypes.func.isRequired,
+  addFlashMessage: PropTypes.func.isRequired
+};
 
 RegisterBusiness.contextTypes = {
-    router: PropTypes.object.isRequired
-}
-const mapStateToProps = (state) => ({
-    imageUrl: state.imageReducer.imageUrl
-})
+  router: PropTypes.object.isRequired
+};
+const mapStateToProps = state => ({
+  imageUrl: state.imageReducer.imageUrl
+});
 
-export default connect(mapStateToProps, { registerBusinessAction, saveImageCloudinary })(RegisterBusiness);
+export default connect(mapStateToProps, {
+  registerBusinessAction,
+  saveImageCloudinary
+})(RegisterBusiness);

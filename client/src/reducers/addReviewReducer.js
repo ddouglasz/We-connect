@@ -5,9 +5,13 @@ const initialState = {
   hasError: false,
   reviewAdded: '',
   error: ''
-}
-
-export default function addReview (state = initialState, action = {}) {
+};
+  /**
+   * @param {object} state
+   * @param {object} action
+   * @return {object} object
+   */
+export default function addReview(state = initialState, action = {}) {
   switch (action.type) {
     case ADD_REVIEW_SUCCESS:
       return {
@@ -27,4 +31,4 @@ export default function addReview (state = initialState, action = {}) {
       };
     default: return state;
   }
-};
+}

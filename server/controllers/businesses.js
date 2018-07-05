@@ -9,20 +9,45 @@ const UsersModel = models.users;
  * @class business
  */
 class Businesses {
-/**
-   * @returns {Object} business
-   * @param {req} req
-   * @param {res} res
-   */
+  /**
+    * @returns {Object} business
+    * @param {req} req
+    * @param {res} res
+    */
   static getBusinesses(req, res) {
-    return BusinessModel.all()
-      .then(business => res.status(200).json({
-        businesses: business
-      }))
-      .catch(() => res.status(404).json({
-        message: 'business not found'
-      }));
+    const limit = 6;
+    const page = req.query.page || 1;
+    const offset = limit * (page - 1);
+
+    return BusinessModel.findAndCountAll({
+      limit,
+      offset,
+      order: [['createdAt', 'DESC']]
+    })
+      .then((returnBusiness) => {
+        const { count, rows } = returnBusiness;
+        const pages = Math.ceil(count / limit);
+        const presentPage = Math.floor(offset / limit) + 1;
+
+        return res.status(200).json({
+          businesses: rows,
+          pagination: {
+            limit,
+            count,
+            pages,
+            presentPage,
+            pageSize: returnBusiness.rows.length,
+          }
+        });
+      })
+      .catch(() => {
+        res.status(404).json({
+          message: 'business not found'
+        });
+      });
   }
+
+
   /**
    * @returns {Object} createBusiness
    * @param {req} req
@@ -199,15 +224,16 @@ class Businesses {
       .then((business) => {
         if (business) {
           return ReviewsModel
-            .findAll({
+            .findAndCountAll({
               where: {
                 businessId: req.params.businessId
               }
             })
             .then((reviews) => {
+              // const { reviewsNumber } = reviews;
               if (!reviews) {
                 return res.status(404).json({
-                  message: 'this business does not have any reviews yet,'
+                  message: 'this business does not have any reviews yet'
                 });
               }
               return res.status(200).json({
@@ -215,7 +241,7 @@ class Businesses {
                 businessdata: {
                   id: business.id,
                   title: business.title,
-                  Reviews: reviews
+                  Reviews: reviews,
                 }
               });
             });
