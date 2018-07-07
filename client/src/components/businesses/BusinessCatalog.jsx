@@ -94,6 +94,7 @@ class BusinessCatalog extends React.Component {
           description={business.description}
           category={business.category}
           createdAt={business.createdAt}
+          // reviewsNumber={state.}
         />
     ));
 
@@ -170,6 +171,7 @@ const mapStateToProps = state => ({
   businesses: state.allBusinesses.businesses,
   reviewsData: state.allReviews,
   pagination: state.allBusinesses.pagination
+
 });
 
 export default connect(mapStateToProps, {

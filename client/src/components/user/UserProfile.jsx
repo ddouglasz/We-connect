@@ -1,49 +1,66 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+// import auth from '../../reducers/auth';
 import { UserDashBoardAction, getAllBusinessSearchAction } from '../../actions/businessActions';
-import Cards from './../businesses/cards';
+import Cards from './../businesses/cards.jsx';
 import { currentUser } from './../../actions/authActions';
-
+/**
+   * @class UserProfile
+   */
 class UserProfile extends React.Component {
+  /**
+   * @description - business display form
+   * @param {Object} props
+   */
   constructor(props) {
     super(props);
     this.state = {
       searchType: '',
       keyValue: ''
-    }
+    };
     this.onChange = this.onChange.bind(this);
     this.onSearch = this.onSearch.bind(this);
   }
-
+  /**
+   * @param {Object} event
+   * @return {function} function
+   */
   onChange(event) {
     event.preventDefault();
     this.setState({ [event.target.name]: event.target.value });
   }
-
+  /**
+   * @param {Object} event
+   * @return {function} function
+   */
   onSearch(event) {
     event.preventDefault();
     const { searchType, keyValue } = this.state;
     const userId = currentUser.userId;
-    console.log(currentUser);
     if (!searchType || !keyValue) {
       this.props.UserDashBoardAction();
     }
-    this.props.getAllBusinessSearchAction(searchType, keyValue)
-  };
-
+    this.props.getAllBusinessSearchAction(searchType, keyValue);
+  }
+  /**
+   * @return {function} function
+   */
   componentDidMount() {
     // const { searchType, keyValue } = this.state;
 
     // this.props.getBusinessAction(searchType, keyValue)
-    this.props.UserDashBoardAction()
+    this.props.UserDashBoardAction();
   }
-
+  /**
+   * @description - business display form
+   * @param {Object} business
+   * @return {function} function
+   */
   render() {
     const allBusinesses = this.props.businesses;
-    const displayAllBusiness = allBusinesses.map((business) => {
-      return (
+    const displayAllBusiness = allBusinesses.map(business => (
         <Cards
           key={business.id}
           id={business.id}
@@ -53,11 +70,9 @@ class UserProfile extends React.Component {
           description={business.description}
           category={business.category}
         />
-      )
-    })
+    ));
+    const { firstName, email } = this.props.userDetails;
     return (
-
-
       <div className="catalog-cover">
         <div className="jumbotron2 jumbotron-fluid home-wrapper-catalog">
           <div className="container-overlay">
@@ -90,24 +105,16 @@ class UserProfile extends React.Component {
             </div>
           </div>
         </div>
-       
-
 
 
         <div className="container-fluid body-cover">
-          {/* <div className="row"> */}
-
-            {/* <div className="col-sm-3 col-md-2 user-details-cover"> */}
 
               <div className="text-center">
               <div className="profile-image">
-                <img src={require('../../public/images/profileGlyph.jpg')} className="img-rounded" id="profile-image" alt="chefchef" />
-                {/* <h6>Upload a different photo...</h6> */}
-                {/* <input type="file" className="form-control btn-primary" /> */}
                 </div>
                 <label>
-                  <strong>Name:</strong>Douglas
-             <p>   <strong>Email: </strong>Name@email.com</p>
+                  <strong>Name:</strong>{firstName}
+             <p>   <strong>Email: </strong>{email}</p>
                 </label>
               </div>
               <div className="form-group form-spacing">
@@ -117,9 +124,6 @@ class UserProfile extends React.Component {
         </div>
                 <h6>
                 </h6>
-              {/* </div> */}
-            {/* </div> */}
-
 
             <div className="col-sm-8 col-md-12  " >
               <div className="row">
@@ -154,18 +158,16 @@ class UserProfile extends React.Component {
         </div>
 
 
-
-
-
       </div>
     );
   }
 }
 UserProfile.propTypes = {
   UserDashBoardAction: PropTypes.func.isRequired
-}
+};
 const mapStateToProps = state => ({
   businesses: state.getUserProfile.userProfile,
-})
+  userDetails: state.auth.user
+});
 
 export default connect(mapStateToProps, { UserDashBoardAction, getAllBusinessSearchAction })(UserProfile);
