@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import images from '../../public/images/irokotv.jpg';
+// import images from '../../public/images/irokotv.jpg';
 import { addFlashMessage } from '../../actions/flashMessages';
 import ReviewsCard from './ReviewsCards.jsx';
-import { title, description, category, location } from './RegisterBusiness.jsx';
+// import { title, description, category, location } from './RegisterBusiness.jsx';
 import { getReviewsAction, postReviewAction } from '../../actions/reviewsActions';
 import { getOneBusinessAction, deleteBusinessAction } from '../../actions/businessActions';
 
@@ -14,11 +14,11 @@ import { getOneBusinessAction, deleteBusinessAction } from '../../actions/busine
    * @class BusinessProfile
    */
 class BusinessProfile extends React.Component {
-/**
-   * @description - business display form
-   * @param {Object} props
-   * @param {object} object
-   */
+  /**
+     * @description - business display form
+     * @param {Object} props
+     * @param {object} object
+     */
   constructor(props) {
     super(props);
     this.state = {
@@ -30,6 +30,7 @@ class BusinessProfile extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+  
   /**
    * @param {Object} event
    * @return {function} function
@@ -62,7 +63,8 @@ class BusinessProfile extends React.Component {
             type: 'success',
             text: 'review added successfully'
           });
-          this.props.getReviewsAction(this.props.match.params.id);
+          // const { id } = this.props.match.params.id;
+          this.props.getReviewsAction(id);
           this.setState({ review: '' });
         },
         (err) => {
@@ -79,8 +81,9 @@ class BusinessProfile extends React.Component {
    * @return {function} function
    */
   componentDidMount() {
-    this.props.getOneBusinessAction(this.props.match.params.id);
-    this.props.getReviewsAction(this.props.match.params.id);
+    const { id } = this.props.match.params;
+    this.props.getOneBusinessAction(id);
+    this.props.getReviewsAction(id);
   }
   /**
    * @description -get all reviews for a business when component mounts
@@ -121,11 +124,34 @@ class BusinessProfile extends React.Component {
     return (
       <div className="container" >
         <div className="form-actions" />
-        <div className="row">
-          <div className="col-sm-4">
+        <div className="row" >
+          <div className="col-sm-4 sticky-top" style={{ height: 300 }}>
             <br />
-            <div className="text-center">
+            <div className="text">
+            <h3>Business Profile</h3>
               <img className="img img-fluid" src={business.image} alt="Card image cap" width="537.5" />
+
+                {user.id === business.userId ?
+                  (<div className="form-group form-spacing">
+                    <label className="col-sm-3 control-label" />
+                    <div className="col-sm-12">
+                      <Link to={`/editBusiness/${this.props.match.params.id}`}>
+                        <button className="btn btn-primary" >
+                          Edit
+                  </button>
+                      </Link>
+                      <button
+                        type="reset"
+                        className="btn btn-danger"
+                        id="btn-delete"
+                        value="Delete Business"
+                        onClick={this.onDelete}
+                      >
+                        Delete
+                  </button>
+                    </div>
+                  </div>) : null
+                }
               <div className="form-group form-spacing">
                 <label className="col-sm-6 control-label">
                   <h3>
@@ -135,101 +161,78 @@ class BusinessProfile extends React.Component {
                 </label>
               </div>
             </div>
+            <div className="form-group form-spacing">
+                  <label className="col-sm-12 control-label">
+                    <strong>Business Description:</strong> {business.description}
+                  </label>
+                </div>
+                <div className="form-group form-spacing">
+                </div>
+                <div className="form-group form-spacing">
+                  <label className="col-sm-12 control-label">
+                    <strong>Business Category:</strong> {business.category}
+                  </label>
+                </div>
+                <div className="form-group form-spacing">
+                  <label className="col-sm-12 control-label">
+                    <strong>Business location:</strong> {business.location}
+                  </label>
+                </div>
+                <div className="form-group form-spacing">
+                  <label className="col-sm-12 control-label">
+                    <strong>Business Email: </strong> {business.email}
+                    <strong>
+                      &nbsp;&nbsp;
+                   </strong>
+                  </label>
+                </div>
           </div>
           <div className="col-sm-8 personal-info">
             <div className="form-profile" id="description">
-              <h3>Business Profile</h3>
+              <br />
+              <br/>
+              <br/>
+              <form className="form-horizontal" role="form">
+                
+                {user.id !== business.userId ? (<form onSubmit={this.onSubmit}>
+                  <div className="form-group form-spacing row">
+                    <div className="col-sm-8" id="description">
+                      <textarea
+                        name="review"
+                        className="form-control"
+                        id="exampleTextarea"
+                        rows="3" placeholder="add a review"
+                        value={this.state.review}
+                        onChange={this.onChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group form-spacing">
+                    <div className="col-sm-8">
+                      <button
+                        disabled={this.state.isLoading}
+                        className="btn btn-primary"
+                      >
+                        Post Review
+                  </button>
+                    </div>
+                  </div>
+                </form>) : null}
+                <br />
+                <div className="form-reviews" id="description-header">
+                  <h3>Reviews</h3>
+                </div>
+                <div className="edit-spacing" id="chat-cards-buttom-spacing">
+                  <ul className="list-unstyled">
+                    {this.props.reviewsData.Reviews &&
+                      <ReviewsCard
+                        reviews={this.props.reviewsData.Reviews.rows}
+                      />}
+                  </ul>
+                </div>
+              </form>
               <br />
             </div>
-            <form className="form-horizontal" role="form">
-              <div className="form-group form-spacing">
-                <label className="col-sm-6 control-label">
-                  <strong>Business Description:</strong> {business.description}
-                </label>
-              </div>
-              <div className="form-group form-spacing">
-              </div>
-              <div className="form-group form-spacing">
-                <label className="col-sm-6 control-label">
-                  <strong>Business Category:</strong> {business.category}
-                </label>
-              </div>
-              <div className="form-group form-spacing">
-                <label className="col-sm-6 control-label">
-                  <strong>reviews:</strong> 256 reviews
-                </label>
-              </div>
-              <div className="form-group form-spacing">
-                <label className="col-sm-6 control-label">
-                  <strong>Business location:</strong> {business.location}
-                </label>
-              </div>
-              <div className="form-group form-spacing">
-                <label className="col-sm-6 control-label">
-                  <strong>Business Email: </strong> {business.email}
-                  <strong>
-                    &nbsp;&nbsp;
-                   </strong>
-                </label>
-              </div>
-              {user.id === business.userId ?
-                (<div className="form-group form-spacing">
-                  <label className="col-sm-3 control-label" />
-                  <div className="col-sm-8">
-                    <Link to={`/editBusiness/${this.props.match.params.id}`}>
-                      <button className="btn btn-primary" >
-                        Edit Business
-                  </button>
-                    </Link>
-                    <button
-                      type="reset"
-                      className="btn btn-danger"
-                      id="btn-delete"
-                      value="Delete Business"
-                      onClick={this.onDelete}
-                    >
-                      Delete
-                  </button>
-                  </div>
-                </div>) : null
-              }
-              {user.id !== business.userId ? (<form onSubmit={this.onSubmit}>
-                <div className="form-group form-spacing row">
-                  <div className="col-sm-8" id="description">
-                    <textarea
-                      name="review"
-                      className="form-control"
-                      id="exampleTextarea"
-                      rows="3" placeholder="add a review"
-                      value={this.state.review}
-                      onChange={this.onChange}
-                    />
-                  </div>
-                </div>
-                <div className="form-group form-spacing">
-                  <div className="col-sm-8">
-                    <button
-                      disabled={this.state.isLoading}
-                      className="btn btn-primary"
-                    >
-                      Post Review
-                  </button>
-                  </div>
-                </div>
-              </form>) : null}
-              <br />
-              <div className="form-reviews" id="description-header">
-                <h3>Reviews</h3>
-              </div>
-              <div className="edit-spacing" id="chat-cards-buttom-spacing">
-                <ul className="list-unstyled">
-                  {this.props.reviewsData.Reviews &&
-                    <ReviewsCard
-                      reviews={this.props.reviewsData.Reviews.rows}
-                    />}
-                </ul>
-              </div>
-            </form>
           </div>
         </div>
       </div>
@@ -241,21 +244,21 @@ BusinessProfile.contextTypes = {
   router: PropTypes.object.isRequired,
 };
 
-BusinessProfile.propTypes = {
-  deleteBusinessAction: PropTypes.func.isRequired,
-  deleteBusiness: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
-  match: PropTypes.func.isRequired,
-  params: PropTypes.func.isRequired,
-  postReviewAction: PropTypes.func.isRequired,
-  addFlashMessage: PropTypes.func.isRequired,
-  getReviewsAction: PropTypes.func.isRequired,
-  getOneBusinessAction: PropTypes.func.isRequired,
-  reviewsData: PropTypes.func.isRequired,
-  user: PropTypes.func.isRequired,
-  business: PropTypes.object.isRequired,
-  Reviews: PropTypes.array.isRequired
-};
+// BusinessProfile.propTypes = {
+//   deleteBusinessAction: PropTypes.func.isRequired,
+//   deleteBusiness: PropTypes.func.isRequired,
+//   id: PropTypes.number.isRequired,
+//   match: PropTypes.func.isRequired,
+//   params: PropTypes.func.isRequired,
+//   postReviewAction: PropTypes.func.isRequired,
+//   addFlashMessage: PropTypes.func.isRequired,
+//   getReviewsAction: PropTypes.func.isRequired,
+//   getOneBusinessAction: PropTypes.func.isRequired,
+//   reviewsData: PropTypes.func.isRequired,
+//   user: PropTypes.func.isRequired,
+//   business: PropTypes.object.isRequired,
+//   Reviews: PropTypes.array.isRequired
+// };
 
 
 const mapStateToProps = state => ({
