@@ -198,7 +198,8 @@ class Businesses {
       return ReviewsModel.create({
         review: req.body.review,
         businessId: req.params.businessId,
-        userId: req.decoded.id
+        userId: req.decoded.id,
+        reviewer: req.decoded.firstName
       })
         .then(displayReview => res.status(201).json({
           message: 'Review added successfully',
@@ -216,18 +217,14 @@ class Businesses {
    */
   static getReviews(req, res) {
     BusinessModel
-      .findOne({
-        where: {
-          id: req.params.businessId
-        }
-      })
+      .findById(req.params.businessId)
       .then((business) => {
         if (business) {
           return ReviewsModel
             .findAndCountAll({
               where: {
                 businessId: req.params.businessId
-              }
+              },
             })
             .then((reviews) => {
               // const { reviewsNumber } = reviews;
