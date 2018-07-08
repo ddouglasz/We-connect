@@ -76,7 +76,7 @@ class UserProfile extends React.Component {
       <div className="catalog-cover">
         <div className="jumbotron2 jumbotron-fluid home-wrapper-catalog">
           <div className="container-overlay">
-            <h1 className="display-3">Welcome {}</h1>
+            <h1 className="display-3">Welcome</h1> <h3>{firstName}!</h3>
           </div>
           <div className="row ">
           <div className="col-sm-4 col-md-4 col-lg-4 cat-image">
@@ -113,14 +113,14 @@ class UserProfile extends React.Component {
               <div className="profile-image">
                 </div>
                 <label>
-                  <strong>Name:</strong>{firstName}
+                  {/* <strong>Name:</strong>{firstName} */}
              <p>   <strong>Email: </strong>{email}</p>
                 </label>
               </div>
               <div className="form-group form-spacing">
                 <hr/>
                 <div className="form-action">
-          <h3 className="center-align">All Businesses you added</h3>
+          <h3 className="center-align">Find all Businesses you added here</h3>
         </div>
                 <h6>
                 </h6>
@@ -133,7 +133,7 @@ class UserProfile extends React.Component {
           </div>
         </div>
 
-        <div className="pagination-card btn1-spacing">
+        {/* <div className="pagination-card btn1-spacing">
           <nav aria-label="pages">
             <ul className="pagination">
               <li className="page-item disabled">
@@ -155,7 +155,7 @@ class UserProfile extends React.Component {
               </li>
             </ul>
           </nav>
-        </div>
+        </div> */}
 
 
       </div>
