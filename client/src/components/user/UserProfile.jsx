@@ -170,4 +170,6 @@ const mapStateToProps = state => ({
   userDetails: state.auth.user
 });
 
-export default connect(mapStateToProps, { UserDashBoardAction, getAllBusinessSearchAction })(UserProfile);
+export default connect(mapStateToProps, {
+  UserDashBoardAction, getAllBusinessSearchAction
+})(UserProfile);

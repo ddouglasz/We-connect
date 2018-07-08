@@ -72,7 +72,7 @@ class RegisterBusiness extends React.Component {
           type: 'success',
           text: 'Business added successfully'
         });
-        this.context.router.history.push('/businessCatalog');
+        this.context.router.history.push('/UserProfile');
       },
       ({ response }) => this.setState({ errors: response.data.message, isLoading: false })
     );
@@ -84,7 +84,7 @@ class RegisterBusiness extends React.Component {
   render() {
     const { errors } = this.state;
     return (
-            <div className="container" onSubmit={this.onSubmit}>
+            <div className="container " onSubmit={this.onSubmit}>
                 <div className="form-actions2">
                     <h1>Add a new Business</h1>
 
@@ -146,7 +146,7 @@ class RegisterBusiness extends React.Component {
                                             id="exampleTextarea"
                                             rows="4"
                                             name="description"
-                                            placeholder="add brief summary of business content here..." value={this.state.description}
+                                            placeholder="add brief summary of business content here..."
                                             value={this.state.description}
                                             onChange={this.onChange}
                                         >
