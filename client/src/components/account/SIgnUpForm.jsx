@@ -46,7 +46,7 @@ class SignUpForm extends React.Component {
           type: 'success',
           text: 'signed up successfully!'
         });
-        this.context.router.history.push('/registerBusiness');
+        this.context.router.history.push('/UserProfile');
       },
       ({ response }) => this.setState({ errors: response.data.message, isLoading: false })
     );

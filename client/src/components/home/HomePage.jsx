@@ -43,7 +43,7 @@ class HomePage extends React.Component {
           type: 'success',
           text: 'Login successful!'
         });
-        this.context.router.history.push('/businessCatalog');
+        this.context.router.history.push('/UserProfile');
       },
       ({ response }) => this.setState({ errors: response.data.message, isLoading: false })
     );
