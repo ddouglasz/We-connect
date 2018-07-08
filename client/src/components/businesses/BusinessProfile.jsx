@@ -125,7 +125,8 @@ class BusinessProfile extends React.Component {
       <div className="container" >
         <div className="form-actions" />
         <div className="row" >
-          <div className="col-sm-4 sticky-top" style={{ height: 300 }}>
+          {/* <div className="col-sm-4 sticky-top container business-Profile" style={{ height: 600, backgroundColor: 'blue', marginTop: 20, borderRadius: 5, color: 'white'}}> */}
+          <div className="col-sm-4 sticky-top container business-profile" >
             <br />
             <div className="text">
             <h3>Business Profile</h3>
@@ -190,8 +191,8 @@ class BusinessProfile extends React.Component {
           <div className="col-sm-8 personal-info">
             <div className="form-profile" id="description">
               <br />
-              <br/>
-              <br/>
+              {/* <br/> */}
+              {/* <br/> */}
               <form className="form-horizontal" role="form">
                 
                 {user.id !== business.userId ? (<form onSubmit={this.onSubmit}>
