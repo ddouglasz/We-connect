@@ -122,11 +122,10 @@ class BusinessProfile extends React.Component {
 
 
     return (
-      <div className="container" >
+      <div className="container " >
         <div className="form-actions" />
-        <div className="row" >
-          {/* <div className="col-sm-4 sticky-top container business-Profile" style={{ height: 600, backgroundColor: 'blue', marginTop: 20, borderRadius: 5, color: 'white'}}> */}
-          <div className="col-sm-4 sticky-top container business-profile" >
+        <div className="row business-two" >
+          <div className="col-sm-6 sticky-top1 container business-profile-card">
             <br />
             <div className="text">
             <h3>Business Profile</h3>
@@ -137,19 +136,19 @@ class BusinessProfile extends React.Component {
                     <label className="col-sm-3 control-label" />
                     <div className="col-sm-12">
                       <Link to={`/editBusiness/${this.props.match.params.id}`}>
-                        <button className="btn btn-primary" >
+                        <label className="editBusiness fa fa-edit" >
                           Edit
-                  </button>
+                  </label>
                       </Link>
-                      <button
+                      <label
                         type="reset"
-                        className="btn btn-danger"
+                        className=" fa-delete fa fa-trash"
                         id="btn-delete"
                         value="Delete Business"
                         onClick={this.onDelete}
                       >
                         Delete
-                  </button>
+                  </label>
                     </div>
                   </div>) : null
                 }
@@ -188,11 +187,9 @@ class BusinessProfile extends React.Component {
                   </label>
                 </div>
           </div>
-          <div className="col-sm-8 personal-info">
+          <div className="col-sm-6 personal-info ">
             <div className="form-profile" id="description">
               <br />
-              {/* <br/> */}
-              {/* <br/> */}
               <form className="form-horizontal" role="form">
                 
                 {user.id !== business.userId ? (<form onSubmit={this.onSubmit}>
