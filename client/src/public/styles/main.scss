@@ -526,11 +526,40 @@ input[type="btn"]:hover {
     bottom: 0;
 }
 
-.business-profile{
-     height: 700px;
+
+.fa-delete{
+    color: red;  
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.editBusiness{
+    cursor: pointer;
+}
+
+
+.business-two {
+    position: fixed;
+}
+.business-profile-card{
+    height: 650px;
     background-color: #001f3f ;
-       margin-top: 10px;
-       margin-bottom: 10px;
-        border-radius: 5px;
-         color: white;
-        }
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: white;
+    overflow: scroll;
+    }
+
+
+.personal-info{
+    position: relative;
+    overflow: scroll;
+    height: 650px;
+}
+
+@media only screen and (max-width: 7500px) {
+    .business-two {
+        position: relative;
+    }
+} 
