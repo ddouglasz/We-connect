@@ -85,16 +85,17 @@ class BusinessCatalog extends React.Component {
   render() {
     const allBusinesses = this.props.businesses;
     const { count, presentPage, limit } = this.state;
+    // console.log(this.props.businesses);
     const displayAllBusiness = allBusinesses.map(business => (
-        <Cards
-          key={business.id}
-          id={business.id}
-          name={business.title}
-          image={business.image}
-          description={business.description}
-          category={business.category}
-          createdAt={business.createdAt}
-        />
+      <Cards
+      key={business.id}
+      id={business.id}
+      name={business.title}
+      image={business.image}
+      description={business.description}
+      category={business.category}
+      createdAt={business.createdAt}
+      />
     ));
 
     return (
@@ -161,7 +162,7 @@ BusinessCatalog.propTypes = {
   getBusinessAction: PropTypes.func.isRequired,
   presentPage: PropTypes.object.isRequired,
   pagination: PropTypes.object.isRequired,
-  businesses: PropTypes.object.isRequired,
+  businesses: PropTypes.array.isRequired,
   limit: PropTypes.object.isRequired,
   count: PropTypes.object.isRequired
 };
@@ -169,8 +170,14 @@ BusinessCatalog.propTypes = {
 const mapStateToProps = state => ({
   businesses: state.allBusinesses.businesses,
   pagination: state.allBusinesses.pagination
-
 });
+
+
+// const mapStateToProps = state => ({
+//   businesses: state.allBusinesses,
+//   reviewData: state.allReviews
+// })
+
 
 export default connect(mapStateToProps, {
   getBusinessAction,
