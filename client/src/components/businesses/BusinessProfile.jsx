@@ -117,8 +117,6 @@ class BusinessProfile extends React.Component {
     if (!this.props.reviewsData.Reviews) {
       return 'loading...';
     }
-console.log(this.props.reviewsData.Reviews.count);
-
     const emptyReviews = (<h2> No reviews for this Business yet...</h2>);
     return (
        <div className="container " >
