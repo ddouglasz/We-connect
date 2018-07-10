@@ -39,8 +39,8 @@ class FilterBusinessSearch {
           ]
         }
       })
-        .then((business) => {
-          if (!business.length) {
+        .then((businesses) => {
+          if (!businesses.length) {
             return res.status(404).json({
               message: 'Business not found',
               error: true
@@ -48,7 +48,7 @@ class FilterBusinessSearch {
           }
           return res.status(200).json({
             message: 'We found some businesses with the category or location you entered',
-            business,
+            businesses,
             error: false
           });
         });
