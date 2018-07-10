@@ -85,7 +85,6 @@ class BusinessCatalog extends React.Component {
   render() {
     const allBusinesses = this.props.businesses;
     const { count, presentPage, limit } = this.state;
-    // console.log(this.props.businesses);
     const displayAllBusiness = allBusinesses.map(business => (
       <Cards
       key={business.id}
@@ -171,12 +170,6 @@ const mapStateToProps = state => ({
   businesses: state.allBusinesses.businesses,
   pagination: state.allBusinesses.pagination
 });
-
-
-// const mapStateToProps = state => ({
-//   businesses: state.allBusinesses,
-//   reviewData: state.allReviews
-// })
 
 
 export default connect(mapStateToProps, {

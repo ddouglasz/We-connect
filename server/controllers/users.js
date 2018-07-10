@@ -48,7 +48,6 @@ class Users {
           token: accessToken,
         }));
       })
-
         .catch(error => res.status(400).send(error));
     });
   }
