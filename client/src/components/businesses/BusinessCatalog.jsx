@@ -168,7 +168,6 @@ BusinessCatalog.propTypes = {
 
 const mapStateToProps = state => ({
   businesses: state.allBusinesses.businesses,
-  // reviewsData: state.allReviews,
   pagination: state.allBusinesses.pagination
 
 });

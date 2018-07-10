@@ -423,7 +423,7 @@ input[type="btn"]:hover {
 
 #description,
 #description-header {
-    margin-left: 0px;
+    margin-left: 10px;
  }
 
 #exampleTextarea{
@@ -437,6 +437,7 @@ input[type="btn"]:hover {
 
 .edit-spacing {
     margin-bottom: 100px;
+    margin-left: 10px;
 }
 
 #cancel-reg,
@@ -533,7 +534,15 @@ input[type="btn"]:hover {
     cursor: pointer;
 }
 
-.editBusiness{
+.fa-delete a{
+    color: white;
+}
+
+.editBusiness a{
+    color: white;
+}
+
+.editBusiness {
     cursor: pointer;
 }
 
@@ -556,6 +565,11 @@ input[type="btn"]:hover {
     position: relative;
     overflow: scroll;
     height: 650px;
+}
+
+.textfield-width{
+    // width: 500px!important;
+    margin-left: 2px;
 }
 
 @media only screen and (max-width: 7500px) {

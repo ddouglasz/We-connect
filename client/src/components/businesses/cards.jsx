@@ -26,26 +26,20 @@ const Cards = ({
                         <strong>Find out more</strong>
                     </Link>
                 </div>
-                <div className="icons">
-                    <a href="#">
-                        <i className="fa fa-commenting-o" aria-hidden="true"></i>
-                        <strong> {reviewsNumber} reviews</strong>
-                    </a>
-                </div>
             </div>
         </div>
     </div>
 );
 
-Cards.propTypes = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  createdAt: PropTypes.string.isRequired,
-  reviewsNumber: PropTypes.number.isRequired
-};
+// Cards.propTypes = {
+//   id: PropTypes.number.isRequired,
+//   name: PropTypes.string.isRequired,
+//   description: PropTypes.string.isRequired,
+//   category: PropTypes.string.isRequired,
+//   location: PropTypes.string.isRequired,
+//   image: PropTypes.string.isRequired,
+//   createdAt: PropTypes.string.isRequired,
+//   reviewsNumber: PropTypes.number.isRequired
+// };
 
 export default Cards;
