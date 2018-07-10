@@ -197,6 +197,7 @@ class Businesses {
       }
       return ReviewsModel.create({
         review: req.body.review,
+        rating: req.body.rating,
         businessId: req.params.businessId,
         userId: req.decoded.id,
         reviewer: req.decoded.firstName

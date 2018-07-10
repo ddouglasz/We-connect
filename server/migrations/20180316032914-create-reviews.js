@@ -9,6 +9,10 @@ module.exports = {
     review: {
       type: Sequelize.STRING
     },
+    rating: {
+      allowNull: false,
+      type: Sequelize.INTEGER
+    },
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE

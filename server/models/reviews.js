@@ -1,7 +1,8 @@
 module.exports = (sequelize, DataTypes) => {
   const Reviews = sequelize.define('reviews', {
     review: DataTypes.STRING,
-    reviewer: DataTypes.STRING
+    reviewer: DataTypes.STRING,
+    rating: DataTypes.INTEGER
   });
   Reviews.associate = (models) => {
     Reviews.belongsTo(models.users, {

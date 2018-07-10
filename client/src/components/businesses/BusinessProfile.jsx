@@ -1,8 +1,8 @@
 import React from 'react';
+import ReactStars from 'react-stars';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import images from '../../public/images/irokotv.jpg';
 import { addFlashMessage } from '../../actions/flashMessages';
 import ReviewsCard from './ReviewsCards.jsx';
 // import { title, description, category, location } from './RegisterBusiness.jsx';
@@ -23,12 +23,14 @@ class BusinessProfile extends React.Component {
     super(props);
     this.state = {
       review: '',
+      rating: 0,
       errors: [],
       isLoading: false
     };
     this.onDelete = this.onDelete.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onRatingChange = this.onRatingChange.bind(this);
   }
   /**
    * @param {Object} event
@@ -46,6 +48,18 @@ class BusinessProfile extends React.Component {
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
+
+
+  /**
+   * @param {Object} newRating
+   * @return {function} function
+   */
+  onRatingChange(newRating) {
+    this.setState({ rating: newRating });
+    console.log(newRating);
+  }
+
+
   /**
    * @description -implement adding of reviews to a business
    * @param {Object} event
@@ -63,7 +77,7 @@ class BusinessProfile extends React.Component {
             text: 'review added successfully'
           });
           this.props.getReviewsAction(id);
-          this.setState({ review: '' });
+          this.setState({ review: '', rating: 0 });
         },
         (err) => {
           this.props.addFlashMessage({
@@ -210,12 +224,20 @@ class BusinessProfile extends React.Component {
                   </div>
                   <div className="form-group form-spacing">
                     <div className="col-sm-8">
+                    <ReactStars
+  count={5}
+  onChange={ this.onRatingChange }
+  value={this.state.rating}
+  size={24}
+  color2='#ffaf00' />
                       <button
                         disabled={this.state.isLoading}
-                        className="btn btn-primary"
+                        className="btn btn-primary pull-right"
                       >
                         Post Review
                   </button>
+
+
                     </div>
                   </div>
                 </form>) : null}

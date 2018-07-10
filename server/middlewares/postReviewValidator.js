@@ -1,4 +1,5 @@
 import validator from 'validator';
+import { isEmpty } from 'lodash';
 
 // import models from '../models/index';
 
@@ -28,6 +29,29 @@ class ReviewsValidator {
     }
     next();
   }
+  /**
+   *
+   * @param {any} req
+   * @param {any} res
+   * @param {any} next
+   * @returns {json} validate business registeration
+   */
+  // static reviewsRatingsValidator(req, res, next) {
+  //   // check for ratings
+  //   const { review, rating } = req.body;
+
+  //   const error = {};
+  //   if (!review || validator.isEmpty(review.trim() || '')) {
+  //     error.review = 'Please add a review';
+  //   }
+  //   if (!rating) {
+  //     error.rating = 'Please add a rating';
+  //   }
+  //   if (isEmpty(error)) return next();
+  //   return res.status(400).json({
+  //     message: error
+  //   });
+  // }
 }
 
 export default ReviewsValidator;
