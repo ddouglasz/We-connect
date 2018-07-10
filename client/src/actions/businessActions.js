@@ -101,9 +101,8 @@ export const getBusinessAction = page => dispatch =>
 export const getAllBusinessSearchAction = (searchType, keyValue) => dispatch =>
   axios.get(`api/v1/businesses?${searchType}=${keyValue}`)
     .then((response) => {
-      dispatch(allBusinesses(response.data.business));
+      dispatch(allBusinesses(response.data));
     });
-
 
 export const getOneBusinessAction = id => dispatch =>
   axios.get(`http://localhost:8000/api/v1/businesses/${id}`)
@@ -114,7 +113,7 @@ export const getOneBusinessAction = id => dispatch =>
 export const editBusinessAction = business => dispatch =>
   axios.put(`http://localhost:8000/api/v1/businesses/${business.id}`, business)
     .then(() => {
-      dispatch(editSuccessful(' Sucessfully Updated'));
+      dispatch(editSuccessful('Sucessfully Updated'));
     })
     .catch(() => {
       dispatch(editFailed('Your business did not update'));
