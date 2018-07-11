@@ -138,7 +138,7 @@ class BusinessCatalog extends React.Component {
             {allBusinesses && displayAllBusiness}
           </div>
         </div>
-        <div className="d-flex justify-content-center mt-5">
+        { count <= 6 ? null : (<div className="d-flex justify-content-center mt-5">
           <Pagination
             showTotal={(total, range) =>
               `${range[0]} - ${range[1]} of ${total} items`
@@ -148,7 +148,7 @@ class BusinessCatalog extends React.Component {
             current={presentPage}
             onChange={this.onChangepage}
           />
-        </div>
+        </div>)}
 
       </div>
 
