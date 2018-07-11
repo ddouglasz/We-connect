@@ -143,7 +143,7 @@ class BusinessProfile extends React.Component {
     const {
       business, user
     } = this.props;
-    if (!this.props.reviewsData.Reviews) {
+    if (this.props.reviewsData.length === 0) {
       return 'loading...';
     }
     const emptyReviews = (<h2> No reviews for this Business yet...</h2>);
@@ -302,9 +302,9 @@ BusinessProfile.propTypes = {
 
 
 const mapStateToProps = state => ({
-  business: state.oneBusiness,
+  business: state.allBusinesses.oneBusiness,
   deleteBusiness: state.deleteBusiness,
-  reviewsData: state.allReviews,
+  reviewsData: state.allBusinesses.allReviews,
   user: state.auth.user
 });
 
