@@ -5,10 +5,10 @@ import { ALL_REVIEWS, ADD_REVIEW_SUCCESS, ADD_REVIEW_FAILED } from './types';
  * @return { function } function
  *
 */
-export function allReviews(review) {
+export function getAllReviews(allReviews) {
   return {
     type: ALL_REVIEWS,
-    allReviews: review
+    allReviews
   };
 }
 
@@ -20,7 +20,7 @@ export function allReviews(review) {
 export const getReviewsAction = id => dispatch =>
   axios.get(`http://localhost:8000/api/v1/businesses/${id}/reviews`)
     .then((response) => {
-      dispatch(allReviews(response.data.businessdata));
+      dispatch(getAllReviews(response.data.businessdata));
     });
 /**
  * @param { Object } review
