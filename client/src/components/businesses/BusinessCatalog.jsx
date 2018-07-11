@@ -85,7 +85,8 @@ class BusinessCatalog extends React.Component {
   render() {
     const allBusinesses = this.props.businesses;
     const { count, presentPage, limit } = this.state;
-    const displayAllBusiness = allBusinesses.map(business => (
+    const newBusiness = allBusinesses || [];
+    const displayAllBusiness = newBusiness.map(business => (
       <Cards
       key={business.id}
       id={business.id}
