@@ -139,13 +139,13 @@ export const editBusinessAction = business => dispatch =>
  */
 export function deleteSuccessful(message) {
   return {
-    type: DELETE_SUCCESSFUL,ete a business
- * @param {Object} error - error message
+    type: DELETE_SUCCESSFUL,
     message
   };
 }
 /**
- * @description - returns an error for an unsuccessful attempt to del
+ * @description - returns an error for an unsuccessful attempt to delete a business
+ * @param {Object} error - error message
  * @returns {Object} error.
  */
 export function deleteFailed(error) {
