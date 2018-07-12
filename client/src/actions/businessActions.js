@@ -118,13 +118,13 @@ export const getAllBusinessSearchAction = (searchType, keyValue) => dispatch =>
     });
 
 export const getOneBusinessAction = id => dispatch =>
-  axios.get(`http://localhost:8000/api/v1/businesses/${id}`)
+  axios.get(`/api/v1/businesses/${id}`)
     .then((response) => {
       dispatch(oneBusiness(response.data.business));
     });
 
 export const editBusinessAction = business => dispatch =>
-  axios.put(`http://localhost:8000/api/v1/businesses/${business.id}`, business)
+  axios.put(`/api/v1/businesses/${business.id}`, business)
     .then(() => {
       dispatch(editSuccessful('Sucessfully Updated'));
     })
@@ -160,7 +160,7 @@ export function deleteFailed(error) {
   * @returns {Function} function.
  */
 export const deleteBusinessAction = id => dispatch =>
-  axios.delete(`http://localhost:8000/api/v1/businesses/${id}`)
+  axios.delete(`/api/v1/businesses/${id}`)
     .then((response) => {
       dispatch(deleteSuccessful(response.data.message));
     })
