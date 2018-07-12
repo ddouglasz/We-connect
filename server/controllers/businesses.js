@@ -226,6 +226,11 @@ class Businesses {
               where: {
                 businessId: req.params.businessId
               },
+              // Add order conditions here....
+              order: [
+                // ['id', 'DESC'],
+                ['updatedAt', 'DESC'],
+              ],
             })
             .then((reviews) => {
               // const { reviewsNumber } = reviews;

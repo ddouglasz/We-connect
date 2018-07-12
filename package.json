@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "proxy": "http://localhost:8000",
   "scripts": {
     "test:dev": "NODE_ENV=tests nyc mocha ./server/test/ --compilers js:babel-core/register --exit",
     "build": "babel server -d server/dist",
