@@ -140,7 +140,7 @@ UserProfile.propTypes = {
   UserDashBoardAction: PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
-  businesses: state.getUserProfile.userProfile,
+  businesses: state.allBusinesses.userProfile,
   userDetails: state.auth.user
 });
 
