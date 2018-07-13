@@ -18,5 +18,5 @@ export default (app) => {
   // app.post('/api/v1/businesses/:businessId/reviews', auth, ReviewsValidator.reviewsRatingsValidator, businesses.postReview);
   app.post('/api/v1/businesses/:businessId/reviews', auth, ReviewsValidator.postReviewValidator, businesses.postReview);
   app.get('/api/v1/businesses/:businessId/reviews', businesses.getReviews);
-  app.get('/api/v1/businesses/:userId/userProfile', businesses.getUserProfile);
+  app.get('/api/v1/businesses/:userId/userProfile', Users.getUserProfile);
 };

@@ -260,43 +260,43 @@ class Businesses {
    * @param {req} req
    * @param {res} res
    */
-  static getUserProfile(req, res) {
-    UsersModel
-      .findOne({
-        where: {
-          id: req.params.userId
-        }
-      })
-      .then((user) => {
-        if (user) {
-          return BusinessModel
-            .findAll({
-              where: {
-                userId: req.params.userId
-              }
-            })
-            .then((businesses) => {
-              if (!businesses) {
-                return res.status(404).json({
-                  message: 'there is no business created by this user yet,'
-                });
-              }
-              return res.status(200).json({
-                status: 'success',
-                userdata: {
-                  createdBy: `${user.firstName} ${user.lastName}`,
-                  email: user.email,
-                  id: user.id,
-                  Businesses: businesses
-                }
-              });
-            });
-        }
-        return res.status(404).json({
-          message: 'User not found'
-        });
-      });
-  }
+  // static getUserProfile(req, res) {
+  //   UsersModel
+  //     .findOne({
+  //       where: {
+  //         id: req.params.userId
+  //       }
+  //     })
+  //     .then((user) => {
+  //       if (user) {
+  //         return BusinessModel
+  //           .findAll({
+  //             where: {
+  //               userId: req.params.userId
+  //             }
+  //           })
+  //           .then((businesses) => {
+  //             if (!businesses) {
+  //               return res.status(404).json({
+  //                 message: 'there is no business created by this user yet,'
+  //               });
+  //             }
+  //             return res.status(200).json({
+  //               status: 'success',
+  //               userdata: {
+  //                 createdBy: `${user.firstName} ${user.lastName}`,
+  //                 email: user.email,
+  //                 id: user.id,
+  //                 Businesses: businesses
+  //               }
+  //             });
+  //           });
+  //       }
+  //       return res.status(404).json({
+  //         message: 'User not found'
+  //       });
+  //     });
+  // }
 }
 
 export default Businesses;
