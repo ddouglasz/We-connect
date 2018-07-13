@@ -1,12 +1,24 @@
-import { ALL_BUSINESSES, PAGINATION, ONE_BUSINESS, ALL_REVIEWS, ADD_REVIEW_SUCCESS, ADD_REVIEW_FAILED, DELETE_FAILED, DELETE_SUCCESSFUL } from '../actions/types';
+import {
+  ALL_BUSINESSES,
+  PAGINATION, ONE_BUSINESS,
+  ALL_REVIEWS, ADD_REVIEW_SUCCESS,
+  ADD_REVIEW_FAILED, DELETE_FAILED,
+  DELETE_SUCCESSFUL, EDIT_SUCCESSFUL,
+  EDIT_FAILED, GET_USER_PROFILE_SUCCESSFUL,
+  GET_USER_PROFILE_FAILED
+}
+  from '../actions/types';
 
 const initialState = {
+  userProfile: [],
   businesses: [],
+  business: {},
   pagination: {},
   oneBusiness: {},
   allReviews: [],
   isCreated: false,
   hasError: false,
+  userFound: false,
   reviewAdded: '',
   error: ''
 };
@@ -63,6 +75,30 @@ export default function businesses(state = initialState, action) {
       return {
         ...state,
         message: action.message
+      };
+
+    case EDIT_SUCCESSFUL:
+      return {
+        ...state,
+        business: action.business
+      };
+
+    case EDIT_FAILED:
+      return {
+        ...state,
+        error: action.error
+      };
+
+    case GET_USER_PROFILE_SUCCESSFUL:
+      return {
+        ...state,
+        userProfile: action.userProfile,
+      };
+
+    case GET_USER_PROFILE_FAILED:
+      return {
+        ...state,
+        error: action.error
       };
 
     default:
