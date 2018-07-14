@@ -1,24 +1,24 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import models from '../models/index';
-import config from '../../config';
+import { request } from 'http';
 
 
 const BusinessModel = models.businesses;
 const UsersModel = models.users;
 
-// const saltRounds = 10;
+const saltRounds = 10;
 const usersModel = models.users;
 let password = '';
 /**
  * @class User
  */
 class Users {
-/**
- * @returns {Object} signUp
- * @param {param} req
- * @param {param} res
- */
+  /**
+   * @returns {Object} signUp
+   * @param {param} req
+   * @param {param} res
+   */
   static signUp(req, res) {
     usersModel.findOne({
       where: {
@@ -34,7 +34,7 @@ class Users {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
-        hashPassword: bcrypt.hashSync(req.body.password, 10)
+        hashPassword: bcrypt.hashSync(req.body.password, saltRounds)
       }).then((user) => {
         const accessToken = jwt.sign(
           {
@@ -133,6 +133,83 @@ class Users {
         }
         return res.status(404).json({
           message: 'User not found'
+        });
+      });
+  }
+  /**
+   * @returns {Object} updateUserProfile
+   * @param {req} req
+   * @param {res} res
+   */
+  static updateUserProfile(req, res) {
+    return usersModel.findOne({
+      where: {
+        id: req.params.userId
+      }
+    })
+      .then((user) => {
+        if (!user) {
+          return res.status(404).json({
+            message: 'user not found'
+          });
+        }
+        if (req.decoded.id !== user.id) {
+          return res.status(403).json({
+            message: ' You are not authorized to make changes to this user account'
+          });
+        }
+        return user.update({
+          firstName: req.body.firstName || user.firstName,
+          lastName: req.body.lastName || user.lastName,
+          email: req.body.email || user.email
+        })
+          .then(() => res.status(200).json({
+            message: 'User details updated successfully',
+            firstName: user.firstName,
+            lastName: user.lastName,
+          }))
+          .catch(error => res.status(500).json({
+            message: `internal server error ${error.message}`
+          }));
+      })
+      .catch(error => res.status(500).json({
+        message: `internal server error ${error.message}`
+      }));
+  }
+  /**
+    * @returns {Object} deleteUserProfile
+    * @param {req} req
+    * @param {res} res
+    */
+  static deleteUserProfile(req, res) {
+    usersModel.findOne({
+      where: {
+        id: req.params.userId
+      }
+    })
+      .then((user) => {
+        if (!user) {
+          return res.status(404).json({
+            message: 'user not found',
+          });
+        }
+        if (req.decoded.id !== user.id) {
+          return res.status(403).json({
+            message: 'You are not authorized to make changes for this user'
+          });
+        }
+        usersModel.destroy({
+          where: {
+            id: req.params.userId
+          }
+        })
+          .then(() => res.status(200).json({
+            message: 'User deleted successfully'
+          }));
+      })
+      .catch((error) => {
+        res.status(400).json({
+          message: `bad request: ${error}`
         });
       });
   }
