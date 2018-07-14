@@ -9,6 +9,10 @@ module.exports = {
     review: {
       type: Sequelize.STRING
     },
+    rating: {
+      allowNull: false,
+      type: Sequelize.INTEGER
+    },
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE
@@ -24,6 +28,15 @@ module.exports = {
         model: 'businesses',
         key: 'id',
         as: 'businessId'
+      },
+    },
+    userId: {
+      type: Sequelize.INTEGER,
+      onDelete: 'CASCADE',
+      references: {
+        model: 'users',
+        key: 'id',
+        as: 'userId'
       },
     },
   }),

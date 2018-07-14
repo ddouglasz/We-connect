@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => (
       <footer className="bg-color footer">
-        <div className="col  ">
+        <div className="col ">
             <div className="author float-left">
               Designed by: Douglas &nbsp;&nbsp; © 2018
             </div>

@@ -15,17 +15,13 @@ export default (state = initialState, action = {}) => {
   switch (action.type) {
     case ADD_IMAGE_SUCCESSFUL:
       return {
-        isCreated: true,
-        hasError: false,
-        imageUrl: action.image,
-        error: ''
+        ...state,
+        imageUrl: action.image
       };
 
     case ADD_IMAGE_FAILED:
       return {
-        isCreated: false,
-        hasError: true,
-        imageUrl: '',
+        ...state,
         error: action.error
       };
     default: return state;

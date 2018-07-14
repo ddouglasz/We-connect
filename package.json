@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "proxy": "http://localhost:8000",
   "scripts": {
     "test:dev": "NODE_ENV=tests nyc mocha ./server/test/ --compilers js:babel-core/register --exit",
     "build": "babel server -d server/dist",
@@ -54,6 +55,7 @@
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
+    "react-stars": "^2.2.5",
     "react-text-truncate": "^0.13.1",
     "react-truncate": "^2.3.0",
     "redux": "^4.0.0",

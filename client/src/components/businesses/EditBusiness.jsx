@@ -40,6 +40,7 @@ class EditBusiness extends React.Component {
   componentWillMount() {
     this.props.getOneBusinessAction(this.props.match.params.id);
   }
+
   /**
    * @param {Object} event
    * @return {function} function
@@ -60,7 +61,8 @@ class EditBusiness extends React.Component {
           type: 'success',
           text: 'Business Edited successfully'
         });
-        this.context.router.history.push('/businessCatalog');
+        // this.context.router.history.push('/businessCatalog');
+        this.context.router.history.push(`/BusinessProfile/${this.props.match.params.id}`);
       });
   }
   /**
@@ -198,7 +200,7 @@ EditBusiness.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  business: state.oneBusiness
+  business: state.allBusinesses.oneBusiness
 });
 
 EditBusiness.contextTypes = {

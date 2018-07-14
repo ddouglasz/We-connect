@@ -4,6 +4,9 @@ import models from '../models/index';
 import config from '../../config';
 
 
+const BusinessModel = models.businesses;
+const UsersModel = models.users;
+
 // const saltRounds = 10;
 const usersModel = models.users;
 let password = '';
@@ -48,7 +51,6 @@ class Users {
           token: accessToken,
         }));
       })
-
         .catch(error => res.status(400).send(error));
     });
   }
@@ -91,6 +93,48 @@ class Users {
       });
     })
       .catch(error => res.status(500).json(error));
+  }
+  /**
+   * @returns {Object} getUserProfile
+   * @param {param} req
+   * @param {param} res
+   */
+  static getUserProfile(req, res) {
+    UsersModel
+      .findOne({
+        where: {
+          id: req.params.userId
+        }
+      })
+      .then((user) => {
+        if (user) {
+          return BusinessModel
+            .findAll({
+              where: {
+                userId: req.params.userId
+              }
+            })
+            .then((businesses) => {
+              if (!businesses) {
+                return res.status(404).json({
+                  message: 'there is no business created by this user yet,'
+                });
+              }
+              return res.status(200).json({
+                status: 'success',
+                userdata: {
+                  createdBy: `${user.firstName} ${user.lastName}`,
+                  email: user.email,
+                  id: user.id,
+                  Businesses: businesses
+                }
+              });
+            });
+        }
+        return res.status(404).json({
+          message: 'User not found'
+        });
+      });
   }
 }
 export default Users;

@@ -12,6 +12,7 @@ import {
   ADD_IMAGE_FAILED,
   GET_USER_PROFILE_SUCCESSFUL,
   GET_USER_PROFILE_FAILED,
+  PAGINATION,
 } from './types';
 
 
@@ -23,13 +24,24 @@ import {
 // }
 /**
  * AllBusiness
- * @param {Object} allBusinesses
+ * @param {Object} businesses
  * @returns {object} object action to be dispatched
  */
-export function allBusinesses(allBusinesses) {
+export function allBusinesses(businesses) {
   return {
     type: ALL_BUSINESSES,
-    allBusinesses
+    businesses
+  };
+}
+/**
+ * AllBusiness
+ * @param {Object} pagination
+ * @returns {object} object action to be dispatched
+ */
+export function paginationInfo(pagination) {
+  return {
+    type: PAGINATION,
+    pagination
   };
 }
 
@@ -88,7 +100,8 @@ export const registerBusinessAction = businesses => () =>
 export const getBusinessAction = page => dispatch =>
   axios.get(`api/v1/businesses?page=${page || 1}`)
     .then((response) => {
-      dispatch(allBusinesses(response.data));
+      dispatch(allBusinesses(response.data.businesses));
+      dispatch(paginationInfo(response.data.pagination));
     });
 
 /**
@@ -101,20 +114,19 @@ export const getBusinessAction = page => dispatch =>
 export const getAllBusinessSearchAction = (searchType, keyValue) => dispatch =>
   axios.get(`api/v1/businesses?${searchType}=${keyValue}`)
     .then((response) => {
-      dispatch(allBusinesses(response.data.business));
+      dispatch(allBusinesses(response.data.businesses));
     });
 
-
 export const getOneBusinessAction = id => dispatch =>
-  axios.get(`http://localhost:8000/api/v1/businesses/${id}`)
+  axios.get(`/api/v1/businesses/${id}`)
     .then((response) => {
       dispatch(oneBusiness(response.data.business));
     });
 
 export const editBusinessAction = business => dispatch =>
-  axios.put(`http://localhost:8000/api/v1/businesses/${business.id}`, business)
+  axios.put(`/api/v1/businesses/${business.id}`, business)
     .then(() => {
-      dispatch(editSuccessful(' Sucessfully Updated'));
+      dispatch(editSuccessful('Sucessfully Updated'));
     })
     .catch(() => {
       dispatch(editFailed('Your business did not update'));
@@ -148,7 +160,7 @@ export function deleteFailed(error) {
   * @returns {Function} function.
  */
 export const deleteBusinessAction = id => dispatch =>
-  axios.delete(`http://localhost:8000/api/v1/businesses/${id}`)
+  axios.delete(`/api/v1/businesses/${id}`)
     .then((response) => {
       dispatch(deleteSuccessful(response.data.message));
     })

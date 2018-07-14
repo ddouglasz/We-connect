@@ -1,11 +1,11 @@
 import React from 'react';
+import ReactStars from 'react-stars';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import images from '../../public/images/irokotv.jpg';
 import { addFlashMessage } from '../../actions/flashMessages';
 import ReviewsCard from './ReviewsCards.jsx';
-import { title, description, category, location } from './RegisterBusiness.jsx';
+// import { title, description, category, location } from './RegisterBusiness.jsx';
 import { getReviewsAction, postReviewAction } from '../../actions/reviewsActions';
 import { getOneBusinessAction, deleteBusinessAction } from '../../actions/businessActions';
 
@@ -14,21 +14,23 @@ import { getOneBusinessAction, deleteBusinessAction } from '../../actions/busine
    * @class BusinessProfile
    */
 class BusinessProfile extends React.Component {
-/**
-   * @description - business display form
-   * @param {Object} props
-   * @param {object} object
-   */
+  /**
+     * @description - business display form
+     * @param {Object} props
+     * @param {object} object
+     */
   constructor(props) {
     super(props);
     this.state = {
       review: '',
+      rating: 0,
       errors: [],
       isLoading: false
     };
     this.onDelete = this.onDelete.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onRatingChange = this.onRatingChange.bind(this);
   }
   /**
    * @param {Object} event
@@ -37,7 +39,22 @@ class BusinessProfile extends React.Component {
   onDelete(event) {
     event.preventDefault();
     const { id } = this.props.match.params;
-    this.props.deleteBusinessAction(id);
+    this.props.deleteBusinessAction(id)
+      .then(
+        () => {
+          this.props.addFlashMessage({
+            type: 'success',
+            text: `${'Business deleted successfully'}`
+          });
+          this.context.router.history.push('/businessCatalog');
+        },
+        () => {
+          this.props.addFlashMessage({
+            type: 'error',
+            text: `${'Please Retry. Perhaps your internet is down '}`
+          });
+        }
+      );
   }
   /**
    * @param {Object} event
@@ -46,6 +63,18 @@ class BusinessProfile extends React.Component {
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
+
+
+  /**
+   * @param {Object} newRating
+   * @return {function} function
+   */
+  onRatingChange(newRating) {
+    this.setState({ rating: newRating });
+    console.log(newRating);
+  }
+
+
   /**
    * @description -implement adding of reviews to a business
    * @param {Object} event
@@ -62,8 +91,8 @@ class BusinessProfile extends React.Component {
             type: 'success',
             text: 'review added successfully'
           });
-          this.props.getReviewsAction(this.props.match.params.id);
-          this.setState({ review: '' });
+          this.props.getReviewsAction(id);
+          this.setState({ review: '', rating: 0 });
         },
         (err) => {
           this.props.addFlashMessage({
@@ -79,31 +108,32 @@ class BusinessProfile extends React.Component {
    * @return {function} function
    */
   componentDidMount() {
-    this.props.getOneBusinessAction(this.props.match.params.id);
-    this.props.getReviewsAction(this.props.match.params.id);
+    const { id } = this.props.match.params;
+    this.props.getOneBusinessAction(id);
+    this.props.getReviewsAction(id);
   }
   /**
    * @description -get all reviews for a business when component mounts
    * @param {object} nextProps
    * @return {function} function
    */
-  componentWillReceiveProps(nextProps) {
-    const {
-      isDeleted, message, error, hasError
-    } = nextProps.deleteBusiness;
-    if (isDeleted) {
-      this.props.addFlashMessage({
-        type: 'success',
-        text: `${message}`
-      });
-      this.context.router.history.push('/businessCatalog');
-    } else if (!isDeleted && hasError) {
-      this.props.addFlashMessage({
-        type: 'error',
-        text: `${error}`
-      });
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   const {
+  //     isDeleted, message, error, hasError
+  //   } = nextProps.deleteBusiness;
+  //   if (isDeleted) {
+  //     this.props.addFlashMessage({
+  //       type: 'success',
+  //       text: `${message}`
+  //     });
+  //     this.context.router.history.push('/businessCatalog');
+  //   } else if (!isDeleted && hasError) {
+  //     this.props.addFlashMessage({
+  //       type: 'error',
+  //       text: `${error}`
+  //     });
+  //   }
+  // }
 
   /**
    * @param {object} business
@@ -113,19 +143,41 @@ class BusinessProfile extends React.Component {
     const {
       business, user
     } = this.props;
-    if (!this.props.reviewsData.Reviews) {
+    if (this.props.reviewsData.length === 0) {
       return 'loading...';
     }
-
-
+    const emptyReviews = (<h2> No reviews for this Business yet...</h2>);
     return (
-      <div className="container" >
+      <div className="container " >
         <div className="form-actions" />
-        <div className="row">
-          <div className="col-sm-4">
+        <div className="row business-two" >
+          <div className="col-sm-6 sticky-top1 container business-profile-card">
             <br />
-            <div className="text-center">
+            <div className="text">
+              <h3>Business Profile</h3>
               <img className="img img-fluid" src={business.image} alt="Card image cap" width="537.5" />
+
+              {user.id === business.userId ?
+                (<div className="form-group form-spacing">
+                  <label className="col-sm-3 control-label" />
+                  <div className="col-sm-12">
+                    <Link to={`/editBusiness/${this.props.match.params.id}`}>
+                      <label className="editBusiness fa fa-edit" >
+                        Edit
+                  </label>
+                    </Link>
+                    <label
+                      type="reset"
+                      className=" fa-delete fa fa-trash"
+                      id="btn-delete"
+                      value="Delete Business"
+                      onClick={this.onDelete}
+                    >
+                      Delete
+                  </label>
+                  </div>
+                </div>) : null
+              }
               <div className="form-group form-spacing">
                 <label className="col-sm-6 control-label">
                   <h3>
@@ -135,101 +187,92 @@ class BusinessProfile extends React.Component {
                 </label>
               </div>
             </div>
+            {/* <p>{this.props.reviewsData.Reviews.count}</p> */}
+            <div className="form-group form-spacing">
+              <label className="col-sm-12 control-label">
+                <strong>Reviews:</strong> {this.props.reviewsData.Reviews.count} <div className="fa fa-commenting-o"></div>
+              </label>
+            </div>
+            <div className="form-group form-spacing">
+              <label className="col-sm-12 control-label">
+                <strong>Business Description:</strong> {business.description}
+              </label>
+            </div>
+            <div className="form-group form-spacing">
+            </div>
+            <div className="form-group form-spacing">
+              <label className="col-sm-12 control-label">
+                <strong>Business Category:</strong> {business.category}
+              </label>
+            </div>
+            <div className="form-group form-spacing">
+              <label className="col-sm-12 control-label">
+                <strong>Business location:</strong> {business.location}
+              </label>
+            </div>
+            <div className="form-group form-spacing">
+              <label className="col-sm-12 control-label">
+                <strong>Business Email: </strong> {business.email}
+                <strong>
+                  &nbsp;&nbsp;
+                   </strong>
+              </label>
+            </div>
           </div>
-          <div className="col-sm-8 personal-info">
+          <div className="col-sm-6 personal-info ">
             <div className="form-profile" id="description">
-              <h3>Business Profile</h3>
+              <br />
+              <form className="form-horizontal" role="form">
+
+                {user.id !== business.userId ? (<form onSubmit={this.onSubmit}>
+                  <div className="form-group form-spacing row">
+                    <div className="col-sm-8" id="description">
+                      <textarea
+                        name="review"
+                        className="form-control textfield-width"
+                        id="exampleTextarea"
+                        rows="2" placeholder="Add a review"
+                        value={this.state.review}
+                        onChange={this.onChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group form-spacing">
+                    <div className="col-sm-8">
+                      <ReactStars
+                        count={5}
+                        onChange={this.onRatingChange}
+                        value={this.state.rating}
+                        size={24}
+                        color2='#ffaf00' />
+                      <button
+                        disabled={this.state.isLoading}
+                        className="btn btn-primary pull-right"
+                      >
+                        Post Review
+                  </button>
+
+
+                    </div>
+                  </div>
+                </form>) : null}
+                <br />
+                <div className="form-reviews" id="description-header">
+                  {
+                    this.props.reviewsData.length > 1 ? <h3>Reviews</h3> : null
+                  }
+                </div>
+                <div className="edit-spacing" id="chat-cards-buttom-spacing">
+                  <ul className="list-unstyled">
+                    {this.props.reviewsData.Reviews.rows.length > 1 ? (this.props.reviewsData.Reviews &&
+                      <ReviewsCard
+                        reviews={this.props.reviewsData.Reviews.rows}
+                      />) : emptyReviews}
+                  </ul>
+                </div>
+              </form>
               <br />
             </div>
-            <form className="form-horizontal" role="form">
-              <div className="form-group form-spacing">
-                <label className="col-sm-6 control-label">
-                  <strong>Business Description:</strong> {business.description}
-                </label>
-              </div>
-              <div className="form-group form-spacing">
-              </div>
-              <div className="form-group form-spacing">
-                <label className="col-sm-6 control-label">
-                  <strong>Business Category:</strong> {business.category}
-                </label>
-              </div>
-              <div className="form-group form-spacing">
-                <label className="col-sm-6 control-label">
-                  <strong>reviews:</strong> 256 reviews
-                </label>
-              </div>
-              <div className="form-group form-spacing">
-                <label className="col-sm-6 control-label">
-                  <strong>Business location:</strong> {business.location}
-                </label>
-              </div>
-              <div className="form-group form-spacing">
-                <label className="col-sm-6 control-label">
-                  <strong>Business Email: </strong> {business.email}
-                  <strong>
-                    &nbsp;&nbsp;
-                   </strong>
-                </label>
-              </div>
-              {user.id === business.userId ?
-                (<div className="form-group form-spacing">
-                  <label className="col-sm-3 control-label" />
-                  <div className="col-sm-8">
-                    <Link to={`/editBusiness/${this.props.match.params.id}`}>
-                      <button className="btn btn-primary" >
-                        Edit Business
-                  </button>
-                    </Link>
-                    <button
-                      type="reset"
-                      className="btn btn-danger"
-                      id="btn-delete"
-                      value="Delete Business"
-                      onClick={this.onDelete}
-                    >
-                      Delete
-                  </button>
-                  </div>
-                </div>) : null
-              }
-              {user.id !== business.userId ? (<form onSubmit={this.onSubmit}>
-                <div className="form-group form-spacing row">
-                  <div className="col-sm-8" id="description">
-                    <textarea
-                      name="review"
-                      className="form-control"
-                      id="exampleTextarea"
-                      rows="3" placeholder="add a review"
-                      value={this.state.review}
-                      onChange={this.onChange}
-                    />
-                  </div>
-                </div>
-                <div className="form-group form-spacing">
-                  <div className="col-sm-8">
-                    <button
-                      disabled={this.state.isLoading}
-                      className="btn btn-primary"
-                    >
-                      Post Review
-                  </button>
-                  </div>
-                </div>
-              </form>) : null}
-              <br />
-              <div className="form-reviews" id="description-header">
-                <h3>Reviews</h3>
-              </div>
-              <div className="edit-spacing" id="chat-cards-buttom-spacing">
-                <ul className="list-unstyled">
-                  {this.props.reviewsData.Reviews &&
-                    <ReviewsCard
-                      reviews={this.props.reviewsData.Reviews.rows}
-                    />}
-                </ul>
-              </div>
-            </form>
           </div>
         </div>
       </div>
@@ -259,9 +302,9 @@ BusinessProfile.propTypes = {
 
 
 const mapStateToProps = state => ({
-  business: state.oneBusiness,
+  business: state.allBusinesses.oneBusiness,
   deleteBusiness: state.deleteBusiness,
-  reviewsData: state.allReviews,
+  reviewsData: state.allBusinesses.allReviews,
   user: state.auth.user
 });
 

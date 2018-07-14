@@ -85,16 +85,17 @@ class BusinessCatalog extends React.Component {
   render() {
     const allBusinesses = this.props.businesses;
     const { count, presentPage, limit } = this.state;
-    const displayAllBusiness = allBusinesses.map(business => (
-        <Cards
-          key={business.id}
-          id={business.id}
-          name={business.title}
-          image={business.image}
-          description={business.description}
-          category={business.category}
-          createdAt={business.createdAt}
-        />
+    const newBusiness = allBusinesses || [];
+    const displayAllBusiness = newBusiness.map(business => (
+      <Cards
+      key={business.id}
+      id={business.id}
+      name={business.title}
+      image={business.image}
+      description={business.description}
+      category={business.category}
+      createdAt={business.createdAt}
+      />
     ));
 
     return (
@@ -138,7 +139,7 @@ class BusinessCatalog extends React.Component {
             {allBusinesses && displayAllBusiness}
           </div>
         </div>
-        <div className="d-flex justify-content-center mt-5">
+        { count <= 6 ? null : (<div className="d-flex justify-content-center mt-5">
           <Pagination
             showTotal={(total, range) =>
               `${range[0]} - ${range[1]} of ${total} items`
@@ -148,7 +149,7 @@ class BusinessCatalog extends React.Component {
             current={presentPage}
             onChange={this.onChangepage}
           />
-        </div>
+        </div>)}
 
       </div>
 
@@ -161,16 +162,16 @@ BusinessCatalog.propTypes = {
   getBusinessAction: PropTypes.func.isRequired,
   presentPage: PropTypes.object.isRequired,
   pagination: PropTypes.object.isRequired,
-  businesses: PropTypes.object.isRequired,
+  businesses: PropTypes.array.isRequired,
   limit: PropTypes.object.isRequired,
   count: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
   businesses: state.allBusinesses.businesses,
-  reviewsData: state.allReviews,
   pagination: state.allBusinesses.pagination
 });
+
 
 export default connect(mapStateToProps, {
   getBusinessAction,
