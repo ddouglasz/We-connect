@@ -567,13 +567,20 @@ input[type="btn"]:hover {
     height: 650px;
 }
 
-.textfield-width{
-    // width: 500px!important;
-    margin-left: 2px;
-}
 
 @media only screen and (max-width: 7500px) {
     .business-two {
         position: relative;
     }
 } 
+
+#postReview-button, #postReview-stars {
+    padding-left: 6px;
+    display:inline-block !important;
+    }
+    
+    #postReview-button{
+        background-color: #001f3f;
+        cursor: pointer;
+    }
+    
