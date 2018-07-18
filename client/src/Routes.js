@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router';
 import HomePage from './components/home/HomePage.jsx';
-import SignUp from './components/account/SignUp.jsx';
 import Login from './components/account/Login.jsx';
+import SignUp from './components/account/SignUp.jsx';
 import BusinessCatalog from './components/businesses/BusinessCatalog.jsx';
 import BusinessProfile from './components/businesses/BusinessProfile.jsx';
 import RegisterBusinessPage from './components/businesses/RegisterBusinessPage.jsx';
