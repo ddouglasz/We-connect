@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Switch } from 'react-router';
-import NavBar from './components/home/NavBar';
 import HomePage from './components/home/HomePage.jsx';
 import SignUp from './components/account/SignUp.jsx';
 import Login from './components/account/Login.jsx';
