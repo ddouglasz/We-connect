@@ -214,7 +214,8 @@ class RegisterBusiness extends React.Component {
 
 RegisterBusiness.proptypes = {
   registerBusinessAction: PropTypes.func.isRequired,
-  addFlashMessage: PropTypes.func.isRequired
+  addFlashMessage: PropTypes.func.isRequired,
+  saveImageCloudinary: PropTypes.func.isRequired
 };
 
 RegisterBusiness.contextTypes = {

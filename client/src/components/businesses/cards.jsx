@@ -5,7 +5,7 @@ import TextTruncate from 'react-text-truncate';
 import moment from 'moment';
 
 const Cards = ({
-  name, description, category, id, image, createdAt, reviewsNumber
+  name, description, category, id, image, createdAt
 }) => (
     <div className="col-md-4 col-sm-6 col-xs-12 business-card">
         <div className=" img-zoom card-space">
@@ -31,15 +31,14 @@ const Cards = ({
     </div>
 );
 
-// Cards.propTypes = {
-//   id: PropTypes.number.isRequired,
-//   name: PropTypes.string.isRequired,
-//   description: PropTypes.string.isRequired,
-//   category: PropTypes.string.isRequired,
-//   location: PropTypes.string.isRequired,
-//   image: PropTypes.string.isRequired,
-//   createdAt: PropTypes.string.isRequired,
-//   reviewsNumber: PropTypes.number.isRequired
-// };
+Cards.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+};
 
 export default Cards;

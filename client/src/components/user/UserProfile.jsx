@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import auth from '../../reducers/auth';
-import { UserDashBoardAction, getAllBusinessSearchAction, editUserProfile } from '../../actions/businessActions';
 import Cards from './../businesses/cards.jsx';
+import { UserDashBoardAction, getAllBusinessSearchAction, editUserProfile } from '../../actions/businessActions';
 import { addFlashMessage } from '../../actions/flashMessages';
-// import { currentUser } from './../../actions/authActions';
+
 /**
    * @class UserProfile
    */
@@ -62,19 +60,6 @@ class UserProfile extends React.Component {
         this.setState({ errors: [], isLoading: false });
     });
   }
-  /**
-   * @param {Object} event
-   * @return {function} function
-   */
-  // onSearch(event) {
-  //   event.preventDefault();
-  //   const { searchType, keyValue } = this.state;
-  //   // const { userId } = currentUser.userId;
-  //   if (!searchType || !keyValue) {
-  //     this.props.UserDashBoardAction();
-  //   }
-  //   this.props.getAllBusinessSearchAction(searchType, keyValue);
-  // }
   /**
    * @return {function} function
    */
@@ -268,7 +253,10 @@ class UserProfile extends React.Component {
   }
 }
 UserProfile.propTypes = {
-  UserDashBoardAction: PropTypes.func.isRequired
+  UserDashBoardAction: PropTypes.func.isRequired,
+  getAllBusinessSearchAction: PropTypes.func.isRequired,
+  businesses: PropTypes.func.isRequired,
+  userDetails: PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
   userData: state.allBusinesses.userProfile,
