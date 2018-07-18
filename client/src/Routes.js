@@ -14,7 +14,7 @@ import NotFound from './components/404Page.jsx';
 const Routes = () => (
   <Switch>
     <Route path="/" exact component={Login} />
-    <Route path="/Signup" exact component={SignUp} />
+    <Route path="/SignUp" exact component={SignUp} />
     <Route path="/businessCatalog" exact component={BusinessCatalog} />
     <Route path="/businessProfile/:id" exact component={BusinessProfile} />
     <Route path="/registerBusiness" exact component={RegisterBusinessPage} />
