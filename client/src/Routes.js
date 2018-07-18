@@ -6,12 +6,9 @@ import Login from './components/account/Login.jsx';
 import BusinessCatalog from './components/businesses/BusinessCatalog.jsx';
 import BusinessProfile from './components/businesses/BusinessProfile.jsx';
 import RegisterBusinessPage from './components/businesses/RegisterBusinessPage.jsx';
-// import RegisterBusiness from './components/businesses/RegisterBusiness.jsx';
 import EditBusiness from './components/businesses/EditBusiness.jsx';
 import UserProfile from './components/user/UserProfile.jsx';
 import NotFound from './components/404Page.jsx';
-// import Footer from './components/home/Footer.jsx';
-// import styles from '../src/public/styles/main.scss';
 
 
 const Routes = () => (
