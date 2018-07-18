@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     email: DataTypes.STRING,
+    bio: DataTypes.STRING,
     hashPassword: DataTypes.STRING
   });
   User.associate = (models) => {

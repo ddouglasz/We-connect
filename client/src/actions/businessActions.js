@@ -13,15 +13,12 @@ import {
   GET_USER_PROFILE_SUCCESSFUL,
   GET_USER_PROFILE_FAILED,
   PAGINATION,
+  EDIT_USER_SUCCESSFUL,
+  EDIT_USERFAILED
 } from './types';
+import { currentUser } from './authActions';
 
 
-// export function paginateBusinessAction(paginate) {
-//   return {
-//     type: PAGINATION,
-//     pagination
-//   };
-// }
 /**
  * AllBusiness
  * @param {Object} businesses
@@ -69,15 +66,37 @@ export function editSuccessful(business) {
     business
   };
 }
+/**
+ * User
+ * @param {Object} user
+ * @returns {object} object action to be dispatched
+ */
+export function editUserSuccessful(user) {
+  return {
+    type: EDIT_USER_SUCCESSFUL,
+    user
+  };
+}
 
 /**
- * AllBusiness reducer
+ * editUser reducer
  * @param {Array} error
  * @returns {object} object action to be dispatched
  */
 export function editFailed(error) {
   return {
     type: EDIT_FAILED,
+    error
+  };
+}
+/**
+ * AllBusiness reducer
+ * @param {Array} error
+ * @returns {object} object action to be dispatched
+ */
+export function editUserFailed(error) {
+  return {
+    type: EDIT_USERFAILED,
     error
   };
 }
@@ -123,6 +142,7 @@ export const getOneBusinessAction = id => dispatch =>
       dispatch(oneBusiness(response.data.business));
     });
 
+
 export const editBusinessAction = business => dispatch =>
   axios.put(`/api/v1/businesses/${business.id}`, business)
     .then(() => {
@@ -132,11 +152,11 @@ export const editBusinessAction = business => dispatch =>
       dispatch(editFailed('Your business did not update'));
     });
 
-  /**
- * @description - returns a success message for a successfully deleted business
- * @param {String} message - success message
- * @returns {String} message.
- */
+/**
+     * @description - returns a success message for a successfully deleted business
+     * @param {String} message - success message
+     * @returns {String} message.
+     */
 export function deleteSuccessful(message) {
   return {
     type: DELETE_SUCCESSFUL,
@@ -144,10 +164,10 @@ export function deleteSuccessful(message) {
   };
 }
 /**
- * @description - returns an error for an unsuccessful attempt to delete a business
- * @param {Object} error - error message
- * @returns {Object} error.
- */
+     * @description - returns an error for an unsuccessful attempt to delete a business
+     * @param {Object} error - error message
+     * @returns {Object} error.
+     */
 export function deleteFailed(error) {
   return {
     type: DELETE_FAILED,
@@ -155,10 +175,10 @@ export function deleteFailed(error) {
   };
 }
 /**
- * @description - returns an error for an unsuccessful attempt to delete a business
- * @param {number} id - delete action with respect to the business id
-  * @returns {Function} function.
- */
+     * @description - returns an error for an unsuccessful attempt to delete a business
+     * @param {number} id - delete action with respect to the business id
+     * @returns {Function} function.
+     */
 export const deleteBusinessAction = id => dispatch =>
   axios.delete(`/api/v1/businesses/${id}`)
     .then((response) => {
@@ -169,10 +189,10 @@ export const deleteBusinessAction = id => dispatch =>
     });
 
 /**
- * @description - checks for successful image upload
- * @param {String} image - takes in an image string directory
-  * @returns {Object} object.
- */
+     * @description - checks for successful image upload
+     * @param {String} image - takes in an image string directory
+     * @returns {Object} object.
+     */
 export function addImageSuccessful(image) {
   return {
     type: ADD_IMAGE_SUCCESSFUL,
@@ -180,10 +200,10 @@ export function addImageSuccessful(image) {
   };
 }
 /**
- * @description - checks for unsuccesful attempt to upload image
- * @param {Object} error
- * @returns {Object} object.
- */
+     * @description - checks for unsuccesful attempt to upload image
+     * @param {Object} error
+     * @returns {Object} object.
+     */
 export function addImageFailed(error) {
   return {
     type: ADD_IMAGE_FAILED,
@@ -191,10 +211,10 @@ export function addImageFailed(error) {
   };
 }
 /**
- * @description - checks for successful image upload to cloudinary
- * @param {Object} image - takes in an image object directory to manage on cloudinary
-  * @returns {Object} object.
- */
+     * @description - checks for successful image upload to cloudinary
+     * @param {Object} image - takes in an image object directory to manage on cloudinary
+     * @returns {Object} object.
+     */
 export function saveImageCloudinary(image) {
   const data = new FormData();
   data.append('file', image);
@@ -212,10 +232,10 @@ export function saveImageCloudinary(image) {
 }
 
 /**
- * @description - get user profile details action
- * @param {String} userProfile
-  * @returns {Object} object.
- */
+     * @description - get user profile details action
+     * @param {String} userProfile
+     * @returns {Object} object.
+     */
 export function getUserProfileSuccessful(userProfile) {
   return {
     type: GET_USER_PROFILE_SUCCESSFUL,
@@ -223,10 +243,10 @@ export function getUserProfileSuccessful(userProfile) {
   };
 }
 /**
- * @description - get user profile details action
- * @param {Object} error
-  * @returns {Object} object.
- */
+     * @description - get user profile details action
+     * @param {Object} error
+     * @returns {Object} object.
+     */
 export function getUserProfileFailed(error) {
   return {
     type: GET_USER_PROFILE_FAILED,
@@ -235,14 +255,28 @@ export function getUserProfileFailed(error) {
 }
 
 /**
- * @description - get user profile details action
- * @param {function} dispatch
-  * @returns {Object} object.
- */
+     * @description - get user profile details action
+     * @param {function} dispatch
+     * @returns {Object} object.
+     */
 export const UserDashBoardAction = () => (dispatch) => {
   const userId = jwt.decode(localStorage.getItem('userToken')).id;
-  axios.get(`/api/v1/businesses/${userId}/userProfile`)
+  axios.get(`/api/v1/auth/${userId}/userProfile`)
     .then((response) => {
-      dispatch(getUserProfileSuccessful(response.data.userdata.Businesses));
+      dispatch(getUserProfileSuccessful(response.data.userdata));
+    });
+};
+
+export const editUserProfile = user => (dispatch) => {
+  const userId = jwt.decode(localStorage.getItem('userToken')).id;
+  return axios.put(`/api/v1/auth/${userId}/updateUserProfile`, user)
+    .then((res) => {
+      const { token } = res.data;
+      localStorage.setItem('userToken', token);
+      dispatch(currentUser(jwt.decode(token)));
+      dispatch(editUserSuccessful('Sucessfully Updated'));
+    })
+    .catch(() => {
+      dispatch(editFailed('Your user details did not update'));
     });
 };
