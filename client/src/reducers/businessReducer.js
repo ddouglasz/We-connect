@@ -5,12 +5,17 @@ import {
   ADD_REVIEW_FAILED, DELETE_FAILED,
   DELETE_SUCCESSFUL, EDIT_SUCCESSFUL,
   EDIT_FAILED, GET_USER_PROFILE_SUCCESSFUL,
-  GET_USER_PROFILE_FAILED
+  GET_USER_PROFILE_FAILED,
+  EDIT_USER_SUCCESSFUL,
+  EDIT_USERFAILED
 }
   from '../actions/types';
 
 const initialState = {
-  userProfile: [],
+  userProfile: {
+    businesses: []
+  },
+  userEdited: false,
   businesses: [],
   business: {},
   pagination: {},
@@ -53,6 +58,11 @@ export default function businesses(state = initialState, action) {
         allReviews: action.allReviews
       };
 
+    // case ADD_REVIEW_SUCCESS:
+    //   return {
+    //     ...state,
+    //     allreviews: [action.review, ...state.allreviews]
+    //   };
     case ADD_REVIEW_SUCCESS:
       return {
         ...state,
@@ -84,6 +94,18 @@ export default function businesses(state = initialState, action) {
       };
 
     case EDIT_FAILED:
+      return {
+        ...state,
+        error: action.error
+      };
+
+    case EDIT_USER_SUCCESSFUL:
+      return {
+        ...state,
+        business: action.business
+      };
+
+    case EDIT_USERFAILED:
       return {
         ...state,
         error: action.error

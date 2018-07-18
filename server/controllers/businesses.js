@@ -2,7 +2,6 @@ import models from '../models/index';
 
 const BusinessModel = models.businesses;
 const ReviewsModel = models.reviews;
-const UsersModel = models.users;
 
 
 /**

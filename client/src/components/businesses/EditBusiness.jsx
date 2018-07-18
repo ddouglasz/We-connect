@@ -11,15 +11,17 @@ import { addFlashMessage } from '../../actions/flashMessages';
    */
 class EditBusiness extends React.Component {
   /**
-       * @description - business display form
-       * @param {Object} props
-       * @param {object} object
-       */
+         * @description - business display form
+         * @param {Object} props
+         * @param {object} object
+         */
   constructor(props) {
     super(props);
+
     const {
       id, title, description, category, location, Email, image
     } = this.props.business;
+
     this.state = {
       id,
       title,
@@ -35,24 +37,24 @@ class EditBusiness extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
   /**
-   * @return {function} function
-   */
+     * @return {function} function
+     */
   componentWillMount() {
     const { id } = this.props.match.params;
     this.props.getOneBusinessAction(id);
   }
 
   /**
-   * @param {Object} event
-   * @return {function} function
-   */
+     * @param {Object} event
+     * @return {function} function
+     */
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
   /**
-   * @param {Object} event
-   * @return {function} function
-   */
+     * @param {Object} event
+     * @return {function} function
+     */
   onSubmit(event) {
     event.preventDefault();
     this.setState({ errors: [], isLoading: true });
@@ -66,9 +68,9 @@ class EditBusiness extends React.Component {
       });
   }
   /**
-   * @param {array} errors
-   * @return {function} function
-   */
+     * @param {array} errors
+     * @return {function} function
+     */
   render() {
     const { errors } = this.state;
     return (
@@ -83,7 +85,7 @@ class EditBusiness extends React.Component {
                 <div className="row">
                     <div className="col-md-3">
                         <div className="text-center">
-                        <img defaultValue={this.state.image} className="img-rounded" id="profile-image" alt="chefchef" width="250"/>
+                            <img defaultValue={this.state.image} className="img-rounded" id="profile-image" alt="chefchef" width="250" />
                             <h6>Upload a different photo...</h6>
                             <input
                                 type="file"
@@ -174,9 +176,9 @@ class EditBusiness extends React.Component {
                                 <label className="col-md-3 control-label"></label>
                                 <div className="col-md-8 edit-spacing">
                                     <div className="btn-toolbar ">
-                                        <button disabled={this.state.isLoading}
+                                        <button
+                                            disabled={this.state.isLoading}
                                             className="btn btn-primary"
-                                            href="businessProfile.html"
                                             role="button">
                                             save
                                     </button>

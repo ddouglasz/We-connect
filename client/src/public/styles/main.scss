@@ -567,13 +567,31 @@ input[type="btn"]:hover {
     height: 650px;
 }
 
-.textfield-width{
-    // width: 500px!important;
-    margin-left: 2px;
-}
 
 @media only screen and (max-width: 7500px) {
     .business-two {
         position: relative;
     }
 } 
+
+#postReview-button, #postReview-stars {
+    padding-left: 6px;
+    display:inline-block !important;
+    }
+
+ #editProfile-btn, #profile-details {
+    padding-left: 6px;
+    display:inline-block !important;
+    margin-top: 5px;
+    }
+
+    #editProfile-btn{
+        background-color: #001f3f ;
+        cursor: pointer;
+    }
+    
+    #postReview-button, #save-edit-profile{
+        background-color: #001f3f;
+        cursor: pointer;
+    }
+    

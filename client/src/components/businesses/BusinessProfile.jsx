@@ -71,7 +71,6 @@ class BusinessProfile extends React.Component {
    */
   onRatingChange(newRating) {
     this.setState({ rating: newRating });
-    console.log(newRating);
   }
 
 
@@ -112,29 +111,6 @@ class BusinessProfile extends React.Component {
     this.props.getOneBusinessAction(id);
     this.props.getReviewsAction(id);
   }
-  /**
-   * @description -get all reviews for a business when component mounts
-   * @param {object} nextProps
-   * @return {function} function
-   */
-  // componentWillReceiveProps(nextProps) {
-  //   const {
-  //     isDeleted, message, error, hasError
-  //   } = nextProps.deleteBusiness;
-  //   if (isDeleted) {
-  //     this.props.addFlashMessage({
-  //       type: 'success',
-  //       text: `${message}`
-  //     });
-  //     this.context.router.history.push('/businessCatalog');
-  //   } else if (!isDeleted && hasError) {
-  //     this.props.addFlashMessage({
-  //       type: 'error',
-  //       text: `${error}`
-  //     });
-  //   }
-  // }
-
   /**
    * @param {object} business
    * @return {function} function
@@ -226,33 +202,33 @@ class BusinessProfile extends React.Component {
 
                 {user.id !== business.userId ? (<form onSubmit={this.onSubmit}>
                   <div className="form-group form-spacing row">
-                    <div className="col-sm-8" id="description">
+                    <div className="col-sm-12 my-4" id="description">
                       <textarea
                         name="review"
                         className="form-control textfield-width"
                         id="exampleTextarea"
-                        rows="2" placeholder="Add a review"
+                        rows="2" placeholder="Add a Review"
                         value={this.state.review}
                         onChange={this.onChange}
                       />
                     </div>
                   </div>
                   <div className="form-group form-spacing">
-                    <div className="col-sm-8">
-                      <ReactStars
+                    <div className="col-sm-12 display-side" >
+                      <div id="postReview-stars"> <ReactStars
                         count={5}
                         onChange={this.onRatingChange}
                         value={this.state.rating}
                         size={24}
                         color2='#ffaf00' />
+                      </div>
                       <button
                         disabled={this.state.isLoading}
-                        className="btn btn-primary pull-right"
+                        className="btn text-white pull-right"
+                        id="postReview-button"
                       >
-                        Post Review
+                        Post a Review
                   </button>
-
-
                     </div>
                   </div>
                 </form>) : null}
@@ -262,7 +238,7 @@ class BusinessProfile extends React.Component {
                     this.props.reviewsData.length > 1 ? <h3>Reviews</h3> : null
                   }
                 </div>
-                <div className="edit-spacing" id="chat-cards-buttom-spacing">
+                <div className="edit-spacing col-sm-12" id="chat-cards-buttom-spacing">
                   <ul className="list-unstyled">
                     {this.props.reviewsData.Reviews.rows.length > 1 ? (this.props.reviewsData.Reviews &&
                       <ReviewsCard
@@ -285,27 +261,27 @@ BusinessProfile.contextTypes = {
 };
 
 BusinessProfile.propTypes = {
-  deleteBusinessAction: PropTypes.func.isRequired,
-  deleteBusiness: PropTypes.func.isRequired,
+  user: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   match: PropTypes.func.isRequired,
   params: PropTypes.func.isRequired,
-  postReviewAction: PropTypes.func.isRequired,
+  Reviews: PropTypes.array.isRequired,
+  business: PropTypes.object.isRequired,
+  reviewsData: PropTypes.func.isRequired,
+  deleteBusiness: PropTypes.func.isRequired,
   addFlashMessage: PropTypes.func.isRequired,
+  postReviewAction: PropTypes.func.isRequired,
   getReviewsAction: PropTypes.func.isRequired,
   getOneBusinessAction: PropTypes.func.isRequired,
-  reviewsData: PropTypes.func.isRequired,
-  user: PropTypes.func.isRequired,
-  business: PropTypes.object.isRequired,
-  Reviews: PropTypes.array.isRequired
+  deleteBusinessAction: PropTypes.func.isRequired
 };
 
 
 const mapStateToProps = state => ({
-  business: state.allBusinesses.oneBusiness,
+  user: state.auth.user,
   deleteBusiness: state.deleteBusiness,
-  reviewsData: state.allBusinesses.allReviews,
-  user: state.auth.user
+  business: state.allBusinesses.oneBusiness,
+  reviewsData: state.allBusinesses.allReviews
 });
 
 export default connect(mapStateToProps, {
