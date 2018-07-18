@@ -38,7 +38,8 @@ class EditBusiness extends React.Component {
    * @return {function} function
    */
   componentWillMount() {
-    this.props.getOneBusinessAction(this.props.match.params.id);
+    const { id } = this.props.match.params;
+    this.props.getOneBusinessAction(id);
   }
 
   /**
@@ -61,7 +62,6 @@ class EditBusiness extends React.Component {
           type: 'success',
           text: 'Business Edited successfully'
         });
-        // this.context.router.history.push('/businessCatalog');
         this.context.router.history.push(`/BusinessProfile/${this.props.match.params.id}`);
       });
   }
@@ -197,6 +197,9 @@ EditBusiness.propTypes = {
   addFlashMessage: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
+  business: PropTypes.array.isRequired,
+  getOneBusinessAction: PropTypes.func.isRequired,
+  match: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
