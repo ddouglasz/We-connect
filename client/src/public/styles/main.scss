@@ -578,8 +578,19 @@ input[type="btn"]:hover {
     padding-left: 6px;
     display:inline-block !important;
     }
+
+ #editProfile-btn, #profile-details {
+    padding-left: 6px;
+    display:inline-block !important;
+    margin-top: 5px;
+    }
+
+    #editProfile-btn{
+        background-color: #001f3f ;
+        cursor: pointer;
+    }
     
-    #postReview-button{
+    #postReview-button, #save-edit-profile{
         background-color: #001f3f;
         cursor: pointer;
     }

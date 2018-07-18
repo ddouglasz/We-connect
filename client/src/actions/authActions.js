@@ -57,3 +57,19 @@ export const LoginAction = userProfile => dispatch =>
       return response.data.message;
     });
 
+// /**
+//  * Login
+//  * @param {*} userProfile
+//  * @returns {object} action to be dispatched
+//  */
+// export const LoginAction = userProfile => dispatch =>
+//   axios.post('api/v1/auth/login', userProfile)
+//     .then((response) => {
+//       const { token } = response.data;
+//       setAuth(token);
+//       localStorage.setItem('userToken', token);
+//       const user = decode(token);
+//       dispatch(currentUser(user));
+//       return response.data.message;
+//     });
+

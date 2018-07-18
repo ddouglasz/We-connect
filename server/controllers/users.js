@@ -41,12 +41,14 @@ class Users {
             id: user.id,
             firstName: user.firstName,
             lastName: user.lastName,
-            email: user.email
+            email: user.email,
+            bio: user.bio
           },
           process.env.secretKey,
           { expiresIn: '24h' },
         );
         return (res.status(201).send({
+          id: user.id,
           message: 'Registration Successful',
           token: accessToken,
         }));
@@ -73,13 +75,14 @@ class Users {
       password = bcrypt.compareSync(req.body.password, user.hashPassword);
       if (password) {
         return res.status(200).json({
+          id: user.id,
           message: 'signed in successfully',
           token: jwt.sign(
             {
               id: user.id,
               firstName: user.firstName,
               lastName: user.lastName,
-              email: user.email
+              email: user.email,
             }
             , process.env.secretKey,
             { expiresIn: '24h' }
@@ -126,6 +129,9 @@ class Users {
                   createdBy: `${user.firstName} ${user.lastName}`,
                   email: user.email,
                   id: user.id,
+                  firstName: user.firstName,
+                  lastName: user.lastName,
+                  bio: user.bio,
                   Businesses: businesses
                 }
               });
@@ -161,12 +167,24 @@ class Users {
         return user.update({
           firstName: req.body.firstName || user.firstName,
           lastName: req.body.lastName || user.lastName,
-          email: req.body.email || user.email
+          bio: req.body.bio || user.bio
         })
           .then(() => res.status(200).json({
             message: 'User details updated successfully',
             firstName: user.firstName,
             lastName: user.lastName,
+            bio: user.bio,
+            token: jwt.sign(
+              {
+                id: user.id,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+                bio: user.bio
+              }
+              , process.env.secretKey,
+              { expiresIn: '24h' }
+            ),
           }))
           .catch(error => res.status(500).json({
             message: `internal server error ${error.message}`

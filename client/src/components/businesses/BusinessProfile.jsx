@@ -71,7 +71,6 @@ class BusinessProfile extends React.Component {
    */
   onRatingChange(newRating) {
     this.setState({ rating: newRating });
-    console.log(newRating);
   }
 
 
@@ -216,12 +215,13 @@ class BusinessProfile extends React.Component {
                   </div>
                   <div className="form-group form-spacing">
                     <div className="col-sm-12 display-side" >
-                     <div id="postReview-stars"> <ReactStars
+                      <div id="postReview-stars"> <ReactStars
                         count={5}
                         onChange={this.onRatingChange}
                         value={this.state.rating}
                         size={24}
-                        color2='#ffaf00' /></div>
+                        color2='#ffaf00' />
+                      </div>
                       <button
                         disabled={this.state.isLoading}
                         className="btn text-white pull-right"

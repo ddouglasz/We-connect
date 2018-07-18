@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 // import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 // import auth from '../../reducers/auth';
-import { UserDashBoardAction, getAllBusinessSearchAction } from '../../actions/businessActions';
+import { UserDashBoardAction, getAllBusinessSearchAction, editUserProfile } from '../../actions/businessActions';
 import Cards from './../businesses/cards.jsx';
-import { currentUser } from './../../actions/authActions';
+import { addFlashMessage } from '../../actions/flashMessages';
+// import { currentUser } from './../../actions/authActions';
 /**
    * @class UserProfile
    */
@@ -16,12 +17,18 @@ class UserProfile extends React.Component {
    */
   constructor(props) {
     super(props);
+
+    const { firstName, lastName, bio } = this.props.userDetails;
+
     this.state = {
-      searchType: '',
-      keyValue: ''
+      firstName,
+      lastName,
+      bio,
+      errors: [],
+      isLoading: false
     };
     this.onChange = this.onChange.bind(this);
-    this.onSearch = this.onSearch.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
   /**
    * @param {Object} event
@@ -32,25 +39,46 @@ class UserProfile extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   }
   /**
+     * @param {Object} event
+     * @return {function} function
+     */
+  onSubmit(event) {
+    event.preventDefault();
+    console.log(this.props.userData);
+    this.setState({ errors: [], isLoading: true });
+    console.log('before===>>>');
+    
+    // console.log(this.state);
+    this.props.editUserProfile(this.state)
+      .then(() => {
+        console.log('after===>>');
+        console.log(this.props.userData);
+        this.props.addFlashMessage({
+          type: 'success',
+          text: 'User updated successfully'
+        });
+        document.getElementById('closeEdit').click();
+        // this.context.router.push(`/UserProfile/${this.props.match.params.id}`);
+        this.setState({ errors: [], isLoading: false });
+    });
+  }
+  /**
    * @param {Object} event
    * @return {function} function
    */
-  onSearch(event) {
-    event.preventDefault();
-    const { searchType, keyValue } = this.state;
-    const userId = currentUser.userId;
-    if (!searchType || !keyValue) {
-      this.props.UserDashBoardAction();
-    }
-    this.props.getAllBusinessSearchAction(searchType, keyValue);
-  }
+  // onSearch(event) {
+  //   event.preventDefault();
+  //   const { searchType, keyValue } = this.state;
+  //   // const { userId } = currentUser.userId;
+  //   if (!searchType || !keyValue) {
+  //     this.props.UserDashBoardAction();
+  //   }
+  //   this.props.getAllBusinessSearchAction(searchType, keyValue);
+  // }
   /**
    * @return {function} function
    */
   componentDidMount() {
-    // const { searchType, keyValue } = this.state;
-
-    // this.props.getBusinessAction(searchType, keyValue)
     this.props.UserDashBoardAction();
   }
   /**
@@ -59,19 +87,25 @@ class UserProfile extends React.Component {
    * @return {function} function
    */
   render() {
-    const allBusinesses = this.props.businesses;
-    const displayAllBusiness = allBusinesses.map(business => (
-        <Cards
-          key={business.id}
-          id={business.id}
-          userId={business.userId}
-          name={business.title}
-          image={business.image}
-          description={business.description}
-          category={business.category}
-        />
+    const {
+      firstName, lastName, bio
+    } = this.props.userDetails;
+    const {
+      Businesses
+    } = this.props.userData;
+    const allBusinesses = Businesses;
+    const displayAllBusiness = allBusinesses && allBusinesses.map(business => (
+      <Cards
+        key={business.id}
+        id={business.id}
+        userId={business.userId}
+        name={business.title}
+        image={business.image}
+        description={business.description}
+        category={business.category}
+      />
     ));
-    const { firstName, email } = this.props.userDetails;
+    // const { bio } = this.props.businesses.userProfile;
     return (
       <div className="catalog-cover">
         <div className="jumbotron2 jumbotron-fluid home-wrapper-catalog">
@@ -79,10 +113,11 @@ class UserProfile extends React.Component {
             <h1 className="display-3">Welcome</h1> <h3>{firstName}!</h3>
           </div>
           <div className="row ">
-          <div className="col-sm-4 col-md-4 col-lg-4 cat-image">
+            <div className="col-sm-4 col-md-4 col-lg-4 cat-image">
             </div>
             <div className="col-sm-4 cat-image">
-              <form onSubmit={this.onSearch}>
+              {/* <form onSubmit={this.onSearch}> */}
+              <form>
                 <div className="input-group input-search-field border-right=0" id="searchbar">
                   <span className="input-group-dropdown" id="searchField">
                     <select className="custom-select btn  searchbar-decors text-white dropdown-toggle" id="dropdownMenuButton" name="searchType" onChange={this.onChange} >
@@ -108,27 +143,123 @@ class UserProfile extends React.Component {
 
 
         <div className="container-fluid body-cover">
+          <div className="text" id="profile-details">
+            <label>
+              <strong>First Name: </strong>{firstName} <br />
+              <strong>Last Name: </strong> {lastName}
+              {/* <p> <strong>Bio: </strong>{bio}</p> */}
+              {/* <p> <strong>Email: </strong>{email}</p> */}
+            </label>
+          </div>
 
-              <div className="text-center">
-              <div className="profile-image">
+          {/* Edit user modal START............................................. */}
+
+          <button
+            type="button"
+            className="edit-userProfile btn text-white text-center pull-right"
+            data-toggle="modal"
+            id="editProfile-btn"
+            data-target="#editUserProfileModal"
+          >
+            Edit Profile
+                </button>
+          <div className="modal fade" id="editUserProfileModal" tabIndex="-1" role="dialog" aria-labelledby="editUserProfileModal-Label" aria-hidden="true">
+            <form onSubmit={this.onSubmit}>
+              <div className="modal-dialog" role="document">
+                <div className="modal-content" >
+                  <div className="modal-header" >
+                    <h5 className="modal-title" id="editUserProfileModal-Label">Edit your Profile</h5>
+                    <button
+                      type="button"
+                      className="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                      id="closeEdit"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div className="modal-body">
+                    {/* <form onSubmit={this.onSubmit}> */}
+                      <div className="form-group">
+                        <label htmlFor="first-name" className="col-form-label">First Name:</label>
+                        <input
+                          className="form-control"
+                          type="text"
+                          id="firstName"
+                          name="firstName"
+                          placeholder="firstName"
+                          value={this.state.firstName}
+                          onChange={this.onChange}
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="last-name" className="col-form-label">Last Name:</label>
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="lastName"
+                          name="lastName"
+                          placeholder="lastName"
+                          value={this.state.lastName}
+                          onChange={this.onChange}
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label htmlFor="bio-text" className="col-form-label">Bio:</label>
+                        <textarea
+                          className="form-control"
+                          id="bio-text"
+                          name="bio"
+                          placeholder="bio"
+                          value={this.state.bio}
+                          onChange={this.onChange}
+                        >
+                        </textarea>
+                        {/* <input
+                      disabled={this.state.isLoading}
+                      type="submit"
+                      className="btn fa fa-send text-white"
+                      id="save-edit-profile"
+                      role="button"
+                    /> */}
+                      </div>
+                    {/* </form> */}
+                  </div>
+                  <div className="modal-footer">
+                    <button
+                      type="button"
+                      className="btn btn-danger"
+                      data-dismiss="modal"
+                    >
+                      Close
+                     </button>
+                     <input
+                      disabled={this.state.isLoading}
+                      type="submit"
+                      className="btn fa fa-send text-white"
+                      id="save-edit-profile"
+                      role="button"
+                    />
+                  </div>
                 </div>
-                <label>
-                  {/* <strong>Name:</strong>{firstName} */}
-             <p>   <strong>Email: </strong>{email}</p>
-                </label>
               </div>
-              <div className="form-group form-spacing">
-                <hr/>
-                <div className="form-action">
-          <h3 className="center-align">Find all Businesses you added here</h3>
-        </div>
-                <h6>
-                </h6>
+            </form>
+          </div>
+          {/* END of modal .................................................... */}
 
+          <p> <strong>Bio: </strong>{bio}</p>
+          <div className="form-group form-spacing">
+            <hr />
+            <div className="form-action">
+              <h3 className="center-align">Find all Businesses you added here</h3>
+            </div>
+            <h6>
+            </h6>
             <div className="col-sm-8 col-md-12  " >
               <div className="row">
-              {allBusinesses && displayAllBusiness}
-            </div>
+                {allBusinesses && displayAllBusiness}
+              </div>
             </div>
           </div>
         </div>
@@ -140,10 +271,10 @@ UserProfile.propTypes = {
   UserDashBoardAction: PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
-  businesses: state.allBusinesses.userProfile,
+  userData: state.allBusinesses.userProfile,
   userDetails: state.auth.user
 });
 
 export default connect(mapStateToProps, {
-  UserDashBoardAction, getAllBusinessSearchAction
+  UserDashBoardAction, getAllBusinessSearchAction, editUserProfile, addFlashMessage
 })(UserProfile);
