@@ -132,8 +132,6 @@ class UserProfile extends React.Component {
             <label>
               <strong>First Name: </strong>{firstName} <br />
               <strong>Last Name: </strong> {lastName}
-              {/* <p> <strong>Bio: </strong>{bio}</p> */}
-              {/* <p> <strong>Email: </strong>{email}</p> */}
             </label>
           </div>
 
@@ -201,15 +199,7 @@ class UserProfile extends React.Component {
                           onChange={this.onChange}
                         >
                         </textarea>
-                        {/* <input
-                      disabled={this.state.isLoading}
-                      type="submit"
-                      className="btn fa fa-send text-white"
-                      id="save-edit-profile"
-                      role="button"
-                    /> */}
                       </div>
-                    {/* </form> */}
                   </div>
                   <div className="modal-footer">
                     <button
@@ -233,7 +223,7 @@ class UserProfile extends React.Component {
           </div>
           {/* END of modal .................................................... */}
 
-          <p> <strong>Bio: </strong>{bio}</p>
+          <p className="bio-text"> <strong>Bio: </strong>{bio}</p>
           <div className="form-group form-spacing">
             <hr />
             <div className="form-action">
