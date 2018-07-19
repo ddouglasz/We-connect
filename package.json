@@ -7,7 +7,8 @@
   "scripts": {
     "test:dev": "NODE_ENV=tests nyc mocha ./server/test/ --compilers js:babel-core/register --exit",
     "build": "babel server -d server/dist",
-    "db-migrate": "node ./node_modules/sequelize-cli/lib/sequelize db:migrate",
+    "un-migrate": "node ./node_modules/sequelize-cli/lib/sequelize db:migrate:undo:all",
+    "db-migrate": "npm run un-migrate && node ./node_modules/sequelize-cli/lib/sequelize db:migrate",
     "start": "babel-node app.js",
     "start:dev": "nodemon --watch server --exec  babel-node app.js",
     "lint": "eslint ./ || true",
