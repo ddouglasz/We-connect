@@ -18,7 +18,7 @@ export function getAllReviews(allReviews) {
  *
 */
 export const getReviewsAction = id => dispatch =>
-  axios.get(`http://localhost:8000/api/v1/businesses/${id}/reviews`)
+  axios.get(`/api/v1/businesses/${id}/reviews`)
     .then((response) => {
       dispatch(getAllReviews(response.data.businessdata));
     });
@@ -51,7 +51,7 @@ export function addReviewFailed(error) {
  *
 */
 export const postReviewAction = (review, id) => dispatch =>
-  axios.post(`http://localhost:8000/api/v1/businesses/${id}/reviews`, review)
+  axios.post(`/api/v1/businesses/${id}/reviews`, review)
     .then(() => {
       dispatch(addReviewSuccess('successfully added a review'));
     });
