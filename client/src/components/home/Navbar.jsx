@@ -18,6 +18,7 @@ class NavBar extends React.Component {
     this.props.logout();
     this.context.router.history.push('/');
   }
+
   /**
    * @return {function} function
    */

@@ -23,7 +23,6 @@ class SignUpForm extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-
   /**
  * @description onChange
  * @param { object } event
