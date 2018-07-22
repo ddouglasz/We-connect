@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import React from 'react';
-import RegisterBusiness from '../businesses/RegisterBusiness.jsx';
-import { registerBusinessAction, editBusinessAction } from '../../actions/businessActions';
-import { addFlashMessage } from '../../actions/flashMessages';
+import RegisterBusiness from '../../businesses/smart/RegisterBusiness.jsx';
+import { registerBusinessAction, editBusinessAction } from '../../../actions/businessActions';
+import { addFlashMessage } from '../../../actions/flashMessages';
 
 /**
    * @description - register business child component

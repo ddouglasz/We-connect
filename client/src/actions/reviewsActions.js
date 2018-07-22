@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { ALL_REVIEWS, ADD_REVIEW_SUCCESS, ADD_REVIEW_FAILED } from './types';
 /**
- * @param { Object } review
+ * @param { Object } allReviews
  * @return { function } function
  *
 */

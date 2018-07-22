@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Pagination from 'rc-pagination';
-import Cards from './cards.jsx';
-import { getReviewsAction } from '../../actions/reviewsActions';
-import { getBusinessAction, getAllBusinessSearchAction } from '../../actions/businessActions';
+import Cards from '../presentational/cards.jsx';
+import { getReviewsAction } from '../../../actions/reviewsActions';
+import { getBusinessAction, getAllBusinessSearchAction } from '../../../actions/businessActions';
 
 /**
    * @description - returns business cards on the catalog page

@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import SignUpForm from './SignUpForm.jsx';
-import { SignUpAction } from '../../actions/authActions';
-import { addFlashMessage } from '../../actions/flashMessages';
+import SignUpForm from '../presentational/SignUpForm.jsx';
+import { SignUpAction } from '../../../actions/authActions';
+import { addFlashMessage } from '../../../actions/flashMessages';
 
 /**
  * @class SignUp

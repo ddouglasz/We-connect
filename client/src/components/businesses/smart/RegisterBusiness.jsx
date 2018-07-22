@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { registerBusinessAction, saveImageCloudinary } from '../../actions/businessActions';
+import { registerBusinessAction, saveImageCloudinary } from '../../../actions/businessActions';
 
 /**
    * @description - component for fields to register a business
@@ -215,12 +215,14 @@ class RegisterBusiness extends React.Component {
 RegisterBusiness.proptypes = {
   registerBusinessAction: PropTypes.func.isRequired,
   addFlashMessage: PropTypes.func.isRequired,
-  saveImageCloudinary: PropTypes.func.isRequired
+  saveImageCloudinary: PropTypes.func.isRequired,
+  imageUrl: PropTypes.string.isRequired
 };
 
 RegisterBusiness.contextTypes = {
   router: PropTypes.object.isRequired
 };
+
 const mapStateToProps = state => ({
   imageUrl: state.imageReducer.imageUrl
 });

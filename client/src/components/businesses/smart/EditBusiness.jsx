@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { editBusinessAction, getOneBusinessAction } from '../../actions/businessActions';
-import { addFlashMessage } from '../../actions/flashMessages';
+import { editBusinessAction, getOneBusinessAction } from '../../../actions/businessActions';
+import { addFlashMessage } from '../../../actions/flashMessages';
 // import classnames from 'classnames';
 
 /**

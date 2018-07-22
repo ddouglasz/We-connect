@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import HomePage from '../home/HomePage.jsx';
-import { LoginAction } from '../../actions/authActions.js';
-import { addFlashMessage } from '../../actions/flashMessages.js';
+import HomePage from '../../home/presentational/HomePage.jsx';
+import { LoginAction } from '../../../actions/authActions.js';
+import { addFlashMessage } from '../../../actions/flashMessages.js';
 
 /**
  * @class Login

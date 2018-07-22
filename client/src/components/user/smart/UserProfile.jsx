@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Cards from './../businesses/cards.jsx';
-import { UserDashBoardAction, getAllBusinessSearchAction, editUserProfile } from '../../actions/businessActions';
-import { addFlashMessage } from '../../actions/flashMessages';
+import Cards from '../../businesses/presentational/cards.jsx';
+import { UserDashBoardAction, getAllBusinessSearchAction, editUserProfile } from '../../../actions/businessActions';
+import { addFlashMessage } from '../../../actions/flashMessages';
 
 /**
    * @class UserProfile
@@ -42,15 +42,11 @@ class UserProfile extends React.Component {
      */
   onSubmit(event) {
     event.preventDefault();
-    console.log(this.props.userData);
     this.setState({ errors: [], isLoading: true });
-    console.log('before===>>>');
-    
+
     // console.log(this.state);
     this.props.editUserProfile(this.state)
       .then(() => {
-        console.log('after===>>');
-        console.log(this.props.userData);
         this.props.addFlashMessage({
           type: 'success',
           text: 'User updated successfully'
@@ -58,7 +54,7 @@ class UserProfile extends React.Component {
         document.getElementById('closeEdit').click();
         // this.context.router.push(`/UserProfile/${this.props.match.params.id}`);
         this.setState({ errors: [], isLoading: false });
-    });
+      });
   }
   /**
    * @return {function} function
