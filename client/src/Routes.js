@@ -1,18 +1,14 @@
 import React from 'react';
 import { Route, Switch } from 'react-router';
-import NavBar from './components/home/smart/NavBar.jsx';
-import HomePage from './components/home/presentational/HomePage.jsx';
+import HomePage from './components/home/smart/HomePage.jsx';
 import SignUp from './components/account/smart/SignUp.jsx';
 import Login from './components/account/smart/Login.jsx';
 import BusinessCatalog from './components/businesses/smart/BusinessCatalog.jsx';
 import BusinessProfile from './components/businesses/smart/BusinessProfile.jsx';
 import RegisterBusinessPage from './components/businesses/smart/RegisterBusinessPage.jsx';
-import RegisterBusiness from './components/businesses/smart/RegisterBusiness.jsx';
 import EditBusiness from './components/businesses/smart/EditBusiness.jsx';
 import UserProfile from './components/user/smart/UserProfile.jsx';
 import NotFound from './components/404Page.jsx';
-import Footer from './components/home/presentational/Footer.jsx';
-import styles from '../src/public/styles/main.scss';
 
 
 const Routes = () => (
