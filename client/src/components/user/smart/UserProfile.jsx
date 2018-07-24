@@ -69,8 +69,13 @@ class UserProfile extends React.Component {
    */
   render() {
     const {
-      firstName, lastName, bio
+      firstName,
+      lastName,
+      bio
     } = this.props.userDetails;
+
+const { location, category, name } = this.state;
+
     const {
       Businesses
     } = this.props.userData;
@@ -103,9 +108,9 @@ class UserProfile extends React.Component {
                   <span className="input-group-dropdown" id="searchField">
                     <select className="custom-select btn  searchbar-decors text-white dropdown-toggle" id="dropdownMenuButton" name="searchType" onChange={this.onChange} >
                       <option id="text-white" value=''>Choose</option>
-                      <option value={this.state.location}>location</option>
-                      <option value={this.state.category}>category</option>
-                      <option value={this.state.name}>business name</option>
+                      <option value={location}>location</option>
+                      <option value={category}>category</option>
+                      <option value={name}>business name</option>
                     </select>
                   </span>
                   <input type="text" className="form-control SearchBar" id="input-search" placeholder="Direct search" name="keyValue" onChange={this.onChange} />
@@ -128,8 +133,6 @@ class UserProfile extends React.Component {
             <label>
               <strong>First Name: </strong>{firstName} <br />
               <strong>Last Name: </strong> {lastName}
-              {/* <p> <strong>Bio: </strong>{bio}</p> */}
-              {/* <p> <strong>Email: </strong>{email}</p> */}
             </label>
           </div>
 
@@ -161,7 +164,6 @@ class UserProfile extends React.Component {
                     </button>
                   </div>
                   <div className="modal-body">
-                    {/* <form onSubmit={this.onSubmit}> */}
                       <div className="form-group">
                         <label htmlFor="first-name" className="col-form-label">First Name:</label>
                         <input
@@ -197,15 +199,7 @@ class UserProfile extends React.Component {
                           onChange={this.onChange}
                         >
                         </textarea>
-                        {/* <input
-                      disabled={this.state.isLoading}
-                      type="submit"
-                      className="btn fa fa-send text-white"
-                      id="save-edit-profile"
-                      role="button"
-                    /> */}
                       </div>
-                    {/* </form> */}
                   </div>
                   <div className="modal-footer">
                     <button

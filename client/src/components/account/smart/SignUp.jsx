@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
-import SignUpForm from '../presentational/SignUpForm.jsx';
+import SignUpForm from '../smart/SignUpForm.jsx';
 import { SignUpAction } from '../../../actions/authActions';
 import { addFlashMessage } from '../../../actions/flashMessages';
 
@@ -15,10 +15,11 @@ class SignUp extends React.Component {
  * @return { object } object
 */
   render() {
+    const { LoginAction, addFlashMessage } = this.props;
     return (
       <SignUpForm
-      SignUpAction={this.props.SignUpAction}
-      addFlashMessage={this.props.addFlashMessage}
+      SignUpAction={SignUpAction}
+      addFlashMessage={addFlashMessage}
       />
     );
   }

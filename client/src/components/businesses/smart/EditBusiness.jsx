@@ -56,6 +56,7 @@ class EditBusiness extends React.Component {
      * @return {function} function
      */
   onSubmit(event) {
+    const { id } = this.props.match.params;
     event.preventDefault();
     this.setState({ errors: [], isLoading: true });
     this.props.editBusinessAction(this.state)
@@ -64,15 +65,19 @@ class EditBusiness extends React.Component {
           type: 'success',
           text: 'Business Edited successfully'
         });
-        this.context.router.history.push(`/BusinessProfile/${this.props.match.params.id}`);
+        this.context.router.history.push(`/BusinessProfile/${id}`);
       });
   }
   /**
-     * @param {array} errors
-     * @return {function} function
-     */
+ * @param {array} errors
+ * @return {function} function
+ */
   render() {
-    const { errors } = this.state;
+
+    const { title, description, category, location, isLoading, email, image, errors } = this.state;
+    const { onChange } = this;
+    // const { errors } = this.state;
+
     return (
             <div className="container" onSubmit={this.onSubmit}>
                 <div className="form-actions2">
@@ -85,15 +90,13 @@ class EditBusiness extends React.Component {
                 <div className="row">
                     <div className="col-md-3">
                         <div className="text-center">
-                            <img defaultValue={this.state.image} className="img-rounded" id="profile-image" alt="chefchef" width="250" />
+                            <img defaultValue={image} className="img-rounded" id="profile-image" alt="chefchef" width="250" />
                             <h6>Upload a different photo...</h6>
                             <input
                                 type="file"
                                 className="form-control btn-primary"
                                 name="image"
                                 placeholder="company or firm"
-                            //  value={this.state.image}
-                            //  onChange={this.onChange}
                             />
                         </div>
                     </div>
@@ -110,8 +113,8 @@ class EditBusiness extends React.Component {
                                         type="text"
                                         name="title"
                                         placeholder="company or firm"
-                                        value={this.state.title}
-                                        onChange={this.onChange}
+                                        value={title}
+                                        onChange={onChange}
                                     />
                                 </div>
                             </div>
@@ -123,8 +126,8 @@ class EditBusiness extends React.Component {
                                         type="text"
                                         name="category"
                                         placeholder="type of business"
-                                        value={this.state.category}
-                                        onChange={this.onChange}
+                                        value={category}
+                                        onChange={onChange}
                                     />
                                 </div>
                             </div>
@@ -139,8 +142,8 @@ class EditBusiness extends React.Component {
                                             rows="4"
                                             name="description"
                                             placeholder="add brief summary of business content here..."
-                                            value={this.state.description}
-                                            onChange={this.onChange}
+                                            value={description}
+                                            onChange={onChange}
                                         >
                                         </textarea>
                                     </div>
@@ -154,8 +157,8 @@ class EditBusiness extends React.Component {
                                         type="text"
                                         name="location"
                                         placeholder="location"
-                                        value={this.state.location}
-                                        onChange={this.onChange}
+                                        value={location}
+                                        onChange={onChange}
                                     />
                                 </div>
                             </div>
@@ -167,8 +170,8 @@ class EditBusiness extends React.Component {
                                         type="text"
                                         name="email"
                                         placeholder="@email.com"
-                                        value={this.state.email}
-                                        onChange={this.onChange}
+                                        value={email}
+                                        onChange={onChange}
                                     />
                                 </div>
                             </div>
@@ -177,7 +180,7 @@ class EditBusiness extends React.Component {
                                 <div className="col-md-8 edit-spacing">
                                     <div className="btn-toolbar ">
                                         <button
-                                            disabled={this.state.isLoading}
+                                            disabled={isLoading}
                                             className="btn btn-primary"
                                             role="button">
                                             save

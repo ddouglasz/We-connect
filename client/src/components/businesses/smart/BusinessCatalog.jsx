@@ -98,6 +98,7 @@ class BusinessCatalog extends React.Component {
       />
     ));
 
+    const { location, category, title } = this.state;
     return (
       <div className="catalog-cover">
         <div className="jumbotron2 jumbotron-fluid home-wrapper-catalog">
@@ -113,9 +114,9 @@ class BusinessCatalog extends React.Component {
                   <span className="input-group-dropdown" id="searchField">
                     <select className="custom-select btn  searchbar-decors text-white dropdown-toggle" id="dropdownMenuButton" name="searchType" onChange={this.onChange} >
                       <option id="text-white" value=''>Choose</option>
-                      <option value={this.state.location}>location</option>
-                      <option value={this.state.category}>category</option>
-                      <option value={this.state.title}>title</option>
+                      <option value={location}>location</option>
+                      <option value={category}>category</option>
+                      <option value={title}>title</option>
                     </select>
                   </span>
                   <input type="text" className="form-control SearchBar" id="input-search" placeholder="Direct search" name="keyValue" onChange={this.onChange} />

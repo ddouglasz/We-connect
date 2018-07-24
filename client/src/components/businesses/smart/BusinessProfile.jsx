@@ -94,9 +94,10 @@ class BusinessProfile extends React.Component {
           this.setState({ review: '', rating: 0 });
         },
         (err) => {
+          const { error } = err.response.data.message;
           this.props.addFlashMessage({
             type: 'error',
-            text: err.response.data.message
+            text: error
           });
         }
       );
@@ -122,6 +123,12 @@ class BusinessProfile extends React.Component {
     if (this.props.reviewsData.length === 0) {
       return 'loading...';
     }
+    const reviewsDetails = this.props.reviewsData;
+
+    const { id } = this.props.match.params;
+
+    const { title, description, category, location, email } = business;
+
     const emptyReviews = (<h2> No reviews for this Business yet...</h2>);
     return (
       <div className="container " >
@@ -137,7 +144,7 @@ class BusinessProfile extends React.Component {
                 (<div className="form-group form-spacing">
                   <label className="col-sm-3 control-label" />
                   <div className="col-sm-12">
-                    <Link to={`/editBusiness/${this.props.match.params.id}`}>
+                    <Link to={`/editBusiness/${id}`}>
                       <label className="editBusiness fa fa-edit" >
                         Edit
                   </label>
@@ -158,7 +165,7 @@ class BusinessProfile extends React.Component {
                 <label className="col-sm-6 control-label">
                   <h3>
                     <br />
-                    <strong>{business.title}</strong>
+                    <strong>{title}</strong>
                   </h3>
                 </label>
               </div>
@@ -166,29 +173,29 @@ class BusinessProfile extends React.Component {
             {/* <p>{this.props.reviewsData.Reviews.count}</p> */}
             <div className="form-group form-spacing">
               <label className="col-sm-12 control-label">
-                <strong>Reviews:</strong> {this.props.reviewsData.Reviews.count} <div className="fa fa-commenting-o"></div>
+                <strong>Reviews:</strong> {reviewsDetails.Reviews.count} <div className="fa fa-commenting-o"></div>
               </label>
             </div>
             <div className="form-group form-spacing">
               <label className="col-sm-12 control-label">
-                <strong>Business Description:</strong> {business.description}
+                <strong>Business Description:</strong> {description}
               </label>
             </div>
             <div className="form-group form-spacing">
             </div>
             <div className="form-group form-spacing">
               <label className="col-sm-12 control-label">
-                <strong>Business Category:</strong> {business.category}
+                <strong>Business Category:</strong> {category}
               </label>
             </div>
             <div className="form-group form-spacing">
               <label className="col-sm-12 control-label">
-                <strong>Business location:</strong> {business.location}
+                <strong>Business location:</strong> {location}
               </label>
             </div>
             <div className="form-group form-spacing">
               <label className="col-sm-12 control-label">
-                <strong>Business Email: </strong> {business.email}
+                <strong>Business Email: </strong> {email}
                 <strong>
                   &nbsp;&nbsp;
                    </strong>
@@ -235,14 +242,14 @@ class BusinessProfile extends React.Component {
                 <br />
                 <div className="form-reviews" id="description-header">
                   {
-                    this.props.reviewsData.length > 1 ? <h3>Reviews</h3> : null
+                    reviewsDetails.length > 1 ? <h3>Reviews</h3> : null
                   }
                 </div>
                 <div className="edit-spacing col-sm-12" id="chat-cards-buttom-spacing">
                   <ul className="list-unstyled">
-                    {this.props.reviewsData.Reviews.rows.length > 1 ? (this.props.reviewsData.Reviews &&
+                    {reviewsDetails.Reviews.rows.length > 1 ? (reviewsDetails.Reviews &&
                       <ReviewsCard
-                        reviews={this.props.reviewsData.Reviews.rows}
+                        reviews={reviewsDetails.Reviews.rows}
                       />) : emptyReviews}
                   </ul>
                 </div>

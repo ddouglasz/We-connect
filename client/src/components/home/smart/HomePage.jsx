@@ -53,9 +53,16 @@ class HomePage extends React.Component {
    * @return {function} function
    */
   render() {
-    const { errors } = this.state;
+    const {
+      errors,
+      email,
+      password,
+      isLoading
+    } = this.state;
+
+    const { onSubmit, onChange } = this;
     return (
-      <div className="jumbotron jumbotron-fluid  home-wrapper-index" onSubmit={this.onSubmit} >
+      <div className="jumbotron jumbotron-fluid  home-wrapper-index" onSubmit={onSubmit} >
         <div className="jumbotron-cover">
           <div className="row">
             <div className="col-md-5">
@@ -89,8 +96,8 @@ class HomePage extends React.Component {
                               className="form-control"
                               id="email"
                               placeholder="E-Mail Address*"
-                              value={this.state.email}
-                              onChange={this.onChange}
+                              value={email}
+                              onChange={onChange}
                               required
                               autoFocus
                             />
@@ -112,8 +119,8 @@ class HomePage extends React.Component {
                               className="form-control text-white"
                               id="password"
                               placeholder="Password*"
-                              value={this.state.password}
-                              onChange={this.onChange}
+                              value={password}
+                              onChange={onChange}
                               required
                               autoFocus
                             />
@@ -123,7 +130,7 @@ class HomePage extends React.Component {
                       </div>
                     </div>
                     <button
-                     disabled={this.state.isLoading}
+                     disabled={isLoading}
                       className="btn btn-lg btn-primary
                       btn-decor btn-block" >
                       Sign in

@@ -13,10 +13,11 @@ class FlashMessagesList extends React.Component {
  * @return { object } object
 */
   render() {
+    const { deleteFlashMessage } = this.props;
     const messages = this.props.messages.map(message =>
            <FlashMessage
             Key={message.id}
-            message={message} deleteFlashMessage={this.props.deleteFlashMessage}
+            message={message} deleteFlashMessage={deleteFlashMessage}
             />);
     return (
             <div>

@@ -54,8 +54,9 @@ class RegisterBusiness extends React.Component {
    */
   saveImage(event) {
     this.props.saveImageCloudinary(event.target.files[0]).then(() => {
+      const { imageUrl } = this.props;
       this.setState({
-        image: this.props.imageUrl
+        image: imageUrl
       });
     });
   }
@@ -82,7 +83,21 @@ class RegisterBusiness extends React.Component {
    * @return {function} function
    */
   render() {
-    const { errors } = this.state;
+    const {
+      title,
+      description,
+      category,
+      location,
+      email,
+      image,
+      isLoading,
+      errors
+    } = this.state;
+
+    const {
+      onImageChange,
+      onChange
+    } = this;
     return (
             <div className="container " onSubmit={this.onSubmit}>
                 <div className="form-actions2">
@@ -95,13 +110,13 @@ class RegisterBusiness extends React.Component {
                 <div className="row">
                     <div className="col-md-3">
                         <div className="text-center">
-                            <img src={this.state.image} className="img-rounded" id="profile-image" alt="chefchef" width="250" />
+                            <img src={image} className="img-rounded" id="profile-image" alt="chefchef" width="250" />
                             <h6>Upload a different photo...</h6>
                             <input
                              type="file"
                              className="form-control btn-primary"
                              placeholder="company or firm"
-                             onChange={this.onImageChange}
+                             onChange={onImageChange}
                              />
                         </div>
                     </div>
@@ -118,8 +133,8 @@ class RegisterBusiness extends React.Component {
                                         type="text"
                                         name="title"
                                         placeholder="company or firm"
-                                        value={this.state.title}
-                                        onChange={this.onChange}
+                                        value={title}
+                                        onChange={onChange}
                                     />
                                 </div>
                             </div>
@@ -131,8 +146,8 @@ class RegisterBusiness extends React.Component {
                                         type="text"
                                         name="category"
                                         placeholder="type of business"
-                                        value={this.state.category}
-                                        onChange={this.onChange}
+                                        value={category}
+                                        onChange={onChange}
                                     />
                                 </div>
                             </div>
@@ -147,8 +162,8 @@ class RegisterBusiness extends React.Component {
                                             rows="4"
                                             name="description"
                                             placeholder="add brief summary of business content here..."
-                                            value={this.state.description}
-                                            onChange={this.onChange}
+                                            value={description}
+                                            onChange={onChange}
                                         >
                                         </textarea>
                                     </div>
@@ -162,8 +177,8 @@ class RegisterBusiness extends React.Component {
                                         type="text"
                                         name="location"
                                         placeholder="location"
-                                        value={this.state.location}
-                                        onChange={this.onChange}
+                                        value={location}
+                                        onChange={onChange}
                                     />
                                 </div>
                             </div>
@@ -175,8 +190,8 @@ class RegisterBusiness extends React.Component {
                                         type="text"
                                         name="email"
                                         placeholder="@email.com"
-                                        value={this.state.email}
-                                        onChange={this.onChange}
+                                        value={email}
+                                        onChange={onChange}
                                     />
                                 </div>
                             </div>
@@ -184,7 +199,7 @@ class RegisterBusiness extends React.Component {
                                 <label className="col-md-3 control-label"></label>
                                 <div className="col-md-8 edit-spacing">
                                     <div className="btn-toolbar ">
-                                        <button disabled={this.state.isLoading}
+                                        <button disabled={isLoading}
                                             className="btn btn-primary"
                                             href="businessProfile.html"
                                             role="button">

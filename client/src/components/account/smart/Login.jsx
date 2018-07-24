@@ -15,8 +15,9 @@ class Login extends React.Component {
  * @return { object } object
 */
   render() {
+    const { LoginAction, addFlashMessage } = this.props;
     return (
-      <HomePage LoginAction={this.props.LoginAction} addFlashMessage={this.props.addFlashMessage} />
+      <HomePage LoginAction={LoginAction} addFlashMessage={addFlashMessage} />
     );
   }
 }
