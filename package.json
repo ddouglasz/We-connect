@@ -16,7 +16,8 @@
     "test": "NODE_ENV=test nyc --reporter=html --reporter=text mocha --exit --timeout 7000 --compilers js:babel-register server/test || true",
     "postinstall": "npm run build",
     "heroku-postbuild": "npm run db-migrate",
-    "webpack": "webpack-dev-server -d --config ./webpack.config.dev.js --hot"
+    "webpack": "webpack-dev-server -d --config ./webpack.config.dev.js --hot",
+    "test:client": "jest"
   },
   "author": "douglas",
   "license": "ISC",
@@ -97,6 +98,7 @@
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
+    "jest": "^23.4.1",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
     "mocha": "^3.5.3",
@@ -114,5 +116,9 @@
   },
   "bugs": {
     "url": "https://github.com/ddouglasz/WeConnect/issues"
-  }
+  },
+"jest":{
+  "verbose": true,
+  "collectCoverage": true
+ }
 }

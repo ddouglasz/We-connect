@@ -21,6 +21,8 @@ export default (state = [], action = {}) => {
       ];
     case DELETE_FLASH_MESSAGE:
       index = findIndex(state, { id: action.id });
+      console.log(index, '-----------');
+      console.log({ id: action.id });
       if (index >= 0) {
         return [
           ...state.slice(0, index),

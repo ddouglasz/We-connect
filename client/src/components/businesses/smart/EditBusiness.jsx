@@ -75,11 +75,11 @@ class EditBusiness extends React.Component {
   render() {
 
     const { title, description, category, location, isLoading, email, image, errors } = this.state;
-    const { onChange } = this;
+    const { onChange, onSubmit } = this;
     // const { errors } = this.state;
 
     return (
-            <div className="container" onSubmit={this.onSubmit}>
+            <div className="container" onSubmit={onSubmit}>
                 <div className="form-actions2">
                     <h1>Edit a Business</h1>
 
