@@ -9,6 +9,7 @@ import RegisterBusinessPage from './components/businesses/smart/RegisterBusiness
 import EditBusiness from './components/businesses/smart/EditBusiness.jsx';
 import UserProfile from './components/user/smart/UserProfile.jsx';
 import NotFound from './components/404Page.jsx';
+import AuthenticatedComponent from './helpers/routeVerification';
 
 
 const Routes = () => (
@@ -16,10 +17,10 @@ const Routes = () => (
     <Route path="/" exact component={Login} />
     <Route path="/Signup" exact component={SignUp} />
     <Route path="/businessCatalog" exact component={BusinessCatalog} />
-    <Route path="/businessProfile/:id" exact component={BusinessProfile} />
-    <Route path="/registerBusiness" exact component={RegisterBusinessPage} />
-    <Route path="/editBusiness/:id" exact component={EditBusiness} />
-    <Route path="/userProfile" exact component={UserProfile} />
+    <Route path="/businessProfile/:id" exact component={AuthenticatedComponent(BusinessProfile)} />
+    <Route path="/registerBusiness" exact component={AuthenticatedComponent(RegisterBusinessPage)} />
+    <Route path="/editBusiness/:id" exact component={AuthenticatedComponent(EditBusiness)} />
+    <Route path="/userProfile" exact component={AuthenticatedComponent(UserProfile)} />
     <Route path="/logout" exact component={HomePage} />
     <Route path="/*" exact component={NotFound} />
   </Switch>
