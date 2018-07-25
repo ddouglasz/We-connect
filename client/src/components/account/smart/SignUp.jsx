@@ -15,20 +15,22 @@ class SignUp extends React.Component {
  * @return { object } object
 */
   render() {
-    const { LoginAction, addFlashMessage } = this.props;
+    const { SignUpActionRequest, addFlashMessageRequest } = this.props;
     return (
       <SignUpForm
-      SignUpAction={SignUpAction}
-      addFlashMessage={addFlashMessage}
+      SignUpAction={SignUpActionRequest}
+      addFlashMessage={addFlashMessageRequest}
       />
     );
   }
 }
 
 SignUp.propTypes = {
-  SignUpAction: PropTypes.func.isRequired,
-  addFlashMessage: PropTypes.func.isRequired
+  SignUpActionRequest: PropTypes.func.isRequired,
+  addFlashMessageRequest: PropTypes.func.isRequired
 };
 
-export default connect(() => ({}), { SignUpAction, addFlashMessage })(SignUp);
+export default connect(() => ({}), {
+  SignUpActionRequest: SignUpAction, addFlashMessageRequest: addFlashMessage
+})(SignUp);
 
