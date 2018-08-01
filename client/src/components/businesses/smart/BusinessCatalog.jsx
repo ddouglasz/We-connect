@@ -10,7 +10,7 @@ import { getBusinessAction, getAllBusinessSearchAction } from '../../../actions/
    * @description - returns business cards on the catalog page
    * @class BusinessCatalog
    */
-class BusinessCatalog extends React.Component {
+export class BusinessCatalog extends React.Component {
   /**
    * @description - business display form
    * @param {Object} props

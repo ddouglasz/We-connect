@@ -36,7 +36,6 @@ Cards.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
 };

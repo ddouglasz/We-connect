@@ -8,7 +8,7 @@ import BusinessProfile from './components/businesses/smart/BusinessProfile.jsx';
 import RegisterBusinessPage from './components/businesses/smart/RegisterBusinessPage.jsx';
 import EditBusiness from './components/businesses/smart/EditBusiness.jsx';
 import UserProfile from './components/user/smart/UserProfile.jsx';
-import NotFound from './components/404Page.jsx';
+import NotFound from './components/notFound.jsx';
 import AuthenticatedComponent from './helpers/routeVerification';
 
 

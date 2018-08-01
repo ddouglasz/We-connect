@@ -13,7 +13,7 @@ import { getOneBusinessAction, deleteBusinessAction } from '../../../actions/bus
    * @description -  Description of a given business profile
    * @class BusinessProfile
    */
-class BusinessProfile extends React.Component {
+export class BusinessProfile extends React.Component {
   /**
      * @description - business display form
      * @param {Object} props
@@ -121,7 +121,7 @@ class BusinessProfile extends React.Component {
       business, user
     } = this.props;
     if (this.props.reviewsData.length === 0) {
-      return 'loading...';
+      return <p>loading...</p>;
     }
     const reviewsDetails = this.props.reviewsData;
 
@@ -131,6 +131,7 @@ class BusinessProfile extends React.Component {
 
     const emptyReviews = (<h2> No reviews for this Business yet...</h2>);
     return (
+
       <div className="container " >
         <div className="form-actions" />
         <div className="row business-two" >
@@ -242,12 +243,12 @@ class BusinessProfile extends React.Component {
                 <br />
                 <div className="form-reviews" id="description-header">
                   {
-                    reviewsDetails.length > 1 ? <h3>Reviews</h3> : null
+                    reviewsDetails.length > 0 ? <h3>Reviews</h3> : null
                   }
                 </div>
                 <div className="edit-spacing col-sm-12" id="chat-cards-buttom-spacing">
                   <ul className="list-unstyled">
-                    {reviewsDetails.Reviews.rows.length > 1 ? (reviewsDetails.Reviews &&
+                    {reviewsDetails.Reviews.rows.length > 0 ? (reviewsDetails.Reviews &&
                       <ReviewsCard
                         reviews={reviewsDetails.Reviews.rows}
                       />) : emptyReviews}
@@ -271,8 +272,6 @@ BusinessProfile.propTypes = {
   user: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   match: PropTypes.func.isRequired,
-  params: PropTypes.func.isRequired,
-  Reviews: PropTypes.array.isRequired,
   business: PropTypes.object.isRequired,
   reviewsData: PropTypes.func.isRequired,
   deleteBusiness: PropTypes.func.isRequired,

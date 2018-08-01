@@ -6,9 +6,9 @@ import { PropTypes } from 'prop-types';
  * @class FlashMessage
 */
 class FlashMessage extends React.Component {
-/**
- * @param {object} props
-*/
+  /**
+   * @param {object} props
+  */
   constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);
@@ -17,7 +17,8 @@ class FlashMessage extends React.Component {
    * @returns {function} deleteFlashMessage
    */
   onClick() {
-    this.props.deleteFlashMessage(this.props.message.id);
+    const { deleteFlashMessage, message } = this.props;
+    deleteFlashMessage(message.id);
   }
   /**
    * @returns {function} deleteFlashMessage
@@ -26,15 +27,18 @@ class FlashMessage extends React.Component {
     setTimeout(() => {
       document.getElementById('close').click();
     }, 2000);
-    const { type, text } = this.props.message;
+    const {
+      type,
+      text
+    } = this.props.message;
     return (
-            <div className={classnames('alert', {
-                'alert-success': type === 'success',
-                'alert-danger': type === 'error'
-            })} >
-            <button onClick={this.onClick} className="close" id="close"><span>&times;</span></button>
-            {text}
-              </div>
+      <div className={classnames('alert', {
+        'alert-success': type === 'success',
+        'alert-danger': type === 'error'
+      })} >
+        <button onClick={this.onClick} className="close" id="close"><span>&times;</span></button>
+        {text}
+      </div>
     );
   }
 }

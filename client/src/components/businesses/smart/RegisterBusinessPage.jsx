@@ -9,7 +9,7 @@ import { addFlashMessage } from '../../../actions/flashMessages';
    * @description - register business child component
    * @class RegisterBusinessPage
    */
-class RegisterBusinessPage extends React.Component {
+export class RegisterBusinessPage extends React.Component {
 /**
    * @param {object} business
    * @return {function} function
@@ -18,13 +18,16 @@ class RegisterBusinessPage extends React.Component {
     const {
       registerBusinessAction, addFlashMessage, editBusinessAction, business
     } = this.props;
+    // console.log(this.props)
     return (
-            <RegisterBusiness
-                editBusinessAction={editBusinessAction}
-                registerBusinessAction={registerBusinessAction}
-                addFlashMessage={addFlashMessage}
-                business={business}
-            />
+      <div>
+        <RegisterBusiness
+          editBusinessAction={editBusinessAction}
+          registerBusinessAction={registerBusinessAction}
+          addFlashMessage={addFlashMessage}
+          business={business}
+        />
+      </div>
     );
   }
 }

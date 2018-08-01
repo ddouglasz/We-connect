@@ -8,7 +8,7 @@ import { registerBusinessAction, saveImageCloudinary } from '../../../actions/bu
    * @description - component for fields to register a business
    * @class RegisterBusiness
    */
-class RegisterBusiness extends React.Component {
+export class RegisterBusiness extends React.Component {
   /**
    * @description - business display form
    * @param {Object} props
