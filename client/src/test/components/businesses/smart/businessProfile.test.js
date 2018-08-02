@@ -4,7 +4,6 @@ import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
 import React from 'react';
 import ConnectedBusinessProfile, { BusinessProfile } from '../../../../components/businesses/smart/BusinessProfile.jsx';
-import ReviewsCard from '../../../../components/businesses/Presentational/ReviewsCards.jsx';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
