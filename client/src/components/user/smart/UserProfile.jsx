@@ -8,7 +8,7 @@ import { addFlashMessage } from '../../../actions/flashMessages';
 /**
    * @class UserProfile
    */
-class UserProfile extends React.Component {
+export class UserProfile extends React.Component {
   /**
    * @description - business display form
    * @param {Object} props
@@ -52,7 +52,6 @@ class UserProfile extends React.Component {
           text: 'User updated successfully'
         });
         document.getElementById('closeEdit').click();
-        // this.context.router.push(`/UserProfile/${this.props.match.params.id}`);
         this.setState({ errors: [], isLoading: false });
       });
   }
@@ -91,7 +90,6 @@ const { location, category, name } = this.state;
         category={business.category}
       />
     ));
-    // const { bio } = this.props.businesses.userProfile;
     return (
       <div className="catalog-cover">
         <div className="jumbotron2 jumbotron-fluid home-wrapper-catalog">

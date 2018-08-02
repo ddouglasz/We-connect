@@ -9,7 +9,7 @@ import { addFlashMessage } from '../../../actions/flashMessages';
    * @description - Edit business component page
    * @class EditBusiness
    */
-class EditBusiness extends React.Component {
+export class EditBusiness extends React.Component {
   /**
          * @description - business display form
          * @param {Object} props

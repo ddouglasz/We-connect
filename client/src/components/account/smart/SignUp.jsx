@@ -8,7 +8,7 @@ import { addFlashMessage } from '../../../actions/flashMessages';
 /**
  * @class SignUp
 */
-class SignUp extends React.Component {
+export class SignUp extends React.Component {
   /**
  * @description Class component for Sogn up page
  * @param { function } function
@@ -17,10 +17,12 @@ class SignUp extends React.Component {
   render() {
     const { SignUpActionRequest, addFlashMessageRequest } = this.props;
     return (
+      <div>
       <SignUpForm
       SignUpAction={SignUpActionRequest}
       addFlashMessage={addFlashMessageRequest}
       />
+      </div>
     );
   }
 }

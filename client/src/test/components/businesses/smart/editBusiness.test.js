@@ -9,37 +9,26 @@ import ConnectedEditBusiness, { EditBusiness } from '../../../../components/busi
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 configure({ adapter: new Adapter() });
-let props, props2;
+let props;
 const setup = () => {
   props = {
+    match: { params: { id: 1 } },
     business: {
       id: 1,
       title: 'bestMart',
       image: 'image.jpeg',
       description: 'we sell the best penguins... dolphins would envy you',
       category: 'technology',
+      location: 'lagos',
+      isLoading: false,
+      Email: 'steve@gmail.com',
+
       createdAt: '2018-07-25T10:08:38.181Z'
-    },
-    match: { params: {} },
-    state: {
-      oneBusiness: {
-        id: 1,
-        title: 'bestMart',
-        image: 'image.jpeg',
-        description: 'we sell the best penguins... dolphins would envy you',
-        category: 'technology',
-        createdAt: '2018-07-25T10:08:38.181Z'
-      }
     },
     registerBusinessAction: jest.fn(() => Promise.resolve()),
     addFlashMessage: jest.fn(() => Promise.resolve()),
     editBusinessAction: jest.fn(() => Promise.resolve()),
-    mapStateToProps: jest.fn(() => Promise.resolve()),
-  };
-  props2 = {
-    match: {
-    //   params: {}
-    }
+    getOneBusinessAction: jest.fn(() => Promise.resolve()),
   };
   return shallow(<EditBusiness {...props} />);
 };
@@ -55,8 +44,7 @@ const event = {
 describe('Component: RegisterBusinessPage', () => {
   it('should render the component successfully', () => {
     const wrapper = setup();
-    expect(wrapper.find('div').length).toBe(1);
-    // expect(wrapper.find('RegisterBusiness').length).toBe(1);
+    expect(wrapper.find('div').length).toBe(21);
   });
 });
 
@@ -101,7 +89,7 @@ describe('Connected RegisterBusinessPage', () => {
     const store = mockStore({
       allBusinesses
     });
-    const wrapper = shallow(<ConnectedEditBusiness store={store} {...props2} />);
+    const wrapper = shallow(<ConnectedEditBusiness store={store} {...props} />);
     expect(wrapper.length).toBe(1);
   });
   it('should call onChange function', () => {

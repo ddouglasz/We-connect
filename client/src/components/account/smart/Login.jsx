@@ -8,7 +8,7 @@ import { addFlashMessage } from '../../../actions/flashMessages.js';
 /**
  * @class Login
 */
-class Login extends React.Component {
+export class Login extends React.Component {
   /**
  * @description Class component for Login page
  * @param { function } function
@@ -17,7 +17,9 @@ class Login extends React.Component {
   render() {
     const { LoginAction, addFlashMessage } = this.props;
     return (
+    <div>
       <HomePage LoginAction={LoginAction} addFlashMessage={addFlashMessage} />
+    </div>
     );
   }
 }

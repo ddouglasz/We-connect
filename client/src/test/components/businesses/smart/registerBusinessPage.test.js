@@ -36,9 +36,6 @@ const setup = () => {
     editBusinessAction: jest.fn(() => Promise.resolve()),
     mapStateToProps: jest.fn(() => Promise.resolve()),
   };
-//   props2 = {
-//     match: {}
-//   };
   return shallow(<RegisterBusinessPage />);
 };
 
@@ -46,7 +43,6 @@ describe('Component: RegisterBusinessPage', () => {
   it('should render the component successfully', () => {
     const wrapper = setup();
     expect(wrapper.find('div').length).toBe(1);
-    // expect(wrapper.find('RegisterBusiness').length).toBe(1);
   });
 });
 

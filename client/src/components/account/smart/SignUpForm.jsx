@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 /**
  * @class SignUpForm
 */
-class SignUpForm extends React.Component {
+export class SignUpForm extends React.Component {
   /**
  * @description Class component for Sogn up form
  * @param { object } props
