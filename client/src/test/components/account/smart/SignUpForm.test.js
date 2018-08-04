@@ -3,7 +3,6 @@ import Adapter from 'enzyme-adapter-react-16';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
 import React from 'react';
-// import { RegisterBusiness } from '../../../../components/businesses/smart/RegisterBusiness.jsx';
 import ConnectedSignUpForm, { SignUpForm } from '../../../../components/account/smart/SignUpForm.jsx';
 
 const middlewares = [thunk];

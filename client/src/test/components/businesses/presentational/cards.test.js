@@ -16,7 +16,7 @@ const props = {
 describe('Compnent: Card', () => {
   it('should render the component successfully', () => {
     const wrapper = shallow(<Cards {...props}/>);
-    expect(wrapper.find('div').length).toBe(1);
+    expect(wrapper.find('div').length).toBe(5);
     expect(wrapper.find('TextTruncate').length).toBe(1);
     expect(wrapper.find('img').length).toBe(1);
     expect(wrapper.find('hr').length).toBe(1);

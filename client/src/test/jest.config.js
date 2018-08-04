@@ -1,0 +1,3 @@
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiYWxhbiIsImVtYWlsIjoiY29AZmtzLmNvbSIsImlhdCI6MTUyNjc3NDY4NX0.-ifQEPBdNquBQylvLQGvEPz1UHJTYzlTJJa3O9r1yVE';
+
+global.token = token;

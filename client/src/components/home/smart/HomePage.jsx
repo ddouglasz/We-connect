@@ -5,7 +5,7 @@ import { PropTypes } from 'prop-types';
    * @description - Component for landing page
    * @class HomePage
    */
-class HomePage extends React.Component {
+export class HomePage extends React.Component {
   /**
    * @description - business display form
    * @param {Object} props
@@ -126,13 +126,13 @@ class HomePage extends React.Component {
                             />
                           </div>
                         </div>
-                        {errors && <span className="help-block text-danger">{errors}</span>}
+                        {errors && <span className="help-block text-danger" id="signin-errors">{errors}</span>}
                       </div>
                     </div>
                     <button
                      disabled={isLoading}
                       className="btn btn-lg btn-primary
-                      btn-decor btn-block" >
+                      btn-decor btn-block" id="signin-btn">
                       Sign in
                     </button>
                   </form>

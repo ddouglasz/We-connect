@@ -221,7 +221,7 @@ const { location, category, name } = this.state;
           </div>
           {/* END of modal .................................................... */}
 
-          <p> <strong>Bio: </strong>{bio}</p>
+          <p className="bio-text"> <strong>Bio: </strong>{bio}</p>
           <div className="form-group form-spacing">
             <hr />
             <div className="form-action">

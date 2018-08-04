@@ -33,17 +33,17 @@ export function addReviewSuccess(review) {
     review
   };
 }
-/**
- * @param { Object } error
- * @return { function } function
- *
-*/
-export function addReviewFailed(error) {
-  return {
-    type: ADD_REVIEW_FAILED,
-    error
-  };
-}
+// /**
+//  * @param { Object } error
+//  * @return { function } function
+//  *
+// */
+// export function addReviewFailed(error) {
+//   return {
+//     type: ADD_REVIEW_FAILED,
+//     error
+//   };
+// }
 /**
  * @param { Object } review
  * @param { number } id

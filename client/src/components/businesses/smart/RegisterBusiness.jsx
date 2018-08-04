@@ -10,10 +10,10 @@ import { registerBusinessAction, saveImageCloudinary } from '../../../actions/bu
    */
 export class RegisterBusiness extends React.Component {
   /**
-   * @description - business display form
-   * @param {Object} props
-   * @param {object} object
-   */
+     * @description - business display form
+     * @param {Object} props
+     * @param {object} object
+     */
   constructor(props) {
     super(props);
     this.state = {
@@ -34,24 +34,24 @@ export class RegisterBusiness extends React.Component {
     this.saveImage = this.saveImage.bind(this);
   }
   /**
-   * @param {Object} event
-   * @return {function} function
-   */
+     * @param {Object} event
+     * @return {function} function
+     */
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
   /**
-   * @param {Object} event
-   * @return {function} function
-   */
+     * @param {Object} event
+     * @return {function} function
+     */
   onImageChange(event) {
     event.preventDefault();
     this.saveImage(event);
   }
   /**
-   * @param {Object} event
-   * @return {function} function
-   */
+     * @param {Object} event
+     * @return {function} function
+     */
   saveImage(event) {
     this.props.saveImageCloudinary(event.target.files[0]).then(() => {
       const { imageUrl } = this.props;
@@ -61,9 +61,9 @@ export class RegisterBusiness extends React.Component {
     });
   }
   /**
-   * @param {Object} event
-   * @return {function} function
-   */
+     * @param {Object} event
+     * @return {function} function
+     */
   onSubmit(event) {
     event.preventDefault();
     this.setState({ errors: [], isLoading: true });
@@ -79,9 +79,9 @@ export class RegisterBusiness extends React.Component {
     );
   }
   /**
-   * @param {Object} errors
-   * @return {function} function
-   */
+     * @param {Object} errors
+     * @return {function} function
+     */
   render() {
     const {
       title,
@@ -103,7 +103,7 @@ export class RegisterBusiness extends React.Component {
                 <div className="form-actions2">
                     <h1>Add a new Business</h1>
 
-                {errors && <span className="help-block text-danger"><div className="form-action">{errors}</div></span> }
+                    {errors && <span className="help-block text-danger"><div className="form-action">{errors}</div></span>}
 
                 </div>
                 <hr />
@@ -113,11 +113,11 @@ export class RegisterBusiness extends React.Component {
                             <img src={image} className="img-rounded" id="profile-image" alt="chefchef" width="250" />
                             <h6>Upload a different photo...</h6>
                             <input
-                             type="file"
-                             className="form-control btn-primary"
-                             placeholder="company or firm"
-                             onChange={onImageChange}
-                             />
+                                type="file"
+                                className="form-control btn-primary"
+                                placeholder="company or firm"
+                                onChange={onImageChange}
+                            />
                         </div>
                     </div>
 
@@ -201,21 +201,22 @@ export class RegisterBusiness extends React.Component {
                                     <div className="btn-toolbar ">
                                         <button disabled={isLoading}
                                             className="btn btn-primary"
-                                            href="businessProfile.html"
-                                            role="button">
+                                            role="button"
+                                            id="create-business-btn"
+                                            name="save">
                                             save
-                                    </button>
+                                       </button>
                                         <button
-                                          type="reset"
-                                         className="btn btn-danger"
-                                         value="Cancel"
-                                         id="cancel-reg"
-                                         href="/businessCatalog"
-                                         >
-                                         <Link to={'/businessCatalog'} className="btn btn-danger">
-                                         Cancel
+                                            type="reset"
+                                            className="btn btn-danger"
+                                            value="Cancel"
+                                            id="cancel-reg"
+                                            href="/businessCatalog"
+                                        >
+                                            <Link to={'/businessCatalog'} className="btn btn-danger">
+                                                Cancel
                                          </Link>
-                                         </button>
+                                        </button>
                                     </div>
                                 </div>
                             </div>

@@ -153,11 +153,11 @@ export class SignUpForm extends React.Component {
                       />
                     </div>
                   </div>
-                {errors && <span className="help-block text-danger"><div className="form-action">{errors}</div></span> }
+                {errors && <span className="help-block text-danger" id="signup-errors"><div className="form-action">{errors}</div></span> }
                 </div>
               </div>
             </div>
-            <button disabled={this.state.isLoading} className="btn  btn-decor btn-success btn-block" >
+            <button disabled={this.state.isLoading} className="btn  btn-decor btn-success btn-block" id="signup-btn">
               <i className="fa font-b fa-user-plus" />
             </button>
           </form>

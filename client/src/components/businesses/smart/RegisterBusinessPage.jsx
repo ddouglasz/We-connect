@@ -18,7 +18,6 @@ export class RegisterBusinessPage extends React.Component {
     const {
       registerBusinessAction, addFlashMessage, editBusinessAction, business
     } = this.props;
-    // console.log(this.props)
     return (
       <div>
         <RegisterBusiness
@@ -43,7 +42,7 @@ RegisterBusinessPage.propTypes = {
    * @return {function} function
    */
 function mapStateToProps(state, props) {
-  if (props.match.params) {
+  if (props.match.params.id) {
     return {
       business: state.oneBusiness
     };

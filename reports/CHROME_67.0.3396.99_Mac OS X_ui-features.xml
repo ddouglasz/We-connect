@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="3"
+            failures="1"
+            tests="4">
+
+  <testsuite name="ui-features"
+    errors="3" failures="1" hostname="" id="" package="ui-features" skipped="1"
+    tests="4" time="31.60" timestamp="Sat, 04 Aug 2018 17:09:38 GMT">
+  
+    <testcase name="User should be able to signup with complete signup details " classname="ui-features" time="9.607" assertions="6">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Logged in user should be able to create a business " classname="ui-features" time="6.694" assertions="4">
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Logged in user should be able to view business catalog, business profile and edit his/her business " classname="ui-features" time="15.30" assertions="2">
+
+      <failure message="Testing if the URL equals &#34;http://localhost:8000/businessProfile/1&#34;.">    at Object.Logged in user should be able to view business catalog, business profile and edit his/her business  (/Users/douglasegiemeh/Desktop/We-connect/client/src/test/e2e/ui-features.js:111:15)
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)</failure>
+
+    
+    </testcase>
+  
+
+  
+    <system-err>
+      ERROR: Unable to locate element: &#34;button[name=save]&#34; using: css selector
+    at Object.Logged in user should be able to create a business  (/Users/douglasegiemeh/Desktop/We-connect/client/src/test/e2e/ui-features.js:89:8)
+    at Module.call (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/lib/runner/module.js:62:34)
+    at /Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/lib/runner/testcase.js:70:29
+    at _fulfilled (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:834:54)
+    at self.promiseDispatch.done (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:863:30)
+    at Promise.promise.promiseDispatch (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:796:13)
+    at /Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:556:49
+    at runSingle (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:137:13)
+    at flush (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:125:13)
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+ERROR: Unable to locate element: &#34;#find-one-business&#34; using: css selector
+    at Object.Logged in user should be able to view business catalog, business profile and edit his/her business  (/Users/douglasegiemeh/Desktop/We-connect/client/src/test/e2e/ui-features.js:107:8)
+    at Module.call (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/lib/runner/module.js:62:34)
+    at /Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/lib/runner/testcase.js:70:29
+    at _fulfilled (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:834:54)
+    at self.promiseDispatch.done (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:863:30)
+    at Promise.promise.promiseDispatch (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:796:13)
+    at /Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:556:49
+    at runSingle (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:137:13)
+    at flush (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:125:13)
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+ERROR: Unable to locate element: &#34;#find-one-business1&#34; using: css selector
+    at Object.Logged in user should be able to view business catalog, business profile and edit his/her business  (/Users/douglasegiemeh/Desktop/We-connect/client/src/test/e2e/ui-features.js:108:8)
+    at Module.call (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/lib/runner/module.js:62:34)
+    at /Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/lib/runner/testcase.js:70:29
+    at _fulfilled (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:834:54)
+    at self.promiseDispatch.done (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:863:30)
+    at Promise.promise.promiseDispatch (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:796:13)
+    at /Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:556:49
+    at runSingle (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:137:13)
+    at flush (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:125:13)
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+    </system-err>
+  
+
+  
+    
+    <testcase
+      name="Should re route users to login for protected routes" classname="ui-features">
+      <skipped />
+    </testcase>
+    
+  
+  </testsuite>
+</testsuites>

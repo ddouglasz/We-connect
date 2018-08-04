@@ -3,7 +3,6 @@ import Adapter from 'enzyme-adapter-react-16';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
 import React from 'react';
-// import { RegisterBusiness } from '../../../../components/businesses/smart/RegisterBusiness.jsx';
 import ConnectedRegisterBusinessPage, { RegisterBusinessPage } from '../../../../components/businesses/smart/RegisterBusinessPage.jsx';
 
 const middlewares = [thunk];
@@ -84,10 +83,36 @@ describe('Connected RegisterBusinessPage', () => {
       }
     };
 
+    props = {
+      business: {
+        id: 1,
+        title: 'bestMart',
+        image: 'image.jpeg',
+        description: 'we sell the best penguins... dolphins would envy you',
+        category: 'technology',
+        createdAt: '2018-07-25T10:08:38.181Z'
+      },
+      match: { params: { id: 1} },
+      state: {
+        oneBusiness: {
+          id: 1,
+          title: 'bestMart',
+          image: 'image.jpeg',
+          description: 'we sell the best penguins... dolphins would envy you',
+          category: 'technology',
+          createdAt: '2018-07-25T10:08:38.181Z'
+        }
+      },
+      registerBusinessAction: jest.fn(() => Promise.resolve()),
+      addFlashMessage: jest.fn(() => Promise.resolve()),
+      editBusinessAction: jest.fn(() => Promise.resolve()),
+      mapStateToProps: jest.fn(() => Promise.resolve()),
+    };
+
     const store = mockStore({
       allBusinesses
     });
-    const wrapper = shallow(<ConnectedRegisterBusinessPage store={store} {...props2} />);
+    const wrapper = shallow(<ConnectedRegisterBusinessPage store={store} {...props} />);
     expect(wrapper.length).toBe(1);
   });
 });

@@ -21,8 +21,8 @@ const Cards = ({
                    <a>Created On:</a> {moment(createdAt).format('MMMM Do YYYY')}
                 </small>
                 <div className="icons ">
-                    <Link to={`/businessProfile/${id}`}>
-                         <i className="fa fa-info-circle fa-lg fa-fw" aria-hidden="true"></i>
+                    <Link to={`/businessProfile/${id}`} id="find-one-business">
+                         <i className="fa fa-info-circle fa-lg fa-fw" aria-hidden="true" id="find-one-business1"></i>
                         <strong>Find out more</strong>
                     </Link>
                 </div>

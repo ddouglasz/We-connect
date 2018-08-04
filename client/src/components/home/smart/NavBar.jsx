@@ -8,7 +8,7 @@ import { logout } from '../../../actions/authActions';
    * @description - class component for the navvbar
    * @class BusinessCatalog
    */
-class NavBar extends React.Component {
+export class NavBar extends React.Component {
   /**
    * @param {Object} event
    * @return {function} function
@@ -31,7 +31,7 @@ class NavBar extends React.Component {
           </Link>
         </ul>
         <form className="form-inline nav-close my-sm-0">
-          <Link to="/registerBusiness" className="nav-link text ">
+          <Link to="/registerBusiness" className="nav-link text reg">
             <span >Register Business</span>
           </Link>
         </form>
@@ -74,7 +74,6 @@ class NavBar extends React.Component {
         <Link to="#" className="navbar-brand">
           <span>WEConnect</span>
         </Link>
-
         {isAuthenticated ? userLinks : guestLinks}
       </nav>
     );
