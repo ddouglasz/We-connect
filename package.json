@@ -20,7 +20,7 @@
     "test:client": "jest",
     "test:e2e": "nightwatch",
     "start:e2e-test": "NODE_ENV=tests nodemon --watch server --exec  babel-node app.js",
-    "eToe:test": "NODE_ENV=tests npm run test-migrate && ./node_modules/.bin/nightwatch"
+    "e2e:test": "NODE_ENV=tests npm run test-migrate && ./node_modules/.bin/nightwatch"
   },
   "author": "douglas",
   "license": "ISC",
