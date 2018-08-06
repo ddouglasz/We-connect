@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ALL_REVIEWS, ADD_REVIEW_SUCCESS, ADD_REVIEW_FAILED } from './types';
+import { ALL_REVIEWS, ADD_REVIEW_SUCCESS } from './types';
 /**
  * @param { Object } allReviews
  * @return { function } function
@@ -33,18 +33,7 @@ export function addReviewSuccess(review) {
     review
   };
 }
-// /**
-//  * @param { Object } error
-//  * @return { function } function
-//  *
-// */
-// export function addReviewFailed(error) {
-//   return {
-//     type: ADD_REVIEW_FAILED,
-//     error
-//   };
-// }
-/**
+/*
  * @param { Object } review
  * @param { number } id
  * @return { function } function

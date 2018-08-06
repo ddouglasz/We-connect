@@ -41,7 +41,7 @@ export class NavBar extends React.Component {
           </Link>
         </form >
         <form className="form-inline nav-close my-sm-0">
-          <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li>
+          <li><a onClick={this.logout.bind(this)} id="logout-btn">Logout</a></li>
         </form>
       </div>
     );

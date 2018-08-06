@@ -5,9 +5,9 @@
 
   <testsuite name="landingPage"
     errors="0" failures="0" hostname="" id="" package="landingPage" skipped="0"
-    tests="1" time="4.363" timestamp="Sat, 04 Aug 2018 17:09:33 GMT">
+    tests="1" time="4.204" timestamp="Mon, 06 Aug 2018 22:05:32 GMT">
   
-    <testcase name="Landing Page " classname="landingPage" time="4.363" assertions="3">
+    <testcase name="Landing Page " classname="landingPage" time="4.204" assertions="3">
 
     
 
@@ -17,42 +17,6 @@
     </testcase>
   
 
-  
-    <system-err>
-      ERROR: Unable to locate element: &#34;button[name=save]&#34; using: css selector
-    at Object.Logged in user should be able to create a business  (/Users/douglasegiemeh/Desktop/We-connect/client/src/test/e2e/ui-features.js:89:8)
-    at Module.call (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/lib/runner/module.js:62:34)
-    at /Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/lib/runner/testcase.js:70:29
-    at _fulfilled (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:834:54)
-    at self.promiseDispatch.done (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:863:30)
-    at Promise.promise.promiseDispatch (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:796:13)
-    at /Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:556:49
-    at runSingle (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:137:13)
-    at flush (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:125:13)
-    at _combinedTickCallback (internal/process/next_tick.js:131:7)
-ERROR: Unable to locate element: &#34;#find-one-business&#34; using: css selector
-    at Object.Logged in user should be able to view business catalog, business profile and edit his/her business  (/Users/douglasegiemeh/Desktop/We-connect/client/src/test/e2e/ui-features.js:107:8)
-    at Module.call (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/lib/runner/module.js:62:34)
-    at /Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/lib/runner/testcase.js:70:29
-    at _fulfilled (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:834:54)
-    at self.promiseDispatch.done (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:863:30)
-    at Promise.promise.promiseDispatch (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:796:13)
-    at /Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:556:49
-    at runSingle (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:137:13)
-    at flush (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:125:13)
-    at _combinedTickCallback (internal/process/next_tick.js:131:7)
-ERROR: Unable to locate element: &#34;#find-one-business1&#34; using: css selector
-    at Object.Logged in user should be able to view business catalog, business profile and edit his/her business  (/Users/douglasegiemeh/Desktop/We-connect/client/src/test/e2e/ui-features.js:108:8)
-    at Module.call (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/lib/runner/module.js:62:34)
-    at /Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/lib/runner/testcase.js:70:29
-    at _fulfilled (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:834:54)
-    at self.promiseDispatch.done (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:863:30)
-    at Promise.promise.promiseDispatch (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:796:13)
-    at /Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:556:49
-    at runSingle (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:137:13)
-    at flush (/Users/douglasegiemeh/Desktop/We-connect/node_modules/nightwatch/node_modules/q/q.js:125:13)
-    at _combinedTickCallback (internal/process/next_tick.js:131:7)
-    </system-err>
   
 
   

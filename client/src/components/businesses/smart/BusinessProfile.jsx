@@ -145,7 +145,7 @@ export class BusinessProfile extends React.Component {
                 (<div className="form-group form-spacing">
                   <label className="col-sm-3 control-label" />
                   <div className="col-sm-12">
-                    <Link to={`/editBusiness/${id}`}>
+                    <Link to={`/editBusiness/${id}`} id="edit-one-business">
                       <label className="editBusiness fa fa-edit" >
                         Edit
                   </label>

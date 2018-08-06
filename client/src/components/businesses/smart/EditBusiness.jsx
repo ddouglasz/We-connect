@@ -11,10 +11,10 @@ import { addFlashMessage } from '../../../actions/flashMessages';
    */
 export class EditBusiness extends React.Component {
   /**
-         * @description - business display form
-         * @param {Object} props
-         * @param {object} object
-         */
+           * @description - business display form
+           * @param {Object} props
+           * @param {object} object
+           */
   constructor(props) {
     super(props);
 
@@ -37,24 +37,24 @@ export class EditBusiness extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
   /**
-     * @return {function} function
-     */
+       * @return {function} function
+       */
   componentWillMount() {
     const { id } = this.props.match.params;
     this.props.getOneBusinessAction(id);
   }
 
   /**
-     * @param {Object} event
-     * @return {function} function
-     */
+       * @param {Object} event
+       * @return {function} function
+       */
   onChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
   /**
-     * @param {Object} event
-     * @return {function} function
-     */
+       * @param {Object} event
+       * @return {function} function
+       */
   onSubmit(event) {
     const { id } = this.props.match.params;
     event.preventDefault();
@@ -69,12 +69,13 @@ export class EditBusiness extends React.Component {
       });
   }
   /**
- * @param {array} errors
- * @return {function} function
- */
+   * @param {array} errors
+   * @return {function} function
+   */
   render() {
-
-    const { title, description, category, location, isLoading, email, image, errors } = this.state;
+    const {
+ title, description, category, location, isLoading, email, image, errors 
+} = this.state;
     const { onChange, onSubmit } = this;
     // const { errors } = this.state;
 
@@ -182,7 +183,9 @@ export class EditBusiness extends React.Component {
                                         <button
                                             disabled={isLoading}
                                             className="btn btn-primary"
-                                            role="button">
+                                            role="button"
+                                            id="save-edit-one-business"
+                                        >
                                             save
                                     </button>
                                         <button type="reset" className="btn btn-danger" value="Cancel" id="cancel-reg" href="businessProfile.html">Cancel</button>
