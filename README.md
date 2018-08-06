@@ -2,7 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/ddouglasz/We-connect/badge.svg?branch=develop)](https://coveralls.io/github/ddouglasz/We-connect?branch=develop)
 # We-connect# 
  
-WeConnect provides a platform that brings businesses and individuals together. This platform creates awareness for businesses and gives the users the ability to write reviews about the businesses they have interacted with and even new ones.  
+<a href="https://weconnect-sequelize-1111.herokuapp.com/UserProfile">WeConnect<a> provides a platform that brings businesses and individuals together. This platform creates awareness for businesses and gives the users the ability to write reviews about the businesses they have interacted with and even new ones.  
 
 ## Documentation
 Find API documentation here:
