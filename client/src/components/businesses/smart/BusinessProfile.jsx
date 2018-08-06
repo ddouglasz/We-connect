@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addFlashMessage } from '../../../actions/flashMessages';
-import ReviewsCard from '../presentational/ReviewsCards.jsx';
+import ReviewsCard from '../Presentational/ReviewsCards.jsx';
 // import { title, description, category, location } from './RegisterBusiness.jsx';
 import { getReviewsAction, postReviewAction } from '../../../actions/reviewsActions';
 import { getOneBusinessAction, deleteBusinessAction } from '../../../actions/businessActions';
