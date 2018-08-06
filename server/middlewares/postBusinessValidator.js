@@ -58,11 +58,11 @@ const validateInput = (req, res, next) => {
       message: 'email is required',
     });
   }
-  if (!req.body.image) {
-    return res.status(406).send({
-      message: 'image is required',
-    });
-  }
+  // if (!req.body.image) {
+  //   return res.status(406).send({
+  //     message: 'image is required',
+  //   });
+  // }
   if (!validator.isLength(req.body.title.trim(), { min: 3, max: 30 })) {
     return res.status(406)
       .send({

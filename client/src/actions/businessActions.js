@@ -260,7 +260,7 @@ export function getUserProfileFailed(error) {
      * @returns {Object} object.
      */
 export const UserDashBoardAction = () => (dispatch) => {
-  const userId = jwt.decode(localStorage.getItem('userToken')).id;
+  const userId = localStorage.userToken ? jwt.decode(localStorage.getItem('userToken')).id : null;
   axios.get(`/api/v1/auth/${userId}/userProfile`)
     .then((response) => {
       dispatch(getUserProfileSuccessful(response.data.userdata));

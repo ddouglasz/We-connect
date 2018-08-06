@@ -58,11 +58,6 @@ export default function businesses(state = initialState, action) {
         allReviews: action.allReviews
       };
 
-    // case ADD_REVIEW_SUCCESS:
-    //   return {
-    //     ...state,
-    //     allreviews: [action.review, ...state.allreviews]
-    //   };
     case ADD_REVIEW_SUCCESS:
       return {
         ...state,
@@ -75,16 +70,16 @@ export default function businesses(state = initialState, action) {
         error: action.error
       };
 
-    case DELETE_FAILED:
-      return {
-        ...state,
-        error: action.error
-      };
-
     case DELETE_SUCCESSFUL:
       return {
         ...state,
         message: action.message
+      };
+
+    case DELETE_FAILED:
+      return {
+        ...state,
+        error: action.error
       };
 
     case EDIT_SUCCESSFUL:
