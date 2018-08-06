@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Cards from '../../businesses/presentational/cards.jsx';
+import Cards from '../../businesses/Presentational/cards.jsx';
 import { UserDashBoardAction, getAllBusinessSearchAction, editUserProfile } from '../../../actions/businessActions';
 import { addFlashMessage } from '../../../actions/flashMessages';
 
