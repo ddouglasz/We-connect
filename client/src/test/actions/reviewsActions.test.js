@@ -18,7 +18,7 @@ describe('authActions', () => {
     moxios.uninstall();
   });
 
-  it('should dispatch login data for a successful login', (done) => {
+  it('should dispatch review data for getting all reviews for a given business', (done) => {
     const id = 1;
     moxios.stubRequest(`/api/v1/businesses/${id}/reviews`, {
       status: 200,
@@ -41,7 +41,7 @@ describe('authActions', () => {
       });
   });
 
-  it('should dispatch login data for a successful login', (done) => {
+  it('should dispatch review data for a successfully added review', (done) => {
     const id = 1;
     moxios.stubRequest(`/api/v1/businesses/${id}/reviews`, {
       status: 200

@@ -41,14 +41,14 @@ const event = {
   }
 };
 
-describe('Component: RegisterBusinessPage', () => {
+describe('Component: EditBusiness', () => {
   it('should render the component successfully', () => {
     const wrapper = setup();
     expect(wrapper.find('div').length).toBe(21);
   });
 });
 
-describe('Connected RegisterBusinessPage', () => {
+describe('Connected EditBusiness', () => {
   it('should return oneBusiness from state', () => {
     const allBusinesses = {
       business: {

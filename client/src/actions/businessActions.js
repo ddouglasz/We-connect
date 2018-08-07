@@ -18,7 +18,6 @@ import {
 } from './types';
 import { currentUser } from './authActions';
 
-
 /**
  * AllBusiness
  * @param {Object} businesses
@@ -30,6 +29,7 @@ export function allBusinesses(businesses) {
     businesses
   };
 }
+
 /**
  * AllBusiness
  * @param {Object} pagination
@@ -261,7 +261,7 @@ export function getUserProfileFailed(error) {
      */
 export const UserDashBoardAction = () => (dispatch) => {
   const userId = localStorage.userToken ? jwt.decode(localStorage.getItem('userToken')).id : null;
-  axios.get(`/api/v1/auth/${userId}/userProfile`)
+  return axios.get(`/api/v1/auth/${userId}/userProfile`)
     .then((response) => {
       dispatch(getUserProfileSuccessful(response.data.userdata));
     });

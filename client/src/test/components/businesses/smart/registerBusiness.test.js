@@ -3,7 +3,6 @@ import Adapter from 'enzyme-adapter-react-16';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
 import React from 'react';
-// import { RegisterBusiness } from '../../../../components/businesses/smart/RegisterBusiness.jsx';
 import ConnectedRegisterBusiness, { RegisterBusiness } from '../../../../components/businesses/smart/RegisterBusiness.jsx';
 
 const middlewares = [thunk];
@@ -56,7 +55,7 @@ const event = {
   }
 };
 
-describe('Component: RegisterBusinessPage', () => {
+describe('Component: RegisterBusiness', () => {
   it('should render the component successfully', () => {
     const wrapper = setup();
     expect(wrapper.find('div').length).toBe(21);

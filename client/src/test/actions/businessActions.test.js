@@ -1,10 +1,8 @@
 import moxios from 'moxios';
 import thunk from 'redux-thunk';
-import decode from 'jwt-decode';
 import configureMockStore from 'redux-mock-store';
-import { SignUpAction, LoginAction, logout } from '../../actions/authActions';
-import { CURRENT_USER, ALL_BUSINESSES, PAGINATION, ONE_BUSINESS, EDIT_SUCCESSFUL, EDIT_FAILED, DELETE_SUCCESSFUL, DELETE_FAILED, GET_USER_PROFILE_SUCCESSFUL } from '../../actions/types';
-import { registerBusinessAction, getBusinessAction, getAllBusinessSearchAction, getOneBusinessAction, editBusinessAction, deleteBusinessAction, UserDashBoardAction } from '../../actions/businessActions';
+import { ALL_BUSINESSES, PAGINATION, ONE_BUSINESS, EDIT_SUCCESSFUL, EDIT_FAILED, DELETE_SUCCESSFUL, DELETE_FAILED } from '../../actions/types';
+import { registerBusinessAction, getBusinessAction, getAllBusinessSearchAction, getOneBusinessAction, editBusinessAction, deleteBusinessAction } from '../../actions/businessActions';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -18,7 +16,7 @@ describe('authActions', () => {
     moxios.uninstall();
   });
 
-  it('should dispatch login data for a successful login', (done) => {
+  it('should dispatch 200 status along with successfully requested businesses', (done) => {
     moxios.stubRequest('api/v1/businesses', {
       status: 200,
       response: {
@@ -39,7 +37,7 @@ describe('authActions', () => {
       });
   });
 
-  it('should dispatch signup data for a successful signup', (done) => {
+  it('should dispatch pagination details data for a business catalog page', (done) => {
     const page = 1;
     moxios.stubRequest(`api/v1/businesses?page=${page || 1}`, {
       status: 200,
@@ -68,7 +66,7 @@ describe('authActions', () => {
       });
   });
 
-  it('should dispatch signup data for a successful signup', (done) => {
+  it('should dispatch businesses by search action of location or category', (done) => {
     const searchType = 'location';
     const keyValue = 'sao paulo';
     moxios.stubRequest(`api/v1/businesses?${searchType}=${keyValue}`, {
@@ -93,7 +91,7 @@ describe('authActions', () => {
       });
   });
 
-  it('should dispatch signup data for a successful signup', (done) => {
+  it('should dispatch get business action for a search for a single business', (done) => {
     const id = 1;
     moxios.stubRequest(`/api/v1/businesses/${id}`, {
       status: 200,
@@ -117,7 +115,7 @@ describe('authActions', () => {
       });
   });
 
-  it('should dispatch signup data for a successful signup', (done) => {
+  it('should dispatch an edit business action data for a successful business edit', (done) => {
     const business = { id: 1 };
     moxios.stubRequest(`/api/v1/businesses/${business.id}`, {
       status: 200,
@@ -141,7 +139,7 @@ describe('authActions', () => {
       });
   });
 
-  it('should dispatch signup data for a successful signup', (done) => {
+  it('should dispatch not edit business action data for a unsuccessful business edit and return an error message', (done) => {
     const business = { id: 1 };
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
@@ -166,7 +164,7 @@ describe('authActions', () => {
       });
   });
 
-  it('should dispatch signup data for a successful signup', (done) => {
+  it('should dispatch a message for a business that was not successfully deleted', (done) => {
     const id = 1;
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
@@ -193,7 +191,7 @@ describe('authActions', () => {
       });
   });
 
-  it('should dispatch signup data for a successful signup', (done) => {
+  it('should dispatch delete data for a business that was successfully deleted', (done) => {
     const id = 1;
     moxios.stubRequest(`/api/v1/businesses/${id}`, {
       status: 200,
@@ -210,32 +208,6 @@ describe('authActions', () => {
 
     const store = mockStore({});
     return store.dispatch(deleteBusinessAction(id))
-      .then(() => {
-        expect(store.getActions()).toEqual(expectedActions);
-        expect(store.getActions().length).toBe(1);
-        done();
-      });
-  });
-
-  it('should dispatch signup data for a successful signup', (done) => {
-    const userId = 1;
-    moxios.stubRequest(`/api/v1/auth/${userId}/userProfile`, {
-      status: 200,
-      response: {
-        userdata: {}
-      }
-    });
-    const expectedActions = [
-      {
-        type: GET_USER_PROFILE_SUCCESSFUL,
-        userProfile: {}
-      }
-    ];
-
-    localStorage.setItem('userToken', token);
-
-    const store = mockStore({});
-    return store.dispatch(UserDashBoardAction())
       .then(() => {
         expect(store.getActions()).toEqual(expectedActions);
         expect(store.getActions().length).toBe(1);

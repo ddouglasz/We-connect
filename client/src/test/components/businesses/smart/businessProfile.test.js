@@ -88,7 +88,7 @@ describe('Component: BusinessProfile', () => {
 });
 
 describe('Connected BusinessProfile', () => {
-  it('tests that the comnponent successfully renders', () => {
+  it('should test that the comnponent successfully renders', () => {
     const allBusinesses = {
       oneBusiness: {
         id: 1,

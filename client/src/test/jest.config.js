@@ -1,3 +1,3 @@
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiYWxhbiIsImVtYWlsIjoiY29AZmtzLmNvbSIsImlhdCI6MTUyNjc3NDY4NX0.-ifQEPBdNquBQylvLQGvEPz1UHJTYzlTJJa3O9r1yVE';
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoic3RldmUiLCJlbWFpbCI6InN0ZXZlQHN0ZXZlLmNvbSIsImlhdCI6MTUyNjc3NDY4NX0.1769zEZcgxW6nB951nEV4zEhbVdc76CDI0I0cMdyzGw';
 
 global.token = token;
